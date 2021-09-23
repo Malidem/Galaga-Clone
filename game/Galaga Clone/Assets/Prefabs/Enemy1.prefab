@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2500958488499531470}
   - component: {fileID: 2500958488499531471}
   - component: {fileID: 9185253105617165583}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.039245605, y: -0.04383087}
@@ -136,7 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb57d3d208a0ec48b33c0bfc70bb320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   canvas: {fileID: 0}
   bullet: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}
-  bullets: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}

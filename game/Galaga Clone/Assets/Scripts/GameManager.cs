@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public Transform[] HUDElements;
 
+    private int wave = 1;
     private int waveAmount = 2;
 
     void Start()
@@ -36,18 +38,18 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < waveAmount; i++)
         {
             RectTransform rect = (RectTransform)background.transform;
-            int num = Random.Range(1, 4);
+            int num = UnityEngine.Random.Range(1, 4);
             if (num == 1)
             {
-                Enemies.Add(Instantiate(enemyType1, new Vector2(rect.rect.width + 25, Random.Range(0, rect.rect.height)), transform.rotation, enemies.transform));
+                Enemies.Add(Instantiate(enemyType1, new Vector2(rect.rect.width + 25, UnityEngine.Random.Range(0, rect.rect.height)), transform.rotation, enemies.transform));
             }
             else if (num == 2)
             {
-                Enemies.Add(Instantiate(enemyType1, new Vector2(Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), rect.rect.height + 25), transform.rotation, enemies.transform));
+                Enemies.Add(Instantiate(enemyType1, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), rect.rect.height + 25), transform.rotation, enemies.transform));
             }
             else if (num == 3)
             {
-                Enemies.Add(Instantiate(enemyType1, new Vector2(Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), -25), transform.rotation, enemies.transform));
+                Enemies.Add(Instantiate(enemyType1, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), -25), transform.rotation, enemies.transform));
             }
         }
     }
@@ -74,28 +76,33 @@ public class GameManager : MonoBehaviour
             {
                 if (waveAmount >= 5)
                 {
-                    waveAmount += Random.Range(1, 6);
+                    waveAmount += UnityEngine.Random.Range(1, 6);
                 }
                 else
                 {
                     waveAmount++;
                 }
+                wave++;
+                HUDElements[3].gameObject.GetComponent<Text>().text = "Wave " + wave;
                 SpawnEnemies();
             }
 
-            HUDElements[2].gameObject.GetComponent<Text>().text = "Points: " + points;
+            HUDElements[2].gameObject.GetComponent<Text>().text = "Points: " + String.Format("{0:n0}", points);
         }
 
         if (gameOver)
         {
             gameOverMenu.SetActive(true);
-            gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final Points: " + points;
+            gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final Points: " + String.Format("{0:n0}", points);
         }
     }
 
     public void KillEnemy(GameObject enemy)
     {
-        Enemies.Remove(Enemies[Enemies.IndexOf(enemy)]);
-        Destroy(enemy);
+        if (enemy != null)
+        {
+            Enemies.Remove(Enemies[Enemies.IndexOf(enemy)]);
+            Destroy(enemy);
+        }
     }
 }

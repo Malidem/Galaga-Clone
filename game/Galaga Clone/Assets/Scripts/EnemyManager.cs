@@ -31,8 +31,16 @@ public class EnemyManager : MonoBehaviour
 
     public IEnumerator SpawnBullets()
     {
-        yield return new WaitForSeconds(0.5F);
-        Instantiate(bullet, transform.position, transform.rotation, bullets.transform);
+        if (gameManager.gameOver == false)
+        {
+            yield return new WaitForSeconds(0.5F);
+            int chance = Random.Range(1, 101);
+            if (chance <= 25)
+            {
+                Instantiate(bullet, transform.position, transform.rotation, bullets.transform);
+            }
+            StartCoroutine(SpawnBullets()); 
+        }
     }
 
     void Update()

@@ -25,12 +25,19 @@ public class EnemyBulletManager : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.GetComponent<PlayerManager>().RemoveHealth(1);
-            Destroy(gameObject);
+            StartCoroutine(player.GetComponent<PlayerManager>().RemoveHealth(1));
+            StartCoroutine(DestroyThis());
         }
+    }
+
+    private IEnumerator DestroyThis()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.z - 100000));
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 }
