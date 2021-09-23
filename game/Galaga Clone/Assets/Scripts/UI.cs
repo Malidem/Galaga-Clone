@@ -10,7 +10,10 @@ public class UI : MonoBehaviour
 
     void Start()
     {
-        gameManager = eventSystem.GetComponent<GameManager>();
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            gameManager = eventSystem.GetComponent<GameManager>();
+        }
     }
 
     public void StartButton()
@@ -25,5 +28,17 @@ public class UI : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene);
         SceneManager.UnloadSceneAsync(currentScene);
+    }
+
+    public void SwitchUILayer(GameObject layer)
+    {
+        layer.SetActive(true);
+        gameObject.transform.parent.gameObject.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        print("Exiting Game");
+        Application.Quit();
     }
 }
