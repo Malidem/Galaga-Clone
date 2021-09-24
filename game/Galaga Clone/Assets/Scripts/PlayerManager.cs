@@ -42,6 +42,7 @@ public class PlayerManager : MonoBehaviour
                 if (canFire)
                 {
                     Instantiate(bullet, transform.position, transform.rotation, bullets.transform);
+                    gameManager.OverheatAmount += 10;
                     canFire = false;
                 }
             }
@@ -81,7 +82,6 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator RemoveHealth(int amount)
     {
-        // Damage cool down timer
         if (canTakeDamage)
         {
             for (int i = 0; i < amount; i++)
@@ -129,7 +129,14 @@ public class PlayerManager : MonoBehaviour
         while (gameManager.gameOver == false)
         {
             yield return new WaitForSeconds(0.25F);
-            canFire = true;
+            if (gameManager.OverheatAmount <= 90)
+            {
+                canFire = true;
+            }
+            else
+            {
+                canFire = false;
+            }
         }
     }
 }

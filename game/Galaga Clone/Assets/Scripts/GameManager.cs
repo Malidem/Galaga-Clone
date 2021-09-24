@@ -14,6 +14,17 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject HUD;
     public GameObject enemies;
+    public Image overheatBar;
+    public Sprite overheatOverlay0;
+    public Sprite overheatOverlay1;
+    public Sprite overheatOverlay2;
+    public Sprite overheatOverlay3;
+    public Sprite overheatOverlay4;
+    public Sprite overheatOverlay5;
+    public Sprite overheatOverlay6;
+    public Sprite overheatOverlay7;
+    public Sprite overheatOverlay8;
+    public int OverheatAmount;
     public int points;
 
     [HideInInspector]
@@ -31,6 +42,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         HUDElements = HUD.GetComponentsInChildren<Transform>();
+        StartCoroutine(Overheat());
     }
 
     public void SpawnEnemies()
@@ -88,6 +100,44 @@ public class GameManager : MonoBehaviour
             }
 
             HUDElements[2].gameObject.GetComponent<Text>().text = "Points: " + String.Format("{0:n0}", points);
+
+            // each image is 12.5% less
+            if (OverheatAmount >= 87)
+            {
+                overheatBar.sprite = overheatOverlay8;
+            }
+            else if (OverheatAmount >= 75 && OverheatAmount < 87)
+            {
+                overheatBar.sprite = overheatOverlay7;
+            }
+            else if (OverheatAmount >= 63 && OverheatAmount < 75)
+            {
+                overheatBar.sprite = overheatOverlay6;
+            }
+            else if (OverheatAmount >= 51 && OverheatAmount < 63)
+            {
+                overheatBar.sprite = overheatOverlay5;
+            }
+            else if (OverheatAmount >= 39 && OverheatAmount < 51)
+            {
+                overheatBar.sprite = overheatOverlay4;
+            }
+            else if (OverheatAmount >= 27 && OverheatAmount < 39)
+            {
+                overheatBar.sprite = overheatOverlay3;
+            }
+            else if (OverheatAmount >= 15 && OverheatAmount < 27)
+            {
+                overheatBar.sprite = overheatOverlay2;
+            }
+            else if (OverheatAmount >= 0 && OverheatAmount < 15)
+            {
+                overheatBar.sprite = overheatOverlay1;
+            }
+            else if (OverheatAmount >= 3 && OverheatAmount < 15)
+            {
+                overheatBar.sprite = overheatOverlay0;
+            }
         }
 
         if (gameOver)
@@ -103,6 +153,15 @@ public class GameManager : MonoBehaviour
         {
             Enemies.Remove(Enemies[Enemies.IndexOf(enemy)]);
             Destroy(enemy);
+        }
+    }
+
+    private IEnumerator Overheat()
+    {
+        while (gameOver == false)
+        {
+            yield return new WaitForSeconds(0.2F);
+            OverheatAmount -= 1;
         }
     }
 }
