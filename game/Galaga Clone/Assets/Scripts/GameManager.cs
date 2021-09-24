@@ -102,41 +102,41 @@ public class GameManager : MonoBehaviour
             HUDElements[2].gameObject.GetComponent<Text>().text = "Points: " + String.Format("{0:n0}", points);
 
             // each image is 12.5% less
-            if (OverheatAmount >= 87)
+            if (OverheatAmount <= 6.25F)
             {
-                overheatBar.sprite = overheatOverlay8;
+                overheatBar.sprite = overheatOverlay0;
             }
-            else if (OverheatAmount >= 75 && OverheatAmount < 87)
-            {
-                overheatBar.sprite = overheatOverlay7;
-            }
-            else if (OverheatAmount >= 63 && OverheatAmount < 75)
-            {
-                overheatBar.sprite = overheatOverlay6;
-            }
-            else if (OverheatAmount >= 51 && OverheatAmount < 63)
-            {
-                overheatBar.sprite = overheatOverlay5;
-            }
-            else if (OverheatAmount >= 39 && OverheatAmount < 51)
-            {
-                overheatBar.sprite = overheatOverlay4;
-            }
-            else if (OverheatAmount >= 27 && OverheatAmount < 39)
-            {
-                overheatBar.sprite = overheatOverlay3;
-            }
-            else if (OverheatAmount >= 15 && OverheatAmount < 27)
-            {
-                overheatBar.sprite = overheatOverlay2;
-            }
-            else if (OverheatAmount >= 0 && OverheatAmount < 15)
+            else if (OverheatAmount <= 12.5F && OverheatAmount > 6.25F)
             {
                 overheatBar.sprite = overheatOverlay1;
             }
-            else if (OverheatAmount >= 3 && OverheatAmount < 15)
+            else if (OverheatAmount <= 25 && OverheatAmount > 12.5F)
             {
-                overheatBar.sprite = overheatOverlay0;
+                overheatBar.sprite = overheatOverlay2;
+            }
+            else if (OverheatAmount <= 37.5F && OverheatAmount > 25)
+            {
+                overheatBar.sprite = overheatOverlay3;
+            }
+            else if (OverheatAmount <= 50 && OverheatAmount > 37.5F)
+            {
+                overheatBar.sprite = overheatOverlay4;
+            }
+            else if (OverheatAmount <= 62.5F && OverheatAmount > 50)
+            {
+                overheatBar.sprite = overheatOverlay5;
+            }
+            else if (OverheatAmount <= 75 && OverheatAmount > 62.5F)
+            {
+                overheatBar.sprite = overheatOverlay6;
+            }
+            else if (OverheatAmount <= 87.5F && OverheatAmount > 75)
+            {
+                overheatBar.sprite = overheatOverlay7;
+            }
+            else if (OverheatAmount <= 100 && OverheatAmount > 87.5F)
+            {
+                overheatBar.sprite = overheatOverlay8;
             }
         }
 
@@ -161,7 +161,10 @@ public class GameManager : MonoBehaviour
         while (gameOver == false)
         {
             yield return new WaitForSeconds(0.2F);
-            OverheatAmount -= 1;
+            if (OverheatAmount > 0)
+            {
+                OverheatAmount -= 1;
+            }
         }
     }
 }

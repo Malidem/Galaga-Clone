@@ -42,7 +42,7 @@ public class PlayerManager : MonoBehaviour
                 if (canFire)
                 {
                     Instantiate(bullet, transform.position, transform.rotation, bullets.transform);
-                    gameManager.OverheatAmount += 10;
+                    gameManager.OverheatAmount += 5;
                     canFire = false;
                 }
             }
@@ -129,7 +129,7 @@ public class PlayerManager : MonoBehaviour
         while (gameManager.gameOver == false)
         {
             yield return new WaitForSeconds(0.25F);
-            if (gameManager.OverheatAmount <= 90)
+            if (gameManager.OverheatAmount <= 95)
             {
                 canFire = true;
             }
