@@ -19,6 +19,7 @@ public class UI : MonoBehaviour
     public void StartButton()
     {
         gameManager.gameStarted = true;
+        gameManager.SpawnEnemies();
         gameObject.transform.parent.gameObject.SetActive(false);
     }
 

@@ -42,8 +42,9 @@ public class PlayerManager : MonoBehaviour
                 if (canFire)
                 {
                     Instantiate(bullet, transform.position, transform.rotation, bullets.transform);
-                    gameManager.OverheatAmount += 5;
                     canFire = false;
+                    gameManager.OverheatAmount += 5;
+                    gameManager.UpdateOverheatSprite();
                 }
             }
         }
@@ -72,12 +73,6 @@ public class PlayerManager : MonoBehaviour
         {
             transform.position = new Vector2(transform.position.x, (0 + sizeY));
         }
-
-        if (allHealth.Count <= 0)
-        {
-            gameManager.gameOver = true;
-            Destroy(gameObject);
-        }
     }
 
     public IEnumerator RemoveHealth(int amount)
@@ -99,6 +94,11 @@ public class PlayerManager : MonoBehaviour
                 gameObject.GetComponent<Image>().color = Color.white;
                 canTakeDamage = true; 
             }
+            else
+            {
+                gameManager.EndGame();
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -108,11 +108,6 @@ public class PlayerManager : MonoBehaviour
         {
             allHealth.Add(Instantiate(health, new Vector2(0, 0), gameManager.HUD.transform.rotation, gameManager.HUDElements[1]));
         }
-    }
-
-    public void AddPoints(int amount)
-    {
-        gameManager.points += amount;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

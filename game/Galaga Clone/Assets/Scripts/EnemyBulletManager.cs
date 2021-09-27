@@ -18,8 +18,7 @@ public class EnemyBulletManager : MonoBehaviour
     {
         transform.Translate(Vector2.left * Time.deltaTime * speed);
 
-        RectTransform rect = (RectTransform)background.transform;
-        if (transform.position.x < 0)
+        if (transform.position.x < -25)
         {
             Destroy(gameObject);
         }
