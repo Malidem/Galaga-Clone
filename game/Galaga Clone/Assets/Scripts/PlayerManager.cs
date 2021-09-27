@@ -12,18 +12,21 @@ public class PlayerManager : MonoBehaviour
     public GameObject bullet;
     public GameObject canvas;
     public GameObject eventSystem;
-    public GameObject health;
+    public GameObject healthBar;
     public GameObject bullets;
-    
+    public Sprite healthImage0;
+    public Sprite healthImage1;
+    public Sprite healthImage2;
+    public Sprite healthImage3;
+
     private GameManager gameManager;
-    private List<GameObject> allHealth = new List<GameObject>();
     private bool canFire = true;
     private bool canTakeDamage = true;
+    private int healthAmount = 3;
 
     void Start()
     {
         gameManager = eventSystem.GetComponent<GameManager>();
-        AddHealth(3);
         StartCoroutine(FireCooldown());
     }
 
@@ -81,18 +84,18 @@ public class PlayerManager : MonoBehaviour
         {
             for (int i = 0; i < amount; i++)
             {
-                GameObject obj = allHealth[allHealth.Count - 1];
-                allHealth.Remove(obj);
-                Destroy(obj);
+                healthAmount -= 1;
                 canTakeDamage = false;
             }
 
-            if (allHealth.Count > 0)
+            UpdateHealthSprite();
+
+            if (healthAmount > 0)
             {
                 gameObject.GetComponent<Image>().color = Color.red;
                 yield return new WaitForSeconds(0.2F);
                 gameObject.GetComponent<Image>().color = Color.white;
-                canTakeDamage = true; 
+                canTakeDamage = true;
             }
             else
             {
@@ -106,7 +109,28 @@ public class PlayerManager : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
-            allHealth.Add(Instantiate(health, new Vector2(0, 0), gameManager.HUD.transform.rotation, gameManager.HUDElements[1]));
+            healthAmount += 1;
+        }
+        UpdateHealthSprite();
+    }
+
+    private void UpdateHealthSprite()
+    {
+        if (healthAmount == 3)
+        {
+            healthBar.GetComponent<Image>().sprite = healthImage0;
+        }
+        else if (healthAmount == 2)
+        {
+            healthBar.GetComponent<Image>().sprite = healthImage1;
+        }
+        else if (healthAmount == 1)
+        {
+            healthBar.GetComponent<Image>().sprite = healthImage2;
+        }
+        else if (healthAmount == 0)
+        {
+            healthBar.GetComponent<Image>().sprite = healthImage3;
         }
     }
 
