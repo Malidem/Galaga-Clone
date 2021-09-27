@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject HUD;
     public GameObject enemies;
+    public GameObject backgroundPrefab;
     public Image overheatBar;
     public Sprite overheatOverlay0;
     public Sprite overheatOverlay1;
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
+        Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
     }
 
     public void SpawnEnemies()

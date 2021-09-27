@@ -10,7 +10,7 @@ public class PlayerBullets : MonoBehaviour
 
     void Start()
     {
-        background =  GameObject.Find("Background");
+        background =  GameObject.Find("Backgrounds");
         gameManager = GameObject.Find("EventSystem").GetComponent<GameManager>();
     }
 

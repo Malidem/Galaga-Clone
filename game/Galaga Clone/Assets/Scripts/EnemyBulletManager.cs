@@ -5,12 +5,10 @@ using UnityEngine;
 public class EnemyBulletManager : MonoBehaviour
 {
     public int speed;
-    private GameObject background;
     private GameObject player;
 
     void Start()
     {
-        background = GameObject.Find("Background");
         player = GameObject.Find("Player");
     }
 
