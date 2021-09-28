@@ -5,12 +5,10 @@ using UnityEngine;
 public class EnemyBulletManager : MonoBehaviour
 {
     public int speed;
-    private GameObject background;
     private GameObject player;
 
     void Start()
     {
-        background = GameObject.Find("Background");
         player = GameObject.Find("Player");
     }
 
@@ -18,8 +16,7 @@ public class EnemyBulletManager : MonoBehaviour
     {
         transform.Translate(Vector2.left * Time.deltaTime * speed);
 
-        RectTransform rect = (RectTransform)background.transform;
-        if (transform.position.x < 0)
+        if (transform.position.x < -25)
         {
             Destroy(gameObject);
         }

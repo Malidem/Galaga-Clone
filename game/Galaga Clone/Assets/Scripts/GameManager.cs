@@ -14,12 +14,22 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject HUD;
     public GameObject enemies;
+    public GameObject backgroundPrefab;
+    public Image overheatBar;
+    public Sprite overheatOverlay0;
+    public Sprite overheatOverlay1;
+    public Sprite overheatOverlay2;
+    public Sprite overheatOverlay3;
+    public Sprite overheatOverlay4;
+    public Sprite overheatOverlay5;
+    public Sprite overheatOverlay6;
+    public Sprite overheatOverlay7;
+    public Sprite overheatOverlay8;
+    public int OverheatAmount;
     public int points;
 
     [HideInInspector]
     public bool gameStarted;
-    [HideInInspector]
-    public List<GameObject> Enemies = new List<GameObject>();
     [HideInInspector]
     public bool gameOver;
     [HideInInspector]
@@ -31,6 +41,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         HUDElements = HUD.GetComponentsInChildren<Transform>();
+        StartCoroutine(Overheat());
+        Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
     }
 
     public void SpawnEnemies()
@@ -41,15 +53,15 @@ public class GameManager : MonoBehaviour
             int num = UnityEngine.Random.Range(1, 4);
             if (num == 1)
             {
-                Enemies.Add(Instantiate(enemyType1, new Vector2(rect.rect.width + 25, UnityEngine.Random.Range(0, rect.rect.height)), transform.rotation, enemies.transform));
+                Instantiate(enemyType1, new Vector2(rect.rect.width + 25, UnityEngine.Random.Range(0, rect.rect.height)), transform.rotation, enemies.transform);
             }
             else if (num == 2)
             {
-                Enemies.Add(Instantiate(enemyType1, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), rect.rect.height + 25), transform.rotation, enemies.transform));
+                Instantiate(enemyType1, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), rect.rect.height + 25), transform.rotation, enemies.transform);
             }
             else if (num == 3)
             {
-                Enemies.Add(Instantiate(enemyType1, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), -25), transform.rotation, enemies.transform));
+                Instantiate(enemyType1, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), -25), transform.rotation, enemies.transform);
             }
         }
     }
@@ -71,8 +83,28 @@ public class GameManager : MonoBehaviour
                     pauseMenu.SetActive(true);
                 }
             }
+        }
+    }
 
-            if (Enemies.Count <= 0)
+    public void AddPoints(int amount)
+    {
+        points += amount;
+        HUDElements[2].gameObject.GetComponent<Text>().text = "Points: " + String.Format("{0:n0}", points);
+    }
+
+    public void KillEnemy(GameObject enemy)
+    {
+        if (enemy != null)
+        {
+            Destroy(enemy);
+        }
+
+        // Gets stuck, because there are objects in the list but not on the screen
+        List<Transform> enemiesList = new List<Transform>(enemies.GetComponentsInChildren<Transform>());
+        enemiesList.Remove(enemies.transform);
+        if (gameOver == false)
+        {
+            if ((enemiesList.Count - 1) <= 0)
             {
                 if (waveAmount >= 5)
                 {
@@ -85,24 +117,68 @@ public class GameManager : MonoBehaviour
                 wave++;
                 HUDElements[3].gameObject.GetComponent<Text>().text = "Wave " + wave;
                 SpawnEnemies();
-            }
-
-            HUDElements[2].gameObject.GetComponent<Text>().text = "Points: " + String.Format("{0:n0}", points);
-        }
-
-        if (gameOver)
-        {
-            gameOverMenu.SetActive(true);
-            gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final Points: " + String.Format("{0:n0}", points);
+            } 
         }
     }
 
-    public void KillEnemy(GameObject enemy)
+    private IEnumerator Overheat()
     {
-        if (enemy != null)
+        while (gameOver == false)
         {
-            Enemies.Remove(Enemies[Enemies.IndexOf(enemy)]);
-            Destroy(enemy);
+            yield return new WaitForSeconds(0.15F);
+            if (OverheatAmount > 0)
+            {
+                OverheatAmount -= 1;
+                UpdateOverheatSprite();
+            }
         }
+    }
+
+    public void UpdateOverheatSprite()
+    {
+        // each image is 12.5% less
+        if (OverheatAmount <= 6.25F)
+        {
+            overheatBar.sprite = overheatOverlay0;
+        }
+        else if (OverheatAmount <= 12.5F && OverheatAmount > 6.25F)
+        {
+            overheatBar.sprite = overheatOverlay1;
+        }
+        else if (OverheatAmount <= 25 && OverheatAmount > 12.5F)
+        {
+            overheatBar.sprite = overheatOverlay2;
+        }
+        else if (OverheatAmount <= 37.5F && OverheatAmount > 25)
+        {
+            overheatBar.sprite = overheatOverlay3;
+        }
+        else if (OverheatAmount <= 50 && OverheatAmount > 37.5F)
+        {
+            overheatBar.sprite = overheatOverlay4;
+        }
+        else if (OverheatAmount <= 62.5F && OverheatAmount > 50)
+        {
+            overheatBar.sprite = overheatOverlay5;
+        }
+        else if (OverheatAmount <= 75 && OverheatAmount > 62.5F)
+        {
+            overheatBar.sprite = overheatOverlay6;
+        }
+        else if (OverheatAmount <= 87.5F && OverheatAmount > 75)
+        {
+            overheatBar.sprite = overheatOverlay7;
+        }
+        else if (OverheatAmount <= 100 && OverheatAmount > 87.5F)
+        {
+            overheatBar.sprite = overheatOverlay8;
+        }
+    }
+
+    public void EndGame()
+    {
+        gameOver = true;
+        gameOverMenu.SetActive(true);
+        gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final Points: " + String.Format("{0:n0}", points);
     }
 }
