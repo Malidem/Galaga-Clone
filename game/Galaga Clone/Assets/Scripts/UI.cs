@@ -10,8 +10,8 @@ public class UI : MonoBehaviour
     private GameManager gameManager;
     public GameObject shopButton;
     public GameObject shopMenu;
-    public GameObject upgradesButton;
-    public GameObject upgradesMenu;
+    public GameObject ShipButton;
+    public GameObject ShipMenu;
     public GameObject galaxyButton;
     public GameObject galaxyMenu;
 
@@ -56,15 +56,15 @@ public class UI : MonoBehaviour
         if (gameObject == shopButton)
         {
             shopMenu.SetActive(true);
-            upgradesButton.GetComponent<Button>().interactable = true;
-            upgradesMenu.SetActive(false);
+            ShipButton.GetComponent<Button>().interactable = true;
+            ShipMenu.SetActive(false);
             galaxyButton.GetComponent<Button>().interactable = true;
             galaxyMenu.SetActive(false);
 
         }
-        else if (gameObject == upgradesButton)
+        else if (gameObject == ShipButton)
         {
-            upgradesMenu.SetActive(true);
+            ShipMenu.SetActive(true);
             shopButton.GetComponent<Button>().interactable = true;
             shopMenu.SetActive(false);
             galaxyButton.GetComponent<Button>().interactable = true;
@@ -75,8 +75,8 @@ public class UI : MonoBehaviour
             galaxyMenu.SetActive(true);
             shopButton.GetComponent<Button>().interactable = true;
             shopMenu.SetActive(false);
-            upgradesButton.GetComponent<Button>().interactable = true;
-            upgradesMenu.SetActive(false);
+            ShipButton.GetComponent<Button>().interactable = true;
+            ShipMenu.SetActive(false);
         }
     }
 }

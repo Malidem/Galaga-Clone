@@ -368,8 +368,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  upgradesButton: {fileID: 0}
-  upgradesMenu: {fileID: 0}
+  ShipButton: {fileID: 0}
+  ShipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &66448896
@@ -760,8 +760,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  upgradesButton: {fileID: 0}
-  upgradesMenu: {fileID: 0}
+  ShipButton: {fileID: 0}
+  ShipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &271457377
@@ -1227,8 +1227,8 @@ MonoBehaviour:
   eventSystem: {fileID: 0}
   shopButton: {fileID: 671577789}
   shopMenu: {fileID: 993183754}
-  upgradesButton: {fileID: 1611182580}
-  upgradesMenu: {fileID: 96077283}
+  ShipButton: {fileID: 0}
+  ShipMenu: {fileID: 0}
   galaxyButton: {fileID: 1669437640}
   galaxyMenu: {fileID: 15602676}
 --- !u!114 &671577792
@@ -1414,8 +1414,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  upgradesButton: {fileID: 0}
-  upgradesMenu: {fileID: 0}
+  ShipButton: {fileID: 0}
+  ShipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &810074133
@@ -1730,7 +1730,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Upgrades
+  m_Text: Ship
 --- !u!222 &849299492
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1986,8 +1986,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  upgradesButton: {fileID: 0}
-  upgradesMenu: {fileID: 0}
+  ShipButton: {fileID: 0}
+  ShipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &1248556900
@@ -2290,7 +2290,7 @@ GameObject:
   - component: {fileID: 1611182583}
   - component: {fileID: 1611182582}
   m_Layer: 5
-  m_Name: UpgradesButton
+  m_Name: shipButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2331,8 +2331,8 @@ MonoBehaviour:
   eventSystem: {fileID: 0}
   shopButton: {fileID: 671577789}
   shopMenu: {fileID: 993183754}
-  upgradesButton: {fileID: 1611182580}
-  upgradesMenu: {fileID: 96077283}
+  ShipButton: {fileID: 0}
+  ShipMenu: {fileID: 0}
   galaxyButton: {fileID: 1669437640}
   galaxyMenu: {fileID: 15602676}
 --- !u!114 &1611182583
@@ -2482,8 +2482,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  upgradesButton: {fileID: 0}
-  upgradesMenu: {fileID: 0}
+  ShipButton: {fileID: 0}
+  ShipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &1627612550
@@ -2632,8 +2632,8 @@ MonoBehaviour:
   eventSystem: {fileID: 0}
   shopButton: {fileID: 671577789}
   shopMenu: {fileID: 993183754}
-  upgradesButton: {fileID: 1611182580}
-  upgradesMenu: {fileID: 96077283}
+  ShipButton: {fileID: 0}
+  ShipMenu: {fileID: 0}
   galaxyButton: {fileID: 1669437640}
   galaxyMenu: {fileID: 15602676}
 --- !u!114 &1669437643
@@ -3207,8 +3207,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  upgradesButton: {fileID: 0}
-  upgradesMenu: {fileID: 0}
+  ShipButton: {fileID: 0}
+  ShipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &2073202656
