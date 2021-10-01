@@ -1,0 +1,20 @@
+Faction 1:
+	-Name: Rakar Caretakers
+	-Biography: Violent conflicts on their homeworld pre space age led to widespread devestation, and the evolution of their culture to revere nature.
+		Eventually this lead to the formation of a religion, and widespread belief in it with the primary tenets being to protect nature whenever possible.
+	-Motivation: Protection of holy planets (gaia/paradise worlds)	
+	-Design Philospohy: Ships are curved and organic, usually feature a swept wing design or the reverse of it. feature single energy core with the size of it 
+		scaling with the energy needs of the ship, tends to become arced when suitable. Thruster designs are cylindrical and the number of them depends on
+		ship size and purpose.
+	-Color Scheme:
+		-Ship: Green
+		-Energy: Red
+
+Faction 2:
+	-Name: Cartaga
+	-Biography:
+	-Motivation: 
+	-Design Philospohy:
+	-Color Scheme
+		-Ship: Blue
+		-Energy: Orange
