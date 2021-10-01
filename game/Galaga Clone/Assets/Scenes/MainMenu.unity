@@ -368,8 +368,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  ShipButton: {fileID: 0}
-  ShipMenu: {fileID: 0}
+  shipButton: {fileID: 0}
+  shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &66448896
@@ -473,7 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 96077284}
   m_Layer: 5
-  m_Name: UpgradesMenu
+  m_Name: ShipMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 271457378}
   - component: {fileID: 271457377}
   - component: {fileID: 271457376}
+  - component: {fileID: 271457382}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -736,6 +737,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1827789802}
   - {fileID: 1588976377}
   m_Father: {fileID: 1432578614}
   m_RootOrder: 4
@@ -760,8 +762,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  ShipButton: {fileID: 0}
-  ShipMenu: {fileID: 0}
+  shipButton: {fileID: 0}
+  shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &271457377
@@ -855,6 +857,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271457374}
   m_CullTransparentMesh: 0
+--- !u!114 &271457382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271457374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178ebe1ab33ef3344892477efa40fc54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normal: {fileID: 21300000, guid: 9d1e7f0c5f87c7e4b82f26dbe34e6a19, type: 3}
+  hover: {fileID: 21300000, guid: bb438c933c7d56e459367d852739cd22, type: 3}
 --- !u!1 &434700863
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,7 +979,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1248556898}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1227,8 +1243,8 @@ MonoBehaviour:
   eventSystem: {fileID: 0}
   shopButton: {fileID: 671577789}
   shopMenu: {fileID: 993183754}
-  ShipButton: {fileID: 0}
-  ShipMenu: {fileID: 0}
+  shipButton: {fileID: 1611182580}
+  shipMenu: {fileID: 96077283}
   galaxyButton: {fileID: 1669437640}
   galaxyMenu: {fileID: 15602676}
 --- !u!114 &671577792
@@ -1414,8 +1430,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  ShipButton: {fileID: 0}
-  ShipMenu: {fileID: 0}
+  shipButton: {fileID: 0}
+  shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &810074133
@@ -1543,7 +1559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: -40}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &832836602
@@ -1652,7 +1668,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Upgrades
+  m_Text: Ship
 --- !u!222 &835070284
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1962,6 +1978,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1435830312}
   - {fileID: 436260526}
   m_Father: {fileID: 1432578614}
   m_RootOrder: 1
@@ -1986,8 +2003,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  ShipButton: {fileID: 0}
-  ShipMenu: {fileID: 0}
+  shipButton: {fileID: 0}
+  shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &1248556900
@@ -2173,7 +2190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1432578614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2198,6 +2215,80 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1435830311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1435830312}
+  - component: {fileID: 1435830314}
+  - component: {fileID: 1435830313}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1435830312
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435830311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1248556898}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -40}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1435830313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435830311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d4b2f196c069cc941be96a5a2c7ac21b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1435830314
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435830311}
+  m_CullTransparentMesh: 0
 --- !u!1 &1588976376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2228,7 +2319,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 271457375}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2290,7 +2381,7 @@ GameObject:
   - component: {fileID: 1611182583}
   - component: {fileID: 1611182582}
   m_Layer: 5
-  m_Name: shipButton
+  m_Name: ShipButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2331,8 +2422,8 @@ MonoBehaviour:
   eventSystem: {fileID: 0}
   shopButton: {fileID: 671577789}
   shopMenu: {fileID: 993183754}
-  ShipButton: {fileID: 0}
-  ShipMenu: {fileID: 0}
+  shipButton: {fileID: 1611182580}
+  shipMenu: {fileID: 96077283}
   galaxyButton: {fileID: 1669437640}
   galaxyMenu: {fileID: 15602676}
 --- !u!114 &1611182583
@@ -2482,8 +2573,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  ShipButton: {fileID: 0}
-  ShipMenu: {fileID: 0}
+  shipButton: {fileID: 0}
+  shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &1627612550
@@ -2632,8 +2723,8 @@ MonoBehaviour:
   eventSystem: {fileID: 0}
   shopButton: {fileID: 671577789}
   shopMenu: {fileID: 993183754}
-  ShipButton: {fileID: 0}
-  ShipMenu: {fileID: 0}
+  shipButton: {fileID: 1611182580}
+  shipMenu: {fileID: 96077283}
   galaxyButton: {fileID: 1669437640}
   galaxyMenu: {fileID: 15602676}
 --- !u!114 &1669437643
@@ -2820,7 +2911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1711024306
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2999,6 +3090,80 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762385567}
+  m_CullTransparentMesh: 0
+--- !u!1 &1827789801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1827789802}
+  - component: {fileID: 1827789804}
+  - component: {fileID: 1827789803}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1827789802
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827789801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 271457375}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -40}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1827789803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827789801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9d1e7f0c5f87c7e4b82f26dbe34e6a19, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1827789804
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827789801}
   m_CullTransparentMesh: 0
 --- !u!1 &1896584119
 GameObject:
@@ -3207,8 +3372,8 @@ MonoBehaviour:
   eventSystem: {fileID: 102171647}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
-  ShipButton: {fileID: 0}
-  ShipMenu: {fileID: 0}
+  shipButton: {fileID: 0}
+  shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
 --- !u!114 &2073202656

@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UI : MonoBehaviour
 {
     public GameObject eventSystem;
-    private GameManager gameManager;
     public GameObject shopButton;
     public GameObject shopMenu;
-    public GameObject ShipButton;
-    public GameObject ShipMenu;
+    public GameObject shipButton;
+    public GameObject shipMenu;
     public GameObject galaxyButton;
     public GameObject galaxyMenu;
+    private GameManager gameManager;
 
     void Start()
     {
@@ -56,15 +57,15 @@ public class UI : MonoBehaviour
         if (gameObject == shopButton)
         {
             shopMenu.SetActive(true);
-            ShipButton.GetComponent<Button>().interactable = true;
-            ShipMenu.SetActive(false);
+            shipButton.GetComponent<Button>().interactable = true;
+            shipMenu.SetActive(false);
             galaxyButton.GetComponent<Button>().interactable = true;
             galaxyMenu.SetActive(false);
 
         }
-        else if (gameObject == ShipButton)
+        else if (gameObject == shipButton)
         {
-            ShipMenu.SetActive(true);
+            shipMenu.SetActive(true);
             shopButton.GetComponent<Button>().interactable = true;
             shopMenu.SetActive(false);
             galaxyButton.GetComponent<Button>().interactable = true;
@@ -75,8 +76,8 @@ public class UI : MonoBehaviour
             galaxyMenu.SetActive(true);
             shopButton.GetComponent<Button>().interactable = true;
             shopMenu.SetActive(false);
-            ShipButton.GetComponent<Button>().interactable = true;
-            ShipMenu.SetActive(false);
+            shipButton.GetComponent<Button>().interactable = true;
+            shipMenu.SetActive(false);
         }
     }
 }
