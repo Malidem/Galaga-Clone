@@ -82,10 +82,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (canTakeDamage)
         {
+            canTakeDamage = false;
             for (int i = 0; i < amount; i++)
             {
                 healthAmount -= 1;
-                canTakeDamage = false;
             }
 
             UpdateHealthSprite();
