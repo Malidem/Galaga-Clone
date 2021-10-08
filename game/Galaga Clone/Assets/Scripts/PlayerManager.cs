@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-    public int speed = 500;
+    public float maxSpeed = 500;
+    private float speed;
+    private float acceleration;
+    private float deceleration;
     public float horizontalInput;
     public float verticalInput;
     public GameObject background;
@@ -20,6 +23,8 @@ public class PlayerManager : MonoBehaviour
     public Sprite healthImage3;
 
     private GameManager gameManager;
+    private Rigidbody2D rigidb;
+    private Vector2 position;
     private bool canFire = true;
     private bool canTakeDamage = true;
     private int healthAmount = 3;
@@ -28,17 +33,62 @@ public class PlayerManager : MonoBehaviour
     {
         gameManager = eventSystem.GetComponent<GameManager>();
         StartCoroutine(FireCooldown());
+        rigidb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        //horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        //verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
         if (gameManager.gameStarted && gameManager.gameOver == false)
         {
-            transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
-            transform.Translate(Vector3.up * Time.deltaTime * verticalInput * speed);
+            //transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
+            //transform.Translate(Vector3.up * Time.deltaTime * verticalInput * speed);
+            //rigidbody.AddForce(gameobject.transform.forward * (desired speed * accelerationFactor));
+            //transform.Translate(horizontalInput, verticalInput, 0);
+            //if (Input.GetKey(KeyCode.W))
+            //{
+            //    //rigidb.addforce(gameobject.transform.right * (speed * 2));
+            //}
+            //if (Input.GetKey(KeyCode.S))
+            //{
+            //    //rigidb.addforce(gameobject.transform.right * (speed * 2));
+            //}
+            //if (Input.GetKey(KeyCode.A))
+            //{
+            //    //rigidb.addforce(gameobject.transform.up * (speed * 2));
+            //}
+            //if (Input.GetKey(KeyCode.D))
+            //{
+            //    //rigidb.addforce(gameobject.transform.up * (speed * 2));
+            //}
+
+            if (Input.GetKey("left") && (speed < maxSpeed))
+            {
+                speed = speed - acceleration * Time.deltaTime;
+            }
+            else if (Input.GetKey("right") && (speed > - maxSpeed))
+            {
+                speed = speed + acceleration * Time.deltaTime;
+            }
+            else
+            {
+                if (speed > deceleration * Time.deltaTime)
+                {
+                    speed = speed - deceleration * Time.deltaTime;
+                }
+                else if (speed < -deceleration * Time.deltaTime)
+                {
+                    speed = speed + deceleration * Time.deltaTime;
+                }
+                else 
+                {
+                    speed = 0; 
+                }    
+            }
+            position.x = transform.position.x + speed * Time.deltaTime;
+            transform.position = position;
 
             if (Input.GetKey(KeyCode.Space))
             {
