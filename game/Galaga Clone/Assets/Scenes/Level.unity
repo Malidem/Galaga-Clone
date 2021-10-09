@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
+  eventSystem: {fileID: 652294123}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
   shipButton: {fileID: 0}
@@ -1052,7 +1052,7 @@ GameObject:
   - component: {fileID: 649808557}
   - component: {fileID: 649808556}
   m_Layer: 5
-  m_Name: MenuButton (1)
+  m_Name: MenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
+  eventSystem: {fileID: 652294123}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
   shipButton: {fileID: 0}
@@ -2004,7 +2004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
+  eventSystem: {fileID: 652294123}
   shopButton: {fileID: 0}
   shopMenu: {fileID: 0}
   shipButton: {fileID: 0}

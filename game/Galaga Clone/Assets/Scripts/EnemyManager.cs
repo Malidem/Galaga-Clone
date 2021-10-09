@@ -39,7 +39,7 @@ public class EnemyManager : MonoBehaviour
             {
                 Instantiate(bullet, transform.position, transform.rotation, bullets.transform);
             }
-            StartCoroutine(SpawnBullets()); 
+            StartCoroutine(SpawnBullets());
         }
     }
 
