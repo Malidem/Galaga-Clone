@@ -37,23 +37,26 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool overheatCooldown;
 
-    private int wave = 1;
-    private int waveAmount = 2;
+    private int wave;
+    private int waveAmount = 1;
 
     void Start()
     {
         Time.timeScale = 1;
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
-        StartCoroutine(UpdateWave());
         Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
+    }
+
+    public void StartWaves()
+    {
+        StartCoroutine(UpdateWave());
     }
 
     private IEnumerator UpdateWave()
     {
         while (gameOver == false)
         {
-            yield return new WaitForSeconds(8);
             if (waveAmount >= 5)
             {
                 waveAmount += UnityEngine.Random.Range(1, 6);
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
             wave++;
             HUDElements[3].gameObject.GetComponent<Text>().text = "Wave " + wave;
             SpawnEnemies();
+            yield return new WaitForSeconds(8.0F);
         }
     }
 

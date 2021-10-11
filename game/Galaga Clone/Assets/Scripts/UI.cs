@@ -27,7 +27,7 @@ public class UI : MonoBehaviour
     public void StartButton()
     {
         gameManager.gameStarted = true;
-        gameManager.SpawnEnemies();
+        gameManager.StartWaves();
         gameObject.transform.parent.gameObject.SetActive(false);
     }
 
@@ -36,6 +36,7 @@ public class UI : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene);
         SceneManager.UnloadSceneAsync(currentScene);
+        Time.timeScale = 1;
     }
 
     public void SwitchUILayer(GameObject layer)
