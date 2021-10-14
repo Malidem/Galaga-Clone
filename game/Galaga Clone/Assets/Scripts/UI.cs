@@ -15,6 +15,12 @@ public class UI : MonoBehaviour
     public GameObject galaxyButton;
     public GameObject galaxyMenu;
     private GameManager gameManager;
+    
+    public void MainSettings(GameObject pausemenu)
+    {
+        pausemenu.SetActive(true);
+        gameObject.transform.parent.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
+    }
 
     void Start()
     {
