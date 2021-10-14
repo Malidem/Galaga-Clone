@@ -5,12 +5,18 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-    public float maxSpeed = 500;
-    private float speed;
-    private float acceleration;
-    private float deceleration;
-    public float horizontalInput;
-    public float verticalInput;
+    public float speed = 500;
+    //private float speed;
+    //private float acceleration;
+    //private float deceleration;
+    //public float horizontalInput;
+    //public float verticalInput;
+    //public Vector3 position;
+    //float Speed = 0; //Don't touch this 
+    //float MaxSpeed = 10; //This is the maximum speed that the object will achieve
+    //float Acceleration = 10; //How fast will object reach a maximum speed
+    //float Deceleration = 10; //How fast will object reach a speed of 0
+
     public GameObject background;
     public GameObject bullet;
     public GameObject canvas;
@@ -24,13 +30,13 @@ public class PlayerManager : MonoBehaviour
 
     private GameManager gameManager;
     private Rigidbody2D rigidb;
-    private Vector2 position;
     private bool canFire = true;
     private bool canTakeDamage = true;
     private int healthAmount = 3;
 
     void Start()
     {
+        //transform.position = position;
         gameManager = eventSystem.GetComponent<GameManager>();
         StartCoroutine(FireCooldown());
         rigidb = gameObject.GetComponent<Rigidbody2D>();
@@ -64,31 +70,35 @@ public class PlayerManager : MonoBehaviour
             //    //rigidb.addforce(gameobject.transform.up * (speed * 2));
             //}
 
-            if (Input.GetKey("left") && (speed < maxSpeed))
-            {
-                speed = speed - acceleration * Time.deltaTime;
-            }
-            else if (Input.GetKey("right") && (speed > - maxSpeed))
-            {
-                speed = speed + acceleration * Time.deltaTime;
-            }
-            else
-            {
-                if (speed > deceleration * Time.deltaTime)
-                {
-                    speed = speed - deceleration * Time.deltaTime;
-                }
-                else if (speed < -deceleration * Time.deltaTime)
-                {
-                    speed = speed + deceleration * Time.deltaTime;
-                }
-                else 
-                {
-                    speed = 0; 
-                }    
-            }
-            position.x = transform.position.x + speed * Time.deltaTime;
-            transform.position = position;
+            //if ((Input.GetKey("left")) && (Speed < MaxSpeed))
+            //{
+            //    Speed = Speed - Acceleration * Time.deltaTime;
+            //}
+            //else if ((Input.GetKey("right")) && (Speed > -MaxSpeed))
+            //{
+            //    Speed = Speed + Acceleration * Time.deltaTime;
+            //}
+            //else
+            //{
+            //    if (Speed > Deceleration * Time.deltaTime)
+            //    {
+            //        Speed = Speed - Deceleration * Time.deltaTime;
+            //    }
+            //    else if (Speed < -Deceleration * Time.deltaTime)
+            //    {
+            //        Speed = Speed + Deceleration * Time.deltaTime;
+            //    }
+            //    else
+            //    {
+            //        Speed = 0;
+            //    }
+            //}
+            //position.x = transform.position.x + Speed * Time.deltaTime;
+            //transform.position = position;
+
+            //float h = Input.GetAxis("Horizontal");
+            //Rigidbody2D rbody = GetComponent<Rigidbody2D>();
+            //rbody.velocity = Vector3.right * h * speed;
 
             if (Input.GetKey(KeyCode.Space))
             {
