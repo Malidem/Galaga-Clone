@@ -1738,7 +1738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1499878212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1847,9 +1847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7381f59a3372dc4aa324e3ec9e266ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 500
-  horizontalInput: 0
-  verticalInput: 0
   background: {fileID: 1142424723}
   bullet: {fileID: 2786342596386088450, guid: 746ea31070b68c244a9b9728296f1221, type: 3}
   canvas: {fileID: 693231156}

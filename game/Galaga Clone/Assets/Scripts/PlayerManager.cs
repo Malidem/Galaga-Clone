@@ -5,18 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-    public float speed = 500;
-    //private float speed;
-    //private float acceleration;
-    //private float deceleration;
-    //public float horizontalInput;
-    //public float verticalInput;
-    //public Vector3 position;
-    //float Speed = 0; //Don't touch this 
-    //float MaxSpeed = 10; //This is the maximum speed that the object will achieve
-    //float Acceleration = 10; //How fast will object reach a maximum speed
-    //float Deceleration = 10; //How fast will object reach a speed of 0
-
     public GameObject background;
     public GameObject bullet;
     public GameObject canvas;
@@ -29,76 +17,75 @@ public class PlayerManager : MonoBehaviour
     public Sprite healthImage3;
 
     private GameManager gameManager;
-    private Rigidbody2D rigidb;
     private bool canFire = true;
     private bool canTakeDamage = true;
     private int healthAmount = 3;
+    private float xSpeed = 0;
+    private float ySpeed = 0;
+    private float maxSpeed = 500;
+    private float acceleration = 550;
+    private float deceleration = 550;
 
     void Start()
     {
-        //transform.position = position;
         gameManager = eventSystem.GetComponent<GameManager>();
         StartCoroutine(FireCooldown());
-        rigidb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        //horizontalInput = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        //verticalInput = Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
         if (gameManager.gameStarted && gameManager.gameOver == false)
         {
-            //transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
-            //transform.Translate(Vector3.up * Time.deltaTime * verticalInput * speed);
-            //rigidbody.AddForce(gameobject.transform.forward * (desired speed * accelerationFactor));
-            //transform.Translate(horizontalInput, verticalInput, 0);
-            //if (Input.GetKey(KeyCode.W))
-            //{
-            //    //rigidb.addforce(gameobject.transform.right * (speed * 2));
-            //}
-            //if (Input.GetKey(KeyCode.S))
-            //{
-            //    //rigidb.addforce(gameobject.transform.right * (speed * 2));
-            //}
-            //if (Input.GetKey(KeyCode.A))
-            //{
-            //    //rigidb.addforce(gameobject.transform.up * (speed * 2));
-            //}
-            //if (Input.GetKey(KeyCode.D))
-            //{
-            //    //rigidb.addforce(gameobject.transform.up * (speed * 2));
-            //}
 
-            //if ((Input.GetKey("left")) && (Speed < MaxSpeed))
-            //{
-            //    Speed = Speed - Acceleration * Time.deltaTime;
-            //}
-            //else if ((Input.GetKey("right")) && (Speed > -MaxSpeed))
-            //{
-            //    Speed = Speed + Acceleration * Time.deltaTime;
-            //}
-            //else
-            //{
-            //    if (Speed > Deceleration * Time.deltaTime)
-            //    {
-            //        Speed = Speed - Deceleration * Time.deltaTime;
-            //    }
-            //    else if (Speed < -Deceleration * Time.deltaTime)
-            //    {
-            //        Speed = Speed + Deceleration * Time.deltaTime;
-            //    }
-            //    else
-            //    {
-            //        Speed = 0;
-            //    }
-            //}
-            //position.x = transform.position.x + Speed * Time.deltaTime;
-            //transform.position = position;
+            if ((Input.GetKey(KeyCode.A)) && (xSpeed < maxSpeed))
+            {
+                xSpeed = xSpeed - acceleration * Time.deltaTime;
+            }
+            else if ((Input.GetKey(KeyCode.D)) && (xSpeed > -maxSpeed))
+            {
+                xSpeed = xSpeed + acceleration * Time.deltaTime;
+            }
+            else
+            {
+                if (xSpeed > deceleration * Time.deltaTime)
+                {
+                    xSpeed = xSpeed - deceleration * Time.deltaTime;
+                }
+                else if (xSpeed < -deceleration * Time.deltaTime)
+                {
+                    xSpeed = xSpeed + deceleration * Time.deltaTime;
+                }
+                else
+                {
+                    xSpeed = 0;
+                }
+            }
 
-            //float h = Input.GetAxis("Horizontal");
-            //Rigidbody2D rbody = GetComponent<Rigidbody2D>();
-            //rbody.velocity = Vector3.right * h * speed;
+            if ((Input.GetKey(KeyCode.S)) && (ySpeed < maxSpeed))
+            {
+                ySpeed = ySpeed - acceleration * Time.deltaTime;
+            }
+            else if ((Input.GetKey(KeyCode.W)) && (ySpeed > -maxSpeed))
+            {
+                ySpeed = ySpeed + acceleration * Time.deltaTime;
+            }
+            else
+            {
+                if (ySpeed > deceleration * Time.deltaTime)
+                {
+                    ySpeed = ySpeed - deceleration * Time.deltaTime;
+                }
+                else if (ySpeed < -deceleration * Time.deltaTime)
+                {
+                    ySpeed = ySpeed + deceleration * Time.deltaTime;
+                }
+                else
+                {
+                    ySpeed = 0;
+                }
+            }
+            transform.position = new Vector2(transform.position.x + xSpeed * Time.deltaTime, transform.position.y + ySpeed * Time.deltaTime);
 
             if (Input.GetKey(KeyCode.Space))
             {
@@ -120,21 +107,25 @@ public class PlayerManager : MonoBehaviour
         if ((transform.position.x + sizeX) > (rect.rect.width / 2))
         {
             transform.position = new Vector2(((rect.rect.width / 2) - sizeX), transform.position.y);
+            xSpeed = 0;
         }
 
         if ((transform.position.y + sizeY) > rect.rect.height)
         {
             transform.position = new Vector2(transform.position.x, (rect.rect.height - sizeY));
+            ySpeed = 0;
         }
 
         if ((transform.position.x - sizeX) < 0)
         {
             transform.position = new Vector2((0 + sizeX), transform.position.y);
+            xSpeed = 0;
         }
 
         if ((transform.position.y - sizeY) < 0)
         {
             transform.position = new Vector2(transform.position.x, (0 + sizeY));
+            ySpeed = 0;
         }
     }
 
