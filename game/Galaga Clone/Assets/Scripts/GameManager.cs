@@ -37,14 +37,39 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool overheatCooldown;
 
-    private int wave = 1;
-    private int waveAmount = 2;
+    private int wave;
+    private int waveAmount = 1;
 
     void Start()
     {
+        Time.timeScale = 1;
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
         Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
+    }
+
+    public void StartWaves()
+    {
+        StartCoroutine(UpdateWave());
+    }
+
+    private IEnumerator UpdateWave()
+    {
+        while (gameOver == false)
+        {
+            if (waveAmount >= 5)
+            {
+                waveAmount += UnityEngine.Random.Range(1, 6);
+            }
+            else
+            {
+                waveAmount++;
+            }
+            wave++;
+            HUDElements[3].gameObject.GetComponent<Text>().text = "Wave " + wave;
+            SpawnEnemies();
+            yield return new WaitForSeconds(8.0F);
+        }
     }
 
     public void SpawnEnemies()
@@ -99,27 +124,6 @@ public class GameManager : MonoBehaviour
         if (enemy != null)
         {
             Destroy(enemy);
-        }
-
-        // Gets stuck, because there are objects in the list but not on the screen
-        List<Transform> enemiesList = new List<Transform>(enemies.GetComponentsInChildren<Transform>());
-        enemiesList.Remove(enemies.transform);
-        if (gameOver == false)
-        {
-            if ((enemiesList.Count - 1) <= 0)
-            {
-                if (waveAmount >= 5)
-                {
-                    waveAmount += UnityEngine.Random.Range(1, 6);
-                }
-                else
-                {
-                    waveAmount++;
-                }
-                wave++;
-                HUDElements[3].gameObject.GetComponent<Text>().text = "Wave " + wave;
-                SpawnEnemies();
-            }
         }
     }
 
