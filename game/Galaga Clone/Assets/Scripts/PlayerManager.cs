@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
     private float ySpeed = 0;
     private float maxSpeed = 500;
     private float acceleration = 550;
-    private float deceleration = 550;
+    private float deceleration = 500;
 
     void Start()
     {
