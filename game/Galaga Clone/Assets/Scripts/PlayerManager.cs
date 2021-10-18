@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-    public int speed = 500;
-    public float horizontalInput;
-    public float verticalInput;
     public GameObject background;
     public GameObject bullet;
     public GameObject canvas;
@@ -23,6 +20,11 @@ public class PlayerManager : MonoBehaviour
     private bool canFire = true;
     private bool canTakeDamage = true;
     private int healthAmount = 3;
+    private float xSpeed = 0;
+    private float ySpeed = 0;
+    private float maxSpeed = 500;
+    private float acceleration = 550;
+    private float deceleration = 500;
 
     void Start()
     {
@@ -32,13 +34,58 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
 
         if (gameManager.gameStarted && gameManager.gameOver == false)
         {
-            transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
-            transform.Translate(Vector3.up * Time.deltaTime * verticalInput * speed);
+
+            if ((Input.GetKey(KeyCode.A)) && (xSpeed < maxSpeed))
+            {
+                xSpeed = xSpeed - acceleration * Time.deltaTime;
+            }
+            else if ((Input.GetKey(KeyCode.D)) && (xSpeed > -maxSpeed))
+            {
+                xSpeed = xSpeed + acceleration * Time.deltaTime;
+            }
+            else
+            {
+                if (xSpeed > deceleration * Time.deltaTime)
+                {
+                    xSpeed = xSpeed - deceleration * Time.deltaTime;
+                }
+                else if (xSpeed < -deceleration * Time.deltaTime)
+                {
+                    xSpeed = xSpeed + deceleration * Time.deltaTime;
+                }
+                else
+                {
+                    xSpeed = 0;
+                }
+            }
+
+            if ((Input.GetKey(KeyCode.S)) && (ySpeed < maxSpeed))
+            {
+                ySpeed = ySpeed - acceleration * Time.deltaTime;
+            }
+            else if ((Input.GetKey(KeyCode.W)) && (ySpeed > -maxSpeed))
+            {
+                ySpeed = ySpeed + acceleration * Time.deltaTime;
+            }
+            else
+            {
+                if (ySpeed > deceleration * Time.deltaTime)
+                {
+                    ySpeed = ySpeed - deceleration * Time.deltaTime;
+                }
+                else if (ySpeed < -deceleration * Time.deltaTime)
+                {
+                    ySpeed = ySpeed + deceleration * Time.deltaTime;
+                }
+                else
+                {
+                    ySpeed = 0;
+                }
+            }
+            transform.position = new Vector2(transform.position.x + xSpeed * Time.deltaTime, transform.position.y + ySpeed * Time.deltaTime);
 
             if (Input.GetKey(KeyCode.Space))
             {
@@ -60,21 +107,25 @@ public class PlayerManager : MonoBehaviour
         if ((transform.position.x + sizeX) > (rect.rect.width / 2))
         {
             transform.position = new Vector2(((rect.rect.width / 2) - sizeX), transform.position.y);
+            xSpeed = 0;
         }
 
         if ((transform.position.y + sizeY) > rect.rect.height)
         {
             transform.position = new Vector2(transform.position.x, (rect.rect.height - sizeY));
+            ySpeed = 0;
         }
 
         if ((transform.position.x - sizeX) < 0)
         {
             transform.position = new Vector2((0 + sizeX), transform.position.y);
+            xSpeed = 0;
         }
 
         if ((transform.position.y - sizeY) < 0)
         {
             transform.position = new Vector2(transform.position.x, (0 + sizeY));
+            ySpeed = 0;
         }
     }
 
