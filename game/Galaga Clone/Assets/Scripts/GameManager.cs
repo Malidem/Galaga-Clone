@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     public Sprite overheatOverlay8;
     public int overheatAmount;
     public int points;
-
+    public List<GameObject> enemiesList;
+    
     [HideInInspector]
     public bool gameStarted;
     [HideInInspector]
@@ -79,17 +80,18 @@ public class GameManager : MonoBehaviour
         {
             RectTransform rect = (RectTransform)background.transform;
             int num = UnityEngine.Random.Range(1, 4);
+            GameObject enemy = enemiesList[UnityEngine.Random.Range(0, enemiesList.Count)];
             if (num == 1)
             {
-                Instantiate(enemyType1, new Vector2(rect.rect.width + 25, UnityEngine.Random.Range(0, rect.rect.height)), transform.rotation, enemies.transform);
+                Instantiate(enemy, new Vector2(rect.rect.width + 25, UnityEngine.Random.Range(0, rect.rect.height)), transform.rotation, enemies.transform);
             }
             else if (num == 2)
             {
-                Instantiate(enemyType1, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), rect.rect.height + 25), transform.rotation, enemies.transform);
+                Instantiate(enemy, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), rect.rect.height + 25), transform.rotation, enemies.transform);
             }
             else if (num == 3)
             {
-                Instantiate(enemyType1, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), -25), transform.rotation, enemies.transform);
+                Instantiate(enemy, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), -25), transform.rotation, enemies.transform);
             }
         }
     }
@@ -212,7 +214,7 @@ public class GameManager : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             if (gameObject.name != "Player")
             {
-                gameObject.GetComponent<EnemyManager>().canFire = false;
+                gameObject.GetComponent<BaseEnemy>().canFire = false;
             }
             yield return explosionGO.GetComponent<Explosion>().Die();
         }

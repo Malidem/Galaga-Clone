@@ -1301,6 +1301,8 @@ MonoBehaviour:
     type: 3}
   overheatAmount: 0
   points: 0
+  enemiesList:
+  - {fileID: 2500958488499531473, guid: 04da8a80bfdaab346bbc368517ca35e7, type: 3}
   gameStarted: 0
   gameOver: 0
   HUDElements: []
