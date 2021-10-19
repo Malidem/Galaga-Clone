@@ -6,10 +6,14 @@ public class EnemyManager : MonoBehaviour
 {
     public GameObject canvas;
     public GameObject bullet;
+
     private GameObject bullets;
     private GameManager gameManager;
     private float rotate = 25;
     private float speed = 100;
+
+    [HideInInspector]
+    public bool canFire = true;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +35,7 @@ public class EnemyManager : MonoBehaviour
 
     public IEnumerator SpawnBullets()
     {
-        if (gameManager.gameOver == false)
+        if (gameManager.gameOver == false && canFire)
         {
             yield return new WaitForSeconds(0.5F);
             int chance = Random.Range(1, 101);

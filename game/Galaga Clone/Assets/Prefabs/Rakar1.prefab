@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   bullet: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}
+  canFire: 1
 --- !u!95 &3391013004286888035
 Animator:
   serializedVersion: 3

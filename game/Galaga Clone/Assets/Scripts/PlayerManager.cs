@@ -151,7 +151,8 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 gameManager.EndGame();
-                Destroy(gameObject);
+                StartCoroutine(gameManager.ExplotionAnimation(gameObject));
+                //Destroy(gameObject);
             }
         }
     }
