@@ -56,7 +56,7 @@ public class EnemyManager : MonoBehaviour
 
         if (transform.position.x < -25)
         {
-            gameManager.KillEnemy(gameObject);
+            gameManager.Kill(gameObject);
         }
     }
 }

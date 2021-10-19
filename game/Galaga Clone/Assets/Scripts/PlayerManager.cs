@@ -151,8 +151,7 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 gameManager.EndGame();
-                StartCoroutine(gameManager.ExplotionAnimation(gameObject));
-                //Destroy(gameObject);
+                gameManager.Kill(gameObject);
             }
         }
     }
@@ -190,7 +189,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            gameManager.KillEnemy(collision.gameObject);
+            gameManager.Kill(collision.gameObject);
             StartCoroutine(RemoveHealth(1));
         }
     }

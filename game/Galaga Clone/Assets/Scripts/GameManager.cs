@@ -120,15 +120,6 @@ public class GameManager : MonoBehaviour
         HUDElements[2].gameObject.GetComponent<Text>().text = "Points: " + String.Format("{0:n0}", points);
     }
 
-    public void KillEnemy(GameObject enemy)
-    {
-        if (enemy != null)
-        {
-            //Destroy(enemy);
-            StartCoroutine(ExplotionAnimation(enemy));
-        }
-    }
-
     private IEnumerator Overheat()
     {
         while (gameOver == false)
@@ -206,7 +197,12 @@ public class GameManager : MonoBehaviour
         gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final Points: " + String.Format("{0:n0}", points);
     }
 
-    public IEnumerator ExplotionAnimation(GameObject gameObject)
+    public void Kill(GameObject gameObject)
+    {
+        StartCoroutine(KillWithExplosion(gameObject));
+    }
+
+    private IEnumerator KillWithExplosion(GameObject gameObject)
     {
         if (gameObject.transform.position.x > -25)
         {

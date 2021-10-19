@@ -33,7 +33,7 @@ public class PlayerBullets : MonoBehaviour
             {
                 gameManager.AddPoints(100);
             }
-            gameManager.KillEnemy(collision.gameObject);
+            gameManager.Kill(collision.gameObject);
             Destroy(gameObject);
         }
     }
