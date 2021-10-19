@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
             {
                 gameObject.GetComponent<EnemyManager>().canFire = false;
             }
-            yield return explosionGO.GetComponent<Explosion>().Die(); 
+            yield return explosionGO.GetComponent<Explosion>().Die();
         }
         Destroy(gameObject);
     }

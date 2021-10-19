@@ -23,7 +23,7 @@ public class Explosion : MonoBehaviour
 
     public IEnumerator Die()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.6F);
         Destroy(gameObject);
     }
 }
