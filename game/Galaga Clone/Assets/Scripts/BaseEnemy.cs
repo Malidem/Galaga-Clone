@@ -16,6 +16,7 @@ public class BaseEnemy : MonoBehaviour
     private GameObject canvas;
     private GameObject bulletFolder;
     private GameObject player;
+    private GameObject background;
     private List<GameObject> turrets = new List<GameObject>();
 
     [HideInInspector]
@@ -30,6 +31,7 @@ public class BaseEnemy : MonoBehaviour
         bulletFolder = GameObject.Find("Bullets");
         canvas = gameManager.canvas;
         player = gameManager.player;
+        background = gameManager.background;
 
         if (hasGuns)
         {
@@ -65,9 +67,25 @@ public class BaseEnemy : MonoBehaviour
     {
         transform.Translate(Vector2.left * Time.deltaTime * speed);
 
+        RectTransform rect = (RectTransform)background.transform;
+        if (transform.position.x > (rect.rect.width + 25))
+        {
+            Destroy(gameObject);
+        }
+
+        if (transform.position.y > (rect.rect.height + 25))
+        {
+            Destroy(gameObject);
+        }
+
         if (transform.position.x < -25)
         {
-            gameManager.Kill(gameObject);
+            Destroy(gameObject);
+        }
+
+        if (transform.position.y < -25)
+        {
+            Destroy(gameObject);
         }
 
         if (hasTurret && gameManager.gameOver == false)
