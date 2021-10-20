@@ -31,16 +31,6 @@ public class BaseEnemy : MonoBehaviour
         canvas = gameManager.canvas;
         player = gameManager.player;
 
-        float canvasCenter = canvas.transform.position.y / 2;
-        if (transform.position.y < (canvasCenter - 75))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, -25);
-        }
-        else if (transform.position.y > (canvasCenter + 75))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 25);
-        }
-
         if (hasGuns)
         {
             StartCoroutine(FireGunBullets());
@@ -58,6 +48,16 @@ public class BaseEnemy : MonoBehaviour
         else if (hasTurret && turretPositions.Count <= 0)
         {
             Debug.LogError(gameObject.name + " has a turret, but not defind turret position");
+        }
+
+        float canvasCenter = canvas.transform.position.y / 2;
+        if (transform.position.y < (canvasCenter - 75))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -25);
+        }
+        else if (transform.position.y > (canvasCenter + 75))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 25);
         }
     }
 
@@ -99,15 +99,14 @@ public class BaseEnemy : MonoBehaviour
     {
         while (gameManager.gameOver == false && canFireTurrets)
         {
-            for (int i = 0; i < turrets.Count; i++)
+            yield return new WaitForSeconds(0.6F);
+            int chance = Random.Range(0, 101);
+            if (chance <= 25)
             {
-                yield return new WaitForSeconds(0.6F);
-                int chance = Random.Range(0, 101);
-                GameObject turret = turrets[i];
-                if (chance <= 25)
+                for (int i = 0; i < turrets.Count; i++)
                 {
-                    Quaternion turretBulletRotation = Quaternion.Inverse(turret.transform.rotation);
-                    Instantiate(turretBullet, transform.position, turret.transform.rotation, bulletFolder.transform);
+                    GameObject turret = turrets[i];
+                    Instantiate(turretBullet, turret.transform.position, turret.transform.rotation, bulletFolder.transform);
                 }
             }
         }
