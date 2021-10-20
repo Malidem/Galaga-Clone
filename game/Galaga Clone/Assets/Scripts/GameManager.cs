@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject HUD;
     public GameObject enemies;
     public GameObject backgroundPrefab;
+    public GameObject explosion;
     public Image overheatBar;
     public Sprite overheatOverlay0;
     public Sprite overheatOverlay1;
@@ -119,14 +120,6 @@ public class GameManager : MonoBehaviour
         HUDElements[2].gameObject.GetComponent<Text>().text = "Points: " + String.Format("{0:n0}", points);
     }
 
-    public void KillEnemy(GameObject enemy)
-    {
-        if (enemy != null)
-        {
-            Destroy(enemy);
-        }
-    }
-
     private IEnumerator Overheat()
     {
         while (gameOver == false)
@@ -202,5 +195,27 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         gameOverMenu.SetActive(true);
         gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final Points: " + String.Format("{0:n0}", points);
+    }
+
+    public void Kill(GameObject gameObject)
+    {
+        StartCoroutine(KillWithExplosion(gameObject));
+    }
+
+    private IEnumerator KillWithExplosion(GameObject gameObject)
+    {
+        if (gameObject.transform.position.x > -25)
+        {
+            int rotation = UnityEngine.Random.Range(0, 180);
+            GameObject explosionGO = Instantiate(explosion, gameObject.transform.position, Quaternion.AngleAxis(rotation, Vector3.forward), gameObject.transform);
+            explosionGO.GetComponent<Explosion>().parent = gameObject;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            if (gameObject.name != "Player")
+            {
+                gameObject.GetComponent<EnemyManager>().canFire = false;
+            }
+            yield return explosionGO.GetComponent<Explosion>().Die();
+        }
+        Destroy(gameObject);
     }
 }

@@ -1278,6 +1278,8 @@ MonoBehaviour:
   enemies: {fileID: 1499878211}
   backgroundPrefab: {fileID: 6801779422609192021, guid: 2971966a86664374a9d3fd3cb5135a8f,
     type: 3}
+  explosion: {fileID: 6879489987790728947, guid: 5e176c76d71b8714a99886cf9da12717,
+    type: 3}
   overheatBar: {fileID: 163733002}
   overheatOverlay0: {fileID: -8968299138258521225, guid: 6d9adfe9817873843baafd5507ccf7e2,
     type: 3}
