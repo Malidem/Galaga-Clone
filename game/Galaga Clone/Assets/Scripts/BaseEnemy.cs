@@ -5,47 +5,59 @@ using UnityEngine;
 public class BaseEnemy : MonoBehaviour
 {
     public int speed;
-    public GameObject hasGuns;
+    public bool hasGuns;
     public GameObject bullets;
-    public GameObject hasTurret;
+    public bool hasTurret;
     public GameObject turretBullet;
+    public GameObject turretType;
     public List<Vector2> turretPositions;
 
     private GameManager gameManager;
     private GameObject canvas;
     private GameObject bulletFolder;
+    private GameObject player;
+    private List<GameObject> turrets = new List<GameObject>();
 
     [HideInInspector]
-    public bool canFire = true;
+    public bool canFireGuns = true;
+    [HideInInspector]
+    public bool canFireTurrets = true;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("EventSystem").GetComponent<GameManager>();
+        bulletFolder = GameObject.Find("Bullets");
         canvas = gameManager.canvas;
-        bulletFolder = GameObject.Find("bullets");
-        float y = canvas.transform.position.y;
-        if (transform.position.y < (y - 25))
+        player = gameManager.player;
+
+        float canvasCenter = canvas.transform.position.y / 2;
+        if (transform.position.y < (canvasCenter - 75))
         {
             transform.rotation = Quaternion.Euler(0, 0, -25);
         }
-        else if (transform.position.y > (y + 25))
+        else if (transform.position.y > (canvasCenter + 75))
         {
             transform.rotation = Quaternion.Euler(0, 0, 25);
         }
-        StartCoroutine(SpawnBullets());
-    }
 
-    public IEnumerator SpawnBullets()
-    {
-        while (gameManager.gameOver == false && canFire)
+        if (hasGuns)
         {
-            yield return new WaitForSeconds(0.5F);
-            int chance = Random.Range(1, 101);
-            if (chance <= 25)
+            StartCoroutine(FireGunBullets());
+        }
+
+        if (hasTurret && turretPositions.Count > 0)
+        {
+            for (int i = 0; i < turretPositions.Count; i++)
             {
-                Instantiate(bullets, transform.position, transform.rotation, bulletFolder.transform);
+                GameObject instance = Instantiate(turretType, new Vector2(transform.position.x + turretPositions[i].x, transform.position.y + turretPositions[i].y), transform.rotation, transform);
+                turrets.Add(instance);
             }
+            StartCoroutine(FireTurretBullets());
+        }
+        else if (hasTurret && turretPositions.Count <= 0)
+        {
+            Debug.LogError(gameObject.name + " has a turret, but not defind turret position");
         }
     }
 
@@ -56,6 +68,48 @@ public class BaseEnemy : MonoBehaviour
         if (transform.position.x < -25)
         {
             gameManager.Kill(gameObject);
+        }
+
+        if (hasTurret && gameManager.gameOver == false)
+        {
+            for (int i = 0; i < turrets.Count; i++)
+            {
+                GameObject turret = turrets[i];
+                float angle = Mathf.Atan2(player.transform.position.y - turret.transform.position.y, player.transform.position.x - turret.transform.position.x) * Mathf.Rad2Deg;
+                Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                turret.transform.rotation = Quaternion.RotateTowards(turret.transform.rotation, targetRotation, 100 * Time.deltaTime);
+            }
+        }
+    }
+
+    private IEnumerator FireGunBullets()
+    {
+        while (gameManager.gameOver == false && canFireGuns)
+        {
+            yield return new WaitForSeconds(0.5F);
+            int chance = Random.Range(0, 101);
+            if (chance <= 25)
+            {
+                Instantiate(bullets, transform.position, transform.rotation, bulletFolder.transform);
+            }
+        }
+    }
+
+    private IEnumerator FireTurretBullets()
+    {
+        while (gameManager.gameOver == false && canFireTurrets)
+        {
+            for (int i = 0; i < turrets.Count; i++)
+            {
+                yield return new WaitForSeconds(0.6F);
+                int chance = Random.Range(0, 101);
+                GameObject turret = turrets[i];
+                if (chance <= 25)
+                {
+                    Quaternion turretBulletRotation = Quaternion.Inverse(turret.transform.rotation);
+                    Instantiate(turretBullet, transform.position, turret.transform.rotation, bulletFolder.transform);
+                }
+            }
         }
     }
 }

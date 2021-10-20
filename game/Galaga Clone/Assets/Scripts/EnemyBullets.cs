@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBullets : MonoBehaviour
 {
     public int speed;
+    public string dirction;
     private GameObject player;
 
     void Start()
@@ -14,7 +15,14 @@ public class EnemyBullets : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.left * Time.deltaTime * speed);
+        if (dirction == "right")
+        {
+            transform.Translate(Vector2.right * Time.deltaTime * speed);
+        }
+        else
+        {
+            transform.Translate(Vector2.left * Time.deltaTime * speed);
+        }
 
         if (transform.position.x < -25)
         {
@@ -27,11 +35,11 @@ public class EnemyBullets : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             StartCoroutine(player.GetComponent<PlayerManager>().RemoveHealth(1));
-            StartCoroutine(DestroyThis());
+            StartCoroutine(Die());
         }
     }
 
-    private IEnumerator DestroyThis()
+    private IEnumerator Die()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.z - 100000));
         yield return new WaitForSeconds(1);

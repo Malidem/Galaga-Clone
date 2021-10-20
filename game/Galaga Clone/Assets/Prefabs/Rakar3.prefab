@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2500958488499531470}
   - component: {fileID: 2500958488499531471}
   - component: {fileID: 3391013004286888035}
-  - component: {fileID: -254378004676482911}
+  - component: {fileID: 7801658066903673056}
   m_Layer: 11
-  m_Name: Rakar2
+  m_Name: Rakar3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5e3ba129aa2764b418035af63662e610, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19f57173cd3c6424dabf2f1344d1e40e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -144,7 +144,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-254378004676482911
+--- !u!114 &7801658066903673056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,15 +156,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a4ffe081224554f968427ef057c87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
-  hasGuns: 0
-  bullets: {fileID: 0}
+  speed: 90
+  hasGuns: 1
+  bullets: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}
   hasTurret: 1
   turretBullet: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f,
     type: 3}
   turretType: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
     type: 3}
   turretPositions:
-  - {x: 0, y: 0}
+  - {x: 0, y: 10}
+  - {x: 0, y: -10}
   canFireGuns: 1
   canFireTurrets: 1
