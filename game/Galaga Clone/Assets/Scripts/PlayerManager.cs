@@ -141,7 +141,7 @@ public class PlayerManager : MonoBehaviour
 
             UpdateHealthSprite();
 
-            if (healthAmount > 0)
+            if (healthAmount > -1)
             {
                 gameObject.GetComponent<Image>().color = Color.red;
                 yield return new WaitForSeconds(0.2F);
