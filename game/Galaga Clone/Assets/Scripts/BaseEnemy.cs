@@ -13,11 +13,11 @@ public class BaseEnemy : MonoBehaviour
     public List<Vector2> turretPositions;
 
     private GameManager gameManager;
-    private GameObject canvas;
     private GameObject bulletFolder;
     private GameObject player;
     private GameObject background;
     private List<GameObject> turrets = new List<GameObject>();
+    private RectTransform backgroundRect;
 
     [HideInInspector]
     public bool canFireGuns = true;
@@ -29,9 +29,9 @@ public class BaseEnemy : MonoBehaviour
     {
         gameManager = GameObject.Find("EventSystem").GetComponent<GameManager>();
         bulletFolder = GameObject.Find("Bullets");
-        canvas = gameManager.canvas;
         player = gameManager.player;
         background = gameManager.background;
+        backgroundRect = (RectTransform)background.transform;
 
         if (hasGuns)
         {
@@ -52,14 +52,14 @@ public class BaseEnemy : MonoBehaviour
             Debug.LogError(gameObject.name + " has a turret, but not defind turret position");
         }
 
-        float canvasCenter = canvas.transform.position.y / 2;
-        if (transform.position.y < (canvasCenter - 75))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, -25);
-        }
-        else if (transform.position.y > (canvasCenter + 75))
+        float backgroundCenter = backgroundRect.rect.height / 2;
+        if (transform.position.y > (backgroundCenter + 175))
         {
             transform.rotation = Quaternion.Euler(0, 0, 25);
+        }
+        else if (transform.position.y < (backgroundCenter + -175))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -25);
         }
     }
 
@@ -67,13 +67,12 @@ public class BaseEnemy : MonoBehaviour
     {
         transform.Translate(Vector2.left * Time.deltaTime * speed);
 
-        RectTransform rect = (RectTransform)background.transform;
-        if (transform.position.x > (rect.rect.width + 25))
+        if (transform.position.x > (backgroundRect.rect.width + 25))
         {
             Destroy(gameObject);
         }
 
-        if (transform.position.y > (rect.rect.height + 25))
+        if (transform.position.y > (backgroundRect.rect.height + 25))
         {
             Destroy(gameObject);
         }
