@@ -25,7 +25,14 @@ public class BackgroundManager : MonoBehaviour
     {
         if (gameManager.gameStarted && gameManager.gameOver == false)
         {
-            transform.Translate(Vector2.left * Time.deltaTime * speed);
+            if (transform.rotation.z != 0)
+            {
+                transform.Translate(Vector2.right * Time.deltaTime * speed);
+            }
+            else
+            {
+                transform.Translate(Vector2.left * Time.deltaTime * speed);
+            }
 
             RectTransform rect = (RectTransform)transform;
             float edgeRPos = (transform.position.x + (rect.rect.width / 2));
@@ -39,7 +46,16 @@ public class BackgroundManager : MonoBehaviour
                 if (edgeRPos < canvas.GetComponent<RectTransform>().rect.width)
                 {
                     canSpawn = false;
-                    GameObject bg = Instantiate(backgroundPrefab, new Vector2(transform.position.x + rect.rect.width, transform.position.y), transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
+                    Quaternion rotation;
+                    if (Random.Range(1, 3) == 1)
+                    {
+                        rotation = Quaternion.Euler(0, 0, 180);
+                    }
+                    else
+                    {
+                        rotation = Quaternion.Euler(0, 0, 0);
+                    }
+                    GameObject bg = Instantiate(backgroundPrefab, new Vector2(transform.position.x + rect.rect.width, transform.position.y), rotation, canvas.GetComponentsInChildren<Transform>()[1]);
                     bg.name = backgroundPrefab.name;
                 } 
             }
