@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
 
-        if (gameManager.gameStarted && gameManager.gameOver == false)
+        if (gameManager.gameStarted && gameManager.gameOver == false && gameManager.gamePaused == false)
         {
 
             if ((Input.GetKey(KeyCode.A)) && (xSpeed < maxSpeed))

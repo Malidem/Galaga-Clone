@@ -23,7 +23,7 @@ public class BackgroundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.gameStarted && gameManager.gameOver == false)
+        if (gameManager.gameStarted && gameManager.gameOver == false && gameManager.gamePaused == false)
         {
             if (transform.rotation.z != 0)
             {
