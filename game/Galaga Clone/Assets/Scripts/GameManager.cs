@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     public Transform[] HUDElements;
     [HideInInspector]
     public bool overheatCooldown;
+    [HideInInspector]
+    public bool gamePaused;
 
     private int wave;
     private int waveAmount = 1;
@@ -106,11 +108,13 @@ public class GameManager : MonoBehaviour
                 {
                     Time.timeScale = 1;
                     pauseMenu.SetActive(false);
+                    gamePaused = false;
                 }
                 else
                 {
                     Time.timeScale = 0;
                     pauseMenu.SetActive(true);
+                    gamePaused = true;
                 }
             }
         }
