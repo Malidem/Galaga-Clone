@@ -129,7 +129,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public IEnumerator RemoveHealth(int amount)
+    public void RemoveHealth(int amount)
     {
         if (canTakeDamage)
         {
@@ -143,9 +143,7 @@ public class PlayerManager : MonoBehaviour
 
             if (healthAmount > -1)
             {
-                gameObject.GetComponent<Image>().color = Color.red;
-                yield return new WaitForSeconds(0.2F);
-                gameObject.GetComponent<Image>().color = Color.white;
+                StartCoroutine(FlashRed());
                 canTakeDamage = true;
             }
             else
@@ -154,6 +152,13 @@ public class PlayerManager : MonoBehaviour
                 gameManager.Kill(gameObject);
             }
         }
+    }
+
+    private IEnumerator FlashRed()
+    {
+        gameObject.GetComponent<Image>().color = Color.red;
+        yield return new WaitForSeconds(0.2F);
+        gameObject.GetComponent<Image>().color = Color.white;
     }
 
     public void AddHealth(int amount)
@@ -190,7 +195,7 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             gameManager.Kill(collision.gameObject);
-            StartCoroutine(RemoveHealth(1));
+            RemoveHealth(1);
         }
     }
 

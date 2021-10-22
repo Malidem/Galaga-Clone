@@ -26,7 +26,7 @@ public class EnemyBullets : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(player.GetComponent<PlayerManager>().RemoveHealth(1));
+            player.GetComponent<PlayerManager>().RemoveHealth(1);
             StartCoroutine(DestroyThis());
         }
     }
