@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3391013004286888035}
   - component: {fileID: 7801658066903673056}
   m_Layer: 11
-  m_Name: Rakar1
+  m_Name: Rakar3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,8 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6087995650105456806, guid: 8aed3bbf86daa2f40adb12fd3c6557f5,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19f57173cd3c6424dabf2f1344d1e40e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,7 +133,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2500958488499531473}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 444e1ab85b6bdf9468e89791a8d0992f, type: 2}
   m_CullingMode: 0
@@ -157,10 +156,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a4ffe081224554f968427ef057c87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 90
   hasGuns: 1
   bullets: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}
-  hasTurret: 0
-  turretBullet: {fileID: 0}
+  hasTurret: 1
+  turretBullet: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f,
+    type: 3}
+  turretType: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+    type: 3}
+  turretPositions:
+  - {x: 4, y: 15}
+  - {x: 4, y: -15}
   canFireGuns: 1
   canFireTurrets: 1

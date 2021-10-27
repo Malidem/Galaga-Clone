@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8927618035768021853}
   - component: {fileID: -2018007709974249374}
   m_Layer: 10
-  m_Name: Rakar1Bullets
+  m_Name: RakarTurretBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 380, y: 0}
-  m_SizeDelta: {x: 9, y: 22}
+  m_SizeDelta: {x: 12, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4969377930016690881
 CanvasRenderer:
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db3045f13b0ca3e43988279209bf45c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4491d72efb69fa848af9805eca1ad2a6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -100,7 +100,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9, y: 22}
+  m_Size: {x: 12, y: 5}
   m_EdgeRadius: 0
 --- !u!114 &-2018007709974249374
 MonoBehaviour:
@@ -115,4 +115,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 250
-  dirction: left
+  dirction: right
