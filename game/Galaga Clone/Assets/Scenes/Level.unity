@@ -255,6 +255,12 @@ MonoBehaviour:
   shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
+  volumeButton: {fileID: 0}
+  volumeMenu: {fileID: 0}
+  videoButton: {fileID: 0}
+  videoMenu: {fileID: 0}
+  controlesButton: {fileID: 0}
+  controlesMenu: {fileID: 0}
 --- !u!114 &183888148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,6 +411,12 @@ MonoBehaviour:
   shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
+  volumeButton: {fileID: 0}
+  volumeMenu: {fileID: 0}
+  videoButton: {fileID: 0}
+  videoMenu: {fileID: 0}
+  controlesButton: {fileID: 0}
+  controlesMenu: {fileID: 0}
 --- !u!114 &272711297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,6 +720,12 @@ MonoBehaviour:
   shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
+  volumeButton: {fileID: 0}
+  volumeMenu: {fileID: 0}
+  videoButton: {fileID: 0}
+  videoMenu: {fileID: 0}
+  controlesButton: {fileID: 0}
+  controlesMenu: {fileID: 0}
 --- !u!114 &332193140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1097,6 +1115,12 @@ MonoBehaviour:
   shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
+  volumeButton: {fileID: 0}
+  volumeMenu: {fileID: 0}
+  videoButton: {fileID: 0}
+  videoMenu: {fileID: 0}
+  controlesButton: {fileID: 0}
+  controlesMenu: {fileID: 0}
 --- !u!114 &649808557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,6 +1333,7 @@ MonoBehaviour:
   gameOver: 0
   HUDElements: []
   overheatCooldown: 0
+  gamePaused: 0
 --- !u!1 &693231156
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,6 +2042,12 @@ MonoBehaviour:
   shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
+  volumeButton: {fileID: 0}
+  volumeMenu: {fileID: 0}
+  videoButton: {fileID: 0}
+  videoMenu: {fileID: 0}
+  controlesButton: {fileID: 0}
+  controlesMenu: {fileID: 0}
 --- !u!114 &1204118327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2238,7 +2269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1386612223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2692,6 +2723,7 @@ GameObject:
   - component: {fileID: 1733718061}
   - component: {fileID: 1733718060}
   - component: {fileID: 1733718059}
+  - component: {fileID: 1733718062}
   m_Layer: 5
   m_Name: LevelButton
   m_TagString: Untagged
@@ -2761,7 +2793,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1733718060}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1733718062}
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1733718060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2799,6 +2842,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733718057}
   m_CullTransparentMesh: 0
+--- !u!114 &1733718062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733718057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSystem: {fileID: 0}
+  shopButton: {fileID: 0}
+  shopMenu: {fileID: 0}
+  shipButton: {fileID: 0}
+  shipMenu: {fileID: 0}
+  galaxyButton: {fileID: 0}
+  galaxyMenu: {fileID: 0}
+  volumeButton: {fileID: 0}
+  volumeMenu: {fileID: 0}
+  videoButton: {fileID: 0}
+  videoMenu: {fileID: 0}
+  controlesButton: {fileID: 0}
+  controlesMenu: {fileID: 0}
 --- !u!1 &1863544957
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,6 +3080,12 @@ MonoBehaviour:
   shipMenu: {fileID: 0}
   galaxyButton: {fileID: 0}
   galaxyMenu: {fileID: 0}
+  volumeButton: {fileID: 0}
+  volumeMenu: {fileID: 0}
+  videoButton: {fileID: 0}
+  videoMenu: {fileID: 0}
+  controlesButton: {fileID: 0}
+  controlesMenu: {fileID: 0}
 --- !u!114 &2097057019
 MonoBehaviour:
   m_ObjectHideFlags: 0
