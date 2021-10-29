@@ -40,6 +40,7 @@ public class UI : MonoBehaviour
     {
         gameManager.gameStarted = true;
         gameManager.StartWaves();
+        gameManager.CallUpdateDialogue();
         gameObject.transform.parent.gameObject.SetActive(false);
     }
 
