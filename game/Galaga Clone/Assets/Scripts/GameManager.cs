@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public Text dialogueText;
     [TextArea(3, 10)] [SerializeField] protected List<string> dialoges = new List<string>();
     public List<float> timeBetweenDialogues = new List<float>();
+    public Texture2D cursor;
     public int overheatAmount;
     public int points;
     public List<GameObject> enemyTypes;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
         Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
+        Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
     }
 
     public void StartWaves()
@@ -113,12 +115,16 @@ public class GameManager : MonoBehaviour
                     Time.timeScale = 1;
                     pauseMenu.SetActive(false);
                     gamePaused = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
                 }
                 else
                 {
                     Time.timeScale = 0;
                     pauseMenu.SetActive(true);
                     gamePaused = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                 }
             }
         }
@@ -205,6 +211,8 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         gameOverMenu.SetActive(true);
         gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final Points: " + String.Format("{0:n0}", points);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void Kill(GameObject gameObject)
