@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2500958488499531469}
   - component: {fileID: 2500958488499531470}
   - component: {fileID: 2500958488499531471}
-  - component: {fileID: 3391013004286888035}
   - component: {fileID: 7801658066903673056}
+  - component: {fileID: 4651356415108094969}
   m_Layer: 11
   m_Name: Rakar3
   m_TagString: Enemy
@@ -68,7 +68,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 19f57173cd3c6424dabf2f1344d1e40e, type: 3}
+  m_Sprite: {fileID: -2885985651706736517, guid: 19f57173cd3c6424dabf2f1344d1e40e,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -125,25 +126,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 50, y: 50}
   m_EdgeRadius: 0
---- !u!95 &3391013004286888035
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2500958488499531473}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 444e1ab85b6bdf9468e89791a8d0992f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7801658066903673056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,3 +151,22 @@ MonoBehaviour:
   - {x: 4, y: -15}
   canFireGuns: 1
   canFireTurrets: 1
+--- !u!95 &4651356415108094969
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500958488499531473}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea9187f262e697143a2ad2d2d50f88dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

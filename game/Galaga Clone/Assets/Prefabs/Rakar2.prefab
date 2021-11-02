@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2500958488499531469}
   - component: {fileID: 2500958488499531470}
   - component: {fileID: 2500958488499531471}
-  - component: {fileID: 3391013004286888035}
+  - component: {fileID: 5312861014315781209}
   - component: {fileID: -254378004676482911}
   m_Layer: 11
   m_Name: Rakar2
@@ -68,7 +68,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5e3ba129aa2764b418035af63662e610, type: 3}
+  m_Sprite: {fileID: -7847235597730957045, guid: 5e3ba129aa2764b418035af63662e610,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -125,7 +126,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 50, y: 50}
   m_EdgeRadius: 0
---- !u!95 &3391013004286888035
+--- !u!95 &5312861014315781209
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -133,9 +134,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2500958488499531473}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 444e1ab85b6bdf9468e89791a8d0992f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6c02f461f23d3a14aae16d669d328035, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

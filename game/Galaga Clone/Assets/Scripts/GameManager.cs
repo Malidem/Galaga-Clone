@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemies;
     public GameObject backgroundPrefab;
     public GameObject explosion;
+    public GameObject dialogueBackground;
     public Image overheatBar;
     public Sprite overheatOverlay0;
     public Sprite overheatOverlay1;
@@ -26,6 +27,10 @@ public class GameManager : MonoBehaviour
     public Sprite overheatOverlay6;
     public Sprite overheatOverlay7;
     public Sprite overheatOverlay8;
+    public Text dialogueText;
+    [TextArea(3, 10)] [SerializeField] protected List<string> dialoges = new List<string>();
+    public List<float> timeBetweenDialogues = new List<float>();
+    public Texture2D cursor;
     public int overheatAmount;
     public int points;
     public List<GameObject> enemyTypes;
@@ -50,6 +55,7 @@ public class GameManager : MonoBehaviour
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
         Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
+        Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
     }
 
     public void StartWaves()
@@ -109,12 +115,16 @@ public class GameManager : MonoBehaviour
                     Time.timeScale = 1;
                     pauseMenu.SetActive(false);
                     gamePaused = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
                 }
                 else
                 {
                     Time.timeScale = 0;
                     pauseMenu.SetActive(true);
                     gamePaused = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                 }
             }
         }
@@ -201,6 +211,8 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         gameOverMenu.SetActive(true);
         gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final Points: " + String.Format("{0:n0}", points);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void Kill(GameObject gameObject)
@@ -224,5 +236,62 @@ public class GameManager : MonoBehaviour
             yield return explosionGO.GetComponent<Explosion>().Die();
         }
         Destroy(gameObject);
+    }
+
+    public void CallUpdateDialogue()
+    {
+        StartCoroutine(UpdateDialogue());
+    }
+
+    private IEnumerator UpdateDialogue()
+    {
+        for (int i = 0; i < dialoges.Count; i++)
+        {
+            string text = dialoges[i];
+            yield return new WaitForSeconds(timeBetweenDialogues[i]);
+            RectTransform rect = dialogueBackground.GetComponent<RectTransform>();
+            rect.sizeDelta = new Vector2(0, rect.sizeDelta.y);
+            dialogueBackground.SetActive(true);
+            dialogueText.gameObject.SetActive(true);
+
+            float i2 = text.Length;
+            while (i2 >= 0)
+            {
+                if (rect.sizeDelta.x <= 555)
+                {
+                    rect.sizeDelta = new Vector2(rect.sizeDelta.x + 15, rect.sizeDelta.y);
+                }
+                else
+                {
+                    break;
+                }
+                yield return new WaitForSeconds(0.05F);
+                i2--;
+            }
+
+            yield return new WaitForSeconds(0.5F);
+            if ((text.Length + 1) > 148) {
+                dialogueText.text = text.Substring(0, 148);
+                yield return new WaitForSeconds(5);
+                dialogueText.text = text.Substring(149);
+            }
+            else
+            {
+                dialogueText.text = text;
+            }
+            yield return new WaitForSeconds(5);
+            dialogueText.text = "";
+            dialogueText.gameObject.SetActive(false);
+
+            int i3 = 0;
+            while (i3 <= rect.sizeDelta.x)
+            {
+                rect.sizeDelta = new Vector2(rect.sizeDelta.x - 15, rect.sizeDelta.y);
+                yield return new WaitForSeconds(0.05F);
+                i3++;
+            }
+
+            dialogueBackground.SetActive(false);
+        }
     }
 }

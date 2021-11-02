@@ -40,7 +40,10 @@ public class UI : MonoBehaviour
     {
         gameManager.gameStarted = true;
         gameManager.StartWaves();
+        gameManager.CallUpdateDialogue();
         gameObject.transform.parent.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void LoadScene(string scene)
