@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class UpgradeCard : MonoBehaviour
 {
+    public string type;
+    public string level;
+
     private bool isDragging;
     private bool isOverSlot;
     private GameObject startParent;
     private GameObject slot;
+    private GameObject dragObject;
     private Vector2 startPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        dragObject = GameObject.Find("DragObject");
     }
 
     // Update is called once per frame
@@ -21,6 +25,7 @@ public class UpgradeCard : MonoBehaviour
     {
         if (isDragging)
         {
+            transform.SetParent(dragObject.transform, true);
             transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         }
     }
@@ -55,8 +60,19 @@ public class UpgradeCard : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("CardSlot"))
         {
+            print("Started colliding with a slot");
             isOverSlot = true;
             slot = collision.gameObject;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("CardSlot"))
+        {
+            print("Stopped colliding with a slot");
+            isOverSlot = false;
+            slot = null;
         }
     }
 }
