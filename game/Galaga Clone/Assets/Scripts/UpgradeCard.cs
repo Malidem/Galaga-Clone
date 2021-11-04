@@ -36,6 +36,13 @@ public class UpgradeCard : MonoBehaviour
         {
             return;
         }
+
+        if (transform.parent.name == "Upgrades")
+        {
+            RectTransform rect = transform.parent.GetComponent<RectTransform>();
+            rect.sizeDelta = new Vector2(rect.rect.xMax - 150, rect.sizeDelta.y);
+        }
+
         startParent = transform.parent.gameObject;
         startPos = transform.position;
         isDragging = true;
@@ -47,6 +54,8 @@ public class UpgradeCard : MonoBehaviour
         if (isOverSlot && slot.name == "Upgrades")
         {
             transform.SetParent(slot.transform, false);
+            RectTransform rect = transform.parent.GetComponent<RectTransform>();
+            rect.sizeDelta = new Vector2(rect.rect.xMax + 150, rect.sizeDelta.y);
         }
         else if (isOverSlot && slot.GetComponentsInChildren<Transform>().Length == 1) // 0 is the slot, 1 is the first child
         {
