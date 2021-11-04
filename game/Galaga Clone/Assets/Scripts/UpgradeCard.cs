@@ -44,8 +44,11 @@ public class UpgradeCard : MonoBehaviour
     public void OnDragEnd()
     {
         isDragging = false;
-
-        if (isOverSlot)
+        if (isOverSlot && slot.name == "Upgrades")
+        {
+            transform.SetParent(slot.transform, false);
+        }
+        else if (isOverSlot && slot.GetComponentsInChildren<Transform>().Length == 1) // 0 is the slot, 1 is the first child
         {
             transform.SetParent(slot.transform, false);
         }
@@ -58,21 +61,13 @@ public class UpgradeCard : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("CardSlot"))
-        {
-            print("Started colliding with a slot");
-            isOverSlot = true;
-            slot = collision.gameObject;
-        }
+        isOverSlot = true;
+        slot = collision.gameObject;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("CardSlot"))
-        {
-            print("Stopped colliding with a slot");
-            isOverSlot = false;
-            slot = null;
-        }
+        isOverSlot = false;
+        slot = null;
     }
 }
