@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2500958488499531469}
   - component: {fileID: 2500958488499531470}
   - component: {fileID: 2500958488499531471}
-  - component: {fileID: 9185253105617165583}
   - component: {fileID: 3391013004286888035}
+  - component: {fileID: 7801658066903673056}
   m_Layer: 11
   m_Name: Rakar1
   m_TagString: Enemy
@@ -113,7 +113,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.039245605, y: -0.04383087}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -124,23 +124,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 50.03064, y: 49.963516}
+  m_Size: {x: 50, y: 50}
   m_EdgeRadius: 0
---- !u!114 &9185253105617165583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2500958488499531473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb57d3d208a0ec48b33c0bfc70bb320, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  bullet: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}
-  canFire: 1
 --- !u!95 &3391013004286888035
 Animator:
   serializedVersion: 3
@@ -160,3 +145,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7801658066903673056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500958488499531473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a4ffe081224554f968427ef057c87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
+  hasGuns: 1
+  bullets: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}
+  hasTurret: 0
+  turretBullet: {fileID: 0}
+  canFireGuns: 1
+  canFireTurrets: 1

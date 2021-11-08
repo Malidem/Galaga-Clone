@@ -14,6 +14,12 @@ public class UI : MonoBehaviour
     public GameObject shipMenu;
     public GameObject galaxyButton;
     public GameObject galaxyMenu;
+    public GameObject volumeButton;
+    public GameObject volumeMenu;
+    public GameObject videoButton;
+    public GameObject videoMenu;
+    public GameObject controlesButton;
+    public GameObject controlesMenu;
     private GameManager gameManager;
     
     public void MainSettings(GameObject pausemenu)
@@ -34,7 +40,10 @@ public class UI : MonoBehaviour
     {
         gameManager.gameStarted = true;
         gameManager.StartWaves();
+        gameManager.CallUpdateDialogue();
         gameObject.transform.parent.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void LoadScene(string scene)
@@ -49,6 +58,30 @@ public class UI : MonoBehaviour
     {
         layer.SetActive(true);
         gameObject.transform.parent.gameObject.SetActive(false);
+    }
+
+    public void SwitchsettingsMenu(GameObject layer)
+    {
+        gameObject.transform.parent.parent.gameObject.SetActive(false);
+        layer.SetActive(true);
+    }
+
+    public void ExitGamemenu()
+    {
+        GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
+        foreach (GameObject go in objects)
+        {
+            if (go.name.Equals("MainMenu"))
+            {
+                go.SetActive(true);
+            }
+        }
+        Destroy(gameObject.transform.parent.parent.gameObject);
+    }
+
+    public void turnOnLayer(GameObject layer)
+    {
+        layer.SetActive(true);
     }
 
     public void ExitGame()
@@ -85,6 +118,36 @@ public class UI : MonoBehaviour
             shopMenu.SetActive(false);
             shipButton.GetComponent<Button>().interactable = true;
             shipMenu.SetActive(false);
+        }
+    }
+
+    public void NavigateSettingButton()
+    {
+        gameObject.GetComponent<Button>().interactable = false;
+
+        if (gameObject == volumeButton)
+        {
+            volumeMenu.SetActive(true);
+            videoButton.GetComponent<Button>().interactable = true;
+            videoMenu.SetActive(false);
+            controlesButton.GetComponent<Button>().interactable = true;
+            controlesMenu.SetActive(false);
+        }
+        else if (gameObject == videoButton)
+        {
+            videoMenu.SetActive(true);
+            volumeButton.GetComponent<Button>().interactable = true;
+            volumeMenu.SetActive(false);
+            controlesButton.GetComponent<Button>().interactable = true;
+            controlesMenu.SetActive(false);
+        }
+        else if(gameObject == controlesButton)
+        {
+            controlesMenu.SetActive(true);
+            volumeButton.GetComponent<Button>().interactable = true;
+            volumeMenu.SetActive(false);
+            videoButton.GetComponent<Button>().interactable = true;
+            videoMenu.SetActive(false);
         }
     }
 }
