@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Overheat());
         Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
+
     }
 
     public void StartWaves()

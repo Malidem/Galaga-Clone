@@ -1405,7 +1405,7 @@ MonoBehaviour:
   timeBetweenDialogues:
   - 5
   - 2
-  cursor: {fileID: 2800000, guid: a0ae87329a113d44c9476b9b96333684, type: 3}
+  cursor: {fileID: 2800000, guid: 7c1bec6661b34db4eaa609639337a52f, type: 3}
   overheatAmount: 0
   points: 0
   enemyTypes:
