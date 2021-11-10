@@ -13,11 +13,13 @@ public class UpgradeCard : MonoBehaviour
     private GameObject slot;
     private GameObject dragObject;
     private Vector2 startPos;
+    private UpgradesManager upgradesManager;
 
     // Start is called before the first frame update
     void Start()
     {
         dragObject = GameObject.Find("DragObject");
+        upgradesManager = GameObject.Find("Upgrades").GetComponent<UpgradesManager>();
     }
 
     // Update is called once per frame
@@ -40,7 +42,8 @@ public class UpgradeCard : MonoBehaviour
         if (transform.parent.name == "Upgrades")
         {
             RectTransform rect = transform.parent.GetComponent<RectTransform>();
-            rect.sizeDelta = new Vector2(rect.rect.xMax - 150, rect.sizeDelta.y);
+            rect.sizeDelta = new Vector2(rect.rect.width - 150, rect.sizeDelta.y);
+            //upgradesManager.AddToUpgrades(gameObject);
         }
 
         startParent = transform.parent.gameObject;
@@ -55,7 +58,9 @@ public class UpgradeCard : MonoBehaviour
         {
             transform.SetParent(slot.transform, false);
             RectTransform rect = transform.parent.GetComponent<RectTransform>();
-            rect.sizeDelta = new Vector2(rect.rect.xMax + 150, rect.sizeDelta.y);
+            rect.sizeDelta = new Vector2(rect.rect.width + 150, rect.sizeDelta.y);
+            rect.position = new Vector2(rect.position.x + 75, rect.position.y);
+            upgradesManager.AddToUpgrades(gameObject);
         }
         else if (isOverSlot && slot.GetComponentsInChildren<Transform>().Length == 1) // 0 is the slot, 1 is the first child
         {
@@ -65,9 +70,17 @@ public class UpgradeCard : MonoBehaviour
         {
             transform.SetParent(startParent.transform, true);
             transform.position = startPos;
+
+            if (startParent.name == "Upgrades")
+            {
+                RectTransform rect = transform.parent.GetComponent<RectTransform>();
+                rect.sizeDelta = new Vector2(rect.rect.width + 150, rect.sizeDelta.y);
+                rect.position = new Vector2(rect.position.x + 75, rect.position.y);
+                upgradesManager.AddToUpgrades(gameObject);
+            }
         }
     }
-
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isOverSlot = true;
