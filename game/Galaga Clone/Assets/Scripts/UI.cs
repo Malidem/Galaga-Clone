@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,9 @@ public class UI : MonoBehaviour
     public GameObject videoMenu;
     public GameObject controlesButton;
     public GameObject controlesMenu;
+    public GameObject upgradeSlot1;
+    public GameObject upgradeSlot2;
+    public GameObject upgradeSlot3;
     private GameManager gameManager;
     
     public void MainSettings(GameObject pausemenu)
@@ -149,5 +153,42 @@ public class UI : MonoBehaviour
             videoButton.GetComponent<Button>().interactable = true;
             videoMenu.SetActive(false);
         }
+    }
+
+    public void loadLevel(string level)
+    {
+        string str = "";
+        try
+        {
+            UpgradeCard cardProps = upgradeSlot1.GetComponentsInChildren<Transform>()[1].gameObject.GetComponent<UpgradeCard>();
+            str += cardProps.type + "." + cardProps.level;
+        }
+        catch (Exception)
+        {
+            str += "none";
+        }
+
+        try
+        {
+            UpgradeCard cardProps = upgradeSlot1.GetComponentsInChildren<Transform>()[1].gameObject.GetComponent<UpgradeCard>();
+            str += "\t" + cardProps.type + "." + cardProps.level;
+        }
+        catch (Exception)
+        {
+            str += "none";
+        }
+
+        try
+        {
+            UpgradeCard cardProps = upgradeSlot1.GetComponentsInChildren<Transform>()[1].gameObject.GetComponent<UpgradeCard>();
+            str += "\t" + cardProps.type + "." + cardProps.level;
+        }
+        catch (Exception)
+        {
+            str += "none";
+        }
+
+        PlayerPrefs.SetString("activeUpgrades", str);
+        LoadScene(level);
     }
 }

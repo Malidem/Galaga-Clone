@@ -156,6 +156,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!1 &530272234333169186
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +315,9 @@ MonoBehaviour:
   videoMenu: {fileID: 3199362550618342648}
   controlesButton: {fileID: 8000831181793633411}
   controlesMenu: {fileID: 3320616094776356779}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!1 &1104850143658644439
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +477,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!1 &1412990294756757569
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,10 +551,10 @@ RectTransform:
   m_Father: {fileID: 4581783374320343191}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8923796049919383471
 CanvasRenderer:
@@ -596,7 +605,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 10000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -1066,7 +1075,7 @@ GameObject:
   - component: {fileID: 5099362768499275753}
   - component: {fileID: 6704822892287080805}
   - component: {fileID: 8795599139161370948}
-  - component: {fileID: 6612724987651879643}
+  - component: {fileID: 5416200725155401166}
   m_Layer: 0
   m_Name: LevelHover
   m_TagString: Untagged
@@ -1173,8 +1182,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6612724987651879643}
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 5416200725155401166}
+        m_MethodName: loadLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1184,7 +1193,7 @@ MonoBehaviour:
           m_StringArgument: Level
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6612724987651879643
+--- !u!114 &5416200725155401166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1209,6 +1218,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 1631280129682723818}
+  upgradeSlot2: {fileID: 4088005388100158787}
+  upgradeSlot3: {fileID: 1798897279768432690}
 --- !u!1 &2160781446965267630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,6 +1380,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!1 &2405163742162925656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,10 +1419,10 @@ RectTransform:
   m_Father: {fileID: 4581783374320343191}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 700, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2420121365065860125
 CanvasRenderer:
@@ -1458,7 +1473,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 10000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -1586,10 +1601,10 @@ RectTransform:
   m_Father: {fileID: 4581783374320343191}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1150, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6324261529982372626
 CanvasRenderer:
@@ -1640,7 +1655,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 10000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -2307,6 +2322,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!1 &3426409569550803512
 GameObject:
   m_ObjectHideFlags: 0
@@ -2373,6 +2391,9 @@ MonoBehaviour:
   videoMenu: {fileID: 3199362550618342648}
   controlesButton: {fileID: 8000831181793633411}
   controlesMenu: {fileID: 3320616094776356779}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!1 &3426409571165736810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,7 +2409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3426409571165736813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2509,7 +2530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9168317769432236479
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2997,10 +3018,10 @@ RectTransform:
   m_Father: {fileID: 4581783374320343191}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 550, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5438546902310419696
 CanvasRenderer:
@@ -3051,7 +3072,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 10000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -3375,6 +3396,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!114 &861236065062434496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3617,6 +3641,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!1 &4665111533099640269
 GameObject:
   m_ObjectHideFlags: 0
@@ -3802,7 +3829,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.6019108, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4124,10 +4151,10 @@ RectTransform:
   m_Father: {fileID: 4581783374320343191}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1000, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7723235998063343057
 CanvasRenderer:
@@ -4178,7 +4205,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 10000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -4306,10 +4333,10 @@ RectTransform:
   m_Father: {fileID: 4581783374320343191}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6565310903108886471
 CanvasRenderer:
@@ -4360,7 +4387,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 10000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -4608,6 +4635,9 @@ MonoBehaviour:
   videoMenu: {fileID: 3199362550618342648}
   controlesButton: {fileID: 8000831181793633411}
   controlesMenu: {fileID: 3320616094776356779}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!1 &6636926051967631711
 GameObject:
   m_ObjectHideFlags: 0
@@ -4620,7 +4650,7 @@ GameObject:
   - component: {fileID: 6454145851136819936}
   - component: {fileID: 5977372490074008049}
   - component: {fileID: 2652429921583859084}
-  - component: {fileID: 1790279584837579010}
+  - component: {fileID: 2720765560512278161}
   m_Layer: 0
   m_Name: LevelHover
   m_TagString: Untagged
@@ -4727,8 +4757,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1790279584837579010}
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 2720765560512278161}
+        m_MethodName: loadLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4738,7 +4768,7 @@ MonoBehaviour:
           m_StringArgument: Level
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1790279584837579010
+--- !u!114 &2720765560512278161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4763,6 +4793,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 1631280129682723818}
+  upgradeSlot2: {fileID: 4088005388100158787}
+  upgradeSlot3: {fileID: 1798897279768432690}
 --- !u!1 &6690296065811750201
 GameObject:
   m_ObjectHideFlags: 0
@@ -4997,6 +5030,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!1 &7316016833355145158
 GameObject:
   m_ObjectHideFlags: 0
@@ -5033,10 +5069,10 @@ RectTransform:
   m_Father: {fileID: 4581783374320343191}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8108401853006455359
 CanvasRenderer:
@@ -5087,7 +5123,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 10000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -5177,7 +5213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed37ac6f564e8840adf7b27c5901e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: None
+  type: GunUpgrade
   level: 1
 --- !u!1 &7571030270265127636
 GameObject:
@@ -5599,6 +5635,9 @@ MonoBehaviour:
   videoMenu: {fileID: 3199362550618342648}
   controlesButton: {fileID: 8000831181793633411}
   controlesMenu: {fileID: 3320616094776356779}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!1 &8118013642629357177
 GameObject:
   m_ObjectHideFlags: 0
@@ -5611,7 +5650,7 @@ GameObject:
   - component: {fileID: 7176975709491344957}
   - component: {fileID: 5350501234121608300}
   - component: {fileID: 1749452172014679824}
-  - component: {fileID: 905407579046421111}
+  - component: {fileID: 4358606185030733611}
   m_Layer: 0
   m_Name: LevelHover
   m_TagString: Untagged
@@ -5718,8 +5757,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 905407579046421111}
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 4358606185030733611}
+        m_MethodName: loadLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5729,7 +5768,7 @@ MonoBehaviour:
           m_StringArgument: Level
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &905407579046421111
+--- !u!114 &4358606185030733611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5754,6 +5793,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 1631280129682723818}
+  upgradeSlot2: {fileID: 4088005388100158787}
+  upgradeSlot3: {fileID: 1798897279768432690}
 --- !u!1 &8390091324515630878
 GameObject:
   m_ObjectHideFlags: 0
@@ -6074,10 +6116,10 @@ RectTransform:
   m_Father: {fileID: 4581783374320343191}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 850, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7372029206910246654
 CanvasRenderer:
@@ -6128,7 +6170,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 10000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0

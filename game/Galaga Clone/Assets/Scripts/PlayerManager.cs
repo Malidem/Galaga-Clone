@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     public Sprite healthImage1;
     public Sprite healthImage2;
     public Sprite healthImage3;
+    public List<GameObject> gunUpgrades = new List<GameObject>();
 
     private GameManager gameManager;
     private bool canFire = true;
@@ -30,6 +31,7 @@ public class PlayerManager : MonoBehaviour
     {
         gameManager = eventSystem.GetComponent<GameManager>();
         StartCoroutine(FireCooldown());
+        UpgradePlayer();
     }
 
     void Update()
@@ -211,6 +213,19 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 canFire = false;
+            }
+        }
+    }
+
+    private void UpgradePlayer()
+    {
+        string[] upgrades = PlayerPrefs.GetString("activeUpgrades").Split('\t');
+        for (int i = 0; i < upgrades.Length; i++)
+        {
+            string[] upgrade = upgrades[i].Split('.');
+            if (upgrade[0] == "GunUpgrade")
+            {
+                gunUpgrades[int.Parse(upgrade[1]) - 1].SetActive(true);
             }
         }
     }
