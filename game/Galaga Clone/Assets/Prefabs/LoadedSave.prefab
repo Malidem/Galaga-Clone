@@ -1448,6 +1448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3426409569550803515}
   - component: {fileID: 6856907738513018611}
+  - component: {fileID: 5013297198164213947}
   m_Layer: 5
   m_Name: LoadedSave
   m_TagString: Untagged
@@ -1504,6 +1505,26 @@ MonoBehaviour:
   videoMenu: {fileID: 3199362550618342648}
   controlesButton: {fileID: 8000831181793633411}
   controlesMenu: {fileID: 3320616094776356779}
+--- !u!114 &5013297198164213947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426409569550803512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cab5072904f324bbb25d733a517738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  completedLevel: {fileID: -5925910935855229405, guid: 0a126bd5b9fccaa419c0d98cf1e7c475,
+    type: 3}
+  unlockedLevel: {fileID: -854251500257389581, guid: 0a126bd5b9fccaa419c0d98cf1e7c475,
+    type: 3}
+  levels:
+  - {fileID: 8476442472676829528}
+  - {fileID: 3917195135949226794}
+  - {fileID: 4099240412648113510}
 --- !u!1 &3426409571165736810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,6 +1817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visable: {fileID: 8118013642629357177}
+  isUnlocked: 0
 --- !u!114 &2626813444104878522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1815,7 +1837,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5925910935855229405, guid: 0a126bd5b9fccaa419c0d98cf1e7c475,
+  m_Sprite: {fileID: 7551956924248243561, guid: 0a126bd5b9fccaa419c0d98cf1e7c475,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1930,6 +1952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visable: {fileID: 1829296121860909945}
+  isUnlocked: 0
 --- !u!114 &8972386926038252855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1949,7 +1972,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -854251500257389581, guid: 0a126bd5b9fccaa419c0d98cf1e7c475,
+  m_Sprite: {fileID: 7551956924248243561, guid: 0a126bd5b9fccaa419c0d98cf1e7c475,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3664,6 +3687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visable: {fileID: 6636926051967631711}
+  isUnlocked: 0
 --- !u!114 &2498778482439570979
 MonoBehaviour:
   m_ObjectHideFlags: 0
