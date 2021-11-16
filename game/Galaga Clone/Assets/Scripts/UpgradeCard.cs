@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeCard : MonoBehaviour
 {
@@ -11,16 +12,16 @@ public class UpgradeCard : MonoBehaviour
     private bool isOverSlot;
     private GameObject startParent;
     private GameObject slot;
-    private GameObject dragObject;
     private Vector2 startPos;
-    private UpgradesManager upgradesManager;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        dragObject = GameObject.Find("DragObject");
-        upgradesManager = GameObject.Find("Upgrades").GetComponent<UpgradesManager>();
-    }
+    [HideInInspector]
+    public UpgradesManager upgradesManager;
+    [HideInInspector]
+    public GameObject dragObject;
+    [HideInInspector]
+    public GameObject upgradeParent;
+    [HideInInspector]
+    public Scrollbar scrollbar;
 
     // Update is called once per frame
     void Update()
@@ -41,9 +42,7 @@ public class UpgradeCard : MonoBehaviour
 
         if (transform.parent.name == "Upgrades")
         {
-            RectTransform rect = transform.parent.GetComponent<RectTransform>();
-            rect.sizeDelta = new Vector2(rect.rect.width - 150, rect.sizeDelta.y);
-            //upgradesManager.AddToUpgrades(gameObject);
+            RemoveFromUpgrades();
         }
 
         startParent = transform.parent.gameObject;
@@ -57,10 +56,7 @@ public class UpgradeCard : MonoBehaviour
         if (isOverSlot && slot.name == "Upgrades")
         {
             transform.SetParent(slot.transform, false);
-            RectTransform rect = transform.parent.GetComponent<RectTransform>();
-            rect.sizeDelta = new Vector2(rect.rect.width + 150, rect.sizeDelta.y);
-            rect.position = new Vector2(rect.position.x + 75, rect.position.y);
-            upgradesManager.AddToUpgrades(gameObject);
+            AddToUpgrades();
         }
         else if (isOverSlot && slot.GetComponentsInChildren<Transform>().Length == 1) // 0 is the slot, 1 is the first child
         {
@@ -73,14 +69,28 @@ public class UpgradeCard : MonoBehaviour
 
             if (startParent.name == "Upgrades")
             {
-                RectTransform rect = transform.parent.GetComponent<RectTransform>();
-                rect.sizeDelta = new Vector2(rect.rect.width + 150, rect.sizeDelta.y);
-                rect.position = new Vector2(rect.position.x + 75, rect.position.y);
-                upgradesManager.AddToUpgrades(gameObject);
+                AddToUpgrades();
             }
         }
     }
-    
+
+    public void AddToUpgrades()
+    {
+        RectTransform rect = upgradeParent.GetComponent<RectTransform>();
+        rect.sizeDelta = new Vector2(rect.rect.width + 150, rect.sizeDelta.y);
+        rect.position = new Vector2(rect.position.x + 75, rect.position.y);
+        upgradesManager.SortUpgradeCards(gameObject);
+        scrollbar.value = 0;
+    }
+
+    public void RemoveFromUpgrades()
+    {
+        RectTransform rect = upgradeParent.GetComponent<RectTransform>();
+        rect.sizeDelta = new Vector2(rect.rect.width - 150, rect.sizeDelta.y);
+        rect.position = new Vector2(rect.position.x - 75, rect.position.y);
+        scrollbar.value = 0;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isOverSlot = true;

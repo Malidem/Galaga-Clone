@@ -224,6 +224,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!114 &66448896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,6 +960,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!114 &271457377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1639,6 +1645,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!114 &595327322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2188,6 +2197,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!114 &746989330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3049,6 +3061,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!114 &1080046921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3208,6 +3223,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!114 &1097639982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4408,6 +4426,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!114 &1627612550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5143,6 +5164,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!114 &1901777183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5302,6 +5326,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!114 &1932582716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5740,6 +5767,9 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  upgradeSlot1: {fileID: 0}
+  upgradeSlot2: {fileID: 0}
+  upgradeSlot3: {fileID: 0}
 --- !u!114 &2098398405
 MonoBehaviour:
   m_ObjectHideFlags: 0
