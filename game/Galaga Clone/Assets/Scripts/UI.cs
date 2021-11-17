@@ -157,38 +157,6 @@ public class UI : MonoBehaviour
 
     public void loadLevel(string level)
     {
-        string str = "";
-        try
-        {
-            UpgradeCard cardProps = upgradeSlot1.GetComponentsInChildren<Transform>()[1].gameObject.GetComponent<UpgradeCard>();
-            str += cardProps.type + "." + cardProps.level;
-        }
-        catch (Exception)
-        {
-            str += "none";
-        }
-
-        try
-        {
-            UpgradeCard cardProps = upgradeSlot1.GetComponentsInChildren<Transform>()[1].gameObject.GetComponent<UpgradeCard>();
-            str += "\t" + cardProps.type + "." + cardProps.level;
-        }
-        catch (Exception)
-        {
-            str += "none";
-        }
-
-        try
-        {
-            UpgradeCard cardProps = upgradeSlot1.GetComponentsInChildren<Transform>()[1].gameObject.GetComponent<UpgradeCard>();
-            str += "\t" + cardProps.type + "." + cardProps.level;
-        }
-        catch (Exception)
-        {
-            str += "none";
-        }
-
-        PlayerPrefs.SetString("activeUpgrades", str);
         LoadScene(level);
     }
 }

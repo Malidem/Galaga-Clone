@@ -219,11 +219,11 @@ public class PlayerManager : MonoBehaviour
 
     private void UpgradePlayer()
     {
-        string[] upgrades = PlayerPrefs.GetString("activeUpgrades").Split('\t');
+        string[] upgrades = PlayerPrefs.GetString("activeUpgrades").Split('|');
         for (int i = 0; i < upgrades.Length; i++)
         {
-            string[] upgrade = upgrades[i].Split('.');
-            if (upgrade[0] == "GunUpgrade")
+            string[] upgrade = upgrades[i].Split(',');
+            if (upgrade[0] == "Gun")
             {
                 gunUpgrades[int.Parse(upgrade[1]) - 1].SetActive(true);
             }
