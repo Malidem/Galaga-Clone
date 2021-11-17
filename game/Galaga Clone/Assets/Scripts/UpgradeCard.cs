@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UpgradeCard : MonoBehaviour
 {
@@ -20,8 +19,6 @@ public class UpgradeCard : MonoBehaviour
     public GameObject dragObject;
     [HideInInspector]
     public GameObject upgradeParent;
-    [HideInInspector]
-    public Scrollbar scrollbar;
 
     // Update is called once per frame
     void Update()
@@ -80,21 +77,25 @@ public class UpgradeCard : MonoBehaviour
         rect.sizeDelta = new Vector2(rect.rect.width + 150, rect.sizeDelta.y);
         rect.position = new Vector2(rect.position.x + 75, rect.position.y);
         upgradesManager.SortUpgradeCards(gameObject);
-        scrollbar.value = 0;
     }
 
     public void RemoveFromUpgrades()
     {
         RectTransform rect = upgradeParent.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(rect.rect.width - 150, rect.sizeDelta.y);
-        rect.position = new Vector2(rect.position.x - 75, rect.position.y);
-        scrollbar.value = 0;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isOverSlot = true;
-        slot = collision.gameObject;
+        if (collision.gameObject.name == "UpgradeScroller")
+        {
+            slot = upgradeParent;
+        }
+        else
+        {
+            slot = collision.gameObject;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

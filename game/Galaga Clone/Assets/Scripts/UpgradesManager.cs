@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UpgradesManager : MonoBehaviour
 {
@@ -11,18 +10,21 @@ public class UpgradesManager : MonoBehaviour
     public GameObject upgradeSlot2;
     public GameObject upgradeSlot3;
     public GameObject dragObject;
-    public Scrollbar scrollbar;
+    public GameObject scroller;
     public List<GameObject> UpgradeCards = new List<GameObject>();
 
     void Start()
     {
+        Rect rect = scroller.GetComponent<RectTransform>().rect;
+        scroller.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
+        scroller.GetComponent<BoxCollider2D>().size = new Vector2(rect.width / scroller.transform.lossyScale.x, rect.height / scroller.transform.lossyScale.y);
         LoadActiveUpgrades();
     }
 
     private void LoadActiveUpgrades()
     {
         PlayerPrefs.SetString("activeUpgrades", "Gun,1|Speed,2|Overheat,3");
-        PlayerPrefs.SetString("unlockedUpgrades", "Gun,1|Speed,2|Overheat,3|None,4|None,5");
+        PlayerPrefs.SetString("unlockedUpgrades", "Gun,1|Speed,2|Overheat,3|None,4|None,5|None,6|None,7|None,8");
 
         string[] activeUpgrades = PlayerPrefs.GetString("activeUpgrades").Split('|');
         string[] unlockedUpgrades = PlayerPrefs.GetString("unlockedUpgrades").Split('|');
@@ -39,7 +41,6 @@ public class UpgradesManager : MonoBehaviour
                     card.upgradesManager = gameObject.GetComponent<UpgradesManager>();
                     card.dragObject = dragObject;
                     card.upgradeParent = upgradesParent;
-                    card.scrollbar = scrollbar;
                     card.AddToUpgrades();
                 }
             }
