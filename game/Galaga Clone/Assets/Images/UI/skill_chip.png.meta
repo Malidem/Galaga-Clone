@@ -13,13 +13,13 @@ TextureImporter:
     second: skill_chip_2
   - first:
       213: 3078442234034640796
-    second: skill_chip_3
+    second: skill_chip_0
   - first:
       213: -8257679123608529216
-    second: skill_chip_4
+    second: skill_chip_1
   - first:
       213: 6026608286783953571
-    second: skill_chip_5
+    second: skill_chip_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: skill_chip_3
+      name: skill_chip_0
       rect:
         serializedVersion: 2
         x: 13
@@ -138,7 +138,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skill_chip_4
+      name: skill_chip_1
       rect:
         serializedVersion: 2
         x: 97
@@ -159,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skill_chip_5
+      name: skill_chip_2
       rect:
         serializedVersion: 2
         x: 181

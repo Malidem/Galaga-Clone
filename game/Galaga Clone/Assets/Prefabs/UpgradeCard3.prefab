@@ -68,7 +68,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 761a3acb2fc6b1a4e91ea057d7d35454, type: 3}
+  m_Sprite: {fileID: -3007521606128175885, guid: b51ca80695a90354a8f82c1aabc1bd0c,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -183,3 +184,5 @@ MonoBehaviour:
   type: Overheat
   level: 3
   upgradesManager: {fileID: 0}
+  dragObject: {fileID: 0}
+  upgradeParent: {fileID: 0}
