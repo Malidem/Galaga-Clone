@@ -216,17 +216,18 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void Kill(GameObject gameObject)
+    public void Kill(GameObject gameObject, float scale)
     {
-        StartCoroutine(KillWithExplosion(gameObject));
+        StartCoroutine(KillWithExplosion(gameObject, scale)) ;
     }
 
-    private IEnumerator KillWithExplosion(GameObject gameObject)
+    private IEnumerator KillWithExplosion(GameObject gameObject, float scale)
     {
         if (gameObject.transform.position.x > -25)
         {
             int rotation = UnityEngine.Random.Range(0, 180);
             GameObject explosionGO = Instantiate(explosion, gameObject.transform.position, Quaternion.AngleAxis(rotation, Vector3.forward), gameObject.transform);
+            explosionGO.transform.localScale = new Vector2(scale, scale);
             explosionGO.GetComponent<Explosion>().parent = gameObject;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             if (gameObject.name != "Player")

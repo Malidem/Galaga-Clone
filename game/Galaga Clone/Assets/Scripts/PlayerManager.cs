@@ -149,7 +149,7 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 gameManager.EndGame();
-                gameManager.Kill(gameObject);
+                gameManager.Kill(gameObject, 1);
             }
         }
     }
@@ -194,7 +194,12 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            gameManager.Kill(collision.gameObject);
+            gameManager.Kill(collision.gameObject, 1);
+            RemoveHealth(1);
+        }
+        else if (collision.gameObject.CompareTag("Ordaga4ExplosionRadius"))
+        {
+            gameManager.Kill(collision.gameObject.transform.parent.gameObject, 1.5F);
             RemoveHealth(1);
         }
     }

@@ -25,7 +25,7 @@ public class BaseEnemy : MonoBehaviour
     public bool canFireTurrets = true;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         gameManager = GameObject.Find("EventSystem").GetComponent<GameManager>();
         bulletFolder = GameObject.Find("Bullets");
@@ -63,7 +63,7 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
-    void Update()
+    public void Update()
     {
         transform.Translate(Vector2.left * Time.deltaTime * speed);
 
