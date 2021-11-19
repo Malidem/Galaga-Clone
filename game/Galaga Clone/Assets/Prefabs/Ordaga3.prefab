@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 140
   hasGuns: 1
-  bullets: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}
+  bullets: {fileID: 1424064957359088038, guid: e92202384fccd734e88cb8b84683840b, type: 3}
   hasTurret: 0
   turretBullet: {fileID: 0}
   turretType: {fileID: 0}
