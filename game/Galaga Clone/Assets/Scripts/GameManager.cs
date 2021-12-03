@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public Texture2D cursor;
     public int overheatAmount;
     public int points;
+    public AudioClip overheatSound;
     public List<GameObject> enemyTypes;
     
     [HideInInspector]
@@ -45,9 +46,12 @@ public class GameManager : MonoBehaviour
     public bool overheatCooldown;
     [HideInInspector]
     public bool gamePaused;
+    [HideInInspector]
+    public AudioSource audioSource;
 
     private int wave;
     private int waveAmount = 1;
+    private bool canPlayOverheatSound = true;
 
     void Start()
     {
@@ -56,7 +60,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Overheat());
         Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
-
+        audioSource = canvas.GetComponent<AudioSource>();
     }
 
     public void StartWaves()
@@ -152,9 +156,15 @@ public class GameManager : MonoBehaviour
                 {
                     overheatAmount -= 5;
                     UpdateOverheatSprite();
+                    if (canPlayOverheatSound)
+                    {
+                        audioSource.PlayOneShot(overheatSound);
+                        canPlayOverheatSound = false;
+                    }
                     if (overheatAmount <= 0)
                     {
                         overheatCooldown = false;
+                        canPlayOverheatSound = true;
                     }
                 }
                 else
