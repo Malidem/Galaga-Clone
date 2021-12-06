@@ -16,10 +16,8 @@ public class PlayerManager : MonoBehaviour
     public Sprite healthImage2;
     public Sprite healthImage3;
     public List<GameObject> gunUpgrades = new List<GameObject>();
-    public AudioClip gunFireSound;
 
     private GameManager gameManager;
-    private AudioSource audioSource;
     private bool canFire = true;
     private bool canTakeDamage = true;
     private int healthAmount = 3;
@@ -34,7 +32,6 @@ public class PlayerManager : MonoBehaviour
         gameManager = eventSystem.GetComponent<GameManager>();
         StartCoroutine(FireCooldown());
         UpgradePlayer();
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -98,7 +95,6 @@ public class PlayerManager : MonoBehaviour
                 {
                     Instantiate(bullet, transform.position, transform.rotation, bullets.transform);
                     canFire = false;
-                    audioSource.PlayOneShot(gunFireSound);
                     gameManager.overheatAmount += 5;
                     gameManager.UpdateOverheatSprite();
                 }

@@ -7,12 +7,10 @@ public class BaseEnemy : MonoBehaviour
     public int speed;
     public bool hasGuns;
     public GameObject bullets;
-    public AudioClip gunFireSound;
     public bool hasTurret;
     public GameObject turretBullet;
     public GameObject turretType;
     public List<Vector2> turretPositions;
-    public AudioClip turretFireSound;
 
     private GameManager gameManager;
     private GameObject bulletFolder;
@@ -20,7 +18,6 @@ public class BaseEnemy : MonoBehaviour
     private GameObject background;
     private List<GameObject> turrets = new List<GameObject>();
     private RectTransform backgroundRect;
-    private AudioSource audioSource;
 
     [HideInInspector]
     public bool canFireGuns = true;
@@ -35,7 +32,6 @@ public class BaseEnemy : MonoBehaviour
         player = gameManager.player;
         background = gameManager.background;
         backgroundRect = (RectTransform)background.transform;
-        audioSource = GetComponent<AudioSource>();
 
         if (hasGuns)
         {
@@ -112,7 +108,6 @@ public class BaseEnemy : MonoBehaviour
             if (chance <= 25)
             {
                 Instantiate(bullets, transform.position, transform.rotation, bulletFolder.transform);
-                audioSource.PlayOneShot(gunFireSound);
             }
         }
     }
@@ -129,7 +124,6 @@ public class BaseEnemy : MonoBehaviour
                 {
                     GameObject turret = turrets[i];
                     Instantiate(turretBullet, turret.transform.position, turret.transform.rotation, bulletFolder.transform);
-                    audioSource.PlayOneShot(turretFireSound);
                 }
             }
         }

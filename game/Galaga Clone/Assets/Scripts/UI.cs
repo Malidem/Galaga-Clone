@@ -79,10 +79,6 @@ public class UI : MonoBehaviour
             {
                 go.SetActive(true);
             }
-            if (go.name.Equals("SavesMenu"))
-            {
-                go.SetActive(false);
-            }
         }
         Destroy(gameObject.transform.parent.parent.gameObject);
     }

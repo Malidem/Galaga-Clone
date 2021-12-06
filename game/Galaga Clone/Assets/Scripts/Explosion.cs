@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    public AudioClip explosion;
-
     [HideInInspector]
     public GameObject parent;
 
-    private AudioSource audioSrc;
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartCoroutine(Die());
+    }
 
     void Update()
     {
@@ -21,8 +23,6 @@ public class Explosion : MonoBehaviour
 
     public IEnumerator Die()
     {
-        audioSrc = gameObject.GetComponent<AudioSource>();
-        audioSrc.PlayOneShot(explosion);
         yield return new WaitForSeconds(0.6F);
         Destroy(gameObject);
     }
