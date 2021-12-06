@@ -59,7 +59,7 @@ public class MainMenuUI : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("email", emailInputField.text.ToLower());
         form.AddField("password", passwordInputField.text);
-        WWW www = new WWW("http://localhost/galaga_clone/sign-up.php", form);
+        WWW www = new WWW(DataBaseManager.URL + "sign-up.php", form);
 
         yield return www;
 
@@ -88,10 +88,11 @@ public class MainMenuUI : MonoBehaviour
 
     public IEnumerator Login(string email, string password)
     {
+        email = email.ToLower();
         WWWForm form = new WWWForm();
-        form.AddField("email", email.ToLower());
+        form.AddField("email", email);
         form.AddField("password", password);
-        WWW www = new WWW("http://localhost/galaga_clone/login.php", form);
+        WWW www = new WWW(DataBaseManager.URL + "login.php", form);
 
         yield return www;
 
@@ -222,7 +223,7 @@ public class MainMenuUI : MonoBehaviour
         form.AddField("levels_unlocked", DataBaseManager.levelsUnlocked);
         form.AddField("upgrades_unlocked", string.Join(",", DataBaseManager.upgradesUnlocked));
         form.AddField("upgrades_active", string.Join(",", DataBaseManager.upgradesActive));
-        WWW www = new WWW("http://localhost/galaga_clone/savedata.php", form);
+        WWW www = new WWW(DataBaseManager.URL + "savedata.php", form);
 
         yield return www;
 
@@ -266,7 +267,7 @@ public class MainMenuUI : MonoBehaviour
         form.AddField("levels_unlocked", 1);
         form.AddField("upgrades_unlocked", "none");
         form.AddField("upgrades_active", "none");
-        WWW www = new WWW("http://localhost/galaga_clone/savedata.php", form);
+        WWW www = new WWW(DataBaseManager.URL + "savedata.php", form);
 
         yield return www;
 

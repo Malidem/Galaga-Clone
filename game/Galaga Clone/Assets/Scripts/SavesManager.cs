@@ -20,7 +20,7 @@ public class SavesManager : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("email", DataBaseManager.email);
         form.AddField("currentSave", DataBaseManager.currentSave);
-        WWW www = new WWW("http://localhost/galaga_clone/fetch-saved-data.php", form);
+        WWW www = new WWW(DataBaseManager.URL + "fetch-saved-data.php", form);
 
         yield return www;
 
