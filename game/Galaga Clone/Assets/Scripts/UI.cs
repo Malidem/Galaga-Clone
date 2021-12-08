@@ -21,9 +21,6 @@ public class UI : MonoBehaviour
     public GameObject videoMenu;
     public GameObject controlesButton;
     public GameObject controlesMenu;
-    public GameObject upgradeSlot1;
-    public GameObject upgradeSlot2;
-    public GameObject upgradeSlot3;
     private GameManager gameManager;
     
     public void MainSettings(GameObject pausemenu)
@@ -70,8 +67,14 @@ public class UI : MonoBehaviour
         layer.SetActive(true);
     }
 
-    public void ExitGamemenu()
+    public void StartExitGameMenu()
     {
+        StartCoroutine(ExitGameMenu());
+    }
+
+    private IEnumerator ExitGameMenu()
+    {
+        yield return StartCoroutine(DataBaseManager.SaveDataToDatabase());
         GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
         foreach (GameObject go in objects)
         {
@@ -149,7 +152,7 @@ public class UI : MonoBehaviour
             controlesButton.GetComponent<Button>().interactable = true;
             controlesMenu.SetActive(false);
         }
-        else if(gameObject == controlesButton)
+        else if (gameObject == controlesButton)
         {
             controlesMenu.SetActive(true);
             volumeButton.GetComponent<Button>().interactable = true;
@@ -159,8 +162,14 @@ public class UI : MonoBehaviour
         }
     }
 
-    public void loadLevel(string level)
+    public void LoadLevel(string level)
     {
+        StartCoroutine(StartloadLevel(level));
+    }
+
+    private IEnumerator StartloadLevel(string level)
+    {
+        yield return StartCoroutine(DataBaseManager.SaveDataToDatabase());
         LoadScene(level);
     }
 }

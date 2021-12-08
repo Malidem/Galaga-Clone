@@ -14,7 +14,7 @@ public class UpgradeCard : MonoBehaviour
     private Vector2 startPos;
 
     [HideInInspector]
-    public UpgradesManager upgradesManager;
+    public SavesManager savesManager;
     [HideInInspector]
     public GameObject dragObject;
     [HideInInspector]
@@ -58,6 +58,7 @@ public class UpgradeCard : MonoBehaviour
         else if (isOverSlot && slot.GetComponentsInChildren<Transform>().Length == 1) // 0 is the slot, 1 is the first child
         {
             transform.SetParent(slot.transform, false);
+            //savesManager.UpdateActiveUpgrades();
         }
         else
         {
@@ -68,7 +69,13 @@ public class UpgradeCard : MonoBehaviour
             {
                 AddToUpgrades();
             }
+
+            if (startParent.name != "Upgrades")
+            {
+                //savesManager.UpdateActiveUpgrades();
+            }
         }
+        savesManager.UpdateActiveUpgrades();
     }
 
     public void AddToUpgrades()
@@ -76,7 +83,7 @@ public class UpgradeCard : MonoBehaviour
         RectTransform rect = upgradeParent.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(rect.rect.width + 150, rect.sizeDelta.y);
         rect.position = new Vector2(rect.position.x + 75, rect.position.y);
-        upgradesManager.SortUpgradeCards(gameObject);
+        savesManager.SortUpgradeCards();
     }
 
     public void RemoveFromUpgrades()

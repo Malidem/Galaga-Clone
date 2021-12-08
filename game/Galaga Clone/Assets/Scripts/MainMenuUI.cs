@@ -100,7 +100,6 @@ public class MainMenuUI : MonoBehaviour
         {
             print("User logged in as: " + email);
             DataBaseManager.email = email;
-            //MainMenuManager.money = int.Parse(www.text.Split('\t')[1]);
             accountMenu.SetActive(false);
             mainMenu.SetActive(true);
             mainMenu.GetComponentsInChildren<Text>()[5].text = "Email: " + DataBaseManager.email;
@@ -206,35 +205,6 @@ public class MainMenuUI : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene("MainMenu");
         SceneManager.UnloadSceneAsync(scene);
-    }
-
-    public void SaveData()
-    {
-        StartCoroutine(SaveDataToDatabase());
-    }
-
-    private IEnumerator SaveDataToDatabase()
-    {
-        WWWForm form = new WWWForm();
-        form.AddField("email", DataBaseManager.email.ToLower());
-        form.AddField("save", "save" + DataBaseManager.currentSave);
-        form.AddField("money", DataBaseManager.money);
-        form.AddField("levels_completed", DataBaseManager.levelsCompleted);
-        form.AddField("levels_unlocked", DataBaseManager.levelsUnlocked);
-        form.AddField("upgrades_unlocked", string.Join(",", DataBaseManager.upgradesUnlocked));
-        form.AddField("upgrades_active", string.Join(",", DataBaseManager.upgradesActive));
-        WWW www = new WWW(DataBaseManager.URL + "savedata.php", form);
-
-        yield return www;
-
-        if (www.text == "0")
-        {
-            print("Game saved");
-        }
-        else
-        {
-            print("Failed to save game. Error code: " + www.text);
-        }
     }
 
     public void LoadSaveButton(int save)

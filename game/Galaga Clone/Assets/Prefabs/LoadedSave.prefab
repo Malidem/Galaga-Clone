@@ -664,7 +664,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6612724987651879643}
-        m_MethodName: LoadScene
+        m_MethodName: LoadLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1712,14 +1712,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76cab5072904f324bbb25d733a517738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradesParent: {fileID: 8040988885826193030}
+  dragObject: {fileID: 5041131770367967185}
+  scroller: {fileID: 8890105096907077673}
   completedLevel: {fileID: -5925910935855229405, guid: 0a126bd5b9fccaa419c0d98cf1e7c475,
     type: 3}
   unlockedLevel: {fileID: -854251500257389581, guid: 0a126bd5b9fccaa419c0d98cf1e7c475,
     type: 3}
+  upgradeSlots:
+  - {fileID: 7272556071250933545}
+  - {fileID: 3787039922862451467}
+  - {fileID: 3547102822124265356}
   levels:
   - {fileID: 8476442472676829528}
   - {fileID: 3917195135949226794}
   - {fileID: 4099240412648113510}
+  upgrades:
+  - {fileID: 5367276411398462751, guid: c1d7889e7b2e62a4280bccd4a9ba8ad2, type: 3}
+  - {fileID: 6736748262221929120, guid: aa007703bedbfc44195842b8b0bd1f99, type: 3}
+  - {fileID: 2000485344310413129, guid: c436455a98dd3c347953acc02d01f92b, type: 3}
+  - {fileID: 5417938574286289014, guid: 6cfdc2e22ce57614f8081a34a13d836d, type: 3}
+  - {fileID: 3255560460430225461, guid: 5fb1956ed3b12264885524f50912928e, type: 3}
+  - {fileID: 4443932028139120752, guid: 547ffdd8820f9904aaae551b766635d2, type: 3}
+  - {fileID: 8055929177837107245, guid: 8b6ebb1370505fe47b2136d076ffff7b, type: 3}
+  - {fileID: 8157426050473843092, guid: cdff16dcbb01ead4eb25b14b5a25d439, type: 3}
 --- !u!1 &3547102822124265356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,7 +1955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9168317769432236479
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3265,7 +3281,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1790279584837579010}
-        m_MethodName: LoadScene
+        m_MethodName: LoadLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3752,7 +3768,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4497475678863048535}
-        m_MethodName: ExitGamemenu
+        m_MethodName: StartExitGameMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3806,7 +3822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5062997300400764598
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4393,7 +4409,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 905407579046421111}
-        m_MethodName: LoadScene
+        m_MethodName: LoadLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4869,7 +4885,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
