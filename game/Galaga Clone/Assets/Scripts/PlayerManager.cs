@@ -11,12 +11,13 @@ public class PlayerManager : MonoBehaviour
     public GameObject eventSystem;
     public GameObject healthBar;
     public GameObject bullets;
-    public Sprite healthImage0;
-    public Sprite healthImage1;
-    public Sprite healthImage2;
-    public Sprite healthImage3;
-    public List<GameObject> gunUpgrades = new List<GameObject>();
     public AudioClip gunFireSound;
+    public List<Sprite> healthImagesL1 = new List<Sprite>();
+    public List<Sprite> healthImagesL2 = new List<Sprite>();
+    public List<Sprite> healthImagesL3 = new List<Sprite>();
+    public List<GameObject> gunUpgrades = new List<GameObject>();
+    public List<GameObject> healthUpgrades = new List<GameObject>();
+    public List<GameObject> speedUpgrades = new List<GameObject>();
 
     private GameManager gameManager;
     private AudioSource audioSource;
@@ -28,6 +29,9 @@ public class PlayerManager : MonoBehaviour
     private float maxSpeed = 500;
     private float acceleration = 550;
     private float deceleration = 500;
+    private int gunLevel = 1;
+    private int healthLevel = 1;
+    private int speedLevel = 1;
 
     void Start()
     {
@@ -178,21 +182,18 @@ public class PlayerManager : MonoBehaviour
 
     private void UpdateHealthSprite()
     {
-        if (healthAmount == 3)
+        Image healthImage = healthBar.GetComponent<Image>();
+        if (healthLevel == 1)
         {
-            healthBar.GetComponent<Image>().sprite = healthImage0;
+            healthImage.sprite = healthImagesL1[healthAmount + 1];
         }
-        else if (healthAmount == 2)
+        else if (healthLevel == 2)
         {
-            healthBar.GetComponent<Image>().sprite = healthImage1;
+            healthImage.sprite = healthImagesL2[healthAmount + 1];
         }
-        else if (healthAmount == 1)
+        else if (healthLevel == 3)
         {
-            healthBar.GetComponent<Image>().sprite = healthImage2;
-        }
-        else if (healthAmount == 0)
-        {
-            healthBar.GetComponent<Image>().sprite = healthImage3;
+            healthImage.sprite = healthImagesL3[healthAmount + 1];
         }
     }
 
@@ -226,10 +227,33 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < DataBaseManager.upgradesActive.Length; i++)
         {
             string[] upgrade = DataBaseManager.upgradesActive[i].Split('|');
-            if (upgrade[0] == "gun")
+            if (upgrade[0] != "none")
             {
-                gunUpgrades[int.Parse(upgrade[1]) - 1].SetActive(true);
+                int parsed = int.Parse(upgrade[1]);
+                if (upgrade[0] == "gun")
+                {
+                    gunUpgrades[parsed - 1].SetActive(true);
+                    gunLevel = parsed + 1;
+                }
+                else if (upgrade[0] == "health")
+                {
+                    healthUpgrades[parsed - 1].SetActive(true);
+                    healthLevel = parsed + 1;
+                    healthAmount += parsed;
+                }
+                else if (upgrade[0] == "speed")
+                {
+                    speedUpgrades[parsed - 1].SetActive(true);
+                    speedLevel = parsed + 1;
+                }
             }
         }
+
+        UpdateHealthSprite();
+
+        RectTransform HPBarRect = healthBar.GetComponent<Image>().rectTransform;
+        int gained = 7 * (healthLevel - 1);
+        HPBarRect.sizeDelta = new Vector2(32 + gained, HPBarRect.sizeDelta.y);
+        HPBarRect.position = new Vector2(HPBarRect.position.x + gained, HPBarRect.position.y);
     }
 }

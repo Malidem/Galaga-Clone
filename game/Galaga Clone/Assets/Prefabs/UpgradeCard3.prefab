@@ -181,8 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed37ac6f564e8840adf7b27c5901e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: overheat
-  level: 3
+  type: health
+  level: 2
   savesManager: {fileID: 0}
   dragObject: {fileID: 0}
   upgradeParent: {fileID: 0}

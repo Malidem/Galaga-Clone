@@ -261,9 +261,6 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
-  upgradeSlot1: {fileID: 0}
-  upgradeSlot2: {fileID: 0}
-  upgradeSlot3: {fileID: 0}
 --- !u!114 &183888148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,9 +491,6 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
-  upgradeSlot1: {fileID: 0}
-  upgradeSlot2: {fileID: 0}
-  upgradeSlot3: {fileID: 0}
 --- !u!114 &272711297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,9 +800,6 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
-  upgradeSlot1: {fileID: 0}
-  upgradeSlot2: {fileID: 0}
-  upgradeSlot3: {fileID: 0}
 --- !u!114 &332193140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1301,9 +1292,6 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
-  upgradeSlot1: {fileID: 0}
-  upgradeSlot2: {fileID: 0}
-  upgradeSlot3: {fileID: 0}
 --- !u!114 &649808557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1984,6 +1972,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910550962}
   m_CullTransparentMesh: 0
+--- !u!1 &970086860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 970086861}
+  - component: {fileID: 970086863}
+  - component: {fileID: 970086862}
+  m_Layer: 8
+  m_Name: HealthUpgrade2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &970086861
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970086860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1510238984}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 25, y: -25}
+  m_SizeDelta: {x: 25, y: 25}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &970086862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970086860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.24622631, b: 0.509434, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &970086863
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970086860}
+  m_CullTransparentMesh: 0
 --- !u!1 &1011465466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2357,9 +2419,6 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
-  upgradeSlot1: {fileID: 0}
-  upgradeSlot2: {fileID: 0}
-  upgradeSlot3: {fileID: 0}
 --- !u!114 &1204118327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2564,6 +2623,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1247771571}
   m_CullTransparentMesh: 0
+--- !u!1 &1263726088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1263726089}
+  - component: {fileID: 1263726091}
+  - component: {fileID: 1263726090}
+  m_Layer: 8
+  m_Name: SpeedUpgrade2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1263726089
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263726088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1510238984}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 25, y: 25}
+  m_SizeDelta: {x: 25, y: 25}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1263726090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263726088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.4716981, b: 0.047169767, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1263726091
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263726088}
+  m_CullTransparentMesh: 0
 --- !u!1 &1386612222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,6 +2851,80 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1504721192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1504721193}
+  - component: {fileID: 1504721195}
+  - component: {fileID: 1504721194}
+  m_Layer: 8
+  m_Name: GunUpgrade2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1504721193
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504721192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1510238984}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -25, y: -25}
+  m_SizeDelta: {x: 25, y: 25}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1504721194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504721192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.46226418, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1504721195
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504721192}
+  m_CullTransparentMesh: 0
 --- !u!1 &1510238983
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,6 +2959,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2109919618}
+  - {fileID: 1504721193}
+  - {fileID: 1902534480}
+  - {fileID: 970086861}
+  - {fileID: 2031724935}
+  - {fileID: 1263726089}
   m_Father: {fileID: 693231160}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2815,17 +3027,37 @@ MonoBehaviour:
   eventSystem: {fileID: 652294123}
   healthBar: {fileID: 282064742}
   bullets: {fileID: 1230332286}
-  healthImage0: {fileID: -8630923909508717717, guid: 584bbc576abd1a04095ef7046c62bb0b,
-    type: 3}
-  healthImage1: {fileID: 5407656843090688360, guid: 584bbc576abd1a04095ef7046c62bb0b,
-    type: 3}
-  healthImage2: {fileID: -5731162285055332302, guid: 584bbc576abd1a04095ef7046c62bb0b,
-    type: 3}
-  healthImage3: {fileID: 8133923789288904650, guid: 584bbc576abd1a04095ef7046c62bb0b,
-    type: 3}
+  gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
+  healthImagesL1:
+  - {fileID: 8133923789288904650, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: 8133923789288904650, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: -5731162285055332302, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: 5407656843090688360, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: -8630923909508717717, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  healthImagesL2:
+  - {fileID: -1197829253625875407, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: -1197829253625875407, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: -2813353791512989102, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: 8599707562563145997, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: -5388755749296596579, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: 5670370932310569416, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  healthImagesL3:
+  - {fileID: 2071961494211650266, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: 2071961494211650266, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: -1204156087265092029, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: -442607848874228575, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: -3248637332445135254, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: 811254040156792532, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
+  - {fileID: -4119642778357871254, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   gunUpgrades:
   - {fileID: 2109919617}
-  gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
+  - {fileID: 1504721192}
+  healthUpgrades:
+  - {fileID: 1902534479}
+  - {fileID: 970086860}
+  speedUpgrades:
+  - {fileID: 2031724934}
+  - {fileID: 1263726088}
 --- !u!61 &1510238988
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3281,9 +3513,6 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
-  upgradeSlot1: {fileID: 0}
-  upgradeSlot2: {fileID: 0}
-  upgradeSlot3: {fileID: 0}
 --- !u!1 &1863544957
 GameObject:
   m_ObjectHideFlags: 0
@@ -3438,6 +3667,154 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888275340}
   m_CullTransparentMesh: 0
+--- !u!1 &1902534479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1902534480}
+  - component: {fileID: 1902534482}
+  - component: {fileID: 1902534481}
+  m_Layer: 8
+  m_Name: HealthUpgrade1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1902534480
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902534479}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1510238984}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 25, y: -25}
+  m_SizeDelta: {x: 25, y: 25}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1902534481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902534479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.47969294, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1902534482
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902534479}
+  m_CullTransparentMesh: 0
+--- !u!1 &2031724934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2031724935}
+  - component: {fileID: 2031724937}
+  - component: {fileID: 2031724936}
+  m_Layer: 8
+  m_Name: SpeedUpgrade1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2031724935
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031724934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1510238984}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 25, y: 25}
+  m_SizeDelta: {x: 25, y: 25}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2031724936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031724934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 1, b: 0.0940752, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2031724937
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031724934}
+  m_CullTransparentMesh: 0
 --- !u!1 &2097057016
 GameObject:
   m_ObjectHideFlags: 0
@@ -3503,9 +3880,6 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
-  upgradeSlot1: {fileID: 0}
-  upgradeSlot2: {fileID: 0}
-  upgradeSlot3: {fileID: 0}
 --- !u!114 &2097057019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3709,8 +4083,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -25, y: -25}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2109919619
 MonoBehaviour:
@@ -3725,7 +4099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
