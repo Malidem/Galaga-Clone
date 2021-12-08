@@ -6,10 +6,6 @@ using UnityEngine.UI;
 
 public class SavesManager : MonoBehaviour
 {
-    //
-    //  TODO: Change the default for 'upgrades_active' columns in database to 'none,none,none'
-    //
-
     public GameObject upgradesParent;
     public GameObject dragObject;
     public GameObject scroller;

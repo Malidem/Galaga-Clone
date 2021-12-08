@@ -12,9 +12,9 @@ public class PlayerManager : MonoBehaviour
     public GameObject healthBar;
     public GameObject bullets;
     public AudioClip gunFireSound;
+    public List<Sprite> healthImagesL0 = new List<Sprite>();
     public List<Sprite> healthImagesL1 = new List<Sprite>();
     public List<Sprite> healthImagesL2 = new List<Sprite>();
-    public List<Sprite> healthImagesL3 = new List<Sprite>();
     public List<GameObject> gunUpgrades = new List<GameObject>();
     public List<GameObject> healthUpgrades = new List<GameObject>();
     public List<GameObject> speedUpgrades = new List<GameObject>();
@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour
     private float maxSpeed = 500;
     private float acceleration = 550;
     private float deceleration = 500;
-    private int gunLevel = 1;
+    // Levels are 1 more than ingame level
     private int healthLevel = 1;
     private int speedLevel = 1;
 
@@ -185,15 +185,15 @@ public class PlayerManager : MonoBehaviour
         Image healthImage = healthBar.GetComponent<Image>();
         if (healthLevel == 1)
         {
-            healthImage.sprite = healthImagesL1[healthAmount + 1];
+            healthImage.sprite = healthImagesL0[healthAmount + 1];
         }
         else if (healthLevel == 2)
         {
-            healthImage.sprite = healthImagesL2[healthAmount + 1];
+            healthImage.sprite = healthImagesL1[healthAmount + 1];
         }
         else if (healthLevel == 3)
         {
-            healthImage.sprite = healthImagesL3[healthAmount + 1];
+            healthImage.sprite = healthImagesL2[healthAmount + 1];
         }
     }
 
@@ -233,7 +233,8 @@ public class PlayerManager : MonoBehaviour
                 if (upgrade[0] == "gun")
                 {
                     gunUpgrades[parsed - 1].SetActive(true);
-                    gunLevel = parsed + 1;
+                    gameManager.gunLevel = parsed + 1;
+                    //gameManager.overheatAmount += parsed;
                 }
                 else if (upgrade[0] == "health")
                 {

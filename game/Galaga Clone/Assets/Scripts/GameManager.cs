@@ -31,11 +31,13 @@ public class GameManager : MonoBehaviour
     [TextArea(3, 10)] [SerializeField] protected List<string> dialoges = new List<string>();
     public List<float> timeBetweenDialogues = new List<float>();
     public Texture2D cursor;
-    public int overheatAmount;
     public int points;
     public AudioClip overheatSound;
     public List<GameObject> enemyTypes;
-    
+    public List<Sprite> overheatImagesL0 = new List<Sprite>();
+    public List<Sprite> overheatImagesL1 = new List<Sprite>();
+    public List<Sprite> overheatImagesL2 = new List<Sprite>();
+
     [HideInInspector]
     public bool gameStarted;
     [HideInInspector]
@@ -48,6 +50,10 @@ public class GameManager : MonoBehaviour
     public bool gamePaused;
     [HideInInspector]
     public AudioSource audioSource;
+    [HideInInspector]
+    public int overheatAmount;
+    [HideInInspector]
+    public int gunLevel = 1; // Level is 1 more than ingame level
 
     private int wave;
     private int waveAmount = 1;
@@ -179,41 +185,54 @@ public class GameManager : MonoBehaviour
     public void UpdateOverheatSprite()
     {
         // each image is 12.5% less
-        if (overheatAmount <= 6.25F)
+        //if (overheatAmount <= 6.25F)
+        //{
+        //    overheatBar.sprite = overheatOverlay0;
+        //}
+        //else if (overheatAmount <= 12.5F && overheatAmount > 6.25F)
+        //{
+        //    overheatBar.sprite = overheatOverlay1;
+        //}
+        //else if (overheatAmount <= 25 && overheatAmount > 12.5F)
+        //{
+        //    overheatBar.sprite = overheatOverlay2;
+        //}
+        //else if (overheatAmount <= 37.5F && overheatAmount > 25)
+        //{
+        //    overheatBar.sprite = overheatOverlay3;
+        //}
+        //else if (overheatAmount <= 50 && overheatAmount > 37.5F)
+        //{
+        //    overheatBar.sprite = overheatOverlay4;
+        //}
+        //else if (overheatAmount <= 62.5F && overheatAmount > 50)
+        //{
+        //    overheatBar.sprite = overheatOverlay5;
+        //}
+        //else if (overheatAmount <= 75 && overheatAmount > 62.5F)
+        //{
+        //    overheatBar.sprite = overheatOverlay6;
+        //}
+        //else if (overheatAmount <= 87.5F && overheatAmount > 75)
+        //{
+        //    overheatBar.sprite = overheatOverlay7;
+        //}
+        //else if (overheatAmount <= 100 && overheatAmount > 87.5F)
+        //{
+        //    overheatBar.sprite = overheatOverlay8;
+        //}
+        Image overheatImage = overheatBar.GetComponent<Image>();
+        if (gunLevel == 1)
         {
-            overheatBar.sprite = overheatOverlay0;
+            overheatImage.sprite = overheatImagesL0[int.Parse(overheatAmount.ToString()[0].ToString())];
         }
-        else if (overheatAmount <= 12.5F && overheatAmount > 6.25F)
+        else if (gunLevel == 2)
         {
-            overheatBar.sprite = overheatOverlay1;
+            overheatImage.sprite = overheatImagesL1[int.Parse(overheatAmount.ToString()[0].ToString())];
         }
-        else if (overheatAmount <= 25 && overheatAmount > 12.5F)
+        else if (gunLevel == 3)
         {
-            overheatBar.sprite = overheatOverlay2;
-        }
-        else if (overheatAmount <= 37.5F && overheatAmount > 25)
-        {
-            overheatBar.sprite = overheatOverlay3;
-        }
-        else if (overheatAmount <= 50 && overheatAmount > 37.5F)
-        {
-            overheatBar.sprite = overheatOverlay4;
-        }
-        else if (overheatAmount <= 62.5F && overheatAmount > 50)
-        {
-            overheatBar.sprite = overheatOverlay5;
-        }
-        else if (overheatAmount <= 75 && overheatAmount > 62.5F)
-        {
-            overheatBar.sprite = overheatOverlay6;
-        }
-        else if (overheatAmount <= 87.5F && overheatAmount > 75)
-        {
-            overheatBar.sprite = overheatOverlay7;
-        }
-        else if (overheatAmount <= 100 && overheatAmount > 87.5F)
-        {
-            overheatBar.sprite = overheatOverlay8;
+            overheatImage.sprite = overheatImagesL2[int.Parse(overheatAmount.ToString()[0].ToString())];
         }
     }
 

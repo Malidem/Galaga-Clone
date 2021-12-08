@@ -1503,19 +1503,23 @@ MonoBehaviour:
   - 5
   - 2
   cursor: {fileID: 2800000, guid: 7c1bec6661b34db4eaa609639337a52f, type: 3}
-  overheatAmount: 0
   points: 0
   overheatSound: {fileID: 0}
   enemyTypes:
   - {fileID: 2500958488499531473, guid: 4492c82e334d95244b87e20c49023ab4, type: 3}
   - {fileID: 2500958488499531473, guid: 04da8a80bfdaab346bbc368517ca35e7, type: 3}
   - {fileID: 2500958488499531473, guid: d0f21612a7b8187489147e5fdae06d4f, type: 3}
+  overheatImagesL0: []
+  overheatImagesL1: []
+  overheatImagesL2: []
   gameStarted: 0
   gameOver: 0
   HUDElements: []
   overheatCooldown: 0
   gamePaused: 0
   audioSource: {fileID: 0}
+  overheatAmount: 0
+  gunLevel: 1
 --- !u!1 &673320184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,20 +3032,20 @@ MonoBehaviour:
   healthBar: {fileID: 282064742}
   bullets: {fileID: 1230332286}
   gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
-  healthImagesL1:
+  healthImagesL0:
   - {fileID: 8133923789288904650, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   - {fileID: 8133923789288904650, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   - {fileID: -5731162285055332302, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   - {fileID: 5407656843090688360, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   - {fileID: -8630923909508717717, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
-  healthImagesL2:
+  healthImagesL1:
   - {fileID: -1197829253625875407, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   - {fileID: -1197829253625875407, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   - {fileID: -2813353791512989102, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   - {fileID: 8599707562563145997, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   - {fileID: -5388755749296596579, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   - {fileID: 5670370932310569416, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
-  healthImagesL3:
+  healthImagesL2:
   - {fileID: 2071961494211650266, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   - {fileID: 2071961494211650266, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
   - {fileID: -1204156087265092029, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
