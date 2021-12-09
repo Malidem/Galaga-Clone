@@ -82,6 +82,7 @@ public class SavesManager : MonoBehaviour
                         card.savesManager = GetComponent<SavesManager>();
                         card.upgradeParent = upgradesParent;
                         card.dragObject = dragObject;
+                        card.upgradeSlots = upgradeSlots;
                         card.AddToUpgrades();
                     }
                 }
@@ -98,7 +99,9 @@ public class SavesManager : MonoBehaviour
                         string upgradeLevel = upgradesParent.transform.GetChild(i2).gameObject.GetComponent<UpgradeCard>().level;
                         if (upgrade[0] == upgradeType && upgrade[1] == upgradeLevel)
                         {
-                            upgradesParent.transform.GetChild(i2).SetParent(upgradeSlots[i].transform);
+                            Transform card = upgradesParent.transform.GetChild(i2);
+                            card.SetParent(upgradeSlots[i].transform);
+                            card.gameObject.GetComponent<UpgradeCard>().RemoveFromUpgrades();
                         }
                     }
                 }

@@ -19,6 +19,8 @@ public class UpgradeCard : MonoBehaviour
     public GameObject dragObject;
     [HideInInspector]
     public GameObject upgradeParent;
+    [HideInInspector]
+    public GameObject[] upgradeSlots;
 
     // Update is called once per frame
     void Update()
@@ -55,27 +57,65 @@ public class UpgradeCard : MonoBehaviour
             transform.SetParent(slot.transform, false);
             AddToUpgrades();
         }
-        else if (isOverSlot && slot.GetComponentsInChildren<Transform>().Length == 1) // 0 is the slot, 1 is the first child
+        else if (isOverSlot && slot.name != "Upgrades")
         {
-            transform.SetParent(slot.transform, false);
-            //savesManager.UpdateActiveUpgrades();
+            if (CanBeActivated())
+            {
+                if (slot.transform.childCount > 0)
+                {
+                    MoveCardToStart(slot.transform.GetChild(0));
+                }
+                transform.SetParent(slot.transform, false);
+            }
+            else
+            {
+                MoveCardToStart(gameObject.transform);
+            }
         }
         else
         {
-            transform.SetParent(startParent.transform, true);
-            transform.position = startPos;
-
-            if (startParent.name == "Upgrades")
-            {
-                AddToUpgrades();
-            }
-
-            if (startParent.name != "Upgrades")
-            {
-                //savesManager.UpdateActiveUpgrades();
-            }
+            MoveCardToStart(gameObject.transform);
         }
         savesManager.UpdateActiveUpgrades();
+    }
+
+    private void MoveCardToStart(Transform card)
+    {
+        card.SetParent(startParent.transform, true);
+        card.position = startPos;
+
+        if (startParent.name == "Upgrades")
+        {
+            AddToUpgrades();
+        }
+    }
+
+    private bool CanBeActivated()
+    {
+        int num = 0;
+        for (int i = 0; i < upgradeSlots.Length; i++)
+        {
+            if (upgradeSlots[i].transform.childCount > 0 && upgradeSlots[i] != slot)
+            {
+                if (upgradeSlots[i].transform.GetChild(0).gameObject.GetComponent<UpgradeCard>().type != type)
+                {
+                    num++;
+                }
+            }
+            else
+            {
+                num++;
+            }
+        }
+
+        if (num == upgradeSlots.Length)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void AddToUpgrades()
