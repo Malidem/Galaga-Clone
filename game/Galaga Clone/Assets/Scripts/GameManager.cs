@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour
     public void UpdateOverheatSprite()
     {
         Image overheatImage = overheatBar.GetComponent<Image>();
-        if (gunLevel == 1)
+        if (gunLevel == 0)
         {
             if (overheatAmount > 9)
             {
@@ -198,11 +198,11 @@ public class GameManager : MonoBehaviour
                 overheatImage.sprite = overheatImagesL0[0];
             }
         }
-        else if (gunLevel == 2)
+        else if (gunLevel == 1)
         {
             Levels2And3Sprits(overheatImage, overheatImagesL1);
         }
-        else if (gunLevel == 3)
+        else if (gunLevel == 2)
         {
             Levels2And3Sprits(overheatImage, overheatImagesL2);
         }

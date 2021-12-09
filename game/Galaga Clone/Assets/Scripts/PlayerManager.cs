@@ -27,11 +27,10 @@ public class PlayerManager : MonoBehaviour
     private float xSpeed = 0;
     private float ySpeed = 0;
     private float maxSpeed = 500;
-    private float acceleration = 550;
+    private float acceleration = 500;
     private float deceleration = 500;
     // Levels are 1 more than ingame level
-    private int healthLevel = 1;
-    private int speedLevel = 1;
+    private int healthLevel = 0;
 
     void Start()
     {
@@ -183,15 +182,15 @@ public class PlayerManager : MonoBehaviour
     private void UpdateHealthSprite()
     {
         Image healthImage = healthBar.GetComponent<Image>();
-        if (healthLevel == 1)
+        if (healthLevel == 0)
         {
             healthImage.sprite = healthImagesL0[healthAmount + 1];
         }
-        else if (healthLevel == 2)
+        else if (healthLevel == 1)
         {
             healthImage.sprite = healthImagesL1[healthAmount + 1];
         }
-        else if (healthLevel == 3)
+        else if (healthLevel == 2)
         {
             healthImage.sprite = healthImagesL2[healthAmount + 1];
         }
@@ -233,32 +232,33 @@ public class PlayerManager : MonoBehaviour
                 if (upgrade[0] == "gun")
                 {
                     gunUpgrades[parsed - 1].SetActive(true);
-                    gameManager.gunLevel = parsed + 1;
+                    gameManager.gunLevel = parsed;
                     gameManager.overheatMax += parsed * 50;
                 }
                 else if (upgrade[0] == "health")
                 {
                     healthUpgrades[parsed - 1].SetActive(true);
-                    healthLevel = parsed + 1;
+                    healthLevel = parsed;
                     healthAmount += parsed;
                 }
                 else if (upgrade[0] == "speed")
                 {
                     speedUpgrades[parsed - 1].SetActive(true);
-                    speedLevel = parsed + 1;
+                    maxSpeed *= parsed;
+                    acceleration += parsed * 50;
                 }
             }
         }
 
         UpdateHealthSprite();
         RectTransform HPBarRect = healthBar.GetComponent<Image>().rectTransform;
-        int HPgained = 7 * (healthLevel - 1);
+        int HPgained = 7 * healthLevel;
         HPBarRect.sizeDelta = new Vector2(32 + HPgained, HPBarRect.sizeDelta.y);
         HPBarRect.position = new Vector2(HPBarRect.position.x + HPgained, HPBarRect.position.y);
 
         gameManager.UpdateOverheatSprite();
         RectTransform OHBarRect = gameManager.overheatBar.GetComponent<Image>().rectTransform;
-        int OHgained = 10 * (gameManager.gunLevel - 1);
+        int OHgained = 10 * (gameManager.gunLevel);
         OHBarRect.sizeDelta = new Vector2(44 - OHgained, OHBarRect.sizeDelta.y);
         OHBarRect.position = new Vector2(OHBarRect.position.x - OHgained, OHBarRect.position.y);
     }
