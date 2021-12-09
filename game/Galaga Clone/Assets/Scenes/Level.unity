@@ -186,7 +186,7 @@ RectTransform:
   m_GameObject: {fileID: 163733001}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1412178586}
   m_RootOrder: 3
@@ -194,7 +194,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -435, y: 125}
-  m_SizeDelta: {x: 108, y: 40}
+  m_SizeDelta: {x: 44, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &183888145
 GameObject:
@@ -1509,9 +1509,39 @@ MonoBehaviour:
   - {fileID: 2500958488499531473, guid: 4492c82e334d95244b87e20c49023ab4, type: 3}
   - {fileID: 2500958488499531473, guid: 04da8a80bfdaab346bbc368517ca35e7, type: 3}
   - {fileID: 2500958488499531473, guid: d0f21612a7b8187489147e5fdae06d4f, type: 3}
-  overheatImagesL0: []
-  overheatImagesL1: []
-  overheatImagesL2: []
+  overheatImagesL0:
+  - {fileID: -8968299138258521225, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 7551043254583845746, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 7989988704238006954, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 4457593982104580519, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -7517909409767769406, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 3120736492800959703, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 1987624177182971574, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 8412888689040046537, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 6284449735354801866, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  overheatImagesL1:
+  - {fileID: 2076153967861906592, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -917003982930386886, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 377411510454738676, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 5561589960036194651, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -6915443322747879884, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 5741179476473161496, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -785894184116271329, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -7089692163874764125, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 5987089236044222059, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 5987089236044222059, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  overheatImagesL2:
+  - {fileID: -1166517031343363957, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 9010255506059535216, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -6991136054094469189, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 9116984024104893082, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -6809570042729921834, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 9170831470615742100, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 1049454263193107735, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 517394025734270882, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 3925210047425096371, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 4192333264592992688, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 3669703431172291903, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
   gameStarted: 0
   gameOver: 0
   HUDElements: []
@@ -1519,6 +1549,7 @@ MonoBehaviour:
   gamePaused: 0
   audioSource: {fileID: 0}
   overheatAmount: 0
+  overheatMax: 100
   gunLevel: 1
 --- !u!1 &673320184
 GameObject:

@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int overheatAmount;
     [HideInInspector]
+    public int overheatMax = 100;
+    [HideInInspector]
     public int gunLevel = 1; // Level is 1 more than ingame level
 
     private int wave;
@@ -152,7 +154,7 @@ public class GameManager : MonoBehaviour
         while (gameOver == false)
         {
             yield return new WaitForSeconds(0.15F);
-            if (overheatAmount > 95)
+            if (overheatAmount > (overheatMax - 5))
             {
                 overheatCooldown = true;
             }
@@ -184,55 +186,41 @@ public class GameManager : MonoBehaviour
 
     public void UpdateOverheatSprite()
     {
-        // each image is 12.5% less
-        //if (overheatAmount <= 6.25F)
-        //{
-        //    overheatBar.sprite = overheatOverlay0;
-        //}
-        //else if (overheatAmount <= 12.5F && overheatAmount > 6.25F)
-        //{
-        //    overheatBar.sprite = overheatOverlay1;
-        //}
-        //else if (overheatAmount <= 25 && overheatAmount > 12.5F)
-        //{
-        //    overheatBar.sprite = overheatOverlay2;
-        //}
-        //else if (overheatAmount <= 37.5F && overheatAmount > 25)
-        //{
-        //    overheatBar.sprite = overheatOverlay3;
-        //}
-        //else if (overheatAmount <= 50 && overheatAmount > 37.5F)
-        //{
-        //    overheatBar.sprite = overheatOverlay4;
-        //}
-        //else if (overheatAmount <= 62.5F && overheatAmount > 50)
-        //{
-        //    overheatBar.sprite = overheatOverlay5;
-        //}
-        //else if (overheatAmount <= 75 && overheatAmount > 62.5F)
-        //{
-        //    overheatBar.sprite = overheatOverlay6;
-        //}
-        //else if (overheatAmount <= 87.5F && overheatAmount > 75)
-        //{
-        //    overheatBar.sprite = overheatOverlay7;
-        //}
-        //else if (overheatAmount <= 100 && overheatAmount > 87.5F)
-        //{
-        //    overheatBar.sprite = overheatOverlay8;
-        //}
         Image overheatImage = overheatBar.GetComponent<Image>();
         if (gunLevel == 1)
         {
-            overheatImage.sprite = overheatImagesL0[int.Parse(overheatAmount.ToString()[0].ToString())];
+            if (overheatAmount > 9)
+            {
+                overheatImage.sprite = overheatImagesL0[int.Parse(overheatAmount.ToString()[0].ToString()) - 1];
+            }
+            else
+            {
+                overheatImage.sprite = overheatImagesL0[0];
+            }
         }
         else if (gunLevel == 2)
         {
-            overheatImage.sprite = overheatImagesL1[int.Parse(overheatAmount.ToString()[0].ToString())];
+            Levels2And3Sprits(overheatImage, overheatImagesL1);
         }
         else if (gunLevel == 3)
         {
-            overheatImage.sprite = overheatImagesL2[int.Parse(overheatAmount.ToString()[0].ToString())];
+            Levels2And3Sprits(overheatImage, overheatImagesL2);
+        }
+    }
+
+    private void Levels2And3Sprits(Image image, List<Sprite> imageList)
+    {
+        if (overheatAmount > 9 && overheatAmount < 100)
+        {
+            image.sprite = imageList[int.Parse(overheatAmount.ToString()[0].ToString()) - 1];
+        }
+        else if (overheatAmount > 99)
+        {
+            image.sprite = imageList[imageList.Count - 1];
+        }
+        else
+        {
+            image.sprite = imageList[0];
         }
     }
 

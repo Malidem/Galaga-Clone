@@ -211,7 +211,7 @@ public class PlayerManager : MonoBehaviour
         while (gameManager.gameOver == false)
         {
             yield return new WaitForSeconds(0.25F);
-            if (gameManager.overheatAmount <= 95 && gameManager.overheatCooldown == false)
+            if (gameManager.overheatAmount <= (gameManager.overheatMax - 5) && gameManager.overheatCooldown == false)
             {
                 canFire = true;
             }
@@ -234,7 +234,7 @@ public class PlayerManager : MonoBehaviour
                 {
                     gunUpgrades[parsed - 1].SetActive(true);
                     gameManager.gunLevel = parsed + 1;
-                    //gameManager.overheatAmount += parsed;
+                    gameManager.overheatMax += parsed * 50;
                 }
                 else if (upgrade[0] == "health")
                 {
@@ -251,10 +251,15 @@ public class PlayerManager : MonoBehaviour
         }
 
         UpdateHealthSprite();
-
         RectTransform HPBarRect = healthBar.GetComponent<Image>().rectTransform;
-        int gained = 7 * (healthLevel - 1);
-        HPBarRect.sizeDelta = new Vector2(32 + gained, HPBarRect.sizeDelta.y);
-        HPBarRect.position = new Vector2(HPBarRect.position.x + gained, HPBarRect.position.y);
+        int HPgained = 7 * (healthLevel - 1);
+        HPBarRect.sizeDelta = new Vector2(32 + HPgained, HPBarRect.sizeDelta.y);
+        HPBarRect.position = new Vector2(HPBarRect.position.x + HPgained, HPBarRect.position.y);
+
+        gameManager.UpdateOverheatSprite();
+        RectTransform OHBarRect = gameManager.overheatBar.GetComponent<Image>().rectTransform;
+        int OHgained = 10 * (gameManager.gunLevel - 1);
+        OHBarRect.sizeDelta = new Vector2(44 - OHgained, OHBarRect.sizeDelta.y);
+        OHBarRect.position = new Vector2(OHBarRect.position.x - OHgained, OHBarRect.position.y);
     }
 }
