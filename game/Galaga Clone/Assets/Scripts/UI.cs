@@ -154,4 +154,10 @@ public class UI : MonoBehaviour
             videoMenu.SetActive(false);
         }
     }
+
+    public void StarChartButton()
+    {
+        LoadScene("MainMenu");
+        MainMenuManager.loadStarChart = true;
+    }
 }

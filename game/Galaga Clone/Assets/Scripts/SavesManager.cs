@@ -53,6 +53,7 @@ public class SavesManager : MonoBehaviour
         for (int i = 0; i < DataBaseManager.levelsCompleted; i++)
         {
             levels[i].GetComponent<Image>().sprite = completedLevel;
+            levels[i].GetComponent<LevelHover>().isUnlocked = false;
         }
     }
 
