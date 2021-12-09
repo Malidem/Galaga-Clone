@@ -1504,7 +1504,7 @@ MonoBehaviour:
   - 2
   cursor: {fileID: 2800000, guid: 7c1bec6661b34db4eaa609639337a52f, type: 3}
   overheatAmount: 0
-  points: 0
+  money: 0
   overheatSound: {fileID: 0}
   enemyTypes:
   - {fileID: 2500958488499531473, guid: 4492c82e334d95244b87e20c49023ab4, type: 3}
@@ -2296,7 +2296,7 @@ GameObject:
   - component: {fileID: 1098301029}
   - component: {fileID: 1098301028}
   m_Layer: 5
-  m_Name: Points
+  m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2353,7 +2353,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Points: 0'
+  m_Text: 'Money: 0'
 --- !u!222 &1098301029
 CanvasRenderer:
   m_ObjectHideFlags: 0

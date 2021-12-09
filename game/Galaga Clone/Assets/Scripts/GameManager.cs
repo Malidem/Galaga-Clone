@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public List<float> timeBetweenDialogues = new List<float>();
     public Texture2D cursor;
     public int overheatAmount;
-    public int points;
+    public int money;
     public AudioClip overheatSound;
     public List<GameObject> enemyTypes;
     
@@ -135,10 +135,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddPoints(int amount)
+    public void AddMoney(int amount)
     {
-        points += amount;
-        HUDElements[2].gameObject.GetComponent<Text>().text = "Points: " + String.Format("{0:n0}", points);
+        money += amount;
+        HUDElements[2].gameObject.GetComponent<Text>().text = "Money: " + String.Format("{0:n0}", money);
     }
 
     private IEnumerator Overheat()
@@ -221,7 +221,8 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         gameOverMenu.SetActive(true);
-        gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final Points: " + String.Format("{0:n0}", points);
+        gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final money: " + String.Format("{0:n0}", money);
+        DataBaseManager.money += money;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
