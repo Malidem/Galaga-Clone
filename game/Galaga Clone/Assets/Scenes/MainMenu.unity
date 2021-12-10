@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 244984871}
   mainMenu: {fileID: 1432578613}
-  gameMenu: {fileID: 3426409569550803512, guid: 5169aa356c050e24c8e9967f570c73bf,
+  gameMenu: {fileID: 3426409569550803512, guid: a997c2cf013cd2f4b871bd1bb4775793,
     type: 3}
   accountMenu: {fileID: 166738782}
   errorMenu: {fileID: 875151935}
