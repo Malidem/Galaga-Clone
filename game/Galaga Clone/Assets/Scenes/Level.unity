@@ -1403,7 +1403,7 @@ MonoBehaviour:
   overheatOverlay8: {fileID: 6284449735354801866, guid: 6d9adfe9817873843baafd5507ccf7e2,
     type: 3}
   dialogueText: {fileID: 687915281}
-  dialoges:
+  dialogues:
   - Hello World
   - mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
   timeBetweenDialogues:

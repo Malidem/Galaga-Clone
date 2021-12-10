@@ -156,6 +156,7 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &530272234333169186
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +313,7 @@ MonoBehaviour:
   videoMenu: {fileID: 3199362550618342648}
   controlesButton: {fileID: 8000831181793633411}
   controlesMenu: {fileID: 3320616094776356779}
+  canvas: {fileID: 0}
 --- !u!1 &1104850143658644439
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +473,7 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &1652037096855974888
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +743,7 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &2160781446965267630
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,6 +903,7 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &2591386213430744719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,6 +1443,7 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &3426409569550803512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,6 +1511,7 @@ MonoBehaviour:
   videoMenu: {fileID: 3199362550618342648}
   controlesButton: {fileID: 8000831181793633411}
   controlesMenu: {fileID: 3320616094776356779}
+  canvas: {fileID: 0}
 --- !u!114 &5013297198164213947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2215,6 +2222,7 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!114 &861236065062434496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2383,6 +2391,7 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &4900061612548276240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,6 +2664,7 @@ MonoBehaviour:
   videoMenu: {fileID: 3199362550618342648}
   controlesButton: {fileID: 8000831181793633411}
   controlesMenu: {fileID: 3320616094776356779}
+  canvas: {fileID: 0}
 --- !u!1 &6636926051967631711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2810,6 +2820,7 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &6690296065811750201
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,6 +3055,7 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &7571030270265127636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3356,6 +3368,7 @@ MonoBehaviour:
   videoMenu: {fileID: 3199362550618342648}
   controlesButton: {fileID: 8000831181793633411}
   controlesMenu: {fileID: 3320616094776356779}
+  canvas: {fileID: 0}
 --- !u!1 &8118013642629357177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,6 +3524,7 @@ MonoBehaviour:
   videoMenu: {fileID: 0}
   controlesButton: {fileID: 0}
   controlesMenu: {fileID: 0}
+  canvas: {fileID: 0}
 --- !u!1 &8390091324515630878
 GameObject:
   m_ObjectHideFlags: 0
