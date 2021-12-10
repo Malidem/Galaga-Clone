@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour
     public Sprite overheatOverlay7;
     public Sprite overheatOverlay8;
     public Text dialogueText;
-    [TextArea(3, 10)] [SerializeField] protected List<string> dialoges = new List<string>();
+    [TextArea(3, 10)] [SerializeField] protected List<string> dialogues = new List<string>();
     public List<float> timeBetweenDialogues = new List<float>();
     public Texture2D cursor;
-    public int points;
+    public int money;
     public AudioClip overheatSound;
     public List<GameObject> enemyTypes;
     public List<Sprite> overheatImagesL0 = new List<Sprite>();
@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         audioSource = canvas.GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("soundVolume");
     }
 
     public void StartWaves()
@@ -143,10 +144,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddPoints(int amount)
+    public void AddMoney(int amount)
     {
-        points += amount;
-        HUDElements[2].gameObject.GetComponent<Text>().text = "Points: " + String.Format("{0:n0}", points);
+        money += amount;
+        HUDElements[2].gameObject.GetComponent<Text>().text = "Money: " + String.Format("{0:n0}", money);
     }
 
     private IEnumerator Overheat()
@@ -228,7 +229,8 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         gameOverMenu.SetActive(true);
-        gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final Points: " + String.Format("{0:n0}", points);
+        gameOverMenu.GetComponentsInChildren<Transform>()[2].GetComponent<Text>().text = "Final money: " + String.Format("{0:n0}", money);
+        DataBaseManager.money += money;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -263,53 +265,64 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator UpdateDialogue()
     {
-        for (int i = 0; i < dialoges.Count; i++)
+        for (int i = 0; i < dialogues.Count; i++)
         {
-            string text = dialoges[i];
             yield return new WaitForSeconds(timeBetweenDialogues[i]);
-            RectTransform rect = dialogueBackground.GetComponent<RectTransform>();
-            rect.sizeDelta = new Vector2(0, rect.sizeDelta.y);
-            dialogueBackground.SetActive(true);
-            dialogueText.gameObject.SetActive(true);
-
-            float i2 = text.Length;
-            while (i2 >= 0)
+            if (gameOver == false)
             {
-                if (rect.sizeDelta.x <= 555)
+                string text = dialogues[i];
+                RectTransform rect = dialogueBackground.GetComponent<RectTransform>();
+                rect.sizeDelta = new Vector2(0, rect.sizeDelta.y);
+                dialogueBackground.SetActive(true);
+                dialogueText.gameObject.SetActive(true);
+
+                float i2 = text.Length;
+                while (i2 >= 0)
                 {
-                    rect.sizeDelta = new Vector2(rect.sizeDelta.x + 15, rect.sizeDelta.y);
+                    if (rect.sizeDelta.x <= 555)
+                    {
+                        rect.sizeDelta = new Vector2(rect.sizeDelta.x + 15, rect.sizeDelta.y);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    yield return new WaitForSeconds(0.05F);
+                    i2--;
+                }
+
+                yield return new WaitForSeconds(0.5F);
+                if ((text.Length + 1) > 148)
+                {
+                    dialogueText.text = text.Substring(0, 148);
+                    if (gameOver == false)
+                    {
+                        yield return new WaitForSeconds(5);
+                        dialogueText.text = text.Substring(149);
+                    }
                 }
                 else
                 {
-                    break;
+                    dialogueText.text = text;
                 }
-                yield return new WaitForSeconds(0.05F);
-                i2--;
-            }
-
-            yield return new WaitForSeconds(0.5F);
-            if ((text.Length + 1) > 148) {
-                dialogueText.text = text.Substring(0, 148);
                 yield return new WaitForSeconds(5);
-                dialogueText.text = text.Substring(149);
+                dialogueText.text = "";
+                dialogueText.gameObject.SetActive(false);
+
+                int i3 = 0;
+                while (i3 <= rect.sizeDelta.x)
+                {
+                    rect.sizeDelta = new Vector2(rect.sizeDelta.x - 15, rect.sizeDelta.y);
+                    yield return new WaitForSeconds(0.05F);
+                    i3++;
+                }
+
+                dialogueBackground.SetActive(false);
             }
             else
             {
-                dialogueText.text = text;
+                yield break;
             }
-            yield return new WaitForSeconds(5);
-            dialogueText.text = "";
-            dialogueText.gameObject.SetActive(false);
-
-            int i3 = 0;
-            while (i3 <= rect.sizeDelta.x)
-            {
-                rect.sizeDelta = new Vector2(rect.sizeDelta.x - 15, rect.sizeDelta.y);
-                yield return new WaitForSeconds(0.05F);
-                i3++;
-            }
-
-            dialogueBackground.SetActive(false);
         }
     }
 }
