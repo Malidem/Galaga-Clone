@@ -182,6 +182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: none
   level: 6
+  rarity: 0
   savesManager: {fileID: 0}
   dragObject: {fileID: 0}
   upgradeParent: {fileID: 0}
+  upgradeSlots: []

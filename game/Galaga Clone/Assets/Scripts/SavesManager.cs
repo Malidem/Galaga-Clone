@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class SavesManager : MonoBehaviour
     public Sprite completedLevel;
     public Sprite unlockedLevel;
     public GameObject[] upgradeSlots;
+    public GameObject[] shopSlots;
     public List<GameObject> levels = new List<GameObject>();
     public List<GameObject> upgrades = new List<GameObject>();
 
@@ -44,6 +46,7 @@ public class SavesManager : MonoBehaviour
             transform.GetChild(3).GetChild(2).GetComponent<Text>().text = "Money: " + DataBaseManager.money;
             LoadLevels();
             CreateUpgrades();
+            RefreshShop();
         }
         else
         {
@@ -144,6 +147,29 @@ public class SavesManager : MonoBehaviour
         for (int i = 0; i < children.Length; i++)
         {
             children[i].SetSiblingIndex(i);
+        }
+    }
+
+    public void RefreshShop()
+    {
+        for (int i = 0; i < shopSlots.Length; i++)
+        {
+            //foreach (string name in Enum.GetNames(typeof(UpgradeCard.Rarities)))
+            for (int i2 = 0; i2 < upgrades.Count; i2++)
+            {
+                if (upgrades[i2].GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Legendary)
+                {
+
+                }
+                else if (upgrades[i2].GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Rare)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
         }
     }
 }

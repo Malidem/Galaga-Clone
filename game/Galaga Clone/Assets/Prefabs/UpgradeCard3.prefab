@@ -183,6 +183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: health
   level: 2
+  rarity: 2
   savesManager: {fileID: 0}
   dragObject: {fileID: 0}
   upgradeParent: {fileID: 0}
+  upgradeSlots: []
