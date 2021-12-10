@@ -20,6 +20,7 @@ public class UI : MonoBehaviour
     public GameObject videoMenu;
     public GameObject controlesButton;
     public GameObject controlesMenu;
+    public GameObject canvas;
     private GameManager gameManager;
     
     public void MainSettings(GameObject pausemenu)
@@ -159,5 +160,12 @@ public class UI : MonoBehaviour
     {
         LoadScene("MainMenu");
         MainMenuManager.loadStarChart = true;
+    }
+
+    public void SoundVolumeSlider()
+    {
+        float value = GetComponent<Slider>().value;
+        PlayerPrefs.SetFloat("soundVolume", value);
+        canvas.GetComponent<AudioSource>().volume = value;
     }
 }

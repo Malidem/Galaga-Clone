@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         audioSource = canvas.GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("soundVolume");
     }
 
     public void StartWaves()

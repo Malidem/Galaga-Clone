@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
 
     public GameObject canvas;
     public GameObject accountMenu;
+    public Slider soundVolumeSlider;
     public Texture2D cursor;
 
     private MainMenuUI mainMenuUI;
@@ -17,6 +19,9 @@ public class MainMenuManager : MonoBehaviour
     {
         mainMenuUI = canvas.GetComponent<MainMenuUI>();
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
+        float value = PlayerPrefs.GetFloat("soundVolume");
+        soundVolumeSlider.value = value;
+        canvas.GetComponent<AudioSource>().volume = value;
         if (PlayerPrefs.GetString("email") != "")
         {
             StartCoroutine(mainMenuUI.Login(PlayerPrefs.GetString("email"), PlayerPrefs.GetString("password")));

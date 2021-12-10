@@ -33,6 +33,7 @@ public class PlayerManager : MonoBehaviour
         gameManager = eventSystem.GetComponent<GameManager>();
         StartCoroutine(FireCooldown());
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("soundVolume");
     }
 
     void Update()
