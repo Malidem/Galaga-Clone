@@ -566,6 +566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 244984871}
   accountMenu: {fileID: 166738782}
+  cursor: {fileID: 2800000, guid: 7c1bec6661b34db4eaa609639337a52f, type: 3}
 --- !u!1 &121828743
 GameObject:
   m_ObjectHideFlags: 0

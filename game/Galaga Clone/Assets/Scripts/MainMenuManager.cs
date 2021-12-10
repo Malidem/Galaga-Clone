@@ -8,12 +8,15 @@ public class MainMenuManager : MonoBehaviour
 
     public GameObject canvas;
     public GameObject accountMenu;
-    public MainMenuUI mainMenuUI;
+    public Texture2D cursor;
+
+    private MainMenuUI mainMenuUI;
 
     // Start is called before the first frame update
     void Start()
     {
         mainMenuUI = canvas.GetComponent<MainMenuUI>();
+        Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         if (PlayerPrefs.GetString("email") != "")
         {
             StartCoroutine(mainMenuUI.Login(PlayerPrefs.GetString("email"), PlayerPrefs.GetString("password")));
