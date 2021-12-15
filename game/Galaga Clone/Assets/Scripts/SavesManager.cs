@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,18 +11,31 @@ public class SavesManager : MonoBehaviour
     public GameObject scroller;
     public Sprite completedLevel;
     public Sprite unlockedLevel;
+    public Text moneyText;
     public GameObject[] upgradeSlots;
     public GameObject[] shopSlots;
     public List<GameObject> levels = new List<GameObject>();
     public List<GameObject> upgrades = new List<GameObject>();
+    public List<GameObject> buyableUpgrades = new List<GameObject>();
+    public List<GameObject> commonUpgrades = new List<GameObject>();
+    public List<GameObject> rareUpgrades = new List<GameObject>();
+    public List<GameObject> legendaryUpgrades = new List<GameObject>();
+
+    private System.Random random = new System.Random();
 
     // Start is called before the first frame update
     void Start()
     {
+        buyableUpgrades = upgrades.ToList();
         StartCoroutine(getSaveData());
         Rect rect = scroller.GetComponent<RectTransform>().rect;
         scroller.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
         scroller.GetComponent<BoxCollider2D>().size = new Vector2(rect.width / scroller.transform.lossyScale.x, rect.height / scroller.transform.lossyScale.y);
+    }
+
+    void Update()
+    {
+        moneyText.text = "Money: " + string.Format("{0:n0}", DataBaseManager.money);
     }
 
     public IEnumerator getSaveData()
@@ -46,6 +58,9 @@ public class SavesManager : MonoBehaviour
             transform.GetChild(3).GetChild(2).GetComponent<Text>().text = "Money: " + DataBaseManager.money;
             LoadLevels();
             CreateUpgrades();
+            commonUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Common).ToList();
+            rareUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Rare).ToList();
+            legendaryUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Legendary).ToList();
             RefreshShop();
         }
         else
@@ -88,6 +103,7 @@ public class SavesManager : MonoBehaviour
                         card.dragObject = dragObject;
                         card.upgradeSlots = upgradeSlots;
                         card.AddToUpgrades();
+                        buyableUpgrades.Remove(upgrades[i]);
                     }
                 }
             }
@@ -150,26 +166,110 @@ public class SavesManager : MonoBehaviour
         }
     }
 
+    // CLEAN UP THIS METHOD!!! + shorten
     public void RefreshShop()
     {
-        for (int i = 0; i < shopSlots.Length; i++)
+        int iteration = 0;
+        int i = 0;
+        int i2 = 0;
+        while (i < shopSlots.Length && iteration < 5)
         {
-            //foreach (string name in Enum.GetNames(typeof(UpgradeCard.Rarities)))
-            for (int i2 = 0; i2 < upgrades.Count; i2++)
+            iteration++;
+            ShopButton shopButton = shopSlots[i].GetComponent<ShopButton>();
+            Text cardPrice = shopSlots[i].transform.GetChild(1).GetComponent<Text>();
+            GameObject card;
+            int price;
+            start:
+            int num = random.Next(0, 100);
+            if (num >= 80)
             {
-                if (upgrades[i2].GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Legendary)
+                try
                 {
-
+                    card = legendaryUpgrades[random.Next(0, legendaryUpgrades.Count)];
+                    legendaryUpgrades.Remove(card);
+                    price = 10000;
+                    i2++;
                 }
-                else if (upgrades[i2].GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Rare)
+                catch
                 {
-
+                    if (ShopIfs())
+                    {
+                        goto start;
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
-                else
+            }
+            else if (num < 80 && num >= 50)
+            {
+                try
                 {
-
+                    card = rareUpgrades[random.Next(0, rareUpgrades.Count)];
+                    rareUpgrades.Remove(card);
+                    price = 5000;
+                    i2++;
+                }
+                catch
+                {
+                    if (ShopIfs())
+                    {
+                        goto start;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    card = commonUpgrades[random.Next(0, commonUpgrades.Count)];
+                    commonUpgrades.Remove(card);
+                    price = 2000;
+                    i2++;
+                }
+                catch
+                {
+                    if (ShopIfs())
+                    {
+                        goto start;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            UpgradeCard instanceProps = Instantiate(card, shopSlots[i].transform).GetComponent<UpgradeCard>();
+            instanceProps.savesManager = GetComponent<SavesManager>();
+            instanceProps.upgradeParent = upgradesParent;
+            instanceProps.dragObject = dragObject;
+            instanceProps.upgradeSlots = upgradeSlots;
+            instanceProps.transform.SetSiblingIndex(2);
+            shopButton.hasCard = true;
+            shopButton.price = price;
+            cardPrice.text = string.Format("{0:n0}", price);
+            i = i2;
+        }
+        if (iteration == 5)
+        {
+            for (int i3 = 0; i3 < shopSlots.Length; i3++)
+            {
+                if (shopSlots[i3].GetComponent<ShopButton>().hasCard == false)
+                {
+                    shopSlots[i3].transform.GetChild(2).GetComponent<Button>().interactable = false;
+                    shopSlots[i3].transform.GetChild(1).gameObject.SetActive(false);
                 }
             }
         }
+    }
+
+    private bool ShopIfs()
+    {
+        return commonUpgrades.Count > 0 || rareUpgrades.Count > 0 || legendaryUpgrades.Count > 0;
     }
 }
