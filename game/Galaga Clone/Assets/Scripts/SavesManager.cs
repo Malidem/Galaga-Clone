@@ -166,7 +166,6 @@ public class SavesManager : MonoBehaviour
         }
     }
 
-    // CLEAN UP THIS METHOD!!! + shorten
     public void RefreshShop()
     {
         int iteration = 0;
@@ -180,68 +179,39 @@ public class SavesManager : MonoBehaviour
             GameObject card;
             int price;
             start:
+            List<GameObject> upgradeList;
             int num = random.Next(0, 100);
             if (num >= 80)
             {
-                try
-                {
-                    card = legendaryUpgrades[random.Next(0, legendaryUpgrades.Count)];
-                    legendaryUpgrades.Remove(card);
-                    price = 10000;
-                    i2++;
-                }
-                catch
-                {
-                    if (ShopIfs())
-                    {
-                        goto start;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
+                upgradeList = legendaryUpgrades;
+                price = 10000;
             }
             else if (num < 80 && num >= 50)
             {
-                try
-                {
-                    card = rareUpgrades[random.Next(0, rareUpgrades.Count)];
-                    rareUpgrades.Remove(card);
-                    price = 5000;
-                    i2++;
-                }
-                catch
-                {
-                    if (ShopIfs())
-                    {
-                        goto start;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
+                upgradeList = rareUpgrades;
+                price = 5000;
             }
             else
             {
-                try
+                upgradeList = commonUpgrades;
+                price = 2000;
+            }
+
+            try
+            {
+                card = upgradeList[random.Next(0, upgradeList.Count)];
+                upgradeList.Remove(card);
+                i2++;
+            }
+            catch
+            {
+                if (commonUpgrades.Count > 0 || rareUpgrades.Count > 0 || legendaryUpgrades.Count > 0)
                 {
-                    card = commonUpgrades[random.Next(0, commonUpgrades.Count)];
-                    commonUpgrades.Remove(card);
-                    price = 2000;
-                    i2++;
+                    goto start;
                 }
-                catch
+                else
                 {
-                    if (ShopIfs())
-                    {
-                        goto start;
-                    }
-                    else
-                    {
-                        continue;
-                    }
+                    continue;
                 }
             }
             UpgradeCard instanceProps = Instantiate(card, shopSlots[i].transform).GetComponent<UpgradeCard>();
@@ -266,10 +236,5 @@ public class SavesManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    private bool ShopIfs()
-    {
-        return commonUpgrades.Count > 0 || rareUpgrades.Count > 0 || legendaryUpgrades.Count > 0;
     }
 }
