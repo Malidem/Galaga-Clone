@@ -186,4 +186,9 @@ public class UI : MonoBehaviour
         PlayerPrefs.SetFloat("soundVolume", value);
         canvas.GetComponent<AudioSource>().volume = value;
     }
+    
+    public void CancelButton()
+    {
+        transform.parent.gameObject.SetActive(false);
+    }
 }

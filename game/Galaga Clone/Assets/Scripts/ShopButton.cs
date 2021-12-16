@@ -5,13 +5,23 @@ using UnityEngine.UI;
 
 public class ShopButton : MonoBehaviour
 {
-    public int price;
     public SavesManager savesManager;
 
+    [HideInInspector]
+    public int price;
     [HideInInspector]
     public bool hasCard;
 
     public void ShopSlotButton()
+    {
+        Transform confirmMenu = transform.parent.GetChild(6);
+        Button confirmButton = confirmMenu.GetChild(1).GetComponent<Button>();
+        confirmButton.onClick.RemoveAllListeners();
+        confirmButton.onClick.AddListener(delegate { ConfirmPurchaseButton(); });
+        confirmMenu.gameObject.SetActive(true);
+    }
+
+    public void ConfirmPurchaseButton()
     {
         if (DataBaseManager.money > price)
         {
@@ -27,6 +37,7 @@ public class ShopButton : MonoBehaviour
             unlockedCards.Add(cardProps.type + "|" + cardProps.level);
             DataBaseManager.upgradesUnlocked = unlockedCards.ToArray();
             hasCard = false;
+            transform.parent.GetChild(6).gameObject.SetActive(false);
         }
     }
 }
