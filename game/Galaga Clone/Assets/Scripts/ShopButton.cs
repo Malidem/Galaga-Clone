@@ -28,14 +28,23 @@ public class ShopButton : MonoBehaviour
             GameObject card = transform.GetChild(2).gameObject;
             UpgradeCard cardProps = card.GetComponent<UpgradeCard>();
             List<string> unlockedCards = new List<string>(DataBaseManager.upgradesUnlocked);
+            List<string> shopItems = new List<string>(DataBaseManager.shopItems);
+            string asString = cardProps.type + "|" + cardProps.level;
+            int index = shopItems.IndexOf(asString);
 
             transform.GetChild(3).GetComponent<Button>().interactable = false;
             transform.GetChild(1).gameObject.SetActive(false);
             card.transform.SetParent(savesManager.upgradesParent.transform, false);
             cardProps.AddToUpgrades();
             DataBaseManager.money -= price;
-            unlockedCards.Add(cardProps.type + "|" + cardProps.level);
+            if (string.Join(",", DataBaseManager.upgradesUnlocked) == "none")
+            {
+                unlockedCards.Clear();
+            }
+            unlockedCards.Add(asString);
             DataBaseManager.upgradesUnlocked = unlockedCards.ToArray();
+            shopItems[index] = "none";
+            DataBaseManager.shopItems = shopItems.ToArray();
             hasCard = false;
             transform.parent.GetChild(6).gameObject.SetActive(false);
         }

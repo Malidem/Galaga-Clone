@@ -236,7 +236,8 @@ public class MainMenuUI : MonoBehaviour
         form.AddField("levels_completed", 0);
         form.AddField("levels_unlocked", 1);
         form.AddField("upgrades_unlocked", "none");
-        form.AddField("upgrades_active", "none");
+        form.AddField("upgrades_active", "none,none,none");
+        form.AddField("shop_items", "none,none,none");
         WWW www = new WWW(DataBaseManager.URL + "savedata.php", form);
 
         yield return www;

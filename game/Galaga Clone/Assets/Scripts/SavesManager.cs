@@ -55,13 +55,11 @@ public class SavesManager : MonoBehaviour
             DataBaseManager.levelsCompleted = int.Parse(data[3]);
             DataBaseManager.upgradesUnlocked = data[4].Split(',');
             DataBaseManager.upgradesActive = data[5].Split(',');
+            DataBaseManager.shopItems = data[6].Split(',');
             transform.GetChild(3).GetChild(2).GetComponent<Text>().text = "Money: " + DataBaseManager.money;
             LoadLevels();
             CreateUpgrades();
-            commonUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Common).ToList();
-            rareUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Rare).ToList();
-            legendaryUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Legendary).ToList();
-            RefreshShop();
+            LoadShop();
         }
         else
         {
@@ -86,9 +84,9 @@ public class SavesManager : MonoBehaviour
 
     private void CreateUpgrades()
     {
-        if (DataBaseManager.upgradesUnlocked[0].Split('|')[0] != "none")
+        for (int i = 0; i < DataBaseManager.upgradesUnlocked.Length; i++)
         {
-            for (int i = 0; i < DataBaseManager.upgradesUnlocked.Length; i++)
+            if (DataBaseManager.upgradesUnlocked[i] != "none")
             {
                 string[] upgrade = DataBaseManager.upgradesUnlocked[i].Split('|');
                 for (int i2 = 0; i2 < upgrades.Count; i2++)
@@ -97,20 +95,23 @@ public class SavesManager : MonoBehaviour
                     string upgradeLevel = upgrades[i2].GetComponent<UpgradeCard>().level;
                     if (upgrade[0] == upgradeType && upgrade[1] == upgradeLevel)
                     {
-                        UpgradeCard card = Instantiate(upgrades[i], upgradesParent.transform).GetComponent<UpgradeCard>();
+                        UpgradeCard card = Instantiate(upgrades[i2], upgradesParent.transform).GetComponent<UpgradeCard>();
                         card.savesManager = GetComponent<SavesManager>();
                         card.upgradeParent = upgradesParent;
                         card.dragObject = dragObject;
                         card.upgradeSlots = upgradeSlots;
                         card.AddToUpgrades();
-                        buyableUpgrades.Remove(upgrades[i]);
+                        buyableUpgrades.Remove(upgrades[i2]);
                     }
                 }
             }
+        }
 
-            if (!isEmpty(DataBaseManager.upgradesActive[0]) || !isEmpty(DataBaseManager.upgradesActive[1]) || !isEmpty(DataBaseManager.upgradesActive[2]))
+        if (!isEmpty(DataBaseManager.upgradesActive[0]) || !isEmpty(DataBaseManager.upgradesActive[1]) || !isEmpty(DataBaseManager.upgradesActive[2]))
+        {
+            for (int i = 0; i < DataBaseManager.upgradesActive.Length; i++)
             {
-                for (int i = 0; i < DataBaseManager.upgradesActive.Length; i++)
+                if (DataBaseManager.upgradesActive[i] != "none")
                 {
                     string[] upgrade = DataBaseManager.upgradesActive[i].Split('|');
                     for (int i2 = 0; i2 < upgradesParent.transform.childCount; i2++)
@@ -166,7 +167,22 @@ public class SavesManager : MonoBehaviour
         }
     }
 
-    public void RefreshShop()
+    private void LoadShop()
+    {
+        commonUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Common).ToList();
+        rareUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Rare).ToList();
+        legendaryUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Legendary).ToList();
+        if (isEmpty(DataBaseManager.shopItems[0]) && isEmpty(DataBaseManager.shopItems[1]) && isEmpty(DataBaseManager.shopItems[2]))
+        {
+            RefreshShop();
+        }
+        else
+        {
+            LoadShopState();
+        }
+    }
+
+    private void RefreshShop()
     {
         int iteration = 0;
         int i = 0;
@@ -174,8 +190,6 @@ public class SavesManager : MonoBehaviour
         while (i < shopSlots.Length && iteration < 5)
         {
             iteration++;
-            ShopButton shopButton = shopSlots[i].GetComponent<ShopButton>();
-            Text cardPrice = shopSlots[i].transform.GetChild(1).GetComponent<Text>();
             GameObject card;
             int price;
             start:
@@ -214,27 +228,79 @@ public class SavesManager : MonoBehaviour
                     continue;
                 }
             }
-            UpgradeCard instanceProps = Instantiate(card, shopSlots[i].transform).GetComponent<UpgradeCard>();
-            instanceProps.savesManager = GetComponent<SavesManager>();
-            instanceProps.upgradeParent = upgradesParent;
-            instanceProps.dragObject = dragObject;
-            instanceProps.upgradeSlots = upgradeSlots;
-            instanceProps.transform.SetSiblingIndex(2);
-            shopButton.hasCard = true;
-            shopButton.price = price;
-            cardPrice.text = string.Format("{0:n0}", price);
+            CreateCardInSlot(card, price, i);
             i = i2;
         }
-        if (iteration == 5)
+        AfterShopLoaded();
+    }
+
+    private void LoadShopState()
+    {
+        for (int i = 0; i < DataBaseManager.shopItems.Length; i++)
         {
-            for (int i3 = 0; i3 < shopSlots.Length; i3++)
+            string[] upgrade = DataBaseManager.shopItems[i].Split('|');
+            for (int i2 = 0; i2 < buyableUpgrades.Count; i2++)
             {
-                if (shopSlots[i3].GetComponent<ShopButton>().hasCard == false)
+                if (DataBaseManager.shopItems[i] != "none")
                 {
-                    shopSlots[i3].transform.GetChild(2).GetComponent<Button>().interactable = false;
-                    shopSlots[i3].transform.GetChild(1).gameObject.SetActive(false);
+                    string upgradeType = buyableUpgrades[i2].GetComponent<UpgradeCard>().type;
+                    string upgradeLevel = buyableUpgrades[i2].GetComponent<UpgradeCard>().level;
+                    if (upgrade[0] == upgradeType && upgrade[1] == upgradeLevel)
+                    {
+                        if (upgradeLevel == "3")
+                        {
+                            CreateCardInSlot(buyableUpgrades[i2], 10000, i);
+                        }
+                        else if (upgradeLevel == "2")
+                        {
+                            CreateCardInSlot(buyableUpgrades[i2], 5000, i);
+                        }
+                        else
+                        {
+                            CreateCardInSlot(buyableUpgrades[i2], 2000, i);
+                        }
+                    }
                 }
             }
         }
+        AfterShopLoaded();
+    }
+
+    private void CreateCardInSlot(GameObject card, int price, int slotIndex)
+    {
+        ShopButton shopButton = shopSlots[slotIndex].GetComponent<ShopButton>();
+        Text cardPrice = shopSlots[slotIndex].transform.GetChild(1).GetComponent<Text>();
+        UpgradeCard instanceProps = Instantiate(card, shopSlots[slotIndex].transform).GetComponent<UpgradeCard>();
+
+        instanceProps.savesManager = GetComponent<SavesManager>();
+        instanceProps.upgradeParent = upgradesParent;
+        instanceProps.dragObject = dragObject;
+        instanceProps.upgradeSlots = upgradeSlots;
+        instanceProps.transform.SetSiblingIndex(2);
+        shopButton.hasCard = true;
+        shopButton.price = price;
+        cardPrice.text = string.Format("{0:n0}", price);
+        buyableUpgrades.Remove(card);
+    }
+
+    private void AfterShopLoaded()
+    {
+        List<string> shopItems = new List<string>();
+        for (int i3 = 0; i3 < shopSlots.Length; i3++)
+        {
+            Transform child2 = shopSlots[i3].transform.GetChild(2);
+            if (shopSlots[i3].GetComponent<ShopButton>().hasCard == false)
+            {
+                child2.GetComponent<Button>().interactable = false;
+                shopSlots[i3].transform.GetChild(1).gameObject.SetActive(false);
+                shopItems.Add("none");
+            }
+            else
+            {
+                UpgradeCard cardProps = child2.GetComponent<UpgradeCard>();
+                shopItems.Add(cardProps.type + "|" + cardProps.level);
+            }
+        }
+        DataBaseManager.shopItems = shopItems.ToArray();
     }
 }

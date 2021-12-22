@@ -12,6 +12,7 @@ public class DataBaseManager
     public static int levelsCompleted;
     public static string[] upgradesUnlocked = {};
     public static string[] upgradesActive = {};
+    public static string[] shopItems = {};
 
     public static IEnumerator SaveDataToDatabase()
     {
@@ -23,6 +24,7 @@ public class DataBaseManager
         form.AddField("levels_unlocked", levelsUnlocked);
         form.AddField("upgrades_unlocked", string.Join(",", upgradesUnlocked));
         form.AddField("upgrades_active", string.Join(",", upgradesActive));
+        form.AddField("shop_items", string.Join(",", shopItems));
         WWW www = new WWW(URL + "savedata.php", form);
 
         yield return www;
