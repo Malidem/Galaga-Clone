@@ -182,6 +182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: gun
   level: 2
+  title: Gun 2
+  discription: Increases the amount of shots that can be fired before the overheat
+    cooldown
   rarity: 1
   savesManager: {fileID: 0}
   dragObject: {fileID: 0}

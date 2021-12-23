@@ -183,6 +183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: health
   level: 2
+  title: Health Boost 2
+  discription: Adds an addtional 2 health to the player
   rarity: 2
   savesManager: {fileID: 0}
   dragObject: {fileID: 0}

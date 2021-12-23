@@ -6,6 +6,8 @@ public class UpgradeCard : MonoBehaviour
 {
     public string type;
     public string level;
+    public string title;
+    [TextArea(3, 10)] public string discription;
     public Rarities rarity;
 
     private bool isDragging;

@@ -183,6 +183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: speed
   level: 2
+  title: Speed Boost 2
+  discription: Increases player movement speed
   rarity: 1
   savesManager: {fileID: 0}
   dragObject: {fileID: 0}
