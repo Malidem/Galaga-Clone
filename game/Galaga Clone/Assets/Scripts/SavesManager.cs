@@ -169,9 +169,9 @@ public class SavesManager : MonoBehaviour
 
     private void LoadShop()
     {
-        commonUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Common).ToList();
-        rareUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Rare).ToList();
-        legendaryUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().rarity == UpgradeCard.Rarities.Legendary).ToList();
+        commonUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().level == "1").ToList();
+        rareUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().level == "2").ToList();
+        legendaryUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().level == "3").ToList();
         if (isEmpty(DataBaseManager.shopItems[0]) && isEmpty(DataBaseManager.shopItems[1]) && isEmpty(DataBaseManager.shopItems[2]))
         {
             RefreshShop();

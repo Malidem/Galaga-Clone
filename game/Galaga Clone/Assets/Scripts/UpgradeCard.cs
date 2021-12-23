@@ -8,7 +8,6 @@ public class UpgradeCard : MonoBehaviour
     public string level;
     public string title;
     [TextArea(3, 10)] public string discription;
-    public Rarities rarity;
 
     private bool isDragging;
     private bool isOverSlot;
@@ -24,13 +23,6 @@ public class UpgradeCard : MonoBehaviour
     public GameObject upgradeParent;
     [HideInInspector]
     public GameObject[] upgradeSlots;
-
-    public enum Rarities
-    {
-        Common = 0,
-        Rare = 1,
-        Legendary = 2,
-    }
 
     // Update is called once per frame
     void Update()
