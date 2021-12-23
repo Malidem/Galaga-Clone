@@ -245,7 +245,7 @@ public class PlayerManager : MonoBehaviour
                 else if (upgrade[0] == "speed")
                 {
                     speedUpgrades[parsed - 1].SetActive(true);
-                    maxSpeed *= parsed;
+                    maxSpeed += parsed * 50;
                     acceleration += parsed * 50;
                 }
             }
@@ -259,7 +259,7 @@ public class PlayerManager : MonoBehaviour
 
         gameManager.UpdateOverheatSprite();
         RectTransform OHBarRect = gameManager.overheatBar.GetComponent<Image>().rectTransform;
-        int OHgained = 10 * (gameManager.gunLevel);
+        int OHgained = 10 * gameManager.gunLevel;
         OHBarRect.sizeDelta = new Vector2(44 - OHgained, OHBarRect.sizeDelta.y);
         OHBarRect.position = new Vector2(OHBarRect.position.x - OHgained, OHBarRect.position.y);
     }
