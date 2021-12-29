@@ -1531,24 +1531,6 @@ MonoBehaviour:
     type: 3}
   dialogueBackground: {fileID: 225727556}
   overheatBar: {fileID: 684949600}
-  overheatOverlay0: {fileID: -8968299138258521225, guid: 6d9adfe9817873843baafd5507ccf7e2,
-    type: 3}
-  overheatOverlay1: {fileID: 7551043254583845746, guid: 6d9adfe9817873843baafd5507ccf7e2,
-    type: 3}
-  overheatOverlay2: {fileID: 7989988704238006954, guid: 6d9adfe9817873843baafd5507ccf7e2,
-    type: 3}
-  overheatOverlay3: {fileID: 4457593982104580519, guid: 6d9adfe9817873843baafd5507ccf7e2,
-    type: 3}
-  overheatOverlay4: {fileID: -7517909409767769406, guid: 6d9adfe9817873843baafd5507ccf7e2,
-    type: 3}
-  overheatOverlay5: {fileID: 3120736492800959703, guid: 6d9adfe9817873843baafd5507ccf7e2,
-    type: 3}
-  overheatOverlay6: {fileID: 1987624177182971574, guid: 6d9adfe9817873843baafd5507ccf7e2,
-    type: 3}
-  overheatOverlay7: {fileID: 8412888689040046537, guid: 6d9adfe9817873843baafd5507ccf7e2,
-    type: 3}
-  overheatOverlay8: {fileID: 6284449735354801866, guid: 6d9adfe9817873843baafd5507ccf7e2,
-    type: 3}
   dialogueText: {fileID: 687915281}
   dialogues:
   - Hello World
@@ -1564,38 +1546,35 @@ MonoBehaviour:
   - {fileID: 2500958488499531473, guid: 04da8a80bfdaab346bbc368517ca35e7, type: 3}
   - {fileID: 2500958488499531473, guid: d0f21612a7b8187489147e5fdae06d4f, type: 3}
   overheatImagesL0:
-  - {fileID: -8968299138258521225, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 7551043254583845746, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 7989988704238006954, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 4457593982104580519, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: -7517909409767769406, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 3120736492800959703, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 1987624177182971574, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 8412888689040046537, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 6284449735354801866, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -7687609987494465623, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -2456759912788277074, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -3206157808563886810, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -3362189211017338354, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 7837427704877239533, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -4282917186507083006, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 5544818601708991434, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -5125770648673746729, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -6436050292777319593, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
   overheatImagesL1:
-  - {fileID: 2076153967861906592, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: -917003982930386886, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 377411510454738676, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 5561589960036194651, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: -6915443322747879884, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 5741179476473161496, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: -785894184116271329, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: -7089692163874764125, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 5987089236044222059, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 5987089236044222059, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 4194652323437226234, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -3204545529042577927, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 7291435797118815319, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -774532258304671762, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 8754155454189871477, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -8193071208162117428, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -7310446336271118500, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 3090143603578417673, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 2222069125682443625, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
   overheatImagesL2:
-  - {fileID: -1166517031343363957, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 9010255506059535216, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: -6991136054094469189, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 9116984024104893082, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: -6809570042729921834, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 9170831470615742100, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 1049454263193107735, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 517394025734270882, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 3925210047425096371, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 4192333264592992688, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
-  - {fileID: 3669703431172291903, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 264843037499238082, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -4390839949136601469, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -1492078098988652061, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -1991214706518519981, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 8727591262610047671, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 9025085065642143748, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -3088636397556847799, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: -6985900711376537315, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
+  - {fileID: 3781088503774149692, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
   gameStarted: 0
   gameOver: 0
   HUDElements: []
@@ -1604,7 +1583,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   overheatAmount: 0
   overheatMax: 100
-  gunLevel: 1
+  gunLevel: 0
 --- !u!1 &673320184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,8 +1655,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -435, y: 125}
-  m_SizeDelta: {x: 44, y: 16}
+  m_AnchoredPosition: {x: -453, y: 125}
+  m_SizeDelta: {x: 26, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &684949599
 CanvasRenderer:
@@ -1706,7 +1685,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8968299138258521225, guid: 6d9adfe9817873843baafd5507ccf7e2,
+  m_Sprite: {fileID: -7687609987494465623, guid: 6d9adfe9817873843baafd5507ccf7e2,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0

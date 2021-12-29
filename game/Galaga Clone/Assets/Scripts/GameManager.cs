@@ -18,15 +18,6 @@ public class GameManager : MonoBehaviour
     public GameObject explosion;
     public GameObject dialogueBackground;
     public Image overheatBar;
-    public Sprite overheatOverlay0;
-    public Sprite overheatOverlay1;
-    public Sprite overheatOverlay2;
-    public Sprite overheatOverlay3;
-    public Sprite overheatOverlay4;
-    public Sprite overheatOverlay5;
-    public Sprite overheatOverlay6;
-    public Sprite overheatOverlay7;
-    public Sprite overheatOverlay8;
     public Text dialogueText;
     [TextArea(3, 10)] [SerializeField] protected List<string> dialogues = new List<string>();
     public List<float> timeBetweenDialogues = new List<float>();
@@ -55,7 +46,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int overheatMax = 100;
     [HideInInspector]
-    public int gunLevel = 1; // Level is 1 more than ingame level
+    public int gunLevel = 0;
 
     private int wave;
     private int waveAmount = 1;
@@ -163,13 +154,14 @@ public class GameManager : MonoBehaviour
             {
                 if (overheatCooldown)
                 {
-                    overheatAmount -= 5;
-                    UpdateOverheatSprite();
                     if (canPlayOverheatSound)
                     {
+                        yield return new WaitForSeconds(1F);
                         audioSource.PlayOneShot(overheatSound);
                         canPlayOverheatSound = false;
                     }
+                    overheatAmount -= 5;
+                    UpdateOverheatSprite();
                     if (overheatAmount <= 0)
                     {
                         overheatCooldown = false;
@@ -188,40 +180,18 @@ public class GameManager : MonoBehaviour
     public void UpdateOverheatSprite()
     {
         Image overheatImage = overheatBar.GetComponent<Image>();
+        double index = Math.Round(overheatAmount / (overheatMax / 8D), 0);
         if (gunLevel == 0)
         {
-            if (overheatAmount > 9)
-            {
-                overheatImage.sprite = overheatImagesL0[int.Parse(overheatAmount.ToString()[0].ToString()) - 1];
-            }
-            else
-            {
-                overheatImage.sprite = overheatImagesL0[0];
-            }
+            overheatImage.sprite = overheatImagesL0[(int)index];
         }
         else if (gunLevel == 1)
         {
-            Levels2And3Sprits(overheatImage, overheatImagesL1);
+            overheatImage.sprite = overheatImagesL1[(int)index];
         }
         else if (gunLevel == 2)
         {
-            Levels2And3Sprits(overheatImage, overheatImagesL2);
-        }
-    }
-
-    private void Levels2And3Sprits(Image image, List<Sprite> imageList)
-    {
-        if (overheatAmount > 9 && overheatAmount < 100)
-        {
-            image.sprite = imageList[int.Parse(overheatAmount.ToString()[0].ToString()) - 1];
-        }
-        else if (overheatAmount > 99)
-        {
-            image.sprite = imageList[imageList.Count - 1];
-        }
-        else
-        {
-            image.sprite = imageList[0];
+            overheatImage.sprite = overheatImagesL2[(int)index];
         }
     }
 

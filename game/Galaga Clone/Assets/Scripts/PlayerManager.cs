@@ -29,7 +29,6 @@ public class PlayerManager : MonoBehaviour
     private float maxSpeed = 500;
     private float acceleration = 500;
     private float deceleration = 500;
-    // Levels are 1 more than ingame level
     private int healthLevel = 0;
 
     void Start()
@@ -257,10 +256,13 @@ public class PlayerManager : MonoBehaviour
         HPBarRect.sizeDelta = new Vector2(32 + HPgained, HPBarRect.sizeDelta.y);
         HPBarRect.position = new Vector2(HPBarRect.position.x + HPgained, HPBarRect.position.y);
 
-        gameManager.UpdateOverheatSprite();
-        RectTransform OHBarRect = gameManager.overheatBar.GetComponent<Image>().rectTransform;
-        int OHgained = 10 * gameManager.gunLevel;
-        OHBarRect.sizeDelta = new Vector2(44 - OHgained, OHBarRect.sizeDelta.y);
-        OHBarRect.position = new Vector2(OHBarRect.position.x - OHgained, OHBarRect.position.y);
+        if (gameManager.gunLevel > 0)
+        {
+            gameManager.UpdateOverheatSprite();
+            RectTransform OHBarRect = gameManager.overheatBar.GetComponent<Image>().rectTransform;
+            int OHgained = 10 * gameManager.gunLevel;
+            OHBarRect.sizeDelta = new Vector2(OHBarRect.sizeDelta.x + OHgained, OHBarRect.sizeDelta.y);
+            OHBarRect.position = new Vector2(OHBarRect.position.x + OHgained, OHBarRect.position.y);
+        }
     }
 }
