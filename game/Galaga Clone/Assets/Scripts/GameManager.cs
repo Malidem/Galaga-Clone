@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
     public void UpdateOverheatSprite()
     {
         Image overheatImage = overheatBar.GetComponent<Image>();
-        double index = Math.Round(overheatAmount / (overheatMax / 8D), 0);
+        double index = Math.Round(overheatAmount / (overheatMax / 8D), 0);  // 8 is the number of images not including 0
         if (gunLevel == 0)
         {
             overheatImage.sprite = overheatImagesL0[(int)index];
