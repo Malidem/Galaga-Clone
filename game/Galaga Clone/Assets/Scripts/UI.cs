@@ -88,6 +88,7 @@ public class UI : MonoBehaviour
                 go.SetActive(false);
             }
         }
+        yield return StartCoroutine(Resources.FindObjectsOfTypeAll<Canvas>()[0].GetComponent<MainMenuUI>().GetSavesStatusData());
         Destroy(gameObject.transform.parent.parent.gameObject);
     }
 

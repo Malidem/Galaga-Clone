@@ -6,6 +6,7 @@ public class DataBaseManager
 {
     public static readonly string URL = "http://localhost/galaga_clone/";
     public static string email;
+    public static string password;
     public static int currentSave;
     public static int money;
     public static int levelsUnlocked;
@@ -36,6 +37,35 @@ public class DataBaseManager
         else
         {
             Debug.Log("Failed to save game. Error code: " + www.text);
+        }
+    }
+
+    public static IEnumerator DeleteSaveFromDatabase(string save)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("email", email.ToLower());
+        form.AddField("save", save);
+        form.AddField("money", 0);
+        form.AddField("levels_completed", 0);
+        form.AddField("levels_unlocked", 1);
+        form.AddField("upgrades_unlocked", "none");
+        form.AddField("upgrades_active", "none,none,none");
+        form.AddField("shop_items", "none,none,none");
+        WWW www = new WWW(URL + "savedata.php", form);
+
+        yield return www;
+
+        if (www.text == "0")
+        {
+            if (save == "save" + currentSave)
+            {
+                PlayerPrefs.SetInt("lastUsedSave", 0);
+            }
+            Debug.Log("Successfully deleted " + save);
+        }
+        else
+        {
+            Debug.Log("Failed to delete save. Error code: " + www.text);
         }
     }
 }

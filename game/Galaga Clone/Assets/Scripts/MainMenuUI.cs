@@ -18,6 +18,7 @@ public class MainMenuUI : MonoBehaviour
     public InputField passwordInputField;
     public Button loginButton;
     public Button SignUpButton;
+    public Transform confirmDeletionMenu;
     private Text errorButtonText;
     private Text errorTitle;
     private Text errorDescription;
@@ -100,6 +101,7 @@ public class MainMenuUI : MonoBehaviour
         {
             print("User logged in as: " + email);
             DataBaseManager.email = email;
+            DataBaseManager.password = password;
             accountMenu.SetActive(false);
             mainMenu.SetActive(true);
             mainMenu.GetComponentsInChildren<Text>()[5].text = "Email: " + DataBaseManager.email;
@@ -131,33 +133,53 @@ public class MainMenuUI : MonoBehaviour
     private void UpdateSavesMenu(string text)
     {
         string[] saveData = text.Split('\t');
-
+        
         if (saveData[5] != "1")
         {
             createSaveTexts[0].SetActive(false);
             gameStatsText[0].SetActive(true);
-            gameStatsText[0].GetComponent<Text>().text = "Mission: " + saveData[5] + "\nMoney: " + saveData[1];
+            gameStatsText[0].GetComponent<Text>().text = "Mission: " + saveData[5] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[1]));
+        }
+        else
+        {
+            createSaveTexts[0].SetActive(true);
+            gameStatsText[0].SetActive(false);
         }
 
         if (saveData[6] != "1")
         {
             createSaveTexts[1].SetActive(false);
             gameStatsText[1].SetActive(true);
-            gameStatsText[0].GetComponent<Text>().text = "Mission: " + saveData[6] + "\nMoney: " + saveData[2];
+            gameStatsText[1].GetComponent<Text>().text = "Mission: " + saveData[6] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[2]));
+        }
+        else
+        {
+            createSaveTexts[1].SetActive(true);
+            gameStatsText[1].SetActive(false);
         }
 
         if (saveData[7] != "1")
         {
             createSaveTexts[2].SetActive(false);
             gameStatsText[2].SetActive(true);
-            gameStatsText[0].GetComponent<Text>().text = "Mission: " + saveData[7] + "\nMoney: " + saveData[3];
+            gameStatsText[2].GetComponent<Text>().text = "Mission: " + saveData[7] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[3]));
+        }
+        else
+        {
+            createSaveTexts[2].SetActive(true);
+            gameStatsText[2].SetActive(false);
         }
 
         if (saveData[8] != "1")
         {
             createSaveTexts[3].SetActive(false);
-            gameStatsText[4].SetActive(true);
-            gameStatsText[0].GetComponent<Text>().text = "Mission: " + saveData[8] + "\nMoney: " + saveData[4];
+            gameStatsText[3].SetActive(true);
+            gameStatsText[3].GetComponent<Text>().text = "Mission: " + saveData[8] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[4]));
+        }
+        else
+        {
+            createSaveTexts[3].SetActive(true);
+            gameStatsText[3].SetActive(false);
         }
     }
 
@@ -222,34 +244,43 @@ public class MainMenuUI : MonoBehaviour
         errorDescription.text = "";
     }
 
-    public void DeleteSave(string save)
+    public void DeleteSaveButton(string save)
     {
-        StartCoroutine(DeleteSaveFromDB(save));
+        Button button = confirmDeletionMenu.GetChild(1).GetComponent<Button>();
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(delegate { ConfirmDeletionButton(save); });
+        confirmDeletionMenu.gameObject.SetActive(true);
     }
 
-    public IEnumerator DeleteSaveFromDB(string save)
+    public void ConfirmDeletionButton(string save)
+    {
+        StartCoroutine(ConfirmDeletion(save));
+    }
+
+    private IEnumerator ConfirmDeletion(string save)
+    {
+        yield return StartCoroutine(DataBaseManager.DeleteSaveFromDatabase(save));
+        yield return StartCoroutine(GetSavesStatusData());
+        confirmDeletionMenu.gameObject.SetActive(false);
+    }
+
+    public IEnumerator GetSavesStatusData()
     {
         WWWForm form = new WWWForm();
-        form.AddField("email", DataBaseManager.email.ToLower());
-        form.AddField("save", save);
-        form.AddField("money", 0);
-        form.AddField("levels_completed", 0);
-        form.AddField("levels_unlocked", 1);
-        form.AddField("upgrades_unlocked", "none");
-        form.AddField("upgrades_active", "none,none,none");
-        form.AddField("shop_items", "none,none,none");
-        WWW www = new WWW(DataBaseManager.URL + "savedata.php", form);
+        form.AddField("email", DataBaseManager.email);
+        form.AddField("password", DataBaseManager.password);
+        WWW www = new WWW(DataBaseManager.URL + "login.php", form);
 
         yield return www;
 
-        if (www.text == "0")
+        if (www.text[0] == '0')
         {
-            PlayerPrefs.SetInt("lastUsedSave", 0);
-            print("Successfully deleted save");
+            print("Successfully received save status data");
+            UpdateSavesMenu(www.text);
         }
         else
         {
-            print("Failed to delete save. Error code: " + www.text);
+            print("Failed to get save status data. Error code: " + www.text[0]);
         }
     }
 }
