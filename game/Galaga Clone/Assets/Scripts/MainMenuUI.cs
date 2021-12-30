@@ -52,10 +52,10 @@ public class MainMenuUI : MonoBehaviour
 
     public void CallSignUp()
     {
-        IsValidEmail(SighUp());
+        IsValidEmail(SignUp());
     }
 
-    private IEnumerator SighUp()
+    private IEnumerator SignUp()
     {
         WWWForm form = new WWWForm();
         form.AddField("email", emailInputField.text.ToLower());
