@@ -72,12 +72,12 @@ public class BaseEnemy : MonoBehaviour
     {
         transform.Translate(Vector2.left * Time.deltaTime * speed);
 
-        if (transform.position.x > (backgroundRect.rect.width + 25))
+        if (transform.position.x > (backgroundRect.rect.width + 55))
         {
             Destroy(gameObject);
         }
 
-        if (transform.position.y > (backgroundRect.rect.height + 25))
+        if (transform.position.y > (backgroundRect.rect.height + 45))
         {
             Destroy(gameObject);
         }
@@ -87,7 +87,7 @@ public class BaseEnemy : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (transform.position.y < -25)
+        if (transform.position.y < -45)
         {
             Destroy(gameObject);
         }

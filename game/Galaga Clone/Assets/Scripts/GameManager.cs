@@ -24,10 +24,10 @@ public class GameManager : MonoBehaviour
     public Texture2D cursor;
     public int money;
     public AudioClip overheatSound;
-    public List<GameObject> enemyTypes;
     public List<Sprite> overheatImagesL0 = new List<Sprite>();
     public List<Sprite> overheatImagesL1 = new List<Sprite>();
     public List<Sprite> overheatImagesL2 = new List<Sprite>();
+    public EnemySpawnProperties[] spawnList;
 
     [HideInInspector]
     public bool gameStarted;
@@ -49,11 +49,17 @@ public class GameManager : MonoBehaviour
     public int gunLevel = 0;
 
     private int wave;
-    private int waveAmount = 1;
+    private Transform[] enemySpawnPoints;
+    private List<Color> emptyPixels = new List<Color>();
     private bool canPlayOverheatSound = true;
+    private bool playerWon;
 
     void Start()
     {
+        enemySpawnPoints = enemies.transform.GetChild(0).GetComponentsInChildren<Transform>();
+        List<Transform> enemySpawnPointslist = new List<Transform>(enemySpawnPoints);
+        enemySpawnPointslist.Remove(enemies.transform.GetChild(0));
+        enemySpawnPoints = enemySpawnPointslist.ToArray();
         Time.timeScale = 1;
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
@@ -65,48 +71,80 @@ public class GameManager : MonoBehaviour
 
     public void StartWaves()
     {
-        StartCoroutine(UpdateWave());
+        StartCoroutine(UpdateWaves());
     }
 
-    private IEnumerator UpdateWave()
+    private IEnumerator UpdateWaves()
     {
-        while (gameOver == false)
+        var rawImage = System.IO.File.ReadAllBytes("Assets/Images/Levels/level_" + DataBaseManager.levelsUnlocked + ".png");
+        Texture2D levelMap = new Texture2D(2, 2);
+        levelMap.LoadImage(rawImage);
+
+        int yPixelsPerChunk = 7;
+        int xPixelsPerChunk = 6;
+        int xNumberOfChunks = levelMap.width / xPixelsPerChunk;
+        int yNumberOfChunks = levelMap.height / yPixelsPerChunk;
+
+        for (int chunkY = 0; chunkY < yNumberOfChunks; chunkY++)
         {
-            if (waveAmount >= 5)
+            for (int chunkX = 0; chunkX < xNumberOfChunks; chunkX++)
             {
-                waveAmount += UnityEngine.Random.Range(1, 6);
+                if (gameOver == false)
+                {
+                    wave++;
+                    HUDElements[3].gameObject.GetComponent<Text>().text = "Wave " + wave;
+                    print("Starting wave " + wave);
+                    emptyPixels.Clear();
+                    for (int y = 0; y < yPixelsPerChunk; y++)
+                    {
+                        for (int x = 0; x < xPixelsPerChunk; x++)
+                        {
+                            int pixelX = (chunkX * xPixelsPerChunk) + x;
+                            int pixelY = (chunkY * yPixelsPerChunk) + y;
+                            PixelToEnemy(levelMap, pixelX, pixelY, x, y);
+                        }
+                    }
+                    yield return new WaitForSeconds(10.0F);
+                }
+                else
+                {
+                    yield break;
+                }
             }
-            else
-            {
-                waveAmount++;
-            }
-            wave++;
-            HUDElements[3].gameObject.GetComponent<Text>().text = "Wave " + wave;
-            SpawnEnemies();
-            yield return new WaitForSeconds(8.0F);
         }
     }
 
-    public void SpawnEnemies()
+    private void PixelToEnemy(Texture2D image, int imageX, int imageY, int chunkX, int chunkY)
     {
-        for (int i = 0; i < waveAmount; i++)
+        Color pixelColor = image.GetPixel(imageX, imageY);
+
+        if (pixelColor.a == 0)
         {
-            RectTransform rect = (RectTransform)background.transform;
-            int pos = UnityEngine.Random.Range(1, 4);
-            GameObject enemy = enemyTypes[UnityEngine.Random.Range(0, enemyTypes.Count)];
-            if (pos == 1)
+            emptyPixels.Add(pixelColor);
+            return;
+        }
+
+        foreach (EnemySpawnProperties item in spawnList)
+        {
+            if (item.color.Equals(pixelColor))
             {
-                Instantiate(enemy, new Vector2(rect.rect.width + 25, UnityEngine.Random.Range(0, rect.rect.height)), transform.rotation, enemies.transform);
-            }
-            else if (pos == 2)
-            {
-                Instantiate(enemy, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), rect.rect.height + 25), transform.rotation, enemies.transform);
-            }
-            else if (pos == 3)
-            {
-                Instantiate(enemy, new Vector2(UnityEngine.Random.Range((rect.rect.width / 3) * 2, rect.rect.width + 25), -25), transform.rotation, enemies.transform);
+                for (int i = 0; i < enemySpawnPoints.Length; i++)
+                {
+                    EnemySpawnPoint spawnPoint = enemySpawnPoints[i].gameObject.GetComponent<EnemySpawnPoint>();
+                    if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
+                    {
+                        Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemies.transform);
+                    }
+                }
             }
         }
+    }
+
+    [Serializable]
+    public class EnemySpawnProperties
+    {
+        public GameObject enemyType;
+        public Color color;
     }
 
     void Update()
