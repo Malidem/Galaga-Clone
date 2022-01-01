@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject enemyType1;
     public GameObject background;
     public GameObject canvas;
     public GameObject player;
@@ -49,8 +49,9 @@ public class GameManager : MonoBehaviour
     public int gunLevel = 0;
 
     private int wave;
+    private int waveCount;
     private Transform[] enemySpawnPoints;
-    private List<Color> emptyPixels = new List<Color>();
+    private List<GameObject> enemyCount = new List<GameObject>();
     private bool canPlayOverheatSound = true;
     private bool playerWon;
 
@@ -67,6 +68,35 @@ public class GameManager : MonoBehaviour
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         audioSource = canvas.GetComponent<AudioSource>();
         audioSource.volume = PlayerPrefs.GetFloat("soundVolume");
+        ReadLevelProperties();
+    }
+    
+    private void ReadLevelProperties()
+    {
+        StreamReader streamReader = new StreamReader(Application.dataPath + "/Images/Levels/level_" + DataBaseManager.levelsUnlocked + ".txt");
+        string contents = streamReader.ReadToEnd();
+        streamReader.Close();
+
+        string[] lines = contents.Split('\n');
+        string[] line0 = Break(lines[0]);
+        CheckFileVariable(line0[0], "waveCount", delegate { waveCount = int.Parse(line0[1]); });
+    }
+
+    private void CheckFileVariable(string line, string validLine, Action action)
+    {
+        if (line == validLine)
+        {
+            action();
+        }
+        else
+        {
+            Debug.LogError("Invalid file variable (" + line + ")" + " Line must be (" + validLine + "={int})");
+        }
+    }
+
+    private string[] Break(string line)
+    {
+        return line.Split('=');
     }
 
     public void StartWaves()
@@ -76,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator UpdateWaves()
     {
-        var rawImage = System.IO.File.ReadAllBytes("Assets/Images/Levels/level_" + DataBaseManager.levelsUnlocked + ".png");
+        var rawImage = File.ReadAllBytes("Assets/Images/Levels/level_" + DataBaseManager.levelsUnlocked + ".png");
         Texture2D levelMap = new Texture2D(2, 2);
         levelMap.LoadImage(rawImage);
 
@@ -94,7 +124,6 @@ public class GameManager : MonoBehaviour
                     wave++;
                     HUDElements[3].gameObject.GetComponent<Text>().text = "Wave " + wave;
                     print("Starting wave " + wave);
-                    emptyPixels.Clear();
                     for (int y = 0; y < yPixelsPerChunk; y++)
                     {
                         for (int x = 0; x < xPixelsPerChunk; x++)
@@ -120,7 +149,6 @@ public class GameManager : MonoBehaviour
 
         if (pixelColor.a == 0)
         {
-            emptyPixels.Add(pixelColor);
             return;
         }
 
@@ -133,18 +161,15 @@ public class GameManager : MonoBehaviour
                     EnemySpawnPoint spawnPoint = enemySpawnPoints[i].gameObject.GetComponent<EnemySpawnPoint>();
                     if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
                     {
-                        Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemies.transform);
+                        GameObject enemy = Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemies.transform);
+                        if (wave == waveCount)
+                        {
+                            enemyCount.Add(enemy);
+                        }
                     }
                 }
             }
         }
-    }
-
-    [Serializable]
-    public class EnemySpawnProperties
-    {
-        public GameObject enemyType;
-        public Color color;
     }
 
     void Update()
@@ -241,6 +266,10 @@ public class GameManager : MonoBehaviour
         DataBaseManager.money += money;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        if (playerWon)
+        {
+            print("Player Won!");
+        }
     }
 
     public void Kill(GameObject gameObject)
@@ -260,10 +289,24 @@ public class GameManager : MonoBehaviour
             {
                 gameObject.GetComponent<BaseEnemy>().canFireGuns = false;
                 gameObject.GetComponent<BaseEnemy>().canFireTurrets = false;
+                OnEnemyDestroyed(gameObject);
             }
             yield return explosionGO.GetComponent<Explosion>().Die();
         }
         Destroy(gameObject);
+    }
+
+    public void OnEnemyDestroyed(GameObject enemy)
+    {
+        if (wave == waveCount)
+        {
+            enemyCount.Remove(enemy);
+            if (enemyCount.Count <= 0)
+            {
+                playerWon = true;
+                EndGame();
+            }
+        }
     }
 
     public void CallUpdateDialogue()
@@ -332,5 +375,12 @@ public class GameManager : MonoBehaviour
                 yield break;
             }
         }
+    }
+
+    [Serializable]
+    public class EnemySpawnProperties
+    {
+        public GameObject enemyType;
+        public Color color;
     }
 }

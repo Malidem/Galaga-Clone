@@ -74,22 +74,22 @@ public class BaseEnemy : MonoBehaviour
 
         if (transform.position.x > (backgroundRect.rect.width + 55))
         {
-            Destroy(gameObject);
+            Die();
         }
 
         if (transform.position.y > (backgroundRect.rect.height + 45))
         {
-            Destroy(gameObject);
+            Die();
         }
 
         if (transform.position.x < -25)
         {
-            Destroy(gameObject);
+            Die();
         }
 
         if (transform.position.y < -45)
         {
-            Destroy(gameObject);
+            Die();
         }
 
         if (hasTurret && gameManager.gameOver == false)
@@ -134,5 +134,11 @@ public class BaseEnemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void Die()
+    {
+        gameManager.OnEnemyDestroyed(gameObject);
+        Destroy(gameObject);
     }
 }
