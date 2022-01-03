@@ -1,1 +1,21 @@
 waveCount=9
+dialogueCount=2
+
+dialogueStart:
+time=5
+<<<
+Hello World
+>>>
+dialogueEnd:
+
+dialogueStart:
+time=10
+<<<
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ssssss
+>>>
+dialogueEnd:

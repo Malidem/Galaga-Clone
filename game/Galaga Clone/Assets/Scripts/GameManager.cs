@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
     public GameObject dialogueBackground;
     public Image overheatBar;
     public Text dialogueText;
-    [TextArea(3, 10)] [SerializeField] protected List<string> dialogues = new List<string>();
-    public List<float> timeBetweenDialogues = new List<float>();
     public Texture2D cursor;
     public int money;
     public AudioClip overheatSound;
@@ -51,6 +49,8 @@ public class GameManager : MonoBehaviour
     private int wave;
     private int waveCount;
     private Transform[] enemySpawnPoints;
+    private List<string> dialogues = new List<string>();
+    private List<float> timeBetweenDialogues = new List<float>();
     private List<GameObject> enemyCount = new List<GameObject>();
     private bool canPlayOverheatSound = true;
     private bool playerWon;
@@ -77,9 +77,29 @@ public class GameManager : MonoBehaviour
         string contents = streamReader.ReadToEnd();
         streamReader.Close();
 
-        string[] lines = contents.Split('\n');
-        string[] line0 = Break(lines[0]);
+        int dialogueCount = 0;
+        List<string> lines = new List<string>(contents.Split('\n'));
+
+        string[] line0 = Break(lines[0].Replace(" ", ""));
         CheckFileVariable(line0[0], "waveCount", delegate { waveCount = int.Parse(line0[1]); });
+
+        string[] line1 = Break(lines[1].Replace(" ", ""));
+        CheckFileVariable(line1[0], "dialogueCount", delegate { dialogueCount = int.Parse(line1[1]); });
+
+        for (int i = 0; i < dialogueCount; i++)
+        {
+            print("Reading dialogue block " + i);
+            int blockStart = IndexOfContains(lines, "dialogueStart:");
+            int blockEnd = IndexOfContains(lines, "dialogueEnd:") - blockStart;
+            List<string> dialogueBlock = lines.GetRange(blockStart, blockEnd);
+            lines.RemoveRange(blockStart, blockEnd + 1);
+
+            string[] timeLine = Break(dialogueBlock[1].Replace(" ", ""));
+            CheckFileVariable(timeLine[0], "time", delegate { timeBetweenDialogues.Add(int.Parse(timeLine[1])); });
+
+            int dialogueTextStart = IndexOfContains(dialogueBlock, "<<<");
+            dialogues.Add(string.Join("", dialogueBlock.GetRange(dialogueTextStart, IndexOfContains(dialogueBlock, ">>>") - dialogueTextStart)).TrimStart('<'));
+        }
     }
 
     private void CheckFileVariable(string line, string validLine, Action action)
@@ -90,13 +110,27 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Invalid file variable (" + line + ")" + " Line must be (" + validLine + "={int})");
+            Debug.LogError("Invalid file variable (" + line + ")");
         }
     }
 
     private string[] Break(string line)
     {
         return line.Split('=');
+    }
+
+    private int IndexOfContains(List<string> list, string str)
+    {
+        int result = -1;
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (list[i].Contains(str))
+            {
+                result = i;
+                break;
+            }
+        }
+        return result;
     }
 
     public void StartWaves()
