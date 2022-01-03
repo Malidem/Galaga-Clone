@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         audioSource.volume = PlayerPrefs.GetFloat("soundVolume");
         ReadLevelProperties();
     }
-    
+
     private void ReadLevelProperties()
     {
         StreamReader streamReader = new StreamReader(Application.dataPath + "/Images/Levels/level_" + DataBaseManager.levelsUnlocked + ".txt");
@@ -377,20 +377,46 @@ public class GameManager : MonoBehaviour
                 }
 
                 yield return new WaitForSeconds(0.5F);
-                if ((text.Length + 1) > 148)
+
+                int max = 148; // This is the max number of chars in a chunk/page of dialogue
+                if ((text.Length + 1) > max)
                 {
-                    dialogueText.text = text.Substring(0, 148);
-                    if (gameOver == false)
+                    int start = 1; // This is the starting index for the current chunk/page being displayed
+                    int end = start + max; // This is the ending index of the current chunk/page being displayed
+                    do
                     {
-                        yield return new WaitForSeconds(5);
-                        dialogueText.text = text.Substring(149);
-                    }
+                        if (gameOver == false)
+                        {
+                            for (; end > start; end--)
+                            {
+                                if (end > (text.Length + 1))
+                                {
+                                    end = (text.Length - start);
+                                    break;
+                                }
+                                else if (text.Substring(end, 1) == " ")
+                                {
+                                    end -= start;
+                                    break;
+                                }
+                            }
+                            dialogueText.text = text.Substring(start, end);
+                            start += end + 1;
+                            end = start + max;
+                            yield return new WaitForSeconds(5);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    } while (start < text.Length);
                 }
                 else
                 {
                     dialogueText.text = text;
+                    yield return new WaitForSeconds(5);
                 }
-                yield return new WaitForSeconds(5);
+
                 dialogueText.text = "";
                 dialogueText.gameObject.SetActive(false);
 

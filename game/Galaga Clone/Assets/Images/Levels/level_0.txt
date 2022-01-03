@@ -13,9 +13,9 @@ time=10
 <<<
 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmssssssssssssssssssss
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm sssssssssssssssssssss
 ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-ssssss
+sssss
 >>>
 dialogueEnd:
