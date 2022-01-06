@@ -31,7 +31,7 @@ public class SavesManager : MonoBehaviour
         Rect rect = scroller.GetComponent<RectTransform>().rect;
         scroller.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
         scroller.GetComponent<BoxCollider2D>().size = new Vector2(rect.width / scroller.transform.lossyScale.x, rect.height / scroller.transform.lossyScale.y);
-        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("soundVolume");
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
     }
 
     void Update()

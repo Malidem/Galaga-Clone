@@ -37,7 +37,7 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(FireCooldown());
         UpgradePlayer();
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = PlayerPrefs.GetFloat("soundVolume");
+        audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
     }
 
     void Update()

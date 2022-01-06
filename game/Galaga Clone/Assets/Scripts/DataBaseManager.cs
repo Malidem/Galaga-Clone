@@ -59,13 +59,24 @@ public class DataBaseManager
         {
             if (save == "save" + currentSave)
             {
-                PlayerPrefs.SetInt("lastUsedSave", 0);
+                PlayerPrefs.SetInt(Prefs.lastUsedSave, 0);
             }
             Debug.Log("Successfully deleted " + save);
         }
         else
         {
             Debug.Log("Failed to delete save. Error code: " + www.text);
+        }
+    }
+
+    public static class Prefs
+    {
+        public static readonly string soundVolume = Set("soundVolume");
+        public static readonly string lastUsedSave = Set("lastUsedSave");
+
+        private static string Set(string name)
+        {
+            return email + name;
         }
     }
 }

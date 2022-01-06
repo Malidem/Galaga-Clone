@@ -19,7 +19,7 @@ public class MainMenuManager : MonoBehaviour
     {
         mainMenuUI = canvas.GetComponent<MainMenuUI>();
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
-        float value = PlayerPrefs.GetFloat("soundVolume");
+        float value = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
         soundVolumeSlider.value = value;
         canvas.GetComponent<AudioSource>().volume = value;
         if (PlayerPrefs.GetString("email") != "")

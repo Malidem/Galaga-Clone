@@ -32,7 +32,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void PlayGameButton()
     {
-        int lastUsedSave = PlayerPrefs.GetInt("lastUsedSave");
+        int lastUsedSave = PlayerPrefs.GetInt(DataBaseManager.Prefs.lastUsedSave);
         if (lastUsedSave == 1 || lastUsedSave == 2 || lastUsedSave == 3 || lastUsedSave == 4)
         {
             LoadSaveButton(lastUsedSave);
@@ -233,7 +233,7 @@ public class MainMenuUI : MonoBehaviour
     {
         mainMenu.SetActive(false);
         Instantiate(gameMenu, canvas.transform);
-        PlayerPrefs.SetInt("lastUsedSave", save);
+        PlayerPrefs.SetInt(DataBaseManager.Prefs.lastUsedSave, save);
         DataBaseManager.currentSave = save;
     }
 

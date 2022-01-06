@@ -36,7 +36,7 @@ public class BaseEnemy : MonoBehaviour
         background = gameManager.background;
         backgroundRect = (RectTransform)background.transform;
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = PlayerPrefs.GetFloat("soundVolume");
+        audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
 
         if (hasGuns)
         {

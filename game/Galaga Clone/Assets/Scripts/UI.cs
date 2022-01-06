@@ -184,7 +184,7 @@ public class UI : MonoBehaviour
     public void SoundVolumeSlider()
     {
         float value = GetComponent<Slider>().value;
-        PlayerPrefs.SetFloat("soundVolume", value);
+        PlayerPrefs.SetFloat(DataBaseManager.Prefs.soundVolume, value);
         canvas.GetComponent<AudioSource>().volume = value;
     }
     

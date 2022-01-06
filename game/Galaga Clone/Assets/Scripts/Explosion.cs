@@ -22,7 +22,7 @@ public class Explosion : MonoBehaviour
     public IEnumerator Die()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.volume = PlayerPrefs.GetFloat("soundVolume");
+        audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
         audioSource.PlayOneShot(explosion);
         yield return new WaitForSeconds(0.6F);
         Destroy(gameObject);
