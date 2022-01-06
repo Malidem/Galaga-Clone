@@ -10,7 +10,7 @@ public class PlayerBullets : MonoBehaviour
 
     void Start()
     {
-        background =  GameObject.Find("Backgrounds");
+        background = GameObject.Find("Backgrounds");
         gameManager = GameObject.Find("EventSystem").GetComponent<GameManager>();
     }
 
@@ -29,11 +29,13 @@ public class PlayerBullets : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            BaseEnemy enemy = collision.GetComponent<BaseEnemy>();
             if (gameManager.gameOver == false)
             {
-                gameManager.AddMoney(100);
+                gameManager.AddMoney(enemy.moneyAwarded);
             }
-            gameManager.Kill(collision.gameObject, 1);
+            enemy.RemoveHealth();
+            //gameManager.Kill(collision.gameObject, 1);
             Destroy(gameObject);
         }
     }

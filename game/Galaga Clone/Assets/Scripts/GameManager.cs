@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviour
 
     public void Kill(GameObject gameObject, float scale)
     {
-        StartCoroutine(KillWithExplosion(gameObject, scale)) ;
+        StartCoroutine(KillWithExplosion(gameObject, scale));
     }
 
     private IEnumerator KillWithExplosion(GameObject gameObject, float scale)

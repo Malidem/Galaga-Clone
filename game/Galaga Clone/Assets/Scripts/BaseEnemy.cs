@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseEnemy : MonoBehaviour
 {
     public int speed;
+    public int health;
+    public int moneyAwarded;
     public bool hasGuns;
     public GameObject bullets;
     public AudioClip gunFireSound;
@@ -37,6 +40,11 @@ public class BaseEnemy : MonoBehaviour
         backgroundRect = (RectTransform)background.transform;
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
+
+        if (health < 1)
+        {
+            Debug.LogError(gameObject.name + " health can not be less than 1");
+        }
 
         if (hasGuns)
         {
@@ -134,5 +142,24 @@ public class BaseEnemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RemoveHealth()
+    {
+        if (health > 0)
+        {
+            StartCoroutine(FlashRed());
+        }
+        else
+        {
+            gameManager.Kill(gameObject, 1);
+        }
+    }
+
+    private IEnumerator FlashRed()
+    {
+        gameObject.GetComponent<Image>().color = Color.red;
+        yield return new WaitForSeconds(0.2F);
+        gameObject.GetComponent<Image>().color = Color.white;
     }
 }
