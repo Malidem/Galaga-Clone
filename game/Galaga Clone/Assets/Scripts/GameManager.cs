@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     private Transform[] enemySpawnPoints;
     private List<string> dialogues = new List<string>();
     private List<float> timeBetweenDialogues = new List<float>();
+    private List<float> waveIntervals = new List<float>();
     private List<GameObject> enemyCount = new List<GameObject>();
     private bool canPlayOverheatSound = true;
     private bool playerWon;
@@ -83,8 +84,18 @@ public class GameManager : MonoBehaviour
         string[] line0 = Break(lines[0].Replace(" ", ""));
         CheckFileVariable(line0[0], "waveCount", delegate { waveCount = int.Parse(line0[1]); });
 
-        string[] line1 = Break(lines[1].Replace(" ", ""));
-        CheckFileVariable(line1[0], "dialogueCount", delegate { dialogueCount = int.Parse(line1[1]); });
+        string[] line1 = Break(lines[1]);
+        CheckFileVariable(line1[0], "waveIntervals", delegate {
+            string[] values = line1[1].Split(',');
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                waveIntervals.Add(float.Parse(values[i]));
+            }
+        });
+
+        string[] line2 = Break(lines[2].Replace(" ", ""));
+        CheckFileVariable(line2[0], "dialogueCount", delegate { dialogueCount = int.Parse(line2[1]); });
 
         for (int i = 0; i < dialogueCount; i++)
         {
@@ -167,7 +178,7 @@ public class GameManager : MonoBehaviour
                             PixelToEnemy(levelMap, pixelX, pixelY, x, y);
                         }
                     }
-                    yield return new WaitForSeconds(10.0F);
+                    yield return new WaitForSeconds(waveIntervals[wave - 1]);
                 }
                 else
                 {
