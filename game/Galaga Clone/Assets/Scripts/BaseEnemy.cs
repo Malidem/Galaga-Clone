@@ -146,9 +146,14 @@ public class BaseEnemy : MonoBehaviour
 
     public void RemoveHealth()
     {
+        health -= 1;
         if (health > 0)
         {
-            StartCoroutine(FlashRed());
+            StartCoroutine(FlashRed(gameObject));
+            for (int i = 0; i < turrets.Count; i++)
+            {
+                StartCoroutine(FlashRed(turrets[i]));
+            }
         }
         else
         {
@@ -156,7 +161,7 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
-    private IEnumerator FlashRed()
+    private IEnumerator FlashRed(GameObject gameObject)
     {
         gameObject.GetComponent<Image>().color = Color.red;
         yield return new WaitForSeconds(0.2F);

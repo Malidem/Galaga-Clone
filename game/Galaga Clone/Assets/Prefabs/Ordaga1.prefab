@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 120
-  health: 0
-  moneyAwarded: 0
+  health: 2
+  moneyAwarded: 150
   hasGuns: 1
   bullets: {fileID: 1424064957359088038, guid: a2524b91d018b184fbcffa165caebf58, type: 3}
   gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
