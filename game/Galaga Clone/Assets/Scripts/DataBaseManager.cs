@@ -73,6 +73,7 @@ public class DataBaseManager
     {
         public static readonly string soundVolume = Set("soundVolume");
         public static readonly string lastUsedSave = Set("lastUsedSave");
+        public static readonly string firstTimePlayed = Set("firstTimePlayed");
 
         private static string Set(string name)
         {

@@ -19,9 +19,7 @@ public class MainMenuManager : MonoBehaviour
     {
         mainMenuUI = canvas.GetComponent<MainMenuUI>();
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
-        float value = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
-        soundVolumeSlider.value = value;
-        canvas.GetComponent<AudioSource>().volume = value;
+        
         if (PlayerPrefs.GetString("email") != "")
         {
             StartCoroutine(mainMenuUI.Login(PlayerPrefs.GetString("email"), PlayerPrefs.GetString("password")));
@@ -30,6 +28,16 @@ public class MainMenuManager : MonoBehaviour
         {
             accountMenu.SetActive(true);
         }
+
+        if (PlayerPrefs.GetInt(DataBaseManager.Prefs.firstTimePlayed) == 0)
+        {
+            PlayerPrefs.SetInt(DataBaseManager.Prefs.firstTimePlayed, 1);
+            PlayerPrefs.SetFloat(DataBaseManager.Prefs.soundVolume, 1);
+        }
+
+        float value = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
+        canvas.GetComponent<AudioSource>().volume = value;
+        soundVolumeSlider.value = value;
 
         if (loadStarChart)
         {
