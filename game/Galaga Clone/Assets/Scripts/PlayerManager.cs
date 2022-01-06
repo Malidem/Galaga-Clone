@@ -196,16 +196,17 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && !collision.gameObject.name.Contains("Ordaga4"))
         {
             gameManager.Kill(collision.gameObject, 1);
             RemoveHealth(1);
         }
-        else if (collision.gameObject.CompareTag("Ordaga4ExplosionRadius"))
+        else if (collision.gameObject.CompareTag("OrdagaExplosionTrigger"))
         {
-            gameManager.Kill(collision.gameObject.transform.parent.gameObject, 1.5F);
+            gameManager.Kill(collision.gameObject.transform.parent.gameObject, 1.7F);
+            yield return new WaitForSeconds(0.4F);
             RemoveHealth(1);
         }
     }

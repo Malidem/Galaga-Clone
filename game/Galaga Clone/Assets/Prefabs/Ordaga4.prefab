@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1473517228075635730}
   - component: {fileID: 2169947904012779311}
   m_Layer: 11
-  m_Name: ExplosionRadius
-  m_TagString: Ordaga4ExplosionRadius
+  m_Name: ExplosionTrigger
+  m_TagString: OrdagaExplosionTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,12 +225,12 @@ MonoBehaviour:
   moneyAwarded: 300
   hasGuns: 0
   bullets: {fileID: 0}
-  gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
+  gunFireSound: {fileID: 0}
   hasTurret: 0
   turretBullet: {fileID: 0}
   turretType: {fileID: 0}
   turretPositions: []
-  turretFireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
+  turretFireSound: {fileID: 0}
   canFireGuns: 1
   canFireTurrets: 1
 --- !u!82 &7359328508275330807
