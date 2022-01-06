@@ -9,7 +9,7 @@ public class Explosion : MonoBehaviour
     [HideInInspector]
     public GameObject parent;
 
-    private AudioSource audioSrc;
+    private AudioSource audioSource;
 
     void Update()
     {
@@ -21,8 +21,9 @@ public class Explosion : MonoBehaviour
 
     public IEnumerator Die()
     {
-        audioSrc = gameObject.GetComponent<AudioSource>();
-        audioSrc.PlayOneShot(explosion);
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
+        audioSource.PlayOneShot(explosion);
         yield return new WaitForSeconds(0.6F);
         Destroy(gameObject);
     }

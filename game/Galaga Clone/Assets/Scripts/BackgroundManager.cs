@@ -16,8 +16,8 @@ public class BackgroundManager : MonoBehaviour
     void Start()
     {
         eventSystem = GameObject.Find("EventSystem");
-        canvas = GameObject.Find("Canvas");
         gameManager = eventSystem.GetComponent<GameManager>();
+        canvas = gameManager.canvas;
     }
 
     // Update is called once per frame

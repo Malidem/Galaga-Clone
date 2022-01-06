@@ -7,20 +7,20 @@ using UnityEngine.EventSystems;
 public class LevelHover : MonoBehaviour
 {
     public GameObject visable;
-
-    void Start()
-    {
-    }
+    public bool isUnlocked;
 
     void Update()
     {
-        if (IsMouseOver())
+        if (isUnlocked)
         {
-            visable.SetActive(true);
-        }
-        else
-        {
-            visable.SetActive(false);
+            if (IsMouseOver())
+            {
+                visable.SetActive(true);
+            }
+            else
+            {
+                visable.SetActive(false);
+            } 
         }
     }
 

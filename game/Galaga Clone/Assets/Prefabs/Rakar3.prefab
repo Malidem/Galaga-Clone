@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2500958488499531470}
   - component: {fileID: 2500958488499531471}
   - component: {fileID: 4651356415108094969}
-  - component: {fileID: 7801658066903673056}
+  - component: {fileID: 5130096991438066752}
   m_Layer: 11
   m_Name: Rakar3
   m_TagString: Enemy
@@ -126,6 +126,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 50, y: 50}
   m_EdgeRadius: 0
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500958488499531473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a4ffe081224554f968427ef057c87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 90
+  hasGuns: 1
+  bullets: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}
+  gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
+  hasTurret: 1
+  turretBullet: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f,
+    type: 3}
+  turretType: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+    type: 3}
+  turretPositions:
+  - {x: 4, y: 15}
+  - {x: 4, y: -15}
+  turretFireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
+  canFireGuns: 1
+  canFireTurrets: 1
 --- !u!95 &4651356415108094969
 Animator:
   serializedVersion: 3
@@ -145,28 +171,99 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7801658066903673056
-MonoBehaviour:
+--- !u!82 &5130096991438066752
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2500958488499531473}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57a4ffe081224554f968427ef057c87e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 90
-  hasGuns: 1
-  bullets: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}
-  hasTurret: 1
-  turretBullet: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f,
-    type: 3}
-  turretType: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
-    type: 3}
-  turretPositions:
-  - {x: 4, y: 15}
-  - {x: 4, y: -15}
-  canFireGuns: 1
-  canFireTurrets: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
