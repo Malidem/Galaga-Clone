@@ -3,14 +3,14 @@ waveIntervals=10,5.5,1,5.3,11.9,8.3,4.6,7.1,0
 dialogueCount=2
 
 dialogueStart:
-time=5
+interval=5
 <<<
 Hello World
 >>>
 dialogueEnd:
 
 dialogueStart:
-time=10
+interval=10.5
 <<<
 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm

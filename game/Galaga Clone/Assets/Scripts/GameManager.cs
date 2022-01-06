@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     private int waveCount;
     private Transform[] enemySpawnPoints;
     private List<string> dialogues = new List<string>();
-    private List<float> timeBetweenDialogues = new List<float>();
+    private List<float> dialogueIntervals = new List<float>();
     private List<float> waveIntervals = new List<float>();
     private List<GameObject> enemyCount = new List<GameObject>();
     private bool canPlayOverheatSound = true;
@@ -105,8 +105,8 @@ public class GameManager : MonoBehaviour
             List<string> dialogueBlock = lines.GetRange(blockStart, blockEnd);
             lines.RemoveRange(blockStart, blockEnd + 1);
 
-            string[] timeLine = Break(dialogueBlock[1].Replace(" ", ""));
-            CheckFileVariable(timeLine[0], "time", delegate { timeBetweenDialogues.Add(int.Parse(timeLine[1])); });
+            string[] intervalLine = Break(dialogueBlock[1].Replace(" ", ""));
+            CheckFileVariable(intervalLine[0], "interval", delegate { dialogueIntervals.Add(float.Parse(intervalLine[1])); });
 
             int dialogueTextStart = IndexOfContains(dialogueBlock, "<<<");
             dialogues.Add(string.Join("", dialogueBlock.GetRange(dialogueTextStart, IndexOfContains(dialogueBlock, ">>>") - dialogueTextStart)).TrimStart('<'));
@@ -376,7 +376,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < dialogues.Count; i++)
         {
-            yield return new WaitForSeconds(timeBetweenDialogues[i]);
+            yield return new WaitForSeconds(dialogueIntervals[i]);
             if (gameOver == false)
             {
                 string text = dialogues[i];
