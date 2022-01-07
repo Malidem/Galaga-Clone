@@ -11,25 +11,33 @@ public class PlayerManager : MonoBehaviour
     public GameObject eventSystem;
     public GameObject healthBar;
     public GameObject bullets;
-    public Sprite healthImage0;
-    public Sprite healthImage1;
-    public Sprite healthImage2;
-    public Sprite healthImage3;
+    public AudioClip gunFireSound;
+    public List<Sprite> healthImagesL0 = new List<Sprite>();
+    public List<Sprite> healthImagesL1 = new List<Sprite>();
+    public List<Sprite> healthImagesL2 = new List<Sprite>();
+    public List<GameObject> gunUpgrades = new List<GameObject>();
+    public List<GameObject> healthUpgrades = new List<GameObject>();
+    public List<GameObject> speedUpgrades = new List<GameObject>();
 
     private GameManager gameManager;
+    private AudioSource audioSource;
     private bool canFire = true;
     private bool canTakeDamage = true;
     private int healthAmount = 3;
     private float xSpeed = 0;
     private float ySpeed = 0;
     private float maxSpeed = 500;
-    private float acceleration = 550;
+    private float acceleration = 500;
     private float deceleration = 500;
+    private int healthLevel = 0;
 
     void Start()
     {
         gameManager = eventSystem.GetComponent<GameManager>();
         StartCoroutine(FireCooldown());
+        UpgradePlayer();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
     }
 
     void Update()
@@ -93,6 +101,7 @@ public class PlayerManager : MonoBehaviour
                 {
                     Instantiate(bullet, transform.position, transform.rotation, bullets.transform);
                     canFire = false;
+                    audioSource.PlayOneShot(gunFireSound);
                     gameManager.overheatAmount += 5;
                     gameManager.UpdateOverheatSprite();
                 }
@@ -172,21 +181,18 @@ public class PlayerManager : MonoBehaviour
 
     private void UpdateHealthSprite()
     {
-        if (healthAmount == 3)
+        Image healthImage = healthBar.GetComponent<Image>();
+        if (healthLevel == 0)
         {
-            healthBar.GetComponent<Image>().sprite = healthImage0;
+            healthImage.sprite = healthImagesL0[healthAmount + 1];
         }
-        else if (healthAmount == 2)
+        else if (healthLevel == 1)
         {
-            healthBar.GetComponent<Image>().sprite = healthImage1;
+            healthImage.sprite = healthImagesL1[healthAmount + 1];
         }
-        else if (healthAmount == 1)
+        else if (healthLevel == 2)
         {
-            healthBar.GetComponent<Image>().sprite = healthImage2;
-        }
-        else if (healthAmount == 0)
-        {
-            healthBar.GetComponent<Image>().sprite = healthImage3;
+            healthImage.sprite = healthImagesL2[healthAmount + 1];
         }
     }
 
@@ -204,7 +210,7 @@ public class PlayerManager : MonoBehaviour
         while (gameManager.gameOver == false)
         {
             yield return new WaitForSeconds(0.25F);
-            if (gameManager.overheatAmount <= 95 && gameManager.overheatCooldown == false)
+            if (gameManager.overheatAmount <= (gameManager.overheatMax - 5) && gameManager.overheatCooldown == false)
             {
                 canFire = true;
             }
@@ -212,6 +218,51 @@ public class PlayerManager : MonoBehaviour
             {
                 canFire = false;
             }
+        }
+    }
+
+    private void UpgradePlayer()
+    {
+        for (int i = 0; i < DataBaseManager.upgradesActive.Length; i++)
+        {
+            string[] upgrade = DataBaseManager.upgradesActive[i].Split('|');
+            if (upgrade[0] != "none")
+            {
+                int parsed = int.Parse(upgrade[1]);
+                if (upgrade[0] == "gun")
+                {
+                    gunUpgrades[parsed - 1].SetActive(true);
+                    gameManager.gunLevel = parsed;
+                    gameManager.overheatMax += parsed * 50;
+                }
+                else if (upgrade[0] == "health")
+                {
+                    healthUpgrades[parsed - 1].SetActive(true);
+                    healthLevel = parsed;
+                    healthAmount += parsed;
+                }
+                else if (upgrade[0] == "speed")
+                {
+                    speedUpgrades[parsed - 1].SetActive(true);
+                    maxSpeed += parsed * 50;
+                    acceleration += parsed * 50;
+                }
+            }
+        }
+
+        UpdateHealthSprite();
+        RectTransform HPBarRect = healthBar.GetComponent<Image>().rectTransform;
+        int HPgained = 7 * healthLevel;
+        HPBarRect.sizeDelta = new Vector2(32 + HPgained, HPBarRect.sizeDelta.y);
+        HPBarRect.position = new Vector2(HPBarRect.position.x + HPgained, HPBarRect.position.y);
+
+        if (gameManager.gunLevel > 0)
+        {
+            gameManager.UpdateOverheatSprite();
+            RectTransform OHBarRect = gameManager.overheatBar.GetComponent<Image>().rectTransform;
+            int OHgained = 10 * gameManager.gunLevel;
+            OHBarRect.sizeDelta = new Vector2(OHBarRect.sizeDelta.x + OHgained, OHBarRect.sizeDelta.y);
+            OHBarRect.position = new Vector2(OHBarRect.position.x + OHgained, OHBarRect.position.y);
         }
     }
 }

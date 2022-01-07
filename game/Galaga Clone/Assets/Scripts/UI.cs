@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ public class UI : MonoBehaviour
     public GameObject videoMenu;
     public GameObject controlesButton;
     public GameObject controlesMenu;
+    public GameObject canvas;
     private GameManager gameManager;
     
     public void MainSettings(GameObject pausemenu)
@@ -66,8 +68,14 @@ public class UI : MonoBehaviour
         layer.SetActive(true);
     }
 
-    public void ExitGamemenu()
+    public void StartExitGameMenu()
     {
+        StartCoroutine(ExitGameMenu());
+    }
+
+    private IEnumerator ExitGameMenu()
+    {
+        yield return StartCoroutine(DataBaseManager.SaveDataToDatabase());
         GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
         foreach (GameObject go in objects)
         {
@@ -75,7 +83,12 @@ public class UI : MonoBehaviour
             {
                 go.SetActive(true);
             }
+            if (go.name.Equals("SavesMenu"))
+            {
+                go.SetActive(false);
+            }
         }
+        yield return StartCoroutine(Resources.FindObjectsOfTypeAll<Canvas>()[0].GetComponent<MainMenuUI>().GetSavesStatusData());
         Destroy(gameObject.transform.parent.parent.gameObject);
     }
 
@@ -141,7 +154,7 @@ public class UI : MonoBehaviour
             controlesButton.GetComponent<Button>().interactable = true;
             controlesMenu.SetActive(false);
         }
-        else if(gameObject == controlesButton)
+        else if (gameObject == controlesButton)
         {
             controlesMenu.SetActive(true);
             volumeButton.GetComponent<Button>().interactable = true;
@@ -149,5 +162,34 @@ public class UI : MonoBehaviour
             videoButton.GetComponent<Button>().interactable = true;
             videoMenu.SetActive(false);
         }
+    }
+
+    public void LoadLevel(string level)
+    {
+        StartCoroutine(StartloadLevel(level));
+    }
+
+    private IEnumerator StartloadLevel(string level)
+    {
+        yield return StartCoroutine(DataBaseManager.SaveDataToDatabase());
+        LoadScene(level);
+    }
+
+    public void StarChartButton()
+    {
+        LoadScene("MainMenu");
+        MainMenuManager.loadStarChart = true;
+    }
+
+    public void SoundVolumeSlider()
+    {
+        float value = GetComponent<Slider>().value;
+        PlayerPrefs.SetFloat(DataBaseManager.Prefs.soundVolume, value);
+        canvas.GetComponent<AudioSource>().volume = value;
+    }
+    
+    public void CancelButton()
+    {
+        transform.parent.gameObject.SetActive(false);
     }
 }
