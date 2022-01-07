@@ -1593,6 +1593,7 @@ MonoBehaviour:
   - {fileID: 2500958488499531473, guid: 1cbffd1c7726c994683f94dd20995c99, type: 3}
   - {fileID: 2500958488499531473, guid: 69e5aacbad4ea0b41b9ed7ff60bdaff9, type: 3}
   - {fileID: 2500958488499531473, guid: d97b029c405054043b968ec8675fa27e, type: 3}
+  - {fileID: 2500958488499531473, guid: 36cbb64519d18e7488530dc83fa22fd7, type: 3}
   overheatImagesL0:
   - {fileID: -7687609987494465623, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
   - {fileID: -2456759912788277074, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}

@@ -38,5 +38,10 @@ public class PlayerBullets : MonoBehaviour
             //gameManager.Kill(collision.gameObject, 1);
             Destroy(gameObject);
         }
+        else if (collision.gameObject.CompareTag("EnemyShield"))
+        {
+            collision.transform.parent.parent.GetComponent<BaseEnemy>().RemoveShieldHealth(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 }

@@ -16,6 +16,7 @@ public class BaseEnemy : MonoBehaviour
     public GameObject turretType;
     public List<Vector2> turretPositions;
     public AudioClip turretFireSound;
+    public int shieldTurretHealth;
 
     private GameManager gameManager;
     private GameObject bulletFolder;
@@ -58,7 +59,10 @@ public class BaseEnemy : MonoBehaviour
                 GameObject instance = Instantiate(turretType, new Vector2(transform.position.x + turretPositions[i].x, transform.position.y + turretPositions[i].y), transform.rotation, transform);
                 turrets.Add(instance);
             }
-            StartCoroutine(FireTurretBullets());
+            if (turretType.name != "Rakar4ShieldProjector")
+            {
+                StartCoroutine(FireTurretBullets());
+            }
         }
         else if (hasTurret && turretPositions.Count <= 0)
         {
@@ -141,6 +145,15 @@ public class BaseEnemy : MonoBehaviour
                     audioSource.PlayOneShot(turretFireSound);
                 }
             }
+        }
+    }
+
+    public void RemoveShieldHealth(GameObject shield)
+    {
+        shieldTurretHealth -= 1;
+        if (shieldTurretHealth < 0)
+        {
+            Destroy(shield);
         }
     }
 

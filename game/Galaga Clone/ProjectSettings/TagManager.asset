@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - OrdagaExplosionTrigger
+  - EnemyShield
   layers:
   - Default
   - TransparentFX
