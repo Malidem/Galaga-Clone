@@ -56,7 +56,7 @@ public class BaseEnemy : MonoBehaviour
         {
             for (int i = 0; i < turretPositions.Count; i++)
             {
-                GameObject instance = Instantiate(turretType, new Vector2(transform.position.x + turretPositions[i].x, transform.position.y + turretPositions[i].y), transform.rotation, transform);
+                GameObject instance = Instantiate(turretType, new Vector2(transform.position.x + turretPositions[i].x, transform.position.y + turretPositions[i].y), Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180)), transform);
                 turrets.Add(instance);
             }
             if (turretType.name != "Rakar4ShieldProjector")
