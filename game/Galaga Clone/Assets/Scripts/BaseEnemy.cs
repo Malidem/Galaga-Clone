@@ -153,8 +153,16 @@ public class BaseEnemy : MonoBehaviour
         shieldTurretHealth -= 1;
         if (shieldTurretHealth < 0)
         {
+            int i = turrets.IndexOf(shield.transform.parent.gameObject);
             Destroy(shield);
+            StartCoroutine(RespawnShield(i));
         }
+    }
+
+    public IEnumerator RespawnShield(int index)
+    {
+        yield return new WaitForSeconds(3);
+        Instantiate(turretType.transform.GetChild(0), turrets[index].transform);
     }
 
     public void RemoveHealth()
