@@ -111,24 +111,24 @@ public class BaseEnemy : MonoBehaviour
             transform.Translate(Vector2.left * Time.deltaTime * speed);
         }
 
-        if (transform.position.x > (backgroundRect.rect.width + 25))
+        if (transform.position.x > (backgroundRect.rect.width + 55))
         {
-            Destroy(gameObject);
+            Die();
         }
 
-        if (transform.position.y > (backgroundRect.rect.height + 25))
+        if (transform.position.y > (backgroundRect.rect.height + 45))
         {
-            Destroy(gameObject);
+            Die();
         }
 
         if (transform.position.x < -25)
         {
-            Destroy(gameObject);
+            Die();
         }
 
-        if (transform.position.y < -25)
+        if (transform.position.y < -45)
         {
-            Destroy(gameObject);
+            Die();
         }
 
         if (hasTurret && gameManager.gameOver == false)
@@ -215,5 +215,11 @@ public class BaseEnemy : MonoBehaviour
         gameObject.GetComponent<Image>().color = Color.red;
         yield return new WaitForSeconds(0.2F);
         gameObject.GetComponent<Image>().color = Color.white;
+    }
+
+    private void Die()
+    {
+        gameManager.OnEnemyDestroyed(gameObject);
+        Destroy(gameObject);
     }
 }

@@ -1,0 +1,22 @@
+waveCount=9
+waveIntervals=10,5.5,1,5.3,11.9,8.3,4.6,7.1,0
+dialogueCount=2
+
+dialogueStart:
+interval=5
+<<<
+Hello World
+>>>
+dialogueEnd:
+
+dialogueStart:
+interval=10.5
+<<<
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm sssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+sssss
+>>>
+dialogueEnd:

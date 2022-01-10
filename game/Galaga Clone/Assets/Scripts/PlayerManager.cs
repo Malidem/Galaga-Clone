@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
+    public bool canTakeDamage = true;
     public GameObject background;
     public GameObject bullet;
     public GameObject canvas;
@@ -22,7 +23,6 @@ public class PlayerManager : MonoBehaviour
     private GameManager gameManager;
     private AudioSource audioSource;
     private bool canFire = true;
-    private bool canTakeDamage = true;
     private int healthAmount = 3;
     private float xSpeed = 0;
     private float ySpeed = 0;
@@ -42,7 +42,6 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-
         if (gameManager.gameStarted && gameManager.gameOver == false && gameManager.gamePaused == false)
         {
 
