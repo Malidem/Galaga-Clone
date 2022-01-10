@@ -8,9 +8,11 @@ public class BaseEnemy : MonoBehaviour
     public int speed;
     public int health;
     public int moneyAwarded;
+
     public bool hasGuns;
     public GameObject bullets;
     public AudioClip gunFireSound;
+
     public bool hasTurret;
     public GameObject turretBullet;
     public GameObject turretType;
@@ -18,6 +20,7 @@ public class BaseEnemy : MonoBehaviour
     public AudioClip turretFireSound;
     public int shieldTurretHealth;
 
+    private int currentShieldTurretHealth;
     private GameManager gameManager;
     private GameObject bulletFolder;
     private GameObject player;
@@ -41,6 +44,7 @@ public class BaseEnemy : MonoBehaviour
         backgroundRect = (RectTransform)background.transform;
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
+        currentShieldTurretHealth = shieldTurretHealth;
 
         if (health < 1)
         {
@@ -150,8 +154,8 @@ public class BaseEnemy : MonoBehaviour
 
     public void RemoveShieldHealth(GameObject shield)
     {
-        shieldTurretHealth -= 1;
-        if (shieldTurretHealth < 0)
+        currentShieldTurretHealth -= 1;
+        if (currentShieldTurretHealth <= 0)
         {
             int i = turrets.IndexOf(shield.transform.parent.gameObject);
             Destroy(shield);
@@ -163,6 +167,7 @@ public class BaseEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         Instantiate(turretType.transform.GetChild(0), turrets[index].transform);
+        currentShieldTurretHealth = shieldTurretHealth;
     }
 
     public void RemoveHealth()
