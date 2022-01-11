@@ -111,12 +111,12 @@ public class BaseEnemy : MonoBehaviour
             transform.Translate(Vector2.left * Time.deltaTime * speed);
         }
 
-        if (transform.position.x > (backgroundRect.rect.width + 55))
+        if (transform.position.x > (backgroundRect.rect.width + 75))
         {
             Die();
         }
 
-        if (transform.position.y > (backgroundRect.rect.height + 45))
+        if (transform.position.y > (backgroundRect.rect.height + 55))
         {
             Die();
         }
@@ -126,7 +126,7 @@ public class BaseEnemy : MonoBehaviour
             Die();
         }
 
-        if (transform.position.y < -45)
+        if (transform.position.y < -55)
         {
             Die();
         }
