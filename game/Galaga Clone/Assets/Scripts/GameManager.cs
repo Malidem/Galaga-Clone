@@ -357,13 +357,16 @@ public class GameManager : MonoBehaviour
 
     public void OnEnemyDestroyed(GameObject enemy)
     {
-        if (wave == waveCount)
+        if (gameOver == false)
         {
-            enemyCount.Remove(enemy);
-            if (enemyCount.Count <= 0)
+            if (wave == waveCount)
             {
-                playerWon = true;
-                EndGame();
+                enemyCount.Remove(enemy);
+                if (enemyCount.Count <= 0)
+                {
+                    playerWon = true;
+                    EndGame();
+                }
             }
         }
     }
