@@ -1769,6 +1769,21 @@ MonoBehaviour:
   - enemyType: {fileID: 2500958488499531473, guid: d0f21612a7b8187489147e5fdae06d4f,
       type: 3}
     color: {r: 0, g: 0.1254902, b: 0, a: 1}
+  - enemyType: {fileID: 2500958488499531473, guid: 36cbb64519d18e7488530dc83fa22fd7,
+      type: 3}
+    color: {r: 0, g: 0.0627451, b: 0, a: 1}
+  - enemyType: {fileID: 2500958488499531473, guid: 7b8f167191c0a0e4aa47f532693d3b74,
+      type: 3}
+    color: {r: 0, g: 0, b: 1, a: 1}
+  - enemyType: {fileID: 2500958488499531473, guid: 1cbffd1c7726c994683f94dd20995c99,
+      type: 3}
+    color: {r: 0, g: 0, b: 0.5019608, a: 1}
+  - enemyType: {fileID: 2500958488499531473, guid: 69e5aacbad4ea0b41b9ed7ff60bdaff9,
+      type: 3}
+    color: {r: 0, g: 0, b: 0.1254902, a: 1}
+  - enemyType: {fileID: 2500958488499531473, guid: d97b029c405054043b968ec8675fa27e,
+      type: 3}
+    color: {r: 0, g: 0, b: 0.0627451, a: 1}
   gameStarted: 0
   gameOver: 0
   HUDElements: []
