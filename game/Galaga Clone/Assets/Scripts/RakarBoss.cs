@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RakarBoss : BaseEnemy
 {
@@ -15,14 +14,16 @@ public class RakarBoss : BaseEnemy
     // Start is called before the first frame update
     protected override void Start()
     {
+        shieldTurretHealth = 5;
+        shieldRespawnInterval = 6;
         base.Start();
-        FireGunBullets();
+        StartCoroutine(FireGunBullets());
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        base.Start();
+        base.Update();
         if (true)
         {
             //transform.Translate(Vector2.up * Time.deltaTime * speed);

@@ -11,7 +11,8 @@ public abstract class BaseEnemy : BaseShip
 
     protected GameObject player;
 
-    private int shieldTurretHealth = 2;
+    protected int shieldTurretHealth = 2;
+    protected float shieldRespawnInterval = 3;
     private int currentShieldTurretHealth;
     private bool hasTurrets;
     private List<GameObject> turrets = new List<GameObject>();
@@ -102,7 +103,7 @@ public abstract class BaseEnemy : BaseShip
 
     public IEnumerator RespawnShield(int index)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(shieldRespawnInterval);
         Instantiate(turretsProps[index].turret.transform.GetChild(0), turrets[index].transform);
         currentShieldTurretHealth = shieldTurretHealth;
     }

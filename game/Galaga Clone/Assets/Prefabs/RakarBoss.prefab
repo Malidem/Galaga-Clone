@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2500958488499531470}
   - component: {fileID: 2500958488499531471}
   - component: {fileID: 3391013004286888035}
-  - component: {fileID: 7801658066903673056}
   - component: {fileID: 1809528157749133208}
   - component: {fileID: 2359692174576432968}
   m_Layer: 11
@@ -146,58 +145,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7801658066903673056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2500958488499531473}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57a4ffe081224554f968427ef057c87e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 200
-  canTakeDamage: 1
-  speed: 100
-  moneyAwarded: 1000
-  turretsProps:
-  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
-      type: 3}
-    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
-    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: 62.2, y: 46.8}
-  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
-      type: 3}
-    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
-    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: 62.2, y: -46.8}
-  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
-      type: 3}
-    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
-    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: -1.85, y: 58.7}
-  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
-      type: 3}
-    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
-    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: -1.85, y: -58.7}
-  - turret: {fileID: 7564960916000155831, guid: 48f94bb7d967a0047a616b7459c209e9,
-      type: 3}
-    ammo: {fileID: 0}
-    fireSound: {fileID: 0}
-    position: {x: -68.3, y: 58.65}
-  - turret: {fileID: 7564960916000155831, guid: 48f94bb7d967a0047a616b7459c209e9,
-      type: 3}
-    ammo: {fileID: 0}
-    fireSound: {fileID: 0}
-    position: {x: -6.3, y: -58.65}
-  canFireGuns: 1
-  canFireTurrets: 1
-  hasGuns: 1
-  bullets: {fileID: 1424064957359088038, guid: daeb9eb3651f7d049a58af80db43cfbf, type: 3}
-  gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
 --- !u!82 &1809528157749133208
 AudioSource:
   m_ObjectHideFlags: 0
