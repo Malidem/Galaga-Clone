@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject backgroundsFolder;
     public GameObject bulletFolder;
     public GameObject enemyFolder;
+    public GameObject turretBulletFolder;
     public GameObject canvas;
     public GameObject player;
     public GameObject gameOverMenu;

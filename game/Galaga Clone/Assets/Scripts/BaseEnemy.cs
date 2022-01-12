@@ -10,6 +10,7 @@ public abstract class BaseEnemy : BaseShip
     public List<TurretsProps> turretsProps = new List<TurretsProps>();
 
     protected GameObject player;
+    protected GameObject turretBulletFolder;
 
     protected int shieldTurretHealth = 2;
     protected float shieldRespawnInterval = 3;
@@ -28,6 +29,7 @@ public abstract class BaseEnemy : BaseShip
     {
         base.Start();
         player = gameManager.player;
+        turretBulletFolder = gameManager.turretBulletFolder;
         currentShieldTurretHealth = shieldTurretHealth;
 
         if (turretsProps.Count > 0)
@@ -82,7 +84,7 @@ public abstract class BaseEnemy : BaseShip
                     if (!turrets[i].name.Contains("Shield"))
                     {
                         GameObject turret = turrets[i];
-                        Instantiate(turretsProps[i].ammo, turret.transform.position, turret.transform.rotation, bulletFolder.transform);
+                        Instantiate(turretsProps[i].ammo, turret.transform.position, turret.transform.rotation, turretBulletFolder.transform);
                         audioSource.PlayOneShot(turretsProps[i].fireSound);
                     }
                 }
