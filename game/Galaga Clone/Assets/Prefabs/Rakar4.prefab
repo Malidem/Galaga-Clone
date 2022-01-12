@@ -157,22 +157,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a4ffe081224554f968427ef057c87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
   health: 3
+  canTakeDamage: 1
+  speed: 100
   moneyAwarded: 300
+  turretsProps:
+  - turret: {fileID: 7564960916000155831, guid: 48f94bb7d967a0047a616b7459c209e9,
+      type: 3}
+    ammo: {fileID: 0}
+    fireSound: {fileID: 0}
+    position: {x: 0, y: 0}
+  canFireGuns: 1
+  canFireTurrets: 1
   hasGuns: 0
   bullets: {fileID: 0}
   gunFireSound: {fileID: 0}
-  hasTurret: 1
-  turretBullet: {fileID: 0}
-  turretType: {fileID: 7564960916000155831, guid: 48f94bb7d967a0047a616b7459c209e9,
-    type: 3}
-  turretPositions:
-  - {x: 0, y: 0}
-  turretFireSound: {fileID: 0}
-  shieldTurretHealth: 2
-  canFireGuns: 1
-  canFireTurrets: 1
 --- !u!82 &1809528157749133208
 AudioSource:
   m_ObjectHideFlags: 0

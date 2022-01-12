@@ -8,19 +8,19 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject background;
+    public GameObject backgroundsFolder;
+    public GameObject bulletFolder;
+    public GameObject enemyFolder;
     public GameObject canvas;
     public GameObject player;
     public GameObject gameOverMenu;
     public GameObject HUD;
-    public GameObject enemies;
     public GameObject backgroundPrefab;
     public GameObject explosion;
     public GameObject dialogueBackground;
     public Image overheatBar;
     public Text dialogueText;
     public Texture2D cursor;
-    public int money;
     public AudioClip overheatSound;
     public List<Sprite> overheatImagesL0 = new List<Sprite>();
     public List<Sprite> overheatImagesL1 = new List<Sprite>();
@@ -45,7 +45,10 @@ public class GameManager : MonoBehaviour
     public int overheatMax = 100;
     [HideInInspector]
     public int gunLevel = 0;
+    [HideInInspector]
+    public RectTransform backgroundRect;
 
+    private int money;
     private int wave;
     private int waveCount;
     private Transform[] enemySpawnPoints;
@@ -58,14 +61,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        enemySpawnPoints = enemies.transform.GetChild(0).GetComponentsInChildren<Transform>();
+        backgroundRect = (RectTransform)backgroundsFolder.transform;
+        enemySpawnPoints = enemyFolder.transform.GetChild(0).GetComponentsInChildren<Transform>();
         List<Transform> enemySpawnPointslist = new List<Transform>(enemySpawnPoints);
-        enemySpawnPointslist.Remove(enemies.transform.GetChild(0));
+        enemySpawnPointslist.Remove(enemyFolder.transform.GetChild(0));
         enemySpawnPoints = enemySpawnPointslist.ToArray();
         Time.timeScale = 1;
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
-        Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
+        Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         audioSource = canvas.GetComponent<AudioSource>();
         audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
@@ -206,7 +210,7 @@ public class GameManager : MonoBehaviour
                     EnemySpawnPoint spawnPoint = enemySpawnPoints[i].gameObject.GetComponent<EnemySpawnPoint>();
                     if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
                     {
-                        GameObject enemy = Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemies.transform);
+                        GameObject enemy = Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemyFolder.transform);
                         if (wave == waveCount)
                         {
                             enemyCount.Add(enemy);
@@ -246,7 +250,7 @@ public class GameManager : MonoBehaviour
     public void AddMoney(int amount)
     {
         money += amount;
-        HUDElements[2].gameObject.GetComponent<Text>().text = "Money: " + String.Format("{0:n0}", money);
+        HUDElements[2].gameObject.GetComponent<Text>().text = "Money: " + string.Format("{0:n0}", money);
     }
 
     private IEnumerator Overheat()
@@ -346,8 +350,8 @@ public class GameManager : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             if (gameObject.name != "Player")
             {
-                gameObject.GetComponent<BaseEnemy>().canFireGuns = false;
-                gameObject.GetComponent<BaseEnemy>().canFireTurrets = false;
+                gameObject.GetComponent<EnemyManager>().canFireGuns = false;
+                gameObject.GetComponent<EnemyManager>().canFireTurrets = false;
                 OnEnemyDestroyed(gameObject);
             }
             yield return explosionGO.GetComponent<Explosion>().Die();

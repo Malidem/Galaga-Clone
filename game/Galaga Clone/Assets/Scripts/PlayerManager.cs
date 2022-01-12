@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : BaseShip
 {
-    public bool canTakeDamage = true;
-    public GameObject background;
     public GameObject bullet;
-    public GameObject canvas;
-    public GameObject eventSystem;
     public GameObject healthBar;
-    public GameObject bullets;
     public AudioClip gunFireSound;
     public List<Sprite> healthImagesL0 = new List<Sprite>();
     public List<Sprite> healthImagesL1 = new List<Sprite>();
@@ -20,10 +15,7 @@ public class PlayerManager : MonoBehaviour
     public List<GameObject> healthUpgrades = new List<GameObject>();
     public List<GameObject> speedUpgrades = new List<GameObject>();
 
-    private GameManager gameManager;
-    private AudioSource audioSource;
     private bool canFire = true;
-    private int healthAmount = 3;
     private float xSpeed = 0;
     private float ySpeed = 0;
     private float maxSpeed = 500;
@@ -31,13 +23,11 @@ public class PlayerManager : MonoBehaviour
     private float deceleration = 500;
     private int healthLevel = 0;
 
-    void Start()
+    protected override void Start()
     {
-        gameManager = eventSystem.GetComponent<GameManager>();
+        base.Start();
         StartCoroutine(FireCooldown());
         UpgradePlayer();
-        audioSource = GetComponent<AudioSource>();
-        audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
     }
 
     void Update()
@@ -98,7 +88,7 @@ public class PlayerManager : MonoBehaviour
             {
                 if (canFire)
                 {
-                    Instantiate(bullet, transform.position, transform.rotation, bullets.transform);
+                    Instantiate(bullet, transform.position, transform.rotation, bulletFolder.transform);
                     canFire = false;
                     audioSource.PlayOneShot(gunFireSound);
                     gameManager.overheatAmount += 5;
@@ -107,20 +97,19 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        RectTransform rect = (RectTransform)background.transform;
-        RectTransform rect2 = (RectTransform)transform;
-        float sizeX = rect2.rect.width / 2;
-        float sizeY = rect2.rect.height / 2;
+        RectTransform playerRect = (RectTransform)transform;
+        float sizeX = playerRect.rect.width / 2;
+        float sizeY = playerRect.rect.height / 2;
 
-        if ((transform.position.x + sizeX) > (rect.rect.width / 2))
+        if ((transform.position.x + sizeX) > (backgroundRect.rect.width / 2))
         {
-            transform.position = new Vector2(((rect.rect.width / 2) - sizeX), transform.position.y);
+            transform.position = new Vector2(((backgroundRect.rect.width / 2) - sizeX), transform.position.y);
             xSpeed = 0;
         }
 
-        if ((transform.position.y + sizeY) > rect.rect.height)
+        if ((transform.position.y + sizeY) > backgroundRect.rect.height)
         {
-            transform.position = new Vector2(transform.position.x, (rect.rect.height - sizeY));
+            transform.position = new Vector2(transform.position.x, (backgroundRect.rect.height - sizeY));
             ySpeed = 0;
         }
 
@@ -137,45 +126,19 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void RemoveHealth(int amount)
+    protected override void OnHealthAdded()
     {
-        if (canTakeDamage)
-        {
-            canTakeDamage = false;
-            for (int i = 0; i < amount; i++)
-            {
-                healthAmount -= 1;
-            }
-
-            UpdateHealthSprite();
-
-            if (healthAmount > -1)
-            {
-                StartCoroutine(FlashRed());
-                canTakeDamage = true;
-            }
-            else
-            {
-                gameManager.EndGame();
-                gameManager.Kill(gameObject, 1);
-            }
-        }
-    }
-
-    private IEnumerator FlashRed()
-    {
-        gameObject.GetComponent<Image>().color = Color.red;
-        yield return new WaitForSeconds(0.2F);
-        gameObject.GetComponent<Image>().color = Color.white;
-    }
-
-    public void AddHealth(int amount)
-    {
-        for (int i = 0; i < amount; i++)
-        {
-            healthAmount += 1;
-        }
         UpdateHealthSprite();
+    }
+
+    protected override void OnHealthRemoved()
+    {
+        UpdateHealthSprite();
+    }
+
+    protected override void OnDeath()
+    {
+        gameManager.EndGame();
     }
 
     private void UpdateHealthSprite()
@@ -183,15 +146,15 @@ public class PlayerManager : MonoBehaviour
         Image healthImage = healthBar.GetComponent<Image>();
         if (healthLevel == 0)
         {
-            healthImage.sprite = healthImagesL0[healthAmount + 1];
+            healthImage.sprite = healthImagesL0[currentHealth];
         }
         else if (healthLevel == 1)
         {
-            healthImage.sprite = healthImagesL1[healthAmount + 1];
+            healthImage.sprite = healthImagesL1[currentHealth];
         }
         else if (healthLevel == 2)
         {
-            healthImage.sprite = healthImagesL2[healthAmount + 1];
+            healthImage.sprite = healthImagesL2[currentHealth];
         }
     }
 
@@ -200,13 +163,13 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && !collision.gameObject.name.Contains("Ordaga4"))
         {
             gameManager.Kill(collision.gameObject, 1);
-            RemoveHealth(1);
+            RemoveHealth();
         }
         else if (collision.gameObject.CompareTag("OrdagaExplosionTrigger"))
         {
             gameManager.Kill(collision.gameObject.transform.parent.gameObject, 1.7F);
             yield return new WaitForSeconds(0.4F);
-            RemoveHealth(1);
+            RemoveHealth();
         }
     }
 
@@ -244,7 +207,7 @@ public class PlayerManager : MonoBehaviour
                 {
                     healthUpgrades[parsed - 1].SetActive(true);
                     healthLevel = parsed;
-                    healthAmount += parsed;
+                    health += parsed;
                 }
                 else if (upgrade[0] == "speed")
                 {

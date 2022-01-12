@@ -1713,12 +1713,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1386612222}
-  background: {fileID: 1142424723}
+  backgroundsFolder: {fileID: 1142424723}
+  bulletFolder: {fileID: 1230332286}
+  enemyFolder: {fileID: 1499878211}
   canvas: {fileID: 693231156}
   player: {fileID: 1510238983}
   gameOverMenu: {fileID: 1247771571}
   HUD: {fileID: 1412178585}
-  enemies: {fileID: 1499878211}
   backgroundPrefab: {fileID: 6801779422609192021, guid: 2971966a86664374a9d3fd3cb5135a8f,
     type: 3}
   explosion: {fileID: 6879489987790728947, guid: 5e176c76d71b8714a99886cf9da12717,
@@ -1727,7 +1728,6 @@ MonoBehaviour:
   overheatBar: {fileID: 684949600}
   dialogueText: {fileID: 687915281}
   cursor: {fileID: 2800000, guid: 7c1bec6661b34db4eaa609639337a52f, type: 3}
-  money: 0
   overheatSound: {fileID: 0}
   overheatImagesL0:
   - {fileID: -7687609987494465623, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
@@ -1793,6 +1793,7 @@ MonoBehaviour:
   overheatAmount: 0
   overheatMax: 100
   gunLevel: 0
+  backgroundRect: {fileID: 0}
 --- !u!1 &673320184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,7 +3249,7 @@ GameObject:
   - component: {fileID: 1142424726}
   - component: {fileID: 1142424725}
   m_Layer: 5
-  m_Name: Backgrounds
+  m_Name: BackgroundFolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3616,7 +3617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1230332287}
   m_Layer: 5
-  m_Name: Bullets
+  m_Name: BulletFolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4072,7 +4073,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499878212}
   m_Layer: 5
-  m_Name: Enemies
+  m_Name: EnemyFolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4194,13 +4195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7381f59a3372dc4aa324e3ec9e266ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 4
   canTakeDamage: 1
-  background: {fileID: 1142424723}
   bullet: {fileID: 2786342596386088450, guid: 746ea31070b68c244a9b9728296f1221, type: 3}
-  canvas: {fileID: 693231156}
-  eventSystem: {fileID: 652294123}
   healthBar: {fileID: 282064742}
-  bullets: {fileID: 1230332286}
   gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
   healthImagesL0:
   - {fileID: 8133923789288904650, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}

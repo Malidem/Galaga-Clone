@@ -115,4 +115,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 250
-  dirction: left
+  isEnemyBullet: 1
+  dirction: 0

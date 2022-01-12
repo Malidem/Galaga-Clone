@@ -158,23 +158,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a4ffe081224554f968427ef057c87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 90
   health: 3
+  canTakeDamage: 1
+  speed: 90
   moneyAwarded: 200
+  turretsProps:
+  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+      type: 3}
+    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
+    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
+    position: {x: 4, y: 15}
+  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+      type: 3}
+    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
+    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
+    position: {x: 4, y: -15}
+  canFireGuns: 1
+  canFireTurrets: 1
   hasGuns: 1
   bullets: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}
   gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
-  hasTurret: 1
-  turretBullet: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f,
-    type: 3}
-  turretType: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
-    type: 3}
-  turretPositions:
-  - {x: 4, y: 15}
-  - {x: 4, y: -15}
-  turretFireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-  canFireGuns: 1
-  canFireTurrets: 1
 --- !u!82 &5130096991438066752
 AudioSource:
   m_ObjectHideFlags: 0
