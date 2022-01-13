@@ -174,7 +174,11 @@ public class PlayerManager : BaseShip
         {
             gObject.GetComponent<BaseEnemy>().RemoveHealth();
         }
-        RemoveHealth();
+
+        if (!gObject.CompareTag("EnemyShield"))
+        {
+            RemoveHealth();
+        }
     }
 
     private IEnumerator FireCooldown()
