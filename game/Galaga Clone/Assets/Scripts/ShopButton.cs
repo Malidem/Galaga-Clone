@@ -23,7 +23,7 @@ public class ShopButton : MonoBehaviour
     {
         card = transform.GetChild(2).gameObject;
         cardProps = card.GetComponent<UpgradeCard>();
-        confirmMenu = transform.parent.GetChild(6);
+        confirmMenu = transform.parent.GetChild(7);
         confirmButton = confirmMenu.GetChild(4).GetComponent<Button>();
         confirmButtonText = confirmButton.gameObject.transform.GetChild(0).GetComponent<Text>();
     }
