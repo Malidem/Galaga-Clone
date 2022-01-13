@@ -11,9 +11,10 @@ public abstract class BaseEnemy : BaseShip
 
     protected GameObject player;
     protected GameObject turretBulletFolder;
-
     protected int shieldTurretHealth = 2;
     protected float shieldRespawnInterval = 3;
+    protected float shieldTurretSize = 1;
+
     private int currentShieldTurretHealth;
     private bool hasTurrets;
     private List<GameObject> turrets = new List<GameObject>();
@@ -48,6 +49,10 @@ public abstract class BaseEnemy : BaseShip
                 if (!instance.name.Contains("Shield") && hasShootingTurrets == false)
                 {
                     hasShootingTurrets = true;
+                }
+                else if (instance.name.Contains("Shield"))
+                {
+                    instance.transform.GetChild(0).transform.localScale = new Vector2(shieldTurretSize, shieldTurretSize);
                 }
             }
             if (hasShootingTurrets)
@@ -110,7 +115,8 @@ public abstract class BaseEnemy : BaseShip
     public IEnumerator RespawnShield(int index)
     {
         yield return new WaitForSeconds(shieldRespawnInterval);
-        Instantiate(turretsProps[index].turret.transform.GetChild(0), turrets[index].transform);
+        Transform instance = Instantiate(turretsProps[index].turret.transform.GetChild(0), turrets[index].transform);
+        instance.localScale = new Vector2(shieldTurretSize, shieldTurretSize);
         currentShieldTurretHealth = shieldTurretHealth;
     }
 

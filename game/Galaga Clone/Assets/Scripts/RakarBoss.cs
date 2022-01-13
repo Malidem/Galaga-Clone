@@ -23,9 +23,10 @@ public class RakarBoss : BaseEnemy
     // Start is called before the first frame update
     protected override void Start()
     {
+        shieldTurretSize = 0.5F;
         base.Start();
-        shieldTurretHealth = 5;
-        shieldRespawnInterval = 6;
+        shieldTurretHealth = 3;
+        shieldRespawnInterval = 12;
         explosionSize = 3;
         bossRect = (RectTransform)transform;
         halfHeight = bossRect.rect.height / 2;
@@ -96,7 +97,7 @@ public class RakarBoss : BaseEnemy
         {
             transform.Translate(Vector2.left * Time.deltaTime * speed);
 
-            if (transform.position.x < (backgroundRect.rect.width - ((backgroundRect.rect.width / 2) / 2)))
+            if (transform.position.x < (backgroundRect.rect.width - (((backgroundRect.rect.width / 2) / 2) / 2)))
             {
                 isInPosition = true;
                 canFireGuns = true;
@@ -167,26 +168,9 @@ public class RakarBoss : BaseEnemy
     {
         while (gameManager.gameOver == false && canFireGuns)
         {
-            yield return new WaitForSeconds(1);
-            int chance = Random.Range(0, 101);
-            if (chance <= 25)
-            {
-                int actionInt = Random.Range(0, 3);
-                if (actionInt == 0)
-                {
-                    CreateBullet(leftBulletPosition);
-                }
-                else if (actionInt == 1)
-                {
-                    CreateBullet(rightBulletPosition);
-                }
-                else
-                {
-                    yield return new WaitForSeconds(1);
-                    CreateBullet(leftBulletPosition);
-                    CreateBullet(rightBulletPosition);
-                }
-            }
+            yield return new WaitForSeconds(Random.Range(2, 5));
+            CreateBullet(leftBulletPosition);
+            CreateBullet(rightBulletPosition);
         }
     }
 
