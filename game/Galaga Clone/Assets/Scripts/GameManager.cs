@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject backgroundPrefab;
     public GameObject explosion;
     public GameObject dialogueBackground;
+    public GameObject bossSpawnPoint;
     public Image overheatBar;
     public Text dialogueText;
     public Texture2D cursor;
@@ -48,11 +49,12 @@ public class GameManager : MonoBehaviour
     public int gunLevel = 0;
     [HideInInspector]
     public RectTransform backgroundRect;
+    [HideInInspector]
+    public List<Transform> enemySpawnPoints;
 
     private int money;
     private int wave;
     private int waveCount;
-    private Transform[] enemySpawnPoints;
     private List<string> dialogues = new List<string>();
     private List<float> dialogueIntervals = new List<float>();
     private List<float> waveIntervals = new List<float>();
@@ -63,10 +65,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         backgroundRect = (RectTransform)backgroundsFolder.transform;
-        enemySpawnPoints = enemyFolder.transform.GetChild(0).GetComponentsInChildren<Transform>();
-        List<Transform> enemySpawnPointslist = new List<Transform>(enemySpawnPoints);
-        enemySpawnPointslist.Remove(enemyFolder.transform.GetChild(0));
-        enemySpawnPoints = enemySpawnPointslist.ToArray();
+        enemySpawnPoints = new List<Transform>(enemyFolder.transform.GetChild(0).GetComponentsInChildren<Transform>());
+        enemySpawnPoints.Remove(enemyFolder.transform.GetChild(0));
         Time.timeScale = 1;
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
@@ -206,17 +206,29 @@ public class GameManager : MonoBehaviour
         {
             if (item.color.Equals(pixelColor))
             {
-                for (int i = 0; i < enemySpawnPoints.Length; i++)
+                if (item.isBoss == false)
                 {
-                    EnemySpawnPoint spawnPoint = enemySpawnPoints[i].gameObject.GetComponent<EnemySpawnPoint>();
-                    if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
+                    for (int i = 0; i < enemySpawnPoints.Count; i++)
                     {
-                        GameObject enemy = Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemyFolder.transform);
-                        if (wave == waveCount)
+                        EnemySpawnPoint spawnPoint = enemySpawnPoints[i].gameObject.GetComponent<EnemySpawnPoint>();
+                        if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
                         {
-                            enemyCount.Add(enemy);
+                            GameObject enemy = Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemyFolder.transform);
+                            if (wave == waveCount)
+                            {
+                                enemyCount.Add(enemy);
+                            }
                         }
-                    }
+                    } 
+                }
+                else
+                {
+                    GameObject bossEnemy = Instantiate(item.enemyType, bossSpawnPoint.transform.position, Quaternion.identity, enemyFolder.transform);
+                    BaseEnemy bossProps = bossEnemy.GetComponent<BaseEnemy>();
+                    bossProps.canFireGuns = false;
+                    bossProps.canFireTurrets = false;
+                    bossProps.canTakeDamage = false;
+                    bossProps.canShieldsTakeDamage = false;
                 }
             }
         }
@@ -364,14 +376,22 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver == false)
         {
-            if (wave == waveCount)
+            if (!enemy.CompareTag("BossEnemy"))
             {
-                enemyCount.Remove(enemy);
-                if (enemyCount.Count <= 0)
+                if (wave == waveCount)
                 {
-                    playerWon = true;
-                    EndGame();
-                }
+                    enemyCount.Remove(enemy);
+                    if (enemyCount.Count <= 0)
+                    {
+                        playerWon = true;
+                        EndGame();
+                    }
+                } 
+            }
+            else
+            {
+                playerWon = true;
+                EndGame();
             }
         }
     }
@@ -475,5 +495,6 @@ public class GameManager : MonoBehaviour
     {
         public GameObject enemyType;
         public Color color;
+        public bool isBoss;
     }
 }

@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class RakarBoss : BaseEnemy
 {
+    public GameObject backupEnemy;
     public GameObject bullet;
     public AudioClip gunFireSound;
     public Vector2 rightBulletPosition;
     public Vector2 leftBulletPosition;
 
+    private bool isInPosition;
     private bool isMoving;
     private bool isTouchingTopEdge;
     private bool isTouchingBottomEdge;
+    private bool canRunHalfHealthTask = true;
     private int direction;
     private float halfHeight;
     private RectTransform bossRect;
@@ -26,62 +29,89 @@ public class RakarBoss : BaseEnemy
         explosionSize = 3;
         bossRect = (RectTransform)transform;
         halfHeight = bossRect.rect.height / 2;
-        StartCoroutine(FireGunBullets());
-        StartCoroutine(DestinationPicker());
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
-        if (isMoving)
+        if (isInPosition)
         {
-            if (direction == 0)
+            if (isMoving)
             {
-                transform.Translate(Vector2.up * Time.deltaTime * speed);
-
-                if (transform.position.y > destination.y)
+                if (direction == 0)
                 {
-                    transform.position = new Vector2(transform.position.x, destination.y);
-                    isMoving = false;
+                    transform.Translate(Vector2.up * Time.deltaTime * speed);
+
+                    if (transform.position.y > destination.y)
+                    {
+                        transform.position = new Vector2(transform.position.x, destination.y);
+                        isMoving = false;
+                    }
                 }
+                else
+                {
+                    transform.Translate(Vector2.down * Time.deltaTime * speed);
+
+                    if (transform.position.y < destination.y)
+                    {
+                        transform.position = new Vector2(transform.position.x, destination.y);
+                        isMoving = false;
+                    }
+                }
+            }
+
+            if ((transform.position.y + halfHeight) > backgroundRect.rect.height)
+            {
+                transform.position = new Vector2(transform.position.x, backgroundRect.rect.height - halfHeight);
+                isMoving = false;
+                isTouchingTopEdge = true;
             }
             else
             {
-                transform.Translate(Vector2.down * Time.deltaTime * speed);
+                isTouchingTopEdge = false;
+            }
 
-                if (transform.position.y < destination.y)
+            if ((transform.position.y - halfHeight) < 0)
+            {
+                transform.position = new Vector2(transform.position.x, 0 + halfHeight);
+                isMoving = false;
+                isTouchingBottomEdge = true;
+            }
+            else
+            {
+                isTouchingBottomEdge = false;
+            }
+
+            if (currentHealth == (health / 2))
+            {
+                if (canRunHalfHealthTask)
                 {
-                    transform.position = new Vector2(transform.position.x, destination.y);
-                    isMoving = false;
+                    StartCoroutine(SpawnBackup());
+                    canRunHalfHealthTask = false;
                 }
             }
         }
-
-        if ((transform.position.y + halfHeight) > backgroundRect.rect.height)
-        {
-            transform.position = new Vector2(transform.position.x, backgroundRect.rect.height - halfHeight);
-            isMoving = false;
-            isTouchingTopEdge = true;
-        }
         else
         {
-            isTouchingTopEdge = false;
-        }
+            transform.Translate(Vector2.left * Time.deltaTime * speed);
 
-        if ((transform.position.y - halfHeight) < 0)
-        {
-            transform.position = new Vector2(transform.position.x, 0 + halfHeight);
-            isMoving = false;
-            isTouchingBottomEdge = true;
-        }
-        else
-        {
-            isTouchingBottomEdge = false;
+            if (transform.position.x < (backgroundRect.rect.width - ((backgroundRect.rect.width / 2) / 2)))
+            {
+                isInPosition = true;
+                canFireGuns = true;
+                canFireTurrets = true;
+                canTakeDamage = true;
+                canShieldsTakeDamage = true;
+
+                StartCoroutine(FireGunBullets());
+                StartCoroutine(FireTurretBullets());
+                StartCoroutine(DestinationController());
+            }
         }
     }
 
-    private IEnumerator DestinationPicker()
+    private IEnumerator DestinationController()
     {
         while (gameManager.gameOver == false)
         {
@@ -164,5 +194,18 @@ public class RakarBoss : BaseEnemy
     {
         Instantiate(bullet, new Vector2(transform.position.x + position.x, transform.position.y + position.y), transform.rotation, bulletFolder.transform);
         audioSource.PlayOneShot(gunFireSound);
+    }
+
+    private IEnumerator SpawnBackup()
+    {
+        while (gameManager.gameOver == false)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Transform spawnPoint = gameManager.enemySpawnPoints[Random.Range(0, gameManager.enemySpawnPoints.Count)];
+                Instantiate(backupEnemy, spawnPoint.position, Quaternion.identity, gameManager.enemyFolder.transform);
+            }
+            yield return new WaitForSeconds(5);
+        }
     }
 }

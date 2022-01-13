@@ -20,9 +20,10 @@ public abstract class BaseEnemy : BaseShip
 
     [HideInInspector]
     public bool canFireGuns = true;
-
     [HideInInspector]
     public bool canFireTurrets = true;
+    [HideInInspector]
+    public bool canShieldsTakeDamage = true;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -71,7 +72,7 @@ public abstract class BaseEnemy : BaseShip
         }
     }
 
-    private IEnumerator FireTurretBullets()
+    protected IEnumerator FireTurretBullets()
     {
         while (gameManager.gameOver == false && canFireTurrets)
         {
@@ -94,12 +95,15 @@ public abstract class BaseEnemy : BaseShip
 
     public void RemoveShieldHealth(GameObject shield)
     {
-        currentShieldTurretHealth -= 1;
-        if (currentShieldTurretHealth <= 0)
+        if (canShieldsTakeDamage)
         {
-            int i = turrets.IndexOf(shield.transform.parent.gameObject);
-            Destroy(shield);
-            StartCoroutine(RespawnShield(i));
+            currentShieldTurretHealth -= 1;
+            if (currentShieldTurretHealth <= 0)
+            {
+                int i = turrets.IndexOf(shield.transform.parent.gameObject);
+                Destroy(shield);
+                StartCoroutine(RespawnShield(i));
+            } 
         }
     }
 

@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f606b8797b1e8a84ea6665a0a5466714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 100
   canTakeDamage: 1
   speed: 50
   moneyAwarded: 5000
@@ -344,6 +344,9 @@ MonoBehaviour:
     position: {x: -69.8, y: -58.35}
   canFireGuns: 1
   canFireTurrets: 1
+  canShieldsTakeDamage: 1
+  backupEnemy: {fileID: 2500958488499531473, guid: 4492c82e334d95244b87e20c49023ab4,
+    type: 3}
   bullet: {fileID: 1424064957359088038, guid: daeb9eb3651f7d049a58af80db43cfbf, type: 3}
   gunFireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
   rightBulletPosition: {x: 0, y: 35.5}

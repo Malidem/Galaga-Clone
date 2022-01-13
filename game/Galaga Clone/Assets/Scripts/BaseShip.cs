@@ -44,7 +44,7 @@ public abstract class BaseShip : MonoBehaviour
 
     public void RemoveHealth()
     {
-        if (canTakeDamage)
+        if (canTakeDamage && gameManager.gameOver == false)
         {
             canTakeDamage = false;
             currentHealth -= 1;
