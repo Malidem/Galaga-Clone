@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2018007709974249374}
   m_Layer: 10
   m_Name: Ordaga2Bullets
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,5 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 280
+  damageAmount: 1
   isEnemyBullet: 1
   dirction: 0
