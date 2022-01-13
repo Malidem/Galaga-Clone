@@ -351,8 +351,8 @@ public class GameManager : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             if (gameObject.name != "Player")
             {
-                gameObject.GetComponent<EnemyManager>().canFireGuns = false;
-                gameObject.GetComponent<EnemyManager>().canFireTurrets = false;
+                gameObject.GetComponent<BaseEnemy>().canFireGuns = false;
+                gameObject.GetComponent<BaseEnemy>().canFireTurrets = false;
                 OnEnemyDestroyed(gameObject);
             }
             yield return explosionGO.GetComponent<Explosion>().Die();

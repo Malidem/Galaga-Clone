@@ -116,6 +116,11 @@ public abstract class BaseEnemy : BaseShip
         Destroy(gameObject);
     }
 
+    protected override void OnDeath()
+    {
+        gameManager.AddMoney(moneyAwarded);
+    }
+
     [Serializable]
     public class TurretsProps
     {

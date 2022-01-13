@@ -160,17 +160,21 @@ public class PlayerManager : BaseShip
 
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && !collision.gameObject.name.Contains("Ordaga4"))
+        GameObject gObject = collision.gameObject;
+        if (gObject.CompareTag("Enemy") && !gObject.name.Contains("Ordaga4"))
         {
-            gameManager.Kill(collision.gameObject, 1);
-            RemoveHealth();
+            gameManager.Kill(gObject, 1);
         }
-        else if (collision.gameObject.CompareTag("OrdagaExplosionTrigger"))
+        else if (gObject.CompareTag("OrdagaExplosionTrigger"))
         {
-            gameManager.Kill(collision.gameObject.transform.parent.gameObject, 1.7F);
+            gameManager.Kill(gObject.transform.parent.gameObject, 1.7F);
             yield return new WaitForSeconds(0.4F);
-            RemoveHealth();
         }
+        else if (gObject.CompareTag("BossEnemy"))
+        {
+            gObject.GetComponent<BaseEnemy>().RemoveHealth();
+        }
+        RemoveHealth();
     }
 
     private IEnumerator FireCooldown()

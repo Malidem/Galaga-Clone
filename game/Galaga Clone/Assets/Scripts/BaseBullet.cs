@@ -56,27 +56,16 @@ public class BaseBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isEnemyBullet)
+        GameObject gObject = collision.gameObject;
+        if (!isEnemyBullet)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if (gObject.CompareTag("Enemy") || gObject.CompareTag("BossEnemy"))
             {
-                player.GetComponent<PlayerManager>().RemoveHealth();
+                gObject.GetComponent<BaseEnemy>().RemoveHealth();
             }
-        }
-        else
-        {
-            if (collision.gameObject.CompareTag("Enemy"))
+            else if (gObject.CompareTag("EnemyShield"))
             {
-                BaseEnemy enemy = collision.GetComponent<BaseEnemy>();
-                if (gameManager.gameOver == false)
-                {
-                    gameManager.AddMoney(enemy.moneyAwarded);
-                }
-                enemy.RemoveHealth();
-            }
-            else if (collision.gameObject.CompareTag("EnemyShield"))
-            {
-                collision.transform.parent.parent.GetComponent<BaseEnemy>().RemoveShieldHealth(collision.gameObject);
+                gObject.transform.parent.parent.GetComponent<BaseEnemy>().RemoveShieldHealth(gObject);
             }
         }
         Destroy(gameObject);

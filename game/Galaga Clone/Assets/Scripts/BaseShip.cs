@@ -9,6 +9,7 @@ public abstract class BaseShip : MonoBehaviour
     public bool canTakeDamage = true;
 
     protected int currentHealth;
+    protected float explosionSize = 1;
     protected GameManager gameManager;
     protected AudioSource audioSource;
     protected RectTransform backgroundRect;
@@ -63,7 +64,7 @@ public abstract class BaseShip : MonoBehaviour
             else
             {
                 OnDeath();
-                gameManager.Kill(gameObject, 1);
+                gameManager.Kill(gameObject, explosionSize);
             }
         }
     }
