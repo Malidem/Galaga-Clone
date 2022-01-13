@@ -52,7 +52,7 @@ public class SavesManager : MonoBehaviour
         {
             string[] data = www.text.Split('\t');
             DataBaseManager.money = int.Parse(data[1]);
-            DataBaseManager.levelsUnlocked = 3;
+            DataBaseManager.levelsUnlocked = int.Parse(data[2]);
             DataBaseManager.levelsCompleted = int.Parse(data[3]);
             DataBaseManager.upgradesUnlocked = data[4].Split(',');
             DataBaseManager.upgradesActive = data[5].Split(',');
