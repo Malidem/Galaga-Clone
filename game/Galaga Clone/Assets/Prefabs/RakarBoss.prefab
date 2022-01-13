@@ -13,12 +13,14 @@ GameObject:
   - component: {fileID: 2500958488499531469}
   - component: {fileID: 2500958488499531470}
   - component: {fileID: 2500958488499531471}
-  - component: {fileID: 4651356415108094969}
-  - component: {fileID: 7801658066903673056}
-  - component: {fileID: 5130096991438066752}
+  - component: {fileID: 4873430482084166775}
+  - component: {fileID: 7262754603933469498}
+  - component: {fileID: 3391013004286888035}
+  - component: {fileID: 1809528157749133208}
+  - component: {fileID: 2359692174576432968}
   m_Layer: 11
-  m_Name: Rakar3
-  m_TagString: Enemy
+  m_Name: RakarBoss
+  m_TagString: BossEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +42,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 200, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2500958488499531468
 CanvasRenderer:
@@ -69,8 +71,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2885985651706736517, guid: 19f57173cd3c6424dabf2f1344d1e40e,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f175e18d3ddc47448b11aa2289f71aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -114,7 +115,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 25, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -125,9 +126,61 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 50}
+  m_Size: {x: 135, y: 144}
   m_EdgeRadius: 0
---- !u!95 &4651356415108094969
+--- !u!61 &4873430482084166775
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500958488499531473}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -65, y: 51}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 42}
+  m_EdgeRadius: 0
+--- !u!61 &7262754603933469498
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500958488499531473}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -65, y: -51}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 45, y: 42}
+  m_EdgeRadius: 0
+--- !u!95 &3391013004286888035
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -135,9 +188,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2500958488499531473}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ea9187f262e697143a2ad2d2d50f88dc, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -146,39 +199,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7801658066903673056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2500958488499531473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57a4ffe081224554f968427ef057c87e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  canTakeDamage: 1
-  speed: 90
-  moneyAwarded: 200
-  turretsProps:
-  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
-      type: 3}
-    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
-    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: 4, y: 15}
-  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
-      type: 3}
-    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
-    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: 4, y: -15}
-  canFireGuns: 1
-  canFireTurrets: 1
-  hasGuns: 1
-  bullets: {fileID: 1424064957359088038, guid: d9222bc8ac3ad7f468453eafdd64031e, type: 3}
-  gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
---- !u!82 &5130096991438066752
+--- !u!82 &1809528157749133208
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,3 +295,59 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2359692174576432968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500958488499531473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f606b8797b1e8a84ea6665a0a5466714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  canTakeDamage: 1
+  speed: 50
+  moneyAwarded: 5000
+  turretsProps:
+  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+      type: 3}
+    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
+    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
+    position: {x: 62.2, y: 46.8}
+  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+      type: 3}
+    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
+    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
+    position: {x: 62.2, y: -46.8}
+  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+      type: 3}
+    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
+    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
+    position: {x: -1.85, y: 58.7}
+  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+      type: 3}
+    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
+    fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
+    position: {x: -1.85, y: -58.7}
+  - turret: {fileID: 7564960916000155831, guid: 48f94bb7d967a0047a616b7459c209e9,
+      type: 3}
+    ammo: {fileID: 0}
+    fireSound: {fileID: 0}
+    position: {x: -69.8, y: 58.35}
+  - turret: {fileID: 7564960916000155831, guid: 48f94bb7d967a0047a616b7459c209e9,
+      type: 3}
+    ammo: {fileID: 0}
+    fireSound: {fileID: 0}
+    position: {x: -69.8, y: -58.35}
+  canFireGuns: 1
+  canFireTurrets: 1
+  canShieldsTakeDamage: 1
+  backupEnemy: {fileID: 2500958488499531473, guid: 4492c82e334d95244b87e20c49023ab4,
+    type: 3}
+  bullet: {fileID: 1424064957359088038, guid: daeb9eb3651f7d049a58af80db43cfbf, type: 3}
+  gunFireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
+  rightBulletPosition: {x: 0, y: 35.5}
+  leftBulletPosition: {x: 0, y: -35.5}

@@ -121,6 +121,41 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &14117681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 14117682}
+  m_Layer: 5
+  m_Name: TurretBulletFolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &14117682
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14117681}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 693231160}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &183888145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,21 +1748,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1386612222}
-  background: {fileID: 1142424723}
+  backgroundsFolder: {fileID: 1142424723}
+  bulletFolder: {fileID: 1230332286}
+  enemyFolder: {fileID: 1499878211}
+  turretBulletFolder: {fileID: 14117681}
   canvas: {fileID: 693231156}
   player: {fileID: 1510238983}
   gameOverMenu: {fileID: 1247771571}
   HUD: {fileID: 1412178585}
-  enemies: {fileID: 1499878211}
   backgroundPrefab: {fileID: 6801779422609192021, guid: 2971966a86664374a9d3fd3cb5135a8f,
     type: 3}
   explosion: {fileID: 6879489987790728947, guid: 5e176c76d71b8714a99886cf9da12717,
     type: 3}
   dialogueBackground: {fileID: 225727556}
+  bossSpawnPoint: {fileID: 1922064231}
   overheatBar: {fileID: 684949600}
   dialogueText: {fileID: 687915281}
   cursor: {fileID: 2800000, guid: 7c1bec6661b34db4eaa609639337a52f, type: 3}
-  money: 0
   overheatSound: {fileID: 0}
   overheatImagesL0:
   - {fileID: -7687609987494465623, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
@@ -1763,27 +1800,39 @@ MonoBehaviour:
   - enemyType: {fileID: 2500958488499531473, guid: 4492c82e334d95244b87e20c49023ab4,
       type: 3}
     color: {r: 0, g: 1, b: 0, a: 1}
+    isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 04da8a80bfdaab346bbc368517ca35e7,
       type: 3}
     color: {r: 0, g: 0.5019608, b: 0, a: 1}
+    isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: d0f21612a7b8187489147e5fdae06d4f,
       type: 3}
     color: {r: 0, g: 0.1254902, b: 0, a: 1}
+    isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 36cbb64519d18e7488530dc83fa22fd7,
       type: 3}
     color: {r: 0, g: 0.0627451, b: 0, a: 1}
+    isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 7b8f167191c0a0e4aa47f532693d3b74,
       type: 3}
     color: {r: 0, g: 0, b: 1, a: 1}
+    isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 1cbffd1c7726c994683f94dd20995c99,
       type: 3}
     color: {r: 0, g: 0, b: 0.5019608, a: 1}
+    isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 69e5aacbad4ea0b41b9ed7ff60bdaff9,
       type: 3}
     color: {r: 0, g: 0, b: 0.1254902, a: 1}
+    isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: d97b029c405054043b968ec8675fa27e,
       type: 3}
     color: {r: 0, g: 0, b: 0.0627451, a: 1}
+    isBoss: 0
+  - enemyType: {fileID: 2500958488499531473, guid: 356dc77586b5ab84394dba30c84b372a,
+      type: 3}
+    color: {r: 1, g: 1, b: 0, a: 1}
+    isBoss: 1
   gameStarted: 0
   gameOver: 0
   HUDElements: []
@@ -1793,6 +1842,8 @@ MonoBehaviour:
   overheatAmount: 0
   overheatMax: 100
   gunLevel: 0
+  backgroundRect: {fileID: 0}
+  enemySpawnPoints: []
 --- !u!1 &673320184
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,6 +2180,7 @@ RectTransform:
   - {fileID: 1510238984}
   - {fileID: 1230332287}
   - {fileID: 1499878212}
+  - {fileID: 14117682}
   - {fileID: 1412178586}
   - {fileID: 1863544958}
   - {fileID: 1386612225}
@@ -3248,7 +3300,7 @@ GameObject:
   - component: {fileID: 1142424726}
   - component: {fileID: 1142424725}
   m_Layer: 5
-  m_Name: Backgrounds
+  m_Name: BackgroundFolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3616,7 +3668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1230332287}
   m_Layer: 5
-  m_Name: Bullets
+  m_Name: BulletFolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3675,7 +3727,7 @@ RectTransform:
   - {fileID: 332193138}
   - {fileID: 649808555}
   m_Father: {fileID: 693231160}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3841,7 +3893,7 @@ RectTransform:
   - {fileID: 272711295}
   - {fileID: 183888146}
   m_Father: {fileID: 693231160}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3881,7 +3933,7 @@ RectTransform:
   - {fileID: 684949598}
   - {fileID: 673320185}
   m_Father: {fileID: 693231160}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4072,7 +4124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499878212}
   m_Layer: 5
-  m_Name: Enemies
+  m_Name: EnemyFolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4090,6 +4142,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 268658080}
+  - {fileID: 1922064232}
   m_Father: {fileID: 693231160}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4194,13 +4247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7381f59a3372dc4aa324e3ec9e266ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 4
   canTakeDamage: 1
-  background: {fileID: 1142424723}
   bullet: {fileID: 2786342596386088450, guid: 746ea31070b68c244a9b9728296f1221, type: 3}
-  canvas: {fileID: 693231156}
-  eventSystem: {fileID: 652294123}
   healthBar: {fileID: 282064742}
-  bullets: {fileID: 1230332286}
   gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
   healthImagesL0:
   - {fileID: 8133923789288904650, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}
@@ -4732,7 +4782,7 @@ RectTransform:
   - {fileID: 2097057017}
   - {fileID: 949352800}
   m_Father: {fileID: 693231160}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4904,6 +4954,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888275340}
   m_CullTransparentMesh: 0
+--- !u!1 &1922064231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1922064232}
+  m_Layer: 5
+  m_Name: BossSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1922064232
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922064231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1499878212}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 780, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1943327389
 GameObject:
   m_ObjectHideFlags: 0

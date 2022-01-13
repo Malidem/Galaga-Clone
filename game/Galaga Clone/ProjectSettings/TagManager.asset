@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - OrdagaExplosionTrigger
   - EnemyShield
+  - BossEnemy
   layers:
   - Default
   - TransparentFX

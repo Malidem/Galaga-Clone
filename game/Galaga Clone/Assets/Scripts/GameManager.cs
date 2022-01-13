@@ -8,19 +8,21 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject background;
+    public GameObject backgroundsFolder;
+    public GameObject bulletFolder;
+    public GameObject enemyFolder;
+    public GameObject turretBulletFolder;
     public GameObject canvas;
     public GameObject player;
     public GameObject gameOverMenu;
     public GameObject HUD;
-    public GameObject enemies;
     public GameObject backgroundPrefab;
     public GameObject explosion;
     public GameObject dialogueBackground;
+    public GameObject bossSpawnPoint;
     public Image overheatBar;
     public Text dialogueText;
     public Texture2D cursor;
-    public int money;
     public AudioClip overheatSound;
     public List<Sprite> overheatImagesL0 = new List<Sprite>();
     public List<Sprite> overheatImagesL1 = new List<Sprite>();
@@ -45,10 +47,14 @@ public class GameManager : MonoBehaviour
     public int overheatMax = 100;
     [HideInInspector]
     public int gunLevel = 0;
+    [HideInInspector]
+    public RectTransform backgroundRect;
+    [HideInInspector]
+    public List<Transform> enemySpawnPoints;
 
+    private int money;
     private int wave;
     private int waveCount;
-    private Transform[] enemySpawnPoints;
     private List<string> dialogues = new List<string>();
     private List<float> dialogueIntervals = new List<float>();
     private List<float> waveIntervals = new List<float>();
@@ -58,14 +64,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        enemySpawnPoints = enemies.transform.GetChild(0).GetComponentsInChildren<Transform>();
-        List<Transform> enemySpawnPointslist = new List<Transform>(enemySpawnPoints);
-        enemySpawnPointslist.Remove(enemies.transform.GetChild(0));
-        enemySpawnPoints = enemySpawnPointslist.ToArray();
+        backgroundRect = (RectTransform)backgroundsFolder.transform;
+        enemySpawnPoints = new List<Transform>(enemyFolder.transform.GetChild(0).GetComponentsInChildren<Transform>());
+        enemySpawnPoints.Remove(enemyFolder.transform.GetChild(0));
         Time.timeScale = 1;
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
-        Instantiate(backgroundPrefab, background.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
+        Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         audioSource = canvas.GetComponent<AudioSource>();
         audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
@@ -201,17 +206,29 @@ public class GameManager : MonoBehaviour
         {
             if (item.color.Equals(pixelColor))
             {
-                for (int i = 0; i < enemySpawnPoints.Length; i++)
+                if (item.isBoss == false)
                 {
-                    EnemySpawnPoint spawnPoint = enemySpawnPoints[i].gameObject.GetComponent<EnemySpawnPoint>();
-                    if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
+                    for (int i = 0; i < enemySpawnPoints.Count; i++)
                     {
-                        GameObject enemy = Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemies.transform);
-                        if (wave == waveCount)
+                        EnemySpawnPoint spawnPoint = enemySpawnPoints[i].gameObject.GetComponent<EnemySpawnPoint>();
+                        if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
                         {
-                            enemyCount.Add(enemy);
+                            GameObject enemy = Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemyFolder.transform);
+                            if (wave == waveCount)
+                            {
+                                enemyCount.Add(enemy);
+                            }
                         }
-                    }
+                    } 
+                }
+                else
+                {
+                    GameObject bossEnemy = Instantiate(item.enemyType, bossSpawnPoint.transform.position, Quaternion.identity, enemyFolder.transform);
+                    BaseEnemy bossProps = bossEnemy.GetComponent<BaseEnemy>();
+                    bossProps.canFireGuns = false;
+                    bossProps.canFireTurrets = false;
+                    bossProps.canTakeDamage = false;
+                    bossProps.canShieldsTakeDamage = false;
                 }
             }
         }
@@ -246,7 +263,7 @@ public class GameManager : MonoBehaviour
     public void AddMoney(int amount)
     {
         money += amount;
-        HUDElements[2].gameObject.GetComponent<Text>().text = "Money: " + String.Format("{0:n0}", money);
+        HUDElements[2].gameObject.GetComponent<Text>().text = "Money: " + string.Format("{0:n0}", money);
     }
 
     private IEnumerator Overheat()
@@ -359,14 +376,22 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver == false)
         {
-            if (wave == waveCount)
+            if (!enemy.CompareTag("BossEnemy"))
             {
-                enemyCount.Remove(enemy);
-                if (enemyCount.Count <= 0)
+                if (wave == waveCount)
                 {
-                    playerWon = true;
-                    EndGame();
-                }
+                    enemyCount.Remove(enemy);
+                    if (enemyCount.Count <= 0)
+                    {
+                        playerWon = true;
+                        EndGame();
+                    }
+                } 
+            }
+            else
+            {
+                playerWon = true;
+                EndGame();
             }
         }
     }
@@ -470,5 +495,6 @@ public class GameManager : MonoBehaviour
     {
         public GameObject enemyType;
         public Color color;
+        public bool isBoss;
     }
 }

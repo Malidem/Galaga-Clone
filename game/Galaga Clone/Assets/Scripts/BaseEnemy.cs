@@ -1,137 +1,66 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class BaseEnemy : MonoBehaviour
+public abstract class BaseEnemy : BaseShip
 {
     public int speed;
-    public int health;
     public int moneyAwarded;
+    public List<TurretsProps> turretsProps = new List<TurretsProps>();
 
-    public bool hasGuns;
-    public GameObject bullets;
-    public AudioClip gunFireSound;
+    protected GameObject player;
+    protected GameObject turretBulletFolder;
 
-    public bool hasTurret;
-    public GameObject turretBullet;
-    public GameObject turretType;
-    public List<Vector2> turretPositions;
-    public AudioClip turretFireSound;
-    public int shieldTurretHealth;
-
+    protected int shieldTurretHealth = 2;
+    protected float shieldRespawnInterval = 3;
     private int currentShieldTurretHealth;
-    private bool isOrdaga4;
-    private GameManager gameManager;
-    private GameObject bulletFolder;
-    private GameObject player;
-    private GameObject background;
+    private bool hasTurrets;
     private List<GameObject> turrets = new List<GameObject>();
-    private RectTransform backgroundRect;
-    private AudioSource audioSource;
 
     [HideInInspector]
     public bool canFireGuns = true;
     [HideInInspector]
     public bool canFireTurrets = true;
+    [HideInInspector]
+    public bool canShieldsTakeDamage = true;
 
     // Start is called before the first frame update
-    public void Start()
+    protected override void Start()
     {
-        gameManager = GameObject.Find("EventSystem").GetComponent<GameManager>();
-        bulletFolder = GameObject.Find("Bullets");
+        base.Start();
         player = gameManager.player;
-        background = gameManager.background;
-        backgroundRect = (RectTransform)background.transform;
-        audioSource = GetComponent<AudioSource>();
-        audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
+        turretBulletFolder = gameManager.turretBulletFolder;
         currentShieldTurretHealth = shieldTurretHealth;
 
-        if (health < 1)
+        if (turretsProps.Count > 0)
         {
-            Debug.LogError(gameObject.name + " health can not be less than 1");
+            hasTurrets = true;
         }
 
-        if (hasGuns)
+        if (hasTurrets)
         {
-            StartCoroutine(FireGunBullets());
-        }
-
-        if (hasTurret && turretPositions.Count > 0)
-        {
-            for (int i = 0; i < turretPositions.Count; i++)
+            bool hasShootingTurrets = false;
+            for (int i = 0; i < turretsProps.Count; i++)
             {
-                GameObject instance = Instantiate(turretType, new Vector2(transform.position.x + turretPositions[i].x, transform.position.y + turretPositions[i].y), Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180)), transform);
+                GameObject instance = Instantiate(turretsProps[i].turret, new Vector2(transform.position.x + turretsProps[i].position.x, transform.position.y + turretsProps[i].position.y), Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180)), transform);
                 turrets.Add(instance);
+                if (!instance.name.Contains("Shield") && hasShootingTurrets == false)
+                {
+                    hasShootingTurrets = true;
+                }
             }
-            if (turretType.name != "Rakar4ShieldProjector")
+            if (hasShootingTurrets)
             {
                 StartCoroutine(FireTurretBullets());
             }
         }
-        else if (hasTurret && turretPositions.Count <= 0)
-        {
-            Debug.LogError(gameObject.name + " has a turret, but not defind turret position");
-        }
-
-        if (gameObject.name.Contains("Ordaga4"))
-        {
-            isOrdaga4 = true;
-            transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z + 180));
-        }
-        else
-        {
-            float backgroundCenter = backgroundRect.rect.height / 2;
-            if (transform.position.y > (backgroundCenter + 175))
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 25);
-            }
-            else if (transform.position.y < (backgroundCenter + -175))
-            {
-                transform.rotation = Quaternion.Euler(0, 0, -25);
-            }
-        }
     }
 
-    public void Update()
+    // Update is called once per frame
+    protected virtual void Update()
     {
-        if (isOrdaga4)
-        {
-            transform.Translate(Vector2.right * Time.deltaTime * speed);
-
-            if (gameManager.gameOver == false)
-            {
-                float angle = Mathf.Atan2(player.transform.position.y - gameObject.transform.position.y, player.transform.position.x - gameObject.transform.position.x) * Mathf.Rad2Deg;
-                Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, targetRotation, 10 * Time.deltaTime); 
-            }
-        }
-        else
-        {
-            transform.Translate(Vector2.left * Time.deltaTime * speed);
-        }
-
-        if (transform.position.x > (backgroundRect.rect.width + 75))
-        {
-            Die();
-        }
-
-        if (transform.position.y > (backgroundRect.rect.height + 55))
-        {
-            Die();
-        }
-
-        if (transform.position.x < -25)
-        {
-            Die();
-        }
-
-        if (transform.position.y < -55)
-        {
-            Die();
-        }
-
-        if (hasTurret && gameManager.gameOver == false)
+        if (hasTurrets && gameManager.gameOver == false)
         {
             for (int i = 0; i < turrets.Count; i++)
             {
@@ -143,33 +72,22 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
-    private IEnumerator FireGunBullets()
-    {
-        while (gameManager.gameOver == false && canFireGuns)
-        {
-            yield return new WaitForSeconds(0.5F);
-            int chance = Random.Range(0, 101);
-            if (chance <= 25)
-            {
-                Instantiate(bullets, transform.position, transform.rotation, bulletFolder.transform);
-                audioSource.PlayOneShot(gunFireSound);
-            }
-        }
-    }
-
-    private IEnumerator FireTurretBullets()
+    protected IEnumerator FireTurretBullets()
     {
         while (gameManager.gameOver == false && canFireTurrets)
         {
             yield return new WaitForSeconds(0.6F);
-            int chance = Random.Range(0, 101);
+            int chance = UnityEngine.Random.Range(0, 101);
             if (chance <= 25)
             {
-                for (int i = 0; i < turrets.Count; i++)
+                for (int i = 0; i < turretsProps.Count; i++)
                 {
-                    GameObject turret = turrets[i];
-                    Instantiate(turretBullet, turret.transform.position, turret.transform.rotation, bulletFolder.transform);
-                    audioSource.PlayOneShot(turretFireSound);
+                    if (!turrets[i].name.Contains("Shield"))
+                    {
+                        GameObject turret = turrets[i];
+                        Instantiate(turretsProps[i].ammo, turret.transform.position, turret.transform.rotation, turretBulletFolder.transform);
+                        audioSource.PlayOneShot(turretsProps[i].fireSound);
+                    }
                 }
             }
         }
@@ -177,49 +95,42 @@ public class BaseEnemy : MonoBehaviour
 
     public void RemoveShieldHealth(GameObject shield)
     {
-        currentShieldTurretHealth -= 1;
-        if (currentShieldTurretHealth <= 0)
+        if (canShieldsTakeDamage)
         {
-            int i = turrets.IndexOf(shield.transform.parent.gameObject);
-            Destroy(shield);
-            StartCoroutine(RespawnShield(i));
+            currentShieldTurretHealth -= 1;
+            if (currentShieldTurretHealth <= 0)
+            {
+                int i = turrets.IndexOf(shield.transform.parent.gameObject);
+                Destroy(shield);
+                StartCoroutine(RespawnShield(i));
+            } 
         }
     }
 
     public IEnumerator RespawnShield(int index)
     {
-        yield return new WaitForSeconds(3);
-        Instantiate(turretType.transform.GetChild(0), turrets[index].transform);
+        yield return new WaitForSeconds(shieldRespawnInterval);
+        Instantiate(turretsProps[index].turret.transform.GetChild(0), turrets[index].transform);
         currentShieldTurretHealth = shieldTurretHealth;
     }
 
-    public void RemoveHealth()
-    {
-        health -= 1;
-        if (health > 0)
-        {
-            StartCoroutine(FlashRed(gameObject));
-            for (int i = 0; i < turrets.Count; i++)
-            {
-                StartCoroutine(FlashRed(turrets[i]));
-            }
-        }
-        else
-        {
-            gameManager.Kill(gameObject, 1);
-        }
-    }
-
-    private IEnumerator FlashRed(GameObject gameObject)
-    {
-        gameObject.GetComponent<Image>().color = Color.red;
-        yield return new WaitForSeconds(0.2F);
-        gameObject.GetComponent<Image>().color = Color.white;
-    }
-
-    private void Die()
+    protected void Die()
     {
         gameManager.OnEnemyDestroyed(gameObject);
         Destroy(gameObject);
+    }
+
+    protected override void OnDeath()
+    {
+        gameManager.AddMoney(moneyAwarded);
+    }
+
+    [Serializable]
+    public class TurretsProps
+    {
+        public GameObject turret;
+        public GameObject ammo;
+        public AudioClip fireSound;
+        public Vector2 position;
     }
 }
