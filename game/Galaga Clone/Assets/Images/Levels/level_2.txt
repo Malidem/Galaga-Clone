@@ -1,0 +1,17 @@
+waveCount=8
+waveIntervals=5,12,15,13,10,12,15,12
+dialogueCount=2
+
+dialogueStart:
+interval=10
+<<<
+The Rakar seem to be fielding heavier ships in an attempt to eliminate you.
+>>>
+dialogueEnd:
+
+dialogueStart:
+interval=5
+<<<
+Keep your eyes peeled for any future developments, Pilot.
+>>>
+dialogueEnd:
