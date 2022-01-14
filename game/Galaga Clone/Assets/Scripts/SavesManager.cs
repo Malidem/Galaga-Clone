@@ -9,12 +9,12 @@ public class SavesManager : MonoBehaviour
     public GameObject upgradesParent;
     public GameObject dragObject;
     public GameObject scroller;
+    public GameObject levelsFolder;
     public Sprite completedLevel;
     public Sprite unlockedLevel;
     public Text moneyText;
     public GameObject[] upgradeSlots;
     public GameObject[] shopSlots;
-    public List<GameObject> levels = new List<GameObject>();
     public List<GameObject> upgrades = new List<GameObject>();
     public List<GameObject> buyableUpgrades = new List<GameObject>();
     public List<GameObject> commonUpgrades = new List<GameObject>();
@@ -22,10 +22,12 @@ public class SavesManager : MonoBehaviour
     public List<GameObject> legendaryUpgrades = new List<GameObject>();
 
     private System.Random random = new System.Random();
+    private Transform[] levels;
 
     // Start is called before the first frame update
     void Start()
     {
+        levels = levelsFolder.transform.GetComponentsInChildren<Transform>();
         buyableUpgrades = upgrades.ToList();
         StartCoroutine(getSaveData());
         Rect rect = scroller.GetComponent<RectTransform>().rect;
@@ -72,14 +74,14 @@ public class SavesManager : MonoBehaviour
     {
         for (int i = 0; i < DataBaseManager.levelsUnlocked; i++)
         {
-            levels[i].GetComponent<Image>().sprite = unlockedLevel;
-            levels[i].GetComponent<LevelHover>().isUnlocked = true;
+            levels[i + 1].GetComponent<Image>().sprite = unlockedLevel;
+            levels[i + 1].GetComponent<LevelHover>().isUnlocked = true;
         }
 
         for (int i = 0; i < DataBaseManager.levelsCompleted; i++)
         {
-            levels[i].GetComponent<Image>().sprite = completedLevel;
-            levels[i].GetComponent<LevelHover>().isUnlocked = false;
+            levels[i + 1].GetComponent<Image>().sprite = completedLevel;
+            levels[i + 1].GetComponent<LevelHover>().isUnlocked = false;
         }
     }
 

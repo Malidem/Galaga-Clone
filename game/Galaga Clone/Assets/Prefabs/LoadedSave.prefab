@@ -2163,6 +2163,7 @@ MonoBehaviour:
   upgradesParent: {fileID: 8040988885826193030}
   dragObject: {fileID: 5041131770367967185}
   scroller: {fileID: 8890105096907077673}
+  levelsFolder: {fileID: 4900061612548276240}
   completedLevel: {fileID: -5925910935855229405, guid: 0a126bd5b9fccaa419c0d98cf1e7c475,
     type: 3}
   unlockedLevel: {fileID: -854251500257389581, guid: 0a126bd5b9fccaa419c0d98cf1e7c475,
@@ -2176,10 +2177,6 @@ MonoBehaviour:
   - {fileID: 6556846908441256240}
   - {fileID: 5445358699495930379}
   - {fileID: 255480719453465374}
-  levels:
-  - {fileID: 8476442472676829528}
-  - {fileID: 3917195135949226794}
-  - {fileID: 4099240412648113510}
   upgrades:
   - {fileID: 5367276411398462751, guid: c1d7889e7b2e62a4280bccd4a9ba8ad2, type: 3}
   - {fileID: 6736748262221929120, guid: aa007703bedbfc44195842b8b0bd1f99, type: 3}
