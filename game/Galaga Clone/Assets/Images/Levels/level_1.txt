@@ -1,17 +1,10 @@
-waveCount=8
-waveIntervals=10,5.5,8,5.3,11.9,8.3,12.6,14.2
-dialogueCount=2
+waveCount=7
+waveIntervals=10,10,12,8,10,14,10
+dialogueCount=0
 
 dialogueStart:
 interval=0
 <<<
-The first group of Rakar should be appearing now, Pilot.
->>>
-dialogueEnd:
 
-dialogueStart:
-interval=50
-<<<
-This appears to be the last group in the area, eliminate them.
 >>>
 dialogueEnd:
