@@ -13,7 +13,8 @@ public class MainMenuUI : MonoBehaviour
     public GameObject errorMenu;
     public GameObject savesMenu;
     public List<GameObject> createSaveTexts = new List<GameObject>();
-    public List<GameObject> gameStatsText = new List<GameObject>();
+    public List<GameObject> gameStatTexts = new List<GameObject>();
+    public List<GameObject> deleteSaveButtons = new List<GameObject>();
     public InputField emailInputField;
     public InputField passwordInputField;
     public Button loginButton;
@@ -127,53 +128,24 @@ public class MainMenuUI : MonoBehaviour
     private void UpdateSavesMenu(string text)
     {
         string[] saveData = text.Split('\t');
-        
-        if (saveData[5] != "1")
-        {
-            createSaveTexts[0].SetActive(false);
-            gameStatsText[0].SetActive(true);
-            gameStatsText[0].GetComponent<Text>().text = "Mission: " + saveData[5] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[1]));
-        }
-        else
-        {
-            createSaveTexts[0].SetActive(true);
-            gameStatsText[0].SetActive(false);
-        }
+        string[] missions = { saveData[5], saveData[6], saveData[7], saveData[8] };
+        string[] money = { saveData[1], saveData[2], saveData[3], saveData[4] };
 
-        if (saveData[6] != "1")
+        for (int i = 0; i < missions.Length; i++)
         {
-            createSaveTexts[1].SetActive(false);
-            gameStatsText[1].SetActive(true);
-            gameStatsText[1].GetComponent<Text>().text = "Mission: " + saveData[6] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[2]));
-        }
-        else
-        {
-            createSaveTexts[1].SetActive(true);
-            gameStatsText[1].SetActive(false);
-        }
-
-        if (saveData[7] != "1")
-        {
-            createSaveTexts[2].SetActive(false);
-            gameStatsText[2].SetActive(true);
-            gameStatsText[2].GetComponent<Text>().text = "Mission: " + saveData[7] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[3]));
-        }
-        else
-        {
-            createSaveTexts[2].SetActive(true);
-            gameStatsText[2].SetActive(false);
-        }
-
-        if (saveData[8] != "1")
-        {
-            createSaveTexts[3].SetActive(false);
-            gameStatsText[3].SetActive(true);
-            gameStatsText[3].GetComponent<Text>().text = "Mission: " + saveData[8] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[4]));
-        }
-        else
-        {
-            createSaveTexts[3].SetActive(true);
-            gameStatsText[3].SetActive(false);
+            if (missions[i] != "1")
+            {
+                createSaveTexts[i].SetActive(false);
+                gameStatTexts[i].SetActive(true);
+                gameStatTexts[i].GetComponent<Text>().text = "Mission: " + missions[i] + "\nMoney: " + string.Format("{0:n0}", int.Parse(money[i]));
+                deleteSaveButtons[i].SetActive(true);
+            }
+            else
+            {
+                createSaveTexts[i].SetActive(true);
+                gameStatTexts[i].SetActive(false);
+                deleteSaveButtons[i].SetActive(false);
+            }
         }
     }
 
