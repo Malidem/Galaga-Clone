@@ -161,7 +161,13 @@ public class SavesManager : MonoBehaviour
         List<Transform> list = children.ToList();
         list.Remove(upgradesParent.transform);
         children = list.ToArray();
-        children = children.OrderBy(o => o.gameObject.GetComponent<UpgradeCard>().level).ToArray();
+
+        Transform[] level1 = children.Where(o => o.gameObject.GetComponent<UpgradeCard>().level == "1").OrderBy(o => o.gameObject.GetComponent<UpgradeCard>().type).ToArray();
+        Transform[] level2 = children.Where(o => o.gameObject.GetComponent<UpgradeCard>().level == "2").OrderBy(o => o.gameObject.GetComponent<UpgradeCard>().type).ToArray();
+        Transform[] level3 = children.Where(o => o.gameObject.GetComponent<UpgradeCard>().level == "3").OrderBy(o => o.gameObject.GetComponent<UpgradeCard>().type).ToArray();
+        
+        children = level1.Concat(level2).ToArray();
+        children = children.Concat(level3).ToArray();
 
         for (int i = 0; i < children.Length; i++)
         {

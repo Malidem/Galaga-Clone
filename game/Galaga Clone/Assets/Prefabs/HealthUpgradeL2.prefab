@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6229209303921774050}
   - component: {fileID: 1399724488260552705}
   m_Layer: 13
-  m_Name: UpgradeCard3
+  m_Name: HealthUpgradeL2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   type: health
   level: 2
   title: Health Boost 2
-  discription: Adds an addtional 2 health to the player
+  discription: Adds an addtional 3 health to the player
   savesManager: {fileID: 0}
   dragObject: {fileID: 0}
   upgradeParent: {fileID: 0}

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4973806179575835457}
   - component: {fileID: 9097559046801112264}
   m_Layer: 13
-  m_Name: UpgradeCard6
+  m_Name: SpeedUpgradeL1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: speed
   level: 1
-  title: Speed 1
+  title: Speed Boost 1
   discription: Increases player movement speed
   savesManager: {fileID: 0}
   dragObject: {fileID: 0}
