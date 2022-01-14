@@ -12,7 +12,6 @@ public class PlayerManager : BaseShip
     public List<Sprite> healthImagesL1 = new List<Sprite>();
     public List<Sprite> healthImagesL2 = new List<Sprite>();
     public List<GameObject> gunUpgrades = new List<GameObject>();
-    public List<GameObject> healthUpgrades = new List<GameObject>();
     public List<GameObject> speedUpgrades = new List<GameObject>();
 
     private bool canFire = true;
@@ -207,19 +206,21 @@ public class PlayerManager : BaseShip
                 int parsed = int.Parse(upgrade[1]);
                 if (upgrade[0] == "gun")
                 {
-                    gunUpgrades[parsed - 1].SetActive(true);
+                    gunUpgrades[0].SetActive(false);
+                    gunUpgrades[parsed].SetActive(true);
                     gameManager.gunLevel = parsed;
                     gameManager.overheatMax += parsed * 50;
                 }
                 else if (upgrade[0] == "health")
                 {
-                    healthUpgrades[parsed - 1].SetActive(true);
                     healthLevel = parsed;
                     health += parsed;
+                    currentHealth = health;
                 }
                 else if (upgrade[0] == "speed")
                 {
-                    speedUpgrades[parsed - 1].SetActive(true);
+                    speedUpgrades[0].SetActive(false);
+                    speedUpgrades[parsed].SetActive(true);
                     maxSpeed += parsed * 50;
                     acceleration += parsed * 50;
                 }
