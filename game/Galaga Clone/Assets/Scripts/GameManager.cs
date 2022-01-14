@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
-        Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, canvas.GetComponentsInChildren<Transform>()[1]);
+        Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, backgroundsFolder.transform);
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         audioSource = canvas.GetComponent<AudioSource>();
         audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);

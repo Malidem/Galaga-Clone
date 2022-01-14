@@ -9,6 +9,8 @@ public class MainMenuManager : MonoBehaviour
 
     public GameObject canvas;
     public GameObject accountMenu;
+    public GameObject backgroundPrefab;
+    public GameObject backgroundsFolder;
     public Slider soundVolumeSlider;
     public Texture2D cursor;
 
@@ -19,7 +21,8 @@ public class MainMenuManager : MonoBehaviour
     {
         mainMenuUI = canvas.GetComponent<MainMenuUI>();
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
-        
+        Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, backgroundsFolder.transform);
+
         if (PlayerPrefs.GetString("email") != "")
         {
             StartCoroutine(mainMenuUI.Login(PlayerPrefs.GetString("email"), PlayerPrefs.GetString("password")));
