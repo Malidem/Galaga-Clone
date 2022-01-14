@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class BackgroundManager : MonoBehaviour
 {
     public int speed;
     public GameObject backgroundPrefab;
+    public List<Sprite> backgroundImages;
     private GameObject canvas;
     private GameObject backgroundsFolder;
     private GameManager gameManager;
@@ -81,6 +83,7 @@ public class BackgroundManager : MonoBehaviour
                     }
                     GameObject bg = Instantiate(backgroundPrefab, new Vector2(transform.position.x + rect.rect.width, transform.position.y), rotation, backgroundsFolder.transform);
                     bg.name = backgroundPrefab.name;
+                    bg.GetComponent<Image>().sprite = backgroundImages[Random.Range(0, backgroundImages.Count)];
                 } 
             }
         }

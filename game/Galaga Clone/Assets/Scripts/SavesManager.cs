@@ -59,7 +59,6 @@ public class SavesManager : MonoBehaviour
             DataBaseManager.upgradesUnlocked = data[4].Split(',');
             DataBaseManager.upgradesActive = data[5].Split(',');
             DataBaseManager.shopItems = data[6].Split(',');
-            transform.GetChild(2).GetChild(3).GetComponent<Text>().text = "Money: " + DataBaseManager.money;
             LoadLevels();
             CreateUpgrades();
             LoadShop();
