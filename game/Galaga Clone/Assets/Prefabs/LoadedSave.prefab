@@ -981,7 +981,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: blank
+  m_Text: The Rakar appear to be reacting to your efforts Pilot. They have started
+    to deploy heavier ship in order to counter your advances. Be aware of changes
+    in the enemies composition, and tactics.
 --- !u!1 &1614314568979553171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,7 +1363,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: blank
+  m_Text: The Rakar are deploying more Aegises than predicted. Expect them to become
+    a regular feature of their raiding parties, and prioritize them accordingly.
 --- !u!1 &2093427367811846288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1691,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: blank
+  m_Text: Pilot, you have been ... contracted, to counter Rakar probes being made
+    in this sector.  Intercept the Rakar and destroy any you find. You will recieve
+    a bounty for each ship destroyed.
 --- !u!1 &2514164582905724798
 GameObject:
   m_ObjectHideFlags: 0
@@ -6236,7 +6241,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: blank
+  m_Text: Another group of Rakar have been spotted. Expect greater difficulty in
+    destroying this group compared to the last one.
 --- !u!1 &6548923762039918625
 GameObject:
   m_ObjectHideFlags: 0
@@ -7880,7 +7886,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: blank
+  m_Text: The Rakar have started incorperating Aegis class support ships in their
+    raiding parties. We don't know how widespread this is yet, but you'll be informed
+    when we are alerted.
 --- !u!1 &8040988885826193030
 GameObject:
   m_ObjectHideFlags: 0
@@ -8715,7 +8723,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: The Rakar have deployed an Artus class siege frigate in response to our
     efforts in the sector. Your objective is to intercept the ship before it can
-    reach our supply lines.
+    reach our supply lines. Good luck Pilot.
 --- !u!1 &8890105096907077673
 GameObject:
   m_ObjectHideFlags: 0
