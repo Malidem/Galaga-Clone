@@ -25,6 +25,9 @@ public class Explosion : MonoBehaviour
         audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
         audioSource.PlayOneShot(explosion);
         yield return new WaitForSeconds(0.6F);
-        Destroy(gameObject);
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
     }
 }
