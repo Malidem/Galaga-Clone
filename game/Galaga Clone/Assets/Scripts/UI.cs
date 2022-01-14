@@ -44,9 +44,7 @@ public class UI : MonoBehaviour
 
     public void LoadScene(string scene)
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene);
-        SceneManager.UnloadSceneAsync(currentScene);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
         Time.timeScale = 1;
     }
 

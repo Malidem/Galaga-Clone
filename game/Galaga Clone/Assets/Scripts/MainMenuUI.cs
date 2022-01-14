@@ -218,9 +218,7 @@ public class MainMenuUI : MonoBehaviour
     {
         PlayerPrefs.SetString("email", "");
         PlayerPrefs.SetString("password", "");
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene("MainMenu");
-        SceneManager.UnloadSceneAsync(scene);
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     public void LoadSaveButton(int save)
