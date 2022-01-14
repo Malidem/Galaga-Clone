@@ -44,12 +44,6 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
-    public void SettingsBackButton()
-    {
-        mainMenu.SetActive(true);
-        gameObject.transform.parent.parent.gameObject.SetActive(false);
-    }
-
     public void CallSignUp()
     {
         IsValidEmail(SignUp());
