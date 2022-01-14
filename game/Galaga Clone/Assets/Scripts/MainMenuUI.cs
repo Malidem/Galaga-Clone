@@ -98,7 +98,7 @@ public class MainMenuUI : MonoBehaviour
             DataBaseManager.password = password;
             accountMenu.SetActive(false);
             mainMenu.SetActive(true);
-            mainMenu.GetComponentsInChildren<Text>()[5].text = "Email: " + DataBaseManager.email;
+            mainMenu.GetComponentsInChildren<Text>()[4].text = "Email: " + DataBaseManager.email;
             PlayerPrefs.SetString("email", DataBaseManager.email);
             PlayerPrefs.SetString("password", password);
             UpdateSavesMenu(www.text);
