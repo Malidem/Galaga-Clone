@@ -25,9 +25,9 @@ public class MainMenuUI : MonoBehaviour
 
     void Start()
     {
-        errorTitle = errorMenu.GetComponentsInChildren<Transform>()[1].gameObject.GetComponent<Text>();
-        errorDescription = errorMenu.GetComponentsInChildren<Transform>()[2].gameObject.GetComponent<Text>();
-        errorButtonText = errorMenu.GetComponentsInChildren<Transform>()[3].transform.GetChild(0).gameObject.GetComponent<Text>();
+        errorTitle = errorMenu.transform.GetChild(1).gameObject.GetComponent<Text>();
+        errorDescription = errorMenu.transform.GetChild(2).gameObject.GetComponent<Text>();
+        errorButtonText = errorMenu.transform.GetChild(3).GetChild(0).GetComponent<Text>();
     }
 
     public void PlayGameButton()
@@ -246,7 +246,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void DeleteSaveButton(string save)
     {
-        Button button = confirmDeletionMenu.GetChild(1).GetComponent<Button>();
+        Button button = confirmDeletionMenu.GetChild(2).GetComponent<Button>();
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(delegate { ConfirmDeletionButton(save); });
         confirmDeletionMenu.gameObject.SetActive(true);

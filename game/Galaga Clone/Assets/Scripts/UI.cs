@@ -101,6 +101,7 @@ public class UI : MonoBehaviour
     {
         print("Exiting Game");
         Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
     public void NavigationButton()

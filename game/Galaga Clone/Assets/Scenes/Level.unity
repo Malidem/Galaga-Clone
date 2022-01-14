@@ -2373,7 +2373,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Galaga Clone
+  m_Text: 'Polemos
+
+'
 --- !u!222 &731656135
 CanvasRenderer:
   m_ObjectHideFlags: 0
