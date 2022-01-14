@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5417938574286289014
+--- !u!1 &5367276411398462751
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,27 +8,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 962112521372537685}
-  - component: {fileID: 4126247745513873293}
-  - component: {fileID: 4940403815357229194}
-  - component: {fileID: 8128282683221025990}
-  - component: {fileID: 4224887368461822566}
-  - component: {fileID: 2999436320144180986}
-  - component: {fileID: 6916425062471760285}
+  - component: {fileID: 1508850265161819656}
+  - component: {fileID: 6880664050733539558}
+  - component: {fileID: 4505281292062985477}
+  - component: {fileID: 4137612174002067918}
+  - component: {fileID: 2656126829111234800}
+  - component: {fileID: 4916735452899449588}
+  - component: {fileID: 8624343682753976507}
   m_Layer: 13
-  m_Name: UpgradeCard4
+  m_Name: UpgradeCard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &962112521372537685
+--- !u!224 &1508850265161819656
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5417938574286289014}
+  m_GameObject: {fileID: 5367276411398462751}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,21 +41,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &4126247745513873293
+--- !u!222 &6880664050733539558
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5417938574286289014}
+  m_GameObject: {fileID: 5367276411398462751}
   m_CullTransparentMesh: 0
---- !u!114 &4940403815357229194
+--- !u!114 &4505281292062985477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5417938574286289014}
+  m_GameObject: {fileID: 5367276411398462751}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -68,7 +68,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: da27e63b5ea73d2498f2eeb52246cede, type: 3}
+  m_Sprite: {fileID: 3508573396396166719, guid: 077db4752105fa4428d0ddfe0c765225,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -78,14 +79,14 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!50 &8128282683221025990
+--- !u!50 &4137612174002067918
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5417938574286289014}
+  m_GameObject: {fileID: 5367276411398462751}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -99,13 +100,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
---- !u!61 &4224887368461822566
+--- !u!61 &2656126829111234800
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5417938574286289014}
+  m_GameObject: {fileID: 5367276411398462751}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -125,13 +126,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
---- !u!114 &2999436320144180986
+--- !u!114 &4916735452899449588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5417938574286289014}
+  m_GameObject: {fileID: 5367276411398462751}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
@@ -142,7 +143,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6916425062471760285}
+        - m_Target: {fileID: 8624343682753976507}
           m_MethodName: OnDragStart
           m_Mode: 1
           m_Arguments:
@@ -157,7 +158,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6916425062471760285}
+        - m_Target: {fileID: 8624343682753976507}
           m_MethodName: OnDragEnd
           m_Mode: 1
           m_Arguments:
@@ -168,23 +169,23 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &6916425062471760285
+--- !u!114 &8624343682753976507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5417938574286289014}
+  m_GameObject: {fileID: 5367276411398462751}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fed37ac6f564e8840adf7b27c5901e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: health
+  type: gun
   level: 1
-  title: Health Boost 1
-  discription: Adds an addtional 2 health to the player
-  rarity: 0
+  title: Gun 1
+  discription: Increases the amount of shots that can be fired before the overheat
+    cooldown
   savesManager: {fileID: 0}
   dragObject: {fileID: 0}
   upgradeParent: {fileID: 0}

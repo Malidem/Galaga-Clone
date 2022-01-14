@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3007521606128175885, guid: b51ca80695a90354a8f82c1aabc1bd0c,
+  m_Sprite: {fileID: 2527243204674710612, guid: 3884043eb60fb5f4dac45d5c3bb2d489,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -185,7 +185,6 @@ MonoBehaviour:
   level: 2
   title: Health Boost 2
   discription: Adds an addtional 2 health to the player
-  rarity: 2
   savesManager: {fileID: 0}
   dragObject: {fileID: 0}
   upgradeParent: {fileID: 0}
