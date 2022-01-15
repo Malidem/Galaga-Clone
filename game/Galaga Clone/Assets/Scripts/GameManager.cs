@@ -263,7 +263,7 @@ public class GameManager : MonoBehaviour
     public void AddMoney(int amount)
     {
         money += amount;
-        HUDElements[2].gameObject.GetComponent<Text>().text = "Money: " + string.Format("{0:n0}", money);
+        HUDElements[2].gameObject.GetComponent<Text>().text = "Credits: " + string.Format("{0:n0}", money);
     }
 
     private IEnumerator Overheat()
@@ -327,7 +327,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameOverMenu.SetActive(true);
-        menu[2].GetComponent<Text>().text = "Final money: " + string.Format("{0:n0}", money);
+        menu[2].GetComponent<Text>().text = "Earned credits: " + string.Format("{0:n0}", money);
         
         if (playerWon)
         {
