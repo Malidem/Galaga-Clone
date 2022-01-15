@@ -23,12 +23,6 @@ public class UI : MonoBehaviour
     public GameObject controlesMenu;
     public GameObject canvas;
     private GameManager gameManager;
-    
-    public void MainSettings(GameObject pausemenu)
-    {
-        pausemenu.SetActive(true);
-        gameObject.transform.parent.GetComponentsInChildren<Transform>()[1].gameObject.SetActive(false);
-    }
 
     void Start()
     {
@@ -50,9 +44,7 @@ public class UI : MonoBehaviour
 
     public void LoadScene(string scene)
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene);
-        SceneManager.UnloadSceneAsync(currentScene);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
         Time.timeScale = 1;
     }
 
@@ -60,12 +52,6 @@ public class UI : MonoBehaviour
     {
         layer.SetActive(true);
         gameObject.transform.parent.gameObject.SetActive(false);
-    }
-
-    public void SwitchsettingsMenu(GameObject layer)
-    {
-        gameObject.transform.parent.parent.gameObject.SetActive(false);
-        layer.SetActive(true);
     }
 
     public void StartExitGameMenu()
@@ -101,67 +87,7 @@ public class UI : MonoBehaviour
     {
         print("Exiting Game");
         Application.Quit();
-    }
-
-    public void NavigationButton()
-    {
-        gameObject.GetComponent<Button>().interactable = false;
-
-        if (gameObject == shopButton)
-        {
-            shopMenu.SetActive(true);
-            shipButton.GetComponent<Button>().interactable = true;
-            shipMenu.SetActive(false);
-            galaxyButton.GetComponent<Button>().interactable = true;
-            galaxyMenu.SetActive(false);
-
-        }
-        else if (gameObject == shipButton)
-        {
-            shipMenu.SetActive(true);
-            shopButton.GetComponent<Button>().interactable = true;
-            shopMenu.SetActive(false);
-            galaxyButton.GetComponent<Button>().interactable = true;
-            galaxyMenu.SetActive(false);
-        }
-        else if (gameObject == galaxyButton)
-        {
-            galaxyMenu.SetActive(true);
-            shopButton.GetComponent<Button>().interactable = true;
-            shopMenu.SetActive(false);
-            shipButton.GetComponent<Button>().interactable = true;
-            shipMenu.SetActive(false);
-        }
-    }
-
-    public void NavigateSettingButton()
-    {
-        gameObject.GetComponent<Button>().interactable = false;
-
-        if (gameObject == volumeButton)
-        {
-            volumeMenu.SetActive(true);
-            videoButton.GetComponent<Button>().interactable = true;
-            videoMenu.SetActive(false);
-            controlesButton.GetComponent<Button>().interactable = true;
-            controlesMenu.SetActive(false);
-        }
-        else if (gameObject == videoButton)
-        {
-            videoMenu.SetActive(true);
-            volumeButton.GetComponent<Button>().interactable = true;
-            volumeMenu.SetActive(false);
-            controlesButton.GetComponent<Button>().interactable = true;
-            controlesMenu.SetActive(false);
-        }
-        else if (gameObject == controlesButton)
-        {
-            controlesMenu.SetActive(true);
-            volumeButton.GetComponent<Button>().interactable = true;
-            volumeMenu.SetActive(false);
-            videoButton.GetComponent<Button>().interactable = true;
-            videoMenu.SetActive(false);
-        }
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
     public void LoadLevel(string level)

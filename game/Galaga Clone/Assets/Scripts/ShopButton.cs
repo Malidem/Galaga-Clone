@@ -23,17 +23,17 @@ public class ShopButton : MonoBehaviour
     {
         card = transform.GetChild(2).gameObject;
         cardProps = card.GetComponent<UpgradeCard>();
-        confirmMenu = transform.parent.GetChild(6);
-        confirmButton = confirmMenu.GetChild(4).GetComponent<Button>();
+        confirmMenu = transform.parent.GetChild(7);
+        confirmButton = confirmMenu.GetChild(5).GetComponent<Button>();
         confirmButtonText = confirmButton.gameObject.transform.GetChild(0).GetComponent<Text>();
     }
 
     public void ShopSlotButton()
     {
         confirmButtonText.text = string.Format("{0:n0}", price);
-        confirmMenu.GetChild(1).GetComponent<Image>().sprite = card.GetComponent<Image>().sprite;
-        confirmMenu.GetChild(2).GetComponent<Text>().text = cardProps.title;
-        confirmMenu.GetChild(3).GetComponent<Text>().text = cardProps.discription;
+        confirmMenu.GetChild(2).GetComponent<Image>().sprite = card.GetComponent<Image>().sprite;
+        confirmMenu.GetChild(3).GetComponent<Text>().text = cardProps.title;
+        confirmMenu.GetChild(4).GetComponent<Text>().text = cardProps.discription;
         confirmButton.onClick.RemoveAllListeners();
         if (DataBaseManager.money >= price)
         {

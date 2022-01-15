@@ -89,3 +89,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 150
   backgroundPrefab: {fileID: 6801779422609192021}
+  backgroundImages:
+  - {fileID: 21300000, guid: ec7a6765d3868e945ae7dc9d45c758db, type: 3}
+  - {fileID: 21300000, guid: 909dc226ec95bad428ad4feacdb38e65, type: 3}

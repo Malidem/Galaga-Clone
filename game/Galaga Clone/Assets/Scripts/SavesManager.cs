@@ -9,12 +9,12 @@ public class SavesManager : MonoBehaviour
     public GameObject upgradesParent;
     public GameObject dragObject;
     public GameObject scroller;
+    public GameObject levelsFolder;
     public Sprite completedLevel;
     public Sprite unlockedLevel;
     public Text moneyText;
     public GameObject[] upgradeSlots;
     public GameObject[] shopSlots;
-    public List<GameObject> levels = new List<GameObject>();
     public List<GameObject> upgrades = new List<GameObject>();
     public List<GameObject> buyableUpgrades = new List<GameObject>();
     public List<GameObject> commonUpgrades = new List<GameObject>();
@@ -22,10 +22,12 @@ public class SavesManager : MonoBehaviour
     public List<GameObject> legendaryUpgrades = new List<GameObject>();
 
     private System.Random random = new System.Random();
+    private Transform[] levels;
 
     // Start is called before the first frame update
     void Start()
     {
+        levels = levelsFolder.transform.GetComponentsInChildren<Transform>();
         buyableUpgrades = upgrades.ToList();
         StartCoroutine(getSaveData());
         Rect rect = scroller.GetComponent<RectTransform>().rect;
@@ -53,11 +55,10 @@ public class SavesManager : MonoBehaviour
             string[] data = www.text.Split('\t');
             DataBaseManager.money = int.Parse(data[1]);
             DataBaseManager.levelsUnlocked = int.Parse(data[2]);
-            DataBaseManager.levelsCompleted = int.Parse(data[3]);
+            DataBaseManager.levelsCompleted = 7;//int.Parse(data[3])
             DataBaseManager.upgradesUnlocked = data[4].Split(',');
             DataBaseManager.upgradesActive = data[5].Split(',');
             DataBaseManager.shopItems = data[6].Split(',');
-            transform.GetChild(3).GetChild(2).GetComponent<Text>().text = "Money: " + DataBaseManager.money;
             LoadLevels();
             CreateUpgrades();
             LoadShop();
@@ -72,14 +73,14 @@ public class SavesManager : MonoBehaviour
     {
         for (int i = 0; i < DataBaseManager.levelsUnlocked; i++)
         {
-            levels[i].GetComponent<Image>().sprite = unlockedLevel;
-            levels[i].GetComponent<LevelHover>().isUnlocked = true;
+            levels[i + 1].GetComponent<Image>().sprite = unlockedLevel;
+            levels[i + 1].GetComponent<LevelHover>().isUnlocked = true;
         }
 
         for (int i = 0; i < DataBaseManager.levelsCompleted; i++)
         {
-            levels[i].GetComponent<Image>().sprite = completedLevel;
-            levels[i].GetComponent<LevelHover>().isUnlocked = false;
+            levels[i + 1].GetComponent<Image>().sprite = completedLevel;
+            levels[i + 1].GetComponent<LevelHover>().isUnlocked = false;
         }
     }
 
@@ -160,7 +161,13 @@ public class SavesManager : MonoBehaviour
         List<Transform> list = children.ToList();
         list.Remove(upgradesParent.transform);
         children = list.ToArray();
-        children = children.OrderBy(o => o.gameObject.GetComponent<UpgradeCard>().level).ToArray();
+
+        Transform[] level1 = children.Where(o => o.gameObject.GetComponent<UpgradeCard>().level == "1").OrderBy(o => o.gameObject.GetComponent<UpgradeCard>().type).ToArray();
+        Transform[] level2 = children.Where(o => o.gameObject.GetComponent<UpgradeCard>().level == "2").OrderBy(o => o.gameObject.GetComponent<UpgradeCard>().type).ToArray();
+        Transform[] level3 = children.Where(o => o.gameObject.GetComponent<UpgradeCard>().level == "3").OrderBy(o => o.gameObject.GetComponent<UpgradeCard>().type).ToArray();
+        
+        children = level1.Concat(level2).ToArray();
+        children = children.Concat(level3).ToArray();
 
         for (int i = 0; i < children.Length; i++)
         {

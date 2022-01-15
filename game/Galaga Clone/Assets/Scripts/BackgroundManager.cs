@@ -2,28 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BackgroundManager : MonoBehaviour
 {
     public int speed;
     public GameObject backgroundPrefab;
-    private GameObject eventSystem;
+    public List<Sprite> backgroundImages;
     private GameObject canvas;
+    private GameObject backgroundsFolder;
     private GameManager gameManager;
+    private MainMenuManager mainMenuManager;
     private bool canSpawn = true;
+    private bool isOnMainMenu;
 
     // Start is called before the first frame update
     void Start()
     {
-        eventSystem = GameObject.Find("EventSystem");
-        gameManager = eventSystem.GetComponent<GameManager>();
-        canvas = gameManager.canvas;
+        if (SceneManager.GetActiveScene().name == "Level")
+        {
+            gameManager = Resources.FindObjectsOfTypeAll<GameManager>()[0];
+            canvas = gameManager.canvas;
+            backgroundsFolder = gameManager.backgroundsFolder;
+        }
+        else
+        {
+            mainMenuManager = Resources.FindObjectsOfTypeAll<MainMenuManager>()[0];
+            canvas = mainMenuManager.canvas;
+            backgroundsFolder = mainMenuManager.backgroundsFolder;
+            isOnMainMenu = true;
+            speed = 75;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.gameStarted && gameManager.gameOver == false && gameManager.gamePaused == false)
+        bool condition;
+
+        if (isOnMainMenu)
+        {
+            condition = true;
+        }
+        else
+        {
+            condition = gameManager.gameStarted && gameManager.gameOver == false && gameManager.gamePaused == false;
+        }
+
+        if (condition)
         {
             if (transform.rotation.z != 0)
             {
@@ -55,8 +81,9 @@ public class BackgroundManager : MonoBehaviour
                     {
                         rotation = Quaternion.Euler(0, 0, 0);
                     }
-                    GameObject bg = Instantiate(backgroundPrefab, new Vector2(transform.position.x + rect.rect.width, transform.position.y), rotation, canvas.GetComponentsInChildren<Transform>()[1]);
+                    GameObject bg = Instantiate(backgroundPrefab, new Vector2(transform.position.x + rect.rect.width, transform.position.y), rotation, backgroundsFolder.transform);
                     bg.name = backgroundPrefab.name;
+                    bg.GetComponent<Image>().sprite = backgroundImages[Random.Range(0, backgroundImages.Count)];
                 } 
             }
         }

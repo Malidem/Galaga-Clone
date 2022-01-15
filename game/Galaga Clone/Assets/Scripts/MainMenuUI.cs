@@ -13,7 +13,8 @@ public class MainMenuUI : MonoBehaviour
     public GameObject errorMenu;
     public GameObject savesMenu;
     public List<GameObject> createSaveTexts = new List<GameObject>();
-    public List<GameObject> gameStatsText = new List<GameObject>();
+    public List<GameObject> gameStatTexts = new List<GameObject>();
+    public List<GameObject> deleteSaveButtons = new List<GameObject>();
     public InputField emailInputField;
     public InputField passwordInputField;
     public Button loginButton;
@@ -25,9 +26,9 @@ public class MainMenuUI : MonoBehaviour
 
     void Start()
     {
-        errorTitle = errorMenu.GetComponentsInChildren<Transform>()[1].gameObject.GetComponent<Text>();
-        errorDescription = errorMenu.GetComponentsInChildren<Transform>()[2].gameObject.GetComponent<Text>();
-        errorButtonText = errorMenu.GetComponentsInChildren<Transform>()[3].transform.GetChild(0).gameObject.GetComponent<Text>();
+        errorTitle = errorMenu.transform.GetChild(1).gameObject.GetComponent<Text>();
+        errorDescription = errorMenu.transform.GetChild(2).gameObject.GetComponent<Text>();
+        errorButtonText = errorMenu.transform.GetChild(3).GetChild(0).GetComponent<Text>();
     }
 
     public void PlayGameButton()
@@ -42,12 +43,6 @@ public class MainMenuUI : MonoBehaviour
             mainMenu.SetActive(false);
             savesMenu.SetActive(true);
         }
-    }
-
-    public void SettingsBackButton()
-    {
-        mainMenu.SetActive(true);
-        gameObject.transform.parent.parent.gameObject.SetActive(false);
     }
 
     public void CallSignUp()
@@ -104,7 +99,7 @@ public class MainMenuUI : MonoBehaviour
             DataBaseManager.password = password;
             accountMenu.SetActive(false);
             mainMenu.SetActive(true);
-            mainMenu.GetComponentsInChildren<Text>()[5].text = "Email: " + DataBaseManager.email;
+            mainMenu.GetComponentsInChildren<Text>()[4].text = "Email: " + DataBaseManager.email;
             PlayerPrefs.SetString("email", DataBaseManager.email);
             PlayerPrefs.SetString("password", password);
             UpdateSavesMenu(www.text);
@@ -133,53 +128,24 @@ public class MainMenuUI : MonoBehaviour
     private void UpdateSavesMenu(string text)
     {
         string[] saveData = text.Split('\t');
-        
-        if (saveData[5] != "1")
-        {
-            createSaveTexts[0].SetActive(false);
-            gameStatsText[0].SetActive(true);
-            gameStatsText[0].GetComponent<Text>().text = "Mission: " + saveData[5] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[1]));
-        }
-        else
-        {
-            createSaveTexts[0].SetActive(true);
-            gameStatsText[0].SetActive(false);
-        }
+        string[] missions = { saveData[5], saveData[6], saveData[7], saveData[8] };
+        string[] money = { saveData[1], saveData[2], saveData[3], saveData[4] };
 
-        if (saveData[6] != "1")
+        for (int i = 0; i < missions.Length; i++)
         {
-            createSaveTexts[1].SetActive(false);
-            gameStatsText[1].SetActive(true);
-            gameStatsText[1].GetComponent<Text>().text = "Mission: " + saveData[6] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[2]));
-        }
-        else
-        {
-            createSaveTexts[1].SetActive(true);
-            gameStatsText[1].SetActive(false);
-        }
-
-        if (saveData[7] != "1")
-        {
-            createSaveTexts[2].SetActive(false);
-            gameStatsText[2].SetActive(true);
-            gameStatsText[2].GetComponent<Text>().text = "Mission: " + saveData[7] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[3]));
-        }
-        else
-        {
-            createSaveTexts[2].SetActive(true);
-            gameStatsText[2].SetActive(false);
-        }
-
-        if (saveData[8] != "1")
-        {
-            createSaveTexts[3].SetActive(false);
-            gameStatsText[3].SetActive(true);
-            gameStatsText[3].GetComponent<Text>().text = "Mission: " + saveData[8] + "\nMoney: " + string.Format("{0:n0}", int.Parse(saveData[4]));
-        }
-        else
-        {
-            createSaveTexts[3].SetActive(true);
-            gameStatsText[3].SetActive(false);
+            if (missions[i] != "1")
+            {
+                createSaveTexts[i].SetActive(false);
+                gameStatTexts[i].SetActive(true);
+                gameStatTexts[i].GetComponent<Text>().text = "Mission: " + missions[i] + "\nMoney: " + string.Format("{0:n0}", int.Parse(money[i]));
+                deleteSaveButtons[i].SetActive(true);
+            }
+            else
+            {
+                createSaveTexts[i].SetActive(true);
+                gameStatTexts[i].SetActive(false);
+                deleteSaveButtons[i].SetActive(false);
+            }
         }
     }
 
@@ -224,9 +190,7 @@ public class MainMenuUI : MonoBehaviour
     {
         PlayerPrefs.SetString("email", "");
         PlayerPrefs.SetString("password", "");
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene("MainMenu");
-        SceneManager.UnloadSceneAsync(scene);
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     public void LoadSaveButton(int save)
@@ -246,7 +210,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void DeleteSaveButton(string save)
     {
-        Button button = confirmDeletionMenu.GetChild(1).GetComponent<Button>();
+        Button button = confirmDeletionMenu.GetChild(2).GetComponent<Button>();
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(delegate { ConfirmDeletionButton(save); });
         confirmDeletionMenu.gameObject.SetActive(true);
