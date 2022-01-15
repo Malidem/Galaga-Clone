@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataBaseManager
 {
-    public static readonly string URL = "http://localhost/galaga_clone/";
+    public static readonly string URL = "http://localhost/polemos/";
     public static string email;
     public static string password;
     public static int currentSave;
