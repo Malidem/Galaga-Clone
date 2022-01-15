@@ -1,17 +1,17 @@
-waveCount=8
-waveIntervals=10,5.5,8,5.3,11.9,8.3,12.6,14.2
+waveCount=9
+waveIntervals=10,20,30,30,20,30,20,30,30
 dialogueCount=2
 
 dialogueStart:
 interval=0
 <<<
-The first group of Rakar should be appearing now, Pilot.
+The namesake of their squadron, the 18th have deployed a Vanguard class assault frigate to kill you.
 >>>
 dialogueEnd:
 
 dialogueStart:
-interval=50
+interval=10
 <<<
-This appears to be the last group in the area, eliminate them.
+Destroy the Vanguard, and the rest will be forced to flee in defeat.
 >>>
 dialogueEnd:

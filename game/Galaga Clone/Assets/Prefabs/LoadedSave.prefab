@@ -1691,9 +1691,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pilot, you have been ... contracted, to counter Rakar probes being made
-    in this sector.  Intercept the Rakar and destroy any you find. You will recieve
-    a bounty for each ship destroyed.
+  m_Text: Pilot, you have been contracted to counter Rakar probes being made in this
+    sector.  Intercept the Rakar and destroy any you find. You will recieve a bounty
+    for each ship destroyed.
 --- !u!1 &2514164582905724798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,9 +2706,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The Rakar have deployed an Artus class siege frigate in response to our
-    efforts in the sector. Your objective is to intercept the ship before it can
-    reach our supply lines.
+  m_Text: It seems the Ordaga are aware of your explots Pilot, and are responding
+    in kind. We are seeing redeployments into the sector of speciallized units to
+    specifically hunt you down. Be vigilant, Pilot.
 --- !u!1 &3269750210138259237
 GameObject:
   m_ObjectHideFlags: 0
@@ -4701,9 +4701,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The Rakar have deployed an Artus class siege frigate in response to our
-    efforts in the sector. Your objective is to intercept the ship before it can
-    reach our supply lines.
+  m_Text: The 18th have ignored their orders to retreat, and are attempting one last
+    attack to kill you. Defeat their dying gasps, and we will have complete control
+    of the sector. Good luck Pilot.
 --- !u!1 &4417168496467439543
 GameObject:
   m_ObjectHideFlags: 0
@@ -4781,9 +4781,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The Rakar have deployed an Artus class siege frigate in response to our
-    efforts in the sector. Your objective is to intercept the ship before it can
-    reach our supply lines.
+  m_Text: The 18th seems to have set their sights on you Pilot. Expect them to throw
+    everything they have against you before they are forced to withdraw by their
+    superiors.
 --- !u!1 &4462710454944340525
 GameObject:
   m_ObjectHideFlags: 0
@@ -7150,9 +7150,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The Rakar have deployed an Artus class siege frigate in response to our
-    efforts in the sector. Your objective is to intercept the ship before it can
-    reach our supply lines.
+  m_Text: Due to our victories over the Rakar, the Ordaga Collective has begun to
+    move into the Rakar's abandoned territories, believing they are safe. Dissuade
+    them of this notion.
 --- !u!1 &7272556071250933545
 GameObject:
   m_ObjectHideFlags: 0
@@ -7584,9 +7584,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The Rakar have deployed an Artus class siege frigate in response to our
-    efforts in the sector. Your objective is to intercept the ship before it can
-    reach our supply lines.
+  m_Text: We have reports of the 18th 'Vanguard' squadron moving into the sector.
+    Continue your disruptment of Ordara operations, but be wary of whatever the 18th
+    will send at you.
 --- !u!1 &7408167240277849363
 GameObject:
   m_ObjectHideFlags: 0

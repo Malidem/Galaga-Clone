@@ -1,17 +1,11 @@
 waveCount=8
-waveIntervals=10,5.5,8,5.3,11.9,8.3,12.6,14.2
-dialogueCount=2
+waveIntervals=10,12,12,10,14,12,14,14
+dialogueCount=1
 
 dialogueStart:
-interval=0
+interval=30
 <<<
-The first group of Rakar should be appearing now, Pilot.
+It appears the Ordaga have deployed proximity explosive drones Pilot, keep your distance to avoid triggering them.
 >>>
 dialogueEnd:
 
-dialogueStart:
-interval=50
-<<<
-This appears to be the last group in the area, eliminate them.
->>>
-dialogueEnd:
