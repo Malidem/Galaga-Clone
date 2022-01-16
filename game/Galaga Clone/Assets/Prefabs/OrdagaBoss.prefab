@@ -14,12 +14,11 @@ GameObject:
   - component: {fileID: 2500958488499531470}
   - component: {fileID: 2500958488499531471}
   - component: {fileID: 4873430482084166775}
-  - component: {fileID: 7262754603933469498}
   - component: {fileID: 3391013004286888035}
   - component: {fileID: 1809528157749133208}
-  - component: {fileID: 2359692174576432968}
+  - component: {fileID: 2324688041545396346}
   m_Layer: 11
-  m_Name: RakarBoss
+  m_Name: OrdagaBoss
   m_TagString: BossEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +70,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8f175e18d3ddc47448b11aa2289f71aa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b1d36c211639c44a871dd3af8c2bcde, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -115,7 +114,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 25, y: 0}
+  m_Offset: {x: 28.28424, y: 0.032165527}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -126,7 +125,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 135, y: 144}
+  m_Size: {x: 125.8009, y: 96.408875}
   m_EdgeRadius: 0
 --- !u!61 &4873430482084166775
 BoxCollider2D:
@@ -141,7 +140,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -65, y: 51}
+  m_Offset: {x: -59.078217, y: 0.45199585}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -152,33 +151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 45, y: 42}
-  m_EdgeRadius: 0
---- !u!61 &7262754603933469498
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2500958488499531473}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -65, y: -51}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 45, y: 42}
+  m_Size: {x: 49.200745, y: 90.019104}
   m_EdgeRadius: 0
 --- !u!95 &3391013004286888035
 Animator:
@@ -295,7 +268,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2359692174576432968
+--- !u!114 &2324688041545396346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -304,50 +277,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 2500958488499531473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f606b8797b1e8a84ea6665a0a5466714, type: 3}
+  m_Script: {fileID: 11500000, guid: 71f9ebddff7ec4c468a3af6fe1a2fcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
   canTakeDamage: 1
-  speed: 50
-  moneyAwarded: 5000
+  speed: 100
+  moneyAwarded: 7000
   turretsProps:
-  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+  - turret: {fileID: 7564960916000155831, guid: 15dab0f23dd8bac468b7673b2671faee,
       type: 3}
-    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
+    ammo: {fileID: 1424064957359088038, guid: c22293502f877b54b96b0fd0267234ca, type: 3}
     fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: 62.2, y: 46.8}
-  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+    position: {x: -25.55, y: 31.85}
+  - turret: {fileID: 7564960916000155831, guid: 15dab0f23dd8bac468b7673b2671faee,
       type: 3}
-    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
+    ammo: {fileID: 1424064957359088038, guid: c22293502f877b54b96b0fd0267234ca, type: 3}
     fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: 62.2, y: -46.8}
-  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+    position: {x: -25.55, y: -31.85}
+  - turret: {fileID: 7564960916000155831, guid: 9e400ca539fe0de4eb30c0d35a62684d,
       type: 3}
-    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
+    ammo: {fileID: 1424064957359088038, guid: 57b8a6a7e60d14f4d859b074a8bda2db, type: 3}
     fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: -1.85, y: 58.7}
-  - turret: {fileID: 7564960916000155831, guid: 80ef3be2849d3af478ebe8a17323720f,
+    position: {x: 30.45, y: 26.85}
+  - turret: {fileID: 7564960916000155831, guid: 9e400ca539fe0de4eb30c0d35a62684d,
       type: 3}
-    ammo: {fileID: 1424064957359088038, guid: 23d3d0eb19d6e434ba6dcaba20a5de3f, type: 3}
+    ammo: {fileID: 1424064957359088038, guid: 57b8a6a7e60d14f4d859b074a8bda2db, type: 3}
     fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: -1.85, y: -58.7}
-  - turret: {fileID: 7564960916000155831, guid: 48f94bb7d967a0047a616b7459c209e9,
-      type: 3}
-    ammo: {fileID: 0}
-    fireSound: {fileID: 0}
-    position: {x: -69.8, y: 58.35}
-  - turret: {fileID: 7564960916000155831, guid: 48f94bb7d967a0047a616b7459c209e9,
-      type: 3}
-    ammo: {fileID: 0}
-    fireSound: {fileID: 0}
-    position: {x: -69.8, y: -58.35}
+    position: {x: 30.45, y: -26.85}
   canFireGuns: 1
   canFireTurrets: 1
   canShieldsTakeDamage: 1
-  backupEnemy: {fileID: 2500958488499531473, guid: 4492c82e334d95244b87e20c49023ab4,
+  chargeSpeed: 300
+  teleportPoints: {fileID: 6391385891633203094, guid: 56f15b01c7a0e4b4f96084928349fe44,
     type: 3}
-  bullet: {fileID: 1424064957359088038, guid: daeb9eb3651f7d049a58af80db43cfbf, type: 3}
-  gunFireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-  rightBulletPosition: {x: 0, y: 35.5}
-  leftBulletPosition: {x: 0, y: -35.5}

@@ -160,9 +160,9 @@ public class PlayerManager : BaseShip
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         GameObject gObject = collision.gameObject;
-        if (!gObject.CompareTag("EnemyBullet"))
+        if (!gObject.CompareTag("EnemyBullet") && !gObject.name.Contains("OrdagaBoss"))
         {
-            if (gObject.CompareTag("Enemy") && !gObject.name.Contains("Ordaga4"))
+            if (gObject.CompareTag("Enemy") && !gObject.name.Contains("Ordaga4") )
             {
                 gameManager.Kill(gObject, 1);
             }
@@ -176,11 +176,6 @@ public class PlayerManager : BaseShip
                 gObject.GetComponent<BaseEnemy>().RemoveHealth(1);
             }
             RemoveHealth(1);
-        }
-
-        if (!gObject.CompareTag("EnemyShield"))
-        {
-            RemoveHealth();
         }
     }
 
