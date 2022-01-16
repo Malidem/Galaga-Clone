@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a4ffe081224554f968427ef057c87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 2
   canTakeDamage: 1
   speed: 170
   moneyAwarded: 300
