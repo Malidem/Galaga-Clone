@@ -3954,6 +3954,7 @@ MonoBehaviour:
   - {fileID: 100209162}
   - {fileID: 1414647899}
   - {fileID: 343476462}
+  - {fileID: 1235328204}
 --- !u!61 &1510238988
 BoxCollider2D:
   m_ObjectHideFlags: 0
