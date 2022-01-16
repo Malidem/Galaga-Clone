@@ -10,6 +10,7 @@ public class OrdagaBoss : BaseEnemy
     private bool isInPosition;
     private bool canCharge;
     private bool canTeleport;
+    private bool canInflictCollsionDamage = true;
     private List<Transform> teleportPointsList = new List<Transform>();
     private GameObject currentPoint;
     private Vector3 startPos;
@@ -102,9 +103,17 @@ public class OrdagaBoss : BaseEnemy
             canTeleport = true;
         }
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && canInflictCollsionDamage)
         {
+            canInflictCollsionDamage = false;
             collision.gameObject.GetComponent<PlayerManager>().RemoveHealth(3);
+            StartCoroutine(CollisionDamageCooldown());
         }
+    }
+
+    private IEnumerator CollisionDamageCooldown()
+    {
+        yield return new WaitForSeconds(1);
+        canInflictCollsionDamage = true;
     }
 }

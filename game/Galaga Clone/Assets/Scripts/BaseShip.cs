@@ -73,10 +73,13 @@ public abstract class BaseShip : MonoBehaviour
 
     protected virtual void OnDeath() { }
 
-    protected IEnumerator FlashRed(GameObject gameObject)
+    protected IEnumerator FlashRed(GameObject gObject)
     {
-        gameObject.GetComponent<Image>().color = Color.red;
-        yield return new WaitForSeconds(0.2F);
-        gameObject.GetComponent<Image>().color = Color.white;
+        if (!gObject.CompareTag("OrdagaExplosionTrigger"))
+        {
+            gObject.GetComponent<Image>().color = Color.red;
+            yield return new WaitForSeconds(0.2F);
+            gObject.GetComponent<Image>().color = Color.white; 
+        }
     }
 }

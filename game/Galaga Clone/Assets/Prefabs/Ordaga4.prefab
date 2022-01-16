@@ -176,7 +176,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.659027, y: -0.3054657}
+  m_Offset: {x: -3.6649628, y: 0.37490845}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -187,7 +187,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 39.025208, y: 26.218}
+  m_Size: {x: 39.10495, y: 26.298035}
   m_EdgeRadius: 0
 --- !u!95 &3391013004286888035
 Animator:
@@ -220,19 +220,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a4ffe081224554f968427ef057c87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 170
   health: 3
+  canTakeDamage: 1
+  speed: 170
   moneyAwarded: 300
+  turretsProps: []
+  canFireGuns: 1
+  canFireTurrets: 1
+  canShieldsTakeDamage: 1
   hasGuns: 0
   bullets: {fileID: 0}
   gunFireSound: {fileID: 0}
-  hasTurret: 0
-  turretBullet: {fileID: 0}
-  turretType: {fileID: 0}
-  turretPositions: []
-  turretFireSound: {fileID: 0}
-  canFireGuns: 1
-  canFireTurrets: 1
 --- !u!82 &7359328508275330807
 AudioSource:
   m_ObjectHideFlags: 0

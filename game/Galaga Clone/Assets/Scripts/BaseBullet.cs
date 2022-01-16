@@ -76,7 +76,11 @@ public class BaseBullet : MonoBehaviour
                 gObject.transform.parent.parent.GetComponent<BaseEnemy>().RemoveShieldHealth(gObject);
             }
         }
-        Destroy(gameObject);
+
+        if (!gObject.CompareTag("OrdagaExplosionTrigger"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     [Serializable]

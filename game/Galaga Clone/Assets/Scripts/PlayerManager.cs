@@ -142,18 +142,21 @@ public class PlayerManager : BaseShip
 
     private void UpdateHealthSprite()
     {
-        Image healthImage = healthBar.GetComponent<Image>();
-        if (healthLevel == 0)
+        if (currentHealth >= 0)
         {
-            healthImage.sprite = healthImagesL0[currentHealth];
-        }
-        else if (healthLevel == 1)
-        {
-            healthImage.sprite = healthImagesL1[currentHealth];
-        }
-        else if (healthLevel == 2)
-        {
-            healthImage.sprite = healthImagesL2[currentHealth];
+            Image healthImage = healthBar.GetComponent<Image>();
+            if (healthLevel == 0)
+            {
+                healthImage.sprite = healthImagesL0[currentHealth];
+            }
+            else if (healthLevel == 1)
+            {
+                healthImage.sprite = healthImagesL1[currentHealth];
+            }
+            else if (healthLevel == 2)
+            {
+                healthImage.sprite = healthImagesL2[currentHealth];
+            }
         }
     }
 

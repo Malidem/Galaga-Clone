@@ -114,7 +114,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 28.28424, y: 0.032165527}
+  m_Offset: {x: 22.505432, y: 0.03212738}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -125,7 +125,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 125.8009, y: 96.408875}
+  m_Size: {x: 114.243286, y: 91.68074}
   m_EdgeRadius: 0
 --- !u!61 &4873430482084166775
 BoxCollider2D:
@@ -140,7 +140,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -59.078217, y: 0.45199585}
+  m_Offset: {x: -62.36154, y: -0.20470428}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -151,7 +151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 49.200745, y: 90.019104}
+  m_Size: {x: 55.767395, y: 95.00987}
   m_EdgeRadius: 0
 --- !u!95 &3391013004286888035
 Animator:
@@ -289,22 +289,22 @@ MonoBehaviour:
       type: 3}
     ammo: {fileID: 1424064957359088038, guid: c22293502f877b54b96b0fd0267234ca, type: 3}
     fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: -25.55, y: 31.85}
+    position: {x: 25.55, y: 31.85}
   - turret: {fileID: 7564960916000155831, guid: 15dab0f23dd8bac468b7673b2671faee,
       type: 3}
     ammo: {fileID: 1424064957359088038, guid: c22293502f877b54b96b0fd0267234ca, type: 3}
     fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: -25.55, y: -31.85}
+    position: {x: 25.55, y: -31.85}
   - turret: {fileID: 7564960916000155831, guid: 9e400ca539fe0de4eb30c0d35a62684d,
       type: 3}
     ammo: {fileID: 1424064957359088038, guid: 57b8a6a7e60d14f4d859b074a8bda2db, type: 3}
     fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: 30.45, y: 26.85}
+    position: {x: -28, y: 26.9}
   - turret: {fileID: 7564960916000155831, guid: 9e400ca539fe0de4eb30c0d35a62684d,
       type: 3}
     ammo: {fileID: 1424064957359088038, guid: 57b8a6a7e60d14f4d859b074a8bda2db, type: 3}
     fireSound: {fileID: 8300000, guid: df701c90a2bafdb4aae6e43fefdaffe4, type: 3}
-    position: {x: 30.45, y: -26.85}
+    position: {x: -28, y: -26.9}
   canFireGuns: 1
   canFireTurrets: 1
   canShieldsTakeDamage: 1
