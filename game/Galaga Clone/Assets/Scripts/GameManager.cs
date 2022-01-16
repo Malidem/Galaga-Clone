@@ -172,7 +172,6 @@ public class GameManager : MonoBehaviour
                 if (gameOver == false)
                 {
                     wave++;
-                    HUDElements[3].gameObject.GetComponent<Text>().text = "Wave " + wave;
                     print("Starting wave " + wave);
                     for (int y = 0; y < yPixelsPerChunk; y++)
                     {
