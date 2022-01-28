@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataBaseManager
 {
-    public static readonly string URL = "http://localhost/polemos/";
+    public static readonly string URL = "http://polemos.atspace.cc/php/";
     public static string email;
     public static string password;
     public static int currentSave;
