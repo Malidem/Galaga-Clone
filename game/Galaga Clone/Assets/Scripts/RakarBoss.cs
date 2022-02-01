@@ -189,7 +189,7 @@ public class RakarBoss : BaseEnemy
                 Transform spawnPoint = gameManager.enemySpawnPoints[Random.Range(0, gameManager.enemySpawnPoints.Count)];
                 Instantiate(backupEnemy, spawnPoint.position, Quaternion.identity, gameManager.enemyFolder.transform);
             }
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(25);
         }
     }
 }
