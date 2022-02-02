@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public static bool isStartingUp = true;
     public static bool loadStarChart;
 
     public GameObject canvas;
@@ -19,6 +20,16 @@ public class MainMenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (isStartingUp)
+        {
+            isStartingUp = false;
+            GameObject logger = new GameObject
+            {
+                name = "Logger"
+            };
+            logger.AddComponent<Logger>();
+        }
+
         mainMenuUI = canvas.GetComponent<MainMenuUI>();
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, backgroundsFolder.transform);
