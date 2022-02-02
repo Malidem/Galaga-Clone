@@ -106,6 +106,7 @@ public class MainMenuUI : MonoBehaviour
         }
         else if (www.text[0] == '5')
         {
+            accountMenu.SetActive(true);
             errorMenu.SetActive(true);
             errorTitle.text = "No account";
             errorDescription.text = "The email you entered is not an account";
@@ -113,6 +114,7 @@ public class MainMenuUI : MonoBehaviour
         }
         else if (www.text[0] == '6')
         {
+            accountMenu.SetActive(true);
             errorMenu.SetActive(true);
             errorTitle.text = "Incorrect password";
             errorDescription.text = "You entered an incorrect password for this email";
