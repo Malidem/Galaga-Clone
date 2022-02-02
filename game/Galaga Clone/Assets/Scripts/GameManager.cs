@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     private void ReadLevelProperties()
     {
-        StreamReader streamReader = new StreamReader(Application.dataPath + "/Images/Levels/level_" + DataBaseManager.levelsUnlocked + ".txt");
+        StreamReader streamReader = new StreamReader(Application.streamingAssetsPath + "/Levels/level_" + DataBaseManager.levelsUnlocked + ".txt");
         string contents = streamReader.ReadToEnd();
         streamReader.Close();
 
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator UpdateWaves()
     {
-        var rawImage = File.ReadAllBytes("Assets/Images/Levels/level_" + DataBaseManager.levelsUnlocked + ".png");
+        var rawImage = File.ReadAllBytes(Application.streamingAssetsPath + "/Levels/level_" + DataBaseManager.levelsUnlocked + ".png");
         Texture2D levelMap = new Texture2D(2, 2);
         levelMap.LoadImage(rawImage);
 
