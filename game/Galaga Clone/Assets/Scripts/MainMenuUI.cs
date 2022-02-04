@@ -1,5 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Security;
+using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -12,11 +17,14 @@ public class MainMenuUI : MonoBehaviour
     public GameObject accountMenu;
     public GameObject errorMenu;
     public GameObject savesMenu;
+    public GameObject feedbackErrorText;
+    public GameObject submitFeedbackButton;
     public List<GameObject> createSaveTexts = new List<GameObject>();
     public List<GameObject> gameStatTexts = new List<GameObject>();
     public List<GameObject> deleteSaveButtons = new List<GameObject>();
     public InputField emailInputField;
     public InputField passwordInputField;
+    public InputField feedbackInputField;
     public Button loginButton;
     public Button SignUpButton;
     public Transform confirmDeletionMenu;
@@ -248,5 +256,86 @@ public class MainMenuUI : MonoBehaviour
         {
             print("Failed to get save status data. Error code: " + www.text[0]);
         }
+    }
+
+    public void OnFeedbackInputChanged()
+    {
+        if (string.IsNullOrWhiteSpace(feedbackInputField.text) || string.IsNullOrEmpty(feedbackInputField.text))
+        {
+            feedbackErrorText.SetActive(true);
+        }
+        else
+        {
+            feedbackErrorText.SetActive(false);
+        }
+    }
+
+    private void SendFeedbackButton()
+    {
+        if (string.IsNullOrWhiteSpace(feedbackInputField.text) || string.IsNullOrEmpty(feedbackInputField.text))
+        {
+            feedbackErrorText.SetActive(true);
+            return;
+        }
+        else
+        {
+            feedbackErrorText.SetActive(false);
+        }
+
+        MailMessage email = new MailMessage();
+        SmtpClient client = new SmtpClient("smtp.gmail.com")
+        {
+            EnableSsl = true,
+            UseDefaultCredentials = false,
+            Port = 587,
+            Credentials = new NetworkCredential("teampolemos@gmail.com", "wczzdgdccmbscemb")
+        };
+
+        ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors policyErrors) { return true; };
+
+        email.From = new MailAddress("teampolemos@gmail.com", "Polemos");
+        email.To.Add("teampolemos@gmail.com");
+        email.Subject = "Polemos Feedback";
+        email.Body = feedbackInputField.text;
+
+        client.SendCompleted += OnAsyncComplete;
+
+        client.SendAsync(email, null);
+    }
+
+    private void OnAsyncComplete(object sender, AsyncCompletedEventArgs completedEventArgs)
+    {
+        UI uI = submitFeedbackButton.GetComponent<UI>();
+        uI.CancelButton();
+
+        if (completedEventArgs.Error != null)
+        {
+            Debug.LogError(completedEventArgs.Error.Message);
+            errorTitle.text = "Failed to send feedback";
+            errorDescription.text = "Please check your internet and try again. If the problem continues, please contact the developers";
+            errorButtonText.text = "Retry";
+            errorButtonText.transform.parent.GetComponent<Button>().onClick.AddListener(delegate { SendFeedbackButton(); });
+            errorMenu.SetActive(true);
+            return;
+        }
+
+        if (completedEventArgs.Cancelled)
+        {
+            Debug.LogWarning("Feedback cancelled");
+            return;
+        }
+
+        print("Successfully sent feedback");
+
+        SmtpClient sndr = (SmtpClient)sender;
+        sndr.SendCompleted -= OnAsyncComplete;
+
+        feedbackInputField.text = "";
+        feedbackErrorText.SetActive(false);
+
+        errorTitle.text = "";
+        errorDescription.text = "Thanks for your feedback!";
+        errorButtonText.text = "Close";
+        errorMenu.SetActive(true);
     }
 }
