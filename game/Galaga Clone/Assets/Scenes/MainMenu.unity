@@ -576,6 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e7a0c52e709764e908b0b129a5694e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loggingEnabled: 0
   canvas: {fileID: 244984871}
   accountMenu: {fileID: 166738782}
   backgroundPrefab: {fileID: 6801779422609192021, guid: 2971966a86664374a9d3fd3cb5135a8f,

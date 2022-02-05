@@ -32,13 +32,6 @@ public class Logger : MonoBehaviour
             goto top;
         }
 
-        FileInfo[] files = directoryInfo.GetFiles();
-        if (files.Length > 10)
-        {
-            files.OrderBy(file => file.CreationTime);
-            File.Delete(files[0].FullName);
-        }
-
         Application.logMessageReceived += Log;
     }
 

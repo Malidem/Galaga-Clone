@@ -8,6 +8,7 @@ public class MainMenuManager : MonoBehaviour
     public static bool isStartingUp = true;
     public static bool loadStarChart;
 
+    public bool loggingEnabled;
     public GameObject canvas;
     public GameObject accountMenu;
     public GameObject backgroundPrefab;
@@ -17,10 +18,9 @@ public class MainMenuManager : MonoBehaviour
 
     private MainMenuUI mainMenuUI;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        if (isStartingUp)
+        if (isStartingUp && loggingEnabled)
         {
             isStartingUp = false;
             GameObject logger = new GameObject
@@ -29,7 +29,11 @@ public class MainMenuManager : MonoBehaviour
             };
             logger.AddComponent<Logger>();
         }
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
         mainMenuUI = canvas.GetComponent<MainMenuUI>();
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, backgroundsFolder.transform);
