@@ -21,12 +21,15 @@ public class PlayerManager : BaseShip
     private float acceleration = 500;
     private float deceleration = 500;
     private int healthLevel = 0;
+    private int regenerationLevel = 0;
+    private int[] regenerationTime = { 15, 10, 5 };
 
     protected override void Start()
     {
         base.Start();
         StartCoroutine(FireCooldown());
         UpgradePlayer();
+        StartCoroutine(RegenerateHealth());
     }
 
     void Update()
@@ -226,6 +229,10 @@ public class PlayerManager : BaseShip
                     maxSpeed += parsed * 50;
                     acceleration += parsed * 50;
                 }
+                else if (upgrade[0] == "regeneration")
+                {
+                    regenerationLevel = parsed;
+                }
             }
         }
 
@@ -242,6 +249,21 @@ public class PlayerManager : BaseShip
             int OHgained = 10 * gameManager.gunLevel;
             OHBarRect.sizeDelta = new Vector2(OHBarRect.sizeDelta.x + OHgained, OHBarRect.sizeDelta.y);
             OHBarRect.position = new Vector2(OHBarRect.position.x + OHgained, OHBarRect.position.y);
+        }
+    }
+
+    private IEnumerator RegenerateHealth()
+    {
+        if (regenerationLevel > 0)
+        {
+            while (gameManager.gameOver == false)
+            {
+                yield return new WaitForSeconds(regenerationTime[regenerationLevel - 1]);
+                if (currentHealth < health)
+                {
+                    AddHealth(1);
+                }
+            }
         }
     }
 }
