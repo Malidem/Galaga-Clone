@@ -1,17 +1,11 @@
 waveCount=9
-waveIntervals=10,12,10,15,30,15,30,30,30
-dialogueCount=2
+waveIntervals=10,10,10,10,10,10,10,10,10
+dialogueCount=0
 
 dialogueStart:
 interval=0
 <<<
-Destroy the Artus' escots before engaging the ship itself, Pilot.
+
 >>>
 dialogueEnd:
 
-dialogueStart:
-interval=25
-<<<
-Keep you distance from the Artus' point defense Pilot, and watch out for the lasers it fires.
->>>
-dialogueEnd:

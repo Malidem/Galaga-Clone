@@ -1,5 +1,5 @@
 waveCount=9
-waveIntervals=10,12,12,14,10,14,10,12,12
+waveIntervals=10,10,10,10,10,10,10,10,10
 dialogueCount=0
 
 dialogueStart:
@@ -8,3 +8,4 @@ interval=0
 
 >>>
 dialogueEnd:
+
