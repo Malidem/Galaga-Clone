@@ -1,9 +1,9 @@
 waveCount=8
-waveIntervals=0,5,6,5,4,7,6,7,6
+waveIntervals=6,5,6,5,4,7,6,7,6
 dialogueCount=1
 
 dialogueStart:
-interval=40
+interval=38
 <<<
 This should be the last group of Rakar in the area, eliminate them
 >>>
