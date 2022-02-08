@@ -58,7 +58,7 @@ public class EnemyManager : BaseEnemy
             transform.Translate(Vector2.left * Time.deltaTime * speed);
         }
 
-        if (transform.position.x > (backgroundRect.rect.width + 75))
+        if (transform.position.x > (backgroundRect.rect.width + 100))
         {
             Die();
         }
