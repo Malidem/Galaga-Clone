@@ -1545,15 +1545,15 @@ MonoBehaviour:
     isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 04da8a80bfdaab346bbc368517ca35e7,
       type: 3}
-    color: {r: 0, g: 0.5019608, b: 0, a: 1}
+    color: {r: 0, g: 0.7529412, b: 0, a: 1}
     isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: d0f21612a7b8187489147e5fdae06d4f,
       type: 3}
-    color: {r: 0, g: 0.1254902, b: 0, a: 1}
+    color: {r: 0, g: 0.5019608, b: 0, a: 1}
     isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 36cbb64519d18e7488530dc83fa22fd7,
       type: 3}
-    color: {r: 0, g: 0.0627451, b: 0, a: 1}
+    color: {r: 0, g: 0.2509804, b: 0, a: 1}
     isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 7b8f167191c0a0e4aa47f532693d3b74,
       type: 3}

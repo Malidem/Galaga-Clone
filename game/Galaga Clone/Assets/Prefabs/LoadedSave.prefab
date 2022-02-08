@@ -3360,12 +3360,15 @@ MonoBehaviour:
   - {fileID: 255480719453465374}
   upgrades:
   - {fileID: 5367276411398462751, guid: c1d7889e7b2e62a4280bccd4a9ba8ad2, type: 3}
-  - {fileID: 6736748262221929120, guid: aa007703bedbfc44195842b8b0bd1f99, type: 3}
-  - {fileID: 2000485344310413129, guid: c436455a98dd3c347953acc02d01f92b, type: 3}
-  - {fileID: 5417938574286289014, guid: 6cfdc2e22ce57614f8081a34a13d836d, type: 3}
   - {fileID: 3255560460430225461, guid: 5fb1956ed3b12264885524f50912928e, type: 3}
+  - {fileID: 5417938574286289014, guid: 6cfdc2e22ce57614f8081a34a13d836d, type: 3}
+  - {fileID: 2000485344310413129, guid: c436455a98dd3c347953acc02d01f92b, type: 3}
   - {fileID: 4443932028139120752, guid: 547ffdd8820f9904aaae551b766635d2, type: 3}
+  - {fileID: 6736748262221929120, guid: aa007703bedbfc44195842b8b0bd1f99, type: 3}
   - {fileID: 6736748262221929120, guid: 28df2f57752b3604fac17c9f318da219, type: 3}
+  - {fileID: 4443932028139120752, guid: 17b681aed30a5cd4b897a428c14e8164, type: 3}
+  - {fileID: 6736748262221929120, guid: 4895b0eab0e48f348a280c7247cbeeaf, type: 3}
+  - {fileID: 6736748262221929120, guid: 3f72b8e7ef469254f97e4ca74199eda8, type: 3}
   buyableUpgrades: []
   commonUpgrades: []
   rareUpgrades: []

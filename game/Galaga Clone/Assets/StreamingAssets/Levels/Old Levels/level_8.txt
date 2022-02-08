@@ -1,0 +1,11 @@
+waveCount=8
+waveIntervals=10,12,12,10,14,12,14,14
+dialogueCount=1
+
+dialogueStart:
+interval=30
+<<<
+It appears the Ordaga have deployed proximity explosive drones Pilot, keep your distance to avoid triggering them.
+>>>
+dialogueEnd:
+
