@@ -28,6 +28,7 @@ public class MainMenuUI : MonoBehaviour
     public Button loginButton;
     public Button SignUpButton;
     public Transform confirmDeletionMenu;
+    public Text charCountText;
     private Text errorButtonText;
     private Text errorTitle;
     private Text errorDescription;
@@ -268,6 +269,7 @@ public class MainMenuUI : MonoBehaviour
         {
             feedbackErrorText.SetActive(false);
         }
+        charCountText.text = feedbackInputField.text.Length + "/" + feedbackInputField.characterLimit;
     }
 
     private void SendFeedbackButton()
@@ -281,6 +283,8 @@ public class MainMenuUI : MonoBehaviour
         {
             feedbackErrorText.SetActive(false);
         }
+
+        submitFeedbackButton.GetComponent<Button>().interactable = false;
 
         MailMessage email = new MailMessage();
         SmtpClient client = new SmtpClient("smtp.gmail.com")
@@ -330,12 +334,19 @@ public class MainMenuUI : MonoBehaviour
         SmtpClient sndr = (SmtpClient)sender;
         sndr.SendCompleted -= OnAsyncComplete;
 
-        feedbackInputField.text = "";
-        feedbackErrorText.SetActive(false);
+        ResetFeedbackMenu();
 
         errorTitle.text = "";
         errorDescription.text = "Thanks for your feedback!";
         errorButtonText.text = "Close";
         errorMenu.SetActive(true);
+    }
+
+    public void ResetFeedbackMenu()
+    {
+        feedbackInputField.text = "";
+        charCountText.text = "0/" + feedbackInputField.characterLimit;
+        feedbackErrorText.SetActive(false);
+        submitFeedbackButton.GetComponent<Button>().interactable = true;
     }
 }
