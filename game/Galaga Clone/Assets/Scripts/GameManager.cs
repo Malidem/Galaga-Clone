@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public Text dialogueText;
     public Texture2D cursor;
     public AudioClip overheatSound;
+    public Slider bossHealthBar;
     public List<Sprite> overheatImagesL0 = new List<Sprite>();
     public List<Sprite> overheatImagesL1 = new List<Sprite>();
     public List<Sprite> overheatImagesL2 = new List<Sprite>();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrdagaBoss : BaseEnemy
+public class OrdagaBoss : BaseBoss
 {
     public int chargeSpeed;
     public GameObject teleportPoints;
