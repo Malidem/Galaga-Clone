@@ -345,7 +345,7 @@ MonoBehaviour:
   canFireGuns: 1
   canFireTurrets: 1
   canShieldsTakeDamage: 1
-  displayName: Rakar Boss
+  displayName: Aegis Class Frigate
   backupEnemy: {fileID: 2500958488499531473, guid: 4492c82e334d95244b87e20c49023ab4,
     type: 3}
   bullet: {fileID: 1424064957359088038, guid: daeb9eb3651f7d049a58af80db43cfbf, type: 3}

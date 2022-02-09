@@ -308,7 +308,7 @@ MonoBehaviour:
   canFireGuns: 1
   canFireTurrets: 1
   canShieldsTakeDamage: 1
-  displayName: Ordaga Boss
+  displayName: Vanguard Class Frigate
   chargeSpeed: 300
   teleportPoints: {fileID: 6391385891633203094, guid: 56f15b01c7a0e4b4f96084928349fe44,
     type: 3}
