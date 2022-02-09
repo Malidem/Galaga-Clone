@@ -28,11 +28,11 @@ public class EnemyManager : BaseEnemy
         else
         {
             float backgroundCenter = backgroundRect.rect.height / 2;
-            if (transform.position.y > (backgroundCenter + 175))
+            if (transform.position.y > (backgroundCenter + 201))
             {
                 transform.rotation = Quaternion.Euler(0, 0, 25);
             }
-            else if (transform.position.y < (backgroundCenter + -175))
+            else if (transform.position.y < (backgroundCenter + -201))
             {
                 transform.rotation = Quaternion.Euler(0, 0, -25);
             }

@@ -22,7 +22,7 @@ public class PlayerManager : BaseShip
     private float deceleration = 500;
     private int healthLevel = 0;
     private int regenerationLevel = 0;
-    private int[] regenerationTime = { 15, 10, 5 };
+    private int[] regenerationTime = { 20, 15, 10 };
 
     protected override void Start()
     {

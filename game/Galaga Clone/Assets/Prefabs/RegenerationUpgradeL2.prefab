@@ -184,7 +184,7 @@ MonoBehaviour:
   type: regeneration
   level: 2
   title: Regeneration 2
-  discription: Increases player health by 1 every 10 seconds
+  discription: Increases player health by 1 every 15 seconds
   savesManager: {fileID: 0}
   dragObject: {fileID: 0}
   upgradeParent: {fileID: 0}
