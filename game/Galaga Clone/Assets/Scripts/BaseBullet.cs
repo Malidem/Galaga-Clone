@@ -69,7 +69,7 @@ public class BaseBullet : MonoBehaviour
         {
             if (gObject.CompareTag("Enemy") || gObject.CompareTag("BossEnemy"))
             {
-                gObject.GetComponent<BaseEnemy>().RemoveHealth(1);
+                gObject.GetComponent<BaseEnemy>().RemoveHealth(damageAmount);
             }
             else if (gObject.CompareTag("EnemyShield"))
             {

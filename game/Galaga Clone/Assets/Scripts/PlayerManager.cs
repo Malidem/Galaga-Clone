@@ -23,6 +23,7 @@ public class PlayerManager : BaseShip
     private int healthLevel = 0;
     private int regenerationLevel = 0;
     private int[] regenerationTime = { 15, 10, 5 };
+    private int damage = 1;
 
     protected override void Start()
     {
@@ -90,7 +91,8 @@ public class PlayerManager : BaseShip
             {
                 if (canFire)
                 {
-                    Instantiate(bullet, transform.position, transform.rotation, bulletFolder.transform);
+                    GameObject instance = Instantiate(bullet, transform.position, transform.rotation, bulletFolder.transform);
+                    instance.GetComponent<BaseBullet>().damageAmount = damage;
                     canFire = false;
                     audioSource.PlayOneShot(gunFireSound);
                     gameManager.overheatAmount += 5;
@@ -232,6 +234,10 @@ public class PlayerManager : BaseShip
                 else if (upgrade[0] == "regeneration")
                 {
                     regenerationLevel = parsed;
+                }
+                else if (upgrade[0] == "damage")
+                {
+                    damage += 1;
                 }
             }
         }
