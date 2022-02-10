@@ -3026,7 +3026,7 @@ GameObject:
   - component: {fileID: 1011465469}
   - component: {fileID: 1011465468}
   m_Layer: 5
-  m_Name: Wave
+  m_Name: ShieldRechargeTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3083,7 +3083,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Wave 1
+  m_Text: 'Shield Recharge: 0'
 --- !u!222 &1011465469
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4242,6 +4242,7 @@ MonoBehaviour:
   canTakeDamage: 1
   bullet: {fileID: 2786342596386088450, guid: 746ea31070b68c244a9b9728296f1221, type: 3}
   healthBar: {fileID: 282064742}
+  shieldRechargeTimer: {fileID: 1011465466}
   gunFireSound: {fileID: 8300000, guid: b9c3e026b390705499d4154b1227f56a, type: 3}
   healthImagesL0:
   - {fileID: 8133923789288904650, guid: 584bbc576abd1a04095ef7046c62bb0b, type: 3}

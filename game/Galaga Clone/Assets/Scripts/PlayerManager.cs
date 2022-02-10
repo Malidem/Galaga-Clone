@@ -7,6 +7,7 @@ public class PlayerManager : BaseShip
 {
     public GameObject bullet;
     public GameObject healthBar;
+    public GameObject shieldRechargeTimer;
     public AudioClip gunFireSound;
     public List<Sprite> healthImagesL0 = new List<Sprite>();
     public List<Sprite> healthImagesL1 = new List<Sprite>();
@@ -17,6 +18,7 @@ public class PlayerManager : BaseShip
     private bool canFire = true;
     private bool canUseShield;
     private bool canShieldTakeDamage;
+    private bool isShieldRecharging;
     private float xSpeed = 0;
     private float ySpeed = 0;
     private float maxSpeed = 500;
@@ -29,7 +31,7 @@ public class PlayerManager : BaseShip
     private int currentShieldHealth = 0;
     private int shieldLevel = 0;
     private int[] regenerationTime = { 20, 15, 10 };
-    private int[] shieldIntervals = { 20, 25, 30 };
+    private int[] shieldIntervals = { 30, 25, 20 };
 
     protected override void Start()
     {
@@ -266,6 +268,7 @@ public class PlayerManager : BaseShip
                 {
                     shieldLevel = parsed;
                     canUseShield = true;
+                    shieldRechargeTimer.SetActive(true);
                 }
             }
         }
@@ -301,6 +304,12 @@ public class PlayerManager : BaseShip
         }
     }
 
+    public override void RemoveHealth(int amount)
+    {
+        base.RemoveHealth(amount);
+        RemoveShieldHealth();
+    }
+
     private void RemoveShieldHealth()
     {
         if (canShieldTakeDamage)
@@ -315,21 +324,37 @@ public class PlayerManager : BaseShip
 
     private IEnumerator ShieldRechargeCooldown()
     {
-        yield return new WaitForSeconds(shieldIntervals[shieldLevel - 1]);
-        currentShieldHealth = shieldMaxHealth;
-        canUseShield = true;
+        if (isShieldRecharging == false)
+        {
+            isShieldRecharging = true;
+            Text timer = shieldRechargeTimer.GetComponent<Text>();
+            int i = shieldIntervals[shieldLevel - 1];
+            while (i > 0)
+            {
+                if (gameManager.gameOver == false)
+                {
+                    yield return new WaitForSeconds(1);
+                    timer.text = "Shield Recharge: " + i;
+                    i--;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            timer.text = "Shield Recharge: 0";
+
+            currentShieldHealth = shieldMaxHealth;
+            canUseShield = true;
+            isShieldRecharging = false;
+        }
     }
 
     private IEnumerator ShieldCountdown()
     {
         yield return new WaitForSeconds(5);
         RemoveShield();
-    }
-
-    public override void RemoveHealth(int amount)
-    {
-        base.RemoveHealth(amount);
-        RemoveShieldHealth();
     }
 
     private void RemoveShield()
