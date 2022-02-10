@@ -1636,15 +1636,15 @@ MonoBehaviour:
     isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 1cbffd1c7726c994683f94dd20995c99,
       type: 3}
-    color: {r: 0, g: 0, b: 0.5019608, a: 1}
+    color: {r: 0, g: 0, b: 0.7529412, a: 1}
     isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 69e5aacbad4ea0b41b9ed7ff60bdaff9,
       type: 3}
-    color: {r: 0, g: 0, b: 0.1254902, a: 1}
+    color: {r: 0, g: 0, b: 0.5019608, a: 1}
     isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: d97b029c405054043b968ec8675fa27e,
       type: 3}
-    color: {r: 0, g: 0, b: 0.0627451, a: 1}
+    color: {r: 0, g: 0, b: 0.2509804, a: 1}
     isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 356dc77586b5ab84394dba30c84b372a,
       type: 3}
