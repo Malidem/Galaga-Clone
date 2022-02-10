@@ -42,7 +42,7 @@ public abstract class BaseShip : MonoBehaviour
 
     protected virtual void OnHealthAdded() { }
 
-    public void RemoveHealth(int amount)
+    public virtual void RemoveHealth(int amount)
     {
         if (canTakeDamage && gameManager.gameOver == false)
         {

@@ -15,6 +15,8 @@ public class PlayerManager : BaseShip
     public List<GameObject> speedUpgrades = new List<GameObject>();
 
     private bool canFire = true;
+    private bool canUseShield;
+    private bool canShieldTakeDamage;
     private float xSpeed = 0;
     private float ySpeed = 0;
     private float maxSpeed = 500;
@@ -22,11 +24,16 @@ public class PlayerManager : BaseShip
     private float deceleration = 500;
     private int healthLevel = 0;
     private int regenerationLevel = 0;
-    private int[] regenerationTime = { 20, 15, 10 };
     private int damage = 1;
+    private int shieldMaxHealth = 3;
+    private int currentShieldHealth = 0;
+    private int shieldLevel = 0;
+    private int[] regenerationTime = { 20, 15, 10 };
+    private int[] shieldIntervals = { 20, 25, 30 };
 
     protected override void Start()
     {
+        currentShieldHealth = shieldMaxHealth;
         base.Start();
         StartCoroutine(FireCooldown());
         UpgradePlayer();
@@ -97,6 +104,22 @@ public class PlayerManager : BaseShip
                     audioSource.PlayOneShot(gunFireSound);
                     gameManager.overheatAmount += 5;
                     gameManager.UpdateOverheatSprite();
+                }
+            }
+
+            if (canUseShield)
+            {
+                if (Input.GetKey(KeyCode.E))
+                {
+                    canUseShield = false;
+                    canTakeDamage = false;
+                    canShieldTakeDamage = true;
+                    GetComponent<Image>().color = Color.blue;
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        transform.GetChild(i).GetComponent<Image>().color = Color.blue;
+                    }
+                    StartCoroutine(ShieldCountdown());
                 }
             }
         }
@@ -239,6 +262,11 @@ public class PlayerManager : BaseShip
                 {
                     damage += 1;
                 }
+                else if (upgrade[0] == "shield")
+                {
+                    shieldLevel = parsed;
+                    canUseShield = true;
+                }
             }
         }
 
@@ -271,5 +299,48 @@ public class PlayerManager : BaseShip
                 }
             }
         }
+    }
+
+    private void RemoveShieldHealth()
+    {
+        if (canShieldTakeDamage)
+        {
+            currentShieldHealth -= 1;
+            if (currentShieldHealth <= 0)
+            {
+                RemoveShield();
+            }
+        }
+    }
+
+    private IEnumerator ShieldRechargeCooldown()
+    {
+        yield return new WaitForSeconds(shieldIntervals[shieldLevel - 1]);
+        currentShieldHealth = shieldMaxHealth;
+        canUseShield = true;
+    }
+
+    private IEnumerator ShieldCountdown()
+    {
+        yield return new WaitForSeconds(5);
+        RemoveShield();
+    }
+
+    public override void RemoveHealth(int amount)
+    {
+        base.RemoveHealth(amount);
+        RemoveShieldHealth();
+    }
+
+    private void RemoveShield()
+    {
+        canTakeDamage = true;
+        canShieldTakeDamage = false;
+        GetComponent<Image>().color = Color.white;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).GetComponent<Image>().color = Color.white;
+        }
+        StartCoroutine(ShieldRechargeCooldown());
     }
 }

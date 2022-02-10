@@ -3370,6 +3370,9 @@ MonoBehaviour:
   - {fileID: 6736748262221929120, guid: 4895b0eab0e48f348a280c7247cbeeaf, type: 3}
   - {fileID: 6736748262221929120, guid: 3f72b8e7ef469254f97e4ca74199eda8, type: 3}
   - {fileID: 6736748262221929120, guid: ef6b34265f318c14bb2d9cc3e9556aa1, type: 3}
+  - {fileID: 6736748262221929120, guid: bf024c4f67b373d46aac869ec016d3eb, type: 3}
+  - {fileID: 6736748262221929120, guid: 77db35732ad026f4898bac2a37f4f04d, type: 3}
+  - {fileID: 6736748262221929120, guid: 8cdfa35e196a7dd48a5bf026134abc72, type: 3}
   buyableUpgrades: []
   commonUpgrades: []
   rareUpgrades: []
