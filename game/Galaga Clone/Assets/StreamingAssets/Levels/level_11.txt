@@ -1,11 +1,23 @@
-waveCount=9
-waveIntervals=10,10,10,10,10,10,10,10,10
-dialogueCount=0
+waveCount=7
+waveIntervals=5,15,20,15,20,30,30
+dialogueCount=2
 
 dialogueStart:
 interval=0
 <<<
-
+The 18th have deployed the namesake of their squadron, a Vanguard Class Assault Frigate to kill you.
 >>>
 dialogueEnd:
 
+dialogueStart:
+interval=5
+<<<
+Destroying the Vanguard should force them to retreat.
+>>>
+dialogueEnd:
+
+dialogueStart:
+interval=45
+<<A second Vanguard is approaching Pilot, finish this quickly before they overwhelm you.
+>>>
+dialogueEnd:

@@ -1,11 +1,11 @@
 waveCount=9
-waveIntervals=10,10,10,10,10,10,10,10,10
-dialogueCount=0
+waveIntervals=5,7,7,8,7,7,8,7,8
+dialogueCount=1
 
 dialogueStart:
-interval=0
+interval=22
 <<<
-
+The Ordaga have deployed proximity explosive drones to counter you, stay away from them to avoid triggering their destruction.
 >>>
 dialogueEnd:
 
