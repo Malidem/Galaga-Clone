@@ -1,5 +1,5 @@
 waveCount=13
-waveIntervals=5,8,7,9,8,9,8,8,9,9,8,9,9
+waveIntervals=5,10,9,11,10,11,10,10,11,11,10,11,11
 dialogueCount=0
 
 dialogueStart:
