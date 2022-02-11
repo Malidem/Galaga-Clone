@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: shield
   level: 3
-  title: Shield
+  title: Shield 3
   discription: Player gains a shield with 3 health when E is pressed. Has 20 second
     cooldown. Lasts 5 seconds
   savesManager: {fileID: 0}

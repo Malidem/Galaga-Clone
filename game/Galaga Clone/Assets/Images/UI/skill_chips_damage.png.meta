@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 74db7a591a37d0c4693a2f63fa752f5a
+guid: f51941c2ed3f08544a250c24ff3c2e7e
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: -6639327900535151565
-    second: skill_chips_regeneration_0
+    second: skill_chips_damage_0
   - first:
       213: 2905568277663226568
-    second: skill_chips_regeneration_1
+    second: skill_chips_damage_1
   - first:
       213: -2759191576786918094
-    second: skill_chips_regeneration_2
+    second: skill_chips_damage_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -108,7 +108,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: skill_chips_regeneration_0
+      name: skill_chips_damage_0
       rect:
         serializedVersion: 2
         x: 21
@@ -129,7 +129,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skill_chips_regeneration_1
+      name: skill_chips_damage_1
       rect:
         serializedVersion: 2
         x: 109
@@ -150,7 +150,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skill_chips_regeneration_2
+      name: skill_chips_damage_2
       rect:
         serializedVersion: 2
         x: 207
