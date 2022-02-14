@@ -1,0 +1,599 @@
+fileFormatVersion: 2
+guid: cfaa6479e85e989489a8ac0d5a9210ea
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1927017336693987675
+    second: ordaga4_detonation_20
+  - first:
+      213: -4350893559185973453
+    second: ordaga4_detonation_0
+  - first:
+      213: 5671441093262670280
+    second: ordaga4_detonation_1
+  - first:
+      213: 4709525801107403427
+    second: ordaga4_detonation_2
+  - first:
+      213: -3613947452139899983
+    second: ordaga4_detonation_3
+  - first:
+      213: -5799348553760247810
+    second: ordaga4_detonation_4
+  - first:
+      213: -4706539139946595100
+    second: ordaga4_detonation_5
+  - first:
+      213: 7602696768438825016
+    second: ordaga4_detonation_6
+  - first:
+      213: 2429285408051465924
+    second: ordaga4_detonation_7
+  - first:
+      213: -681489797203132370
+    second: ordaga4_detonation_8
+  - first:
+      213: -3368411419070243743
+    second: ordaga4_detonation_9
+  - first:
+      213: 6369712011320393572
+    second: ordaga4_detonation_10
+  - first:
+      213: -4098472800417692534
+    second: ordaga4_detonation_11
+  - first:
+      213: 3672182037482016158
+    second: ordaga4_detonation_12
+  - first:
+      213: -5341683202591270062
+    second: ordaga4_detonation_13
+  - first:
+      213: -5503014511347314497
+    second: ordaga4_detonation_14
+  - first:
+      213: 2371887467773965535
+    second: ordaga4_detonation_15
+  - first:
+      213: 7226913599192935364
+    second: ordaga4_detonation_16
+  - first:
+      213: 3634815431654736742
+    second: ordaga4_detonation_17
+  - first:
+      213: 3016434490677612786
+    second: ordaga4_detonation_18
+  - first:
+      213: 5949819151400062935
+    second: ordaga4_detonation_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ordaga4_detonation_0
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 697
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f5f252c558e93c0800000000000000
+      internalID: -4350893559185973453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_1
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 695
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c9797030a105be40800000000000000
+      internalID: 5671441093262670280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_2
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 690
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a23b8393c89b5140800000000000000
+      internalID: 4709525801107403427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_3
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 686
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b3f54690fda8ddc0800000000000000
+      internalID: -3613947452139899983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_4
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 556
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: effe1747733948fa0800000000000000
+      internalID: -5799348553760247810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_5
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 553
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ecb20aa6930faeb0800000000000000
+      internalID: -4706539139946595100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_6
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 547
+        width: 51
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8307ec91e64328960800000000000000
+      internalID: 7602696768438825016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_7
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 543
+        width: 59
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ce82fc253e86b120800000000000000
+      internalID: 2429285408051465924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_8
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 412
+        width: 67
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2087afd3acda86f0800000000000000
+      internalID: -681489797203132370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_9
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 407
+        width: 77
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16cd2f439aff041d0800000000000000
+      internalID: -3368411419070243743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_10
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 402
+        width: 87
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46f7a4c7353c56850800000000000000
+      internalID: 6369712011320393572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_11
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 397
+        width: 97
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a84c081e3bc4f17c0800000000000000
+      internalID: -4098472800417692534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_12
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 265
+        width: 107
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9d8fa66b1636f230800000000000000
+      internalID: 3672182037482016158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_13
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 264
+        width: 109
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25b50eebd678ed5b0800000000000000
+      internalID: -5341683202591270062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_14
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 262
+        width: 113
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb0d259457d51a3b0800000000000000
+      internalID: -5503014511347314497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_15
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 261
+        width: 115
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd43edbc513aae020800000000000000
+      internalID: 2371887467773965535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_16
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 134
+        width: 115
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cba55ee0a72b4460800000000000000
+      internalID: 7226913599192935364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_17
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 134
+        width: 115
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66383e38065717230800000000000000
+      internalID: 3634815431654736742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_18
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 132
+        width: 119
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f0531100378cd920800000000000000
+      internalID: 3016434490677612786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ordaga4_detonation_19
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 133
+        width: 121
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7df4405aef0029250800000000000000
+      internalID: 5949819151400062935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

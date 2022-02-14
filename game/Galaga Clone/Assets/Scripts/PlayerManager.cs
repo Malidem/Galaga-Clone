@@ -190,19 +190,14 @@ public class PlayerManager : BaseShip
         }
     }
 
-    private IEnumerator OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject gObject = collision.gameObject;
-        if (!gObject.CompareTag("EnemyBullet") && !gObject.name.Contains("OrdagaBoss"))
+        if (!gObject.CompareTag("EnemyBullet") && !gObject.CompareTag("OrdagaExplosionTrigger") && !gObject.name.Contains("OrdagaBoss"))
         {
-            if (gObject.CompareTag("Enemy") && !gObject.name.Contains("Ordaga4") )
+            if (gObject.CompareTag("Enemy"))
             {
                 gameManager.Kill(gObject, 1);
-            }
-            else if (gObject.CompareTag("OrdagaExplosionTrigger"))
-            {
-                gameManager.Kill(gObject.transform.parent.gameObject, 1.7F);
-                yield return new WaitForSeconds(0.4F);
             }
             else if (gObject.CompareTag("BossEnemy"))
             {
