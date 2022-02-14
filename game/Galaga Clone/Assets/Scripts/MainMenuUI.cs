@@ -299,7 +299,7 @@ public class MainMenuUI : MonoBehaviour
 
         email.From = new MailAddress("teampolemos@gmail.com", "Polemos");
         email.To.Add("teampolemos@gmail.com");
-        email.Subject = "Polemos Feedback";
+        email.Subject = "Polemos Feedback" + " | " + DataBaseManager.email;
         email.Body = feedbackInputField.text;
 
         client.SendCompleted += OnAsyncComplete;
