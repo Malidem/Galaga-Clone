@@ -352,11 +352,7 @@ public class PlayerManager : BaseShip
     {
         canTakeDamage = true;
         canShieldTakeDamage = false;
-        GetComponent<Image>().color = Color.white;
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).GetComponent<Image>().color = Color.white;
-        }
+        ChangeShipColor(Color.white);
         StartCoroutine(ShieldRechargeCooldown());
     }
 }
