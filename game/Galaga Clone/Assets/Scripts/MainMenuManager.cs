@@ -7,6 +7,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public static bool isStartingUp = true;
     public static bool loadStarChart;
+    public static GameObject logger;
 
     public bool loggingEnabled;
     public GameObject canvas;
@@ -18,16 +19,25 @@ public class MainMenuManager : MonoBehaviour
 
     private MainMenuUI mainMenuUI;
 
-    void Awake()
+    void OnEnable()
     {
         if (isStartingUp && loggingEnabled)
         {
             isStartingUp = false;
-            GameObject logger = new GameObject
+            logger = new GameObject
             {
                 name = "Logger"
             };
             logger.AddComponent<Logger>();
+            logger.AddComponent<ButtonAudio>();
+            logger.AddComponent<AudioSource>();
+            logger.AddComponent<AudioSource>();
+        }
+
+        GameObject[] allButtons = GameObject.FindGameObjectsWithTag("Button");
+        foreach (GameObject button in allButtons)
+        {
+            button.GetComponent<Button>().onClick.AddListener(delegate { logger.GetComponent<ButtonAudio>().PlayClickSound(); });
         }
     }
 
