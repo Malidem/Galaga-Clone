@@ -116,11 +116,7 @@ public class PlayerManager : BaseShip
                     canUseShield = false;
                     canTakeDamage = false;
                     canShieldTakeDamage = true;
-                    GetComponent<Image>().color = Color.blue;
-                    for (int i = 0; i < transform.childCount; i++)
-                    {
-                        transform.GetChild(i).GetComponent<Image>().color = Color.blue;
-                    }
+                    ChangeShipColor(Color.blue);
                     StartCoroutine(ShieldCountdown());
                 }
             }
@@ -195,6 +191,7 @@ public class PlayerManager : BaseShip
         GameObject gObject = collision.gameObject;
         if (!gObject.CompareTag("EnemyBullet") && !gObject.CompareTag("OrdagaExplosionTrigger") && !gObject.name.Contains("OrdagaBoss"))
         {
+            RemoveHealth(1);
             if (gObject.CompareTag("Enemy"))
             {
                 gameManager.Kill(gObject, 1);
@@ -203,7 +200,6 @@ public class PlayerManager : BaseShip
             {
                 gObject.GetComponent<BaseEnemy>().RemoveHealth(1);
             }
-            RemoveHealth(1);
         }
     }
 

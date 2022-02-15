@@ -53,13 +53,15 @@ public abstract class BaseShip : MonoBehaviour
 
             if (currentHealth > 0)
             {
-                StartCoroutine(FlashRed(gameObject));
-                for (int i = 0; i < transform.childCount; i++)
+                if (CompareTag("Player"))
                 {
-                    StartCoroutine(FlashRed(transform.GetChild(i).gameObject));
+                    StartCoroutine(PlayerFlashRed());
                 }
-
-                canTakeDamage = true;
+                else
+                {
+                    StartCoroutine(FlashRed());
+                    canTakeDamage = true;
+                }
             }
             else
             {
@@ -73,13 +75,31 @@ public abstract class BaseShip : MonoBehaviour
 
     protected virtual void OnDeath() { }
 
-    protected IEnumerator FlashRed(GameObject gObject)
+    protected IEnumerator FlashRed()
     {
-        if (!gObject.CompareTag("OrdagaExplosionTrigger"))
+        ChangeShipColor(Color.red);
+        yield return new WaitForSeconds(0.2F);
+        ChangeShipColor(Color.white);
+    }
+
+    private IEnumerator PlayerFlashRed()
+    {
+        ChangeShipColor(Color.red);
+        yield return new WaitForSeconds(0.2F);
+        ChangeShipColor(Color.white);
+        canTakeDamage = true;
+    }
+
+    protected void ChangeShipColor(Color color)
+    {
+        gameObject.GetComponent<Image>().color = color;
+        for (int i = 0; i < transform.childCount; i++)
         {
-            gObject.GetComponent<Image>().color = Color.red;
-            yield return new WaitForSeconds(0.2F);
-            gObject.GetComponent<Image>().color = Color.white; 
+            Transform child = transform.GetChild(i);
+            if (!child.CompareTag("OrdagaExplosionTrigger"))
+            {
+                child.GetComponent<Image>().color = color;
+            }
         }
     }
 }
