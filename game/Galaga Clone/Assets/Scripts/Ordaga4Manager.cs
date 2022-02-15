@@ -38,17 +38,14 @@ public class Ordaga4Manager : BaseEnemy
         }
     }
 
-    private IEnumerator OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && canDetontate)
         {
             canDetontate = false;
             GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<Image>().enabled = false;
-            detonation.gameObject.SetActive(true);
             StartCoroutine(Detonate());
-            yield return new WaitForSeconds(2);
-            Die();
         }
     }
 
@@ -56,6 +53,7 @@ public class Ordaga4Manager : BaseEnemy
     {
         float time = 2 / sprites.Length;
         GetComponent<AudioSource>().PlayOneShot(detonationSound);
+        detonation.gameObject.SetActive(true);
         for (int i = 0; i < sprites.Length; i++)
         {
             Vector2 size = new Vector2(baseSize * i, baseSize * i);
@@ -64,10 +62,6 @@ public class Ordaga4Manager : BaseEnemy
             detonation.GetComponent<Image>().sprite = sprites[i];
             yield return new WaitForSeconds(time);
         }
-
-        if (gameObject != null && detonation.gameObject != null)
-        {
-            detonation.gameObject.SetActive(false);
-        }
+        Die();
     }
 }
