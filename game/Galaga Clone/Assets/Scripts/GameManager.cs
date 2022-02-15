@@ -64,6 +64,15 @@ public class GameManager : MonoBehaviour
     private bool playerWon;
     private readonly string levelPath = Application.streamingAssetsPath + "/Levels/level_" + DataBaseManager.levelsUnlocked;
 
+    void OnEnable()
+    {
+        Button[] allButtons = canvas.GetComponentsInChildren<Button>(true);
+        foreach (Button button in allButtons)
+        {
+            button.GetComponent<Button>().onClick.AddListener(delegate { MainMenuManager.dontDestroy.GetComponent<ButtonAudio>().PlayClickSound(); });
+        }
+    }
+
     void Start()
     {
         backgroundRect = (RectTransform)backgroundsFolder.transform;
@@ -74,8 +83,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Overheat());
         Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, backgroundsFolder.transform);
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
-        audioSource = canvas.GetComponent<AudioSource>();
-        audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
+        audioSource = MainMenuManager.dontDestroy.GetComponent<AudioSource>();
         ReadLevelProperties();
     }
 

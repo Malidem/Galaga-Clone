@@ -8,6 +8,8 @@ TagManager:
   - OrdagaExplosionTrigger
   - EnemyShield
   - BossEnemy
+  - EnemyBullet
+  - Button
   layers:
   - Default
   - TransparentFX

@@ -110,7 +110,7 @@ public class UI : MonoBehaviour
     {
         float value = GetComponent<Slider>().value;
         PlayerPrefs.SetFloat(DataBaseManager.Prefs.soundVolume, value);
-        canvas.GetComponent<AudioSource>().volume = value;
+        MainMenuManager.dontDestroy.GetComponent<AudioSource>().volume = value;
     }
     
     public void CancelButton()

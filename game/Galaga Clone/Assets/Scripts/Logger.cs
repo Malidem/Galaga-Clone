@@ -10,11 +10,6 @@ public class Logger : MonoBehaviour
     private string fileName;
     private string filePath;
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     void OnEnable()
     {
         int i = 1;

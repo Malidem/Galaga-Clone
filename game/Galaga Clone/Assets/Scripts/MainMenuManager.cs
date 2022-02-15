@@ -7,7 +7,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public static bool isStartingUp = true;
     public static bool loadStarChart;
-    public static GameObject logger;
+    public static GameObject dontDestroy;
 
     public bool loggingEnabled;
     public GameObject canvas;
@@ -21,24 +21,40 @@ public class MainMenuManager : MonoBehaviour
 
     void OnEnable()
     {
-        if (isStartingUp && loggingEnabled)
+        if (isStartingUp)
         {
             isStartingUp = false;
-            logger = new GameObject
+            dontDestroy = new GameObject
             {
-                name = "Logger"
+                name = "DontDestroy"
             };
-            logger.AddComponent<Logger>();
-            logger.AddComponent<ButtonAudio>();
-            logger.AddComponent<AudioSource>();
-            logger.AddComponent<AudioSource>();
+
+            DontDestroyOnLoad(dontDestroy);
+
+            if (loggingEnabled)
+            {
+                dontDestroy.AddComponent<Logger>();
+            }
+
+            dontDestroy.AddComponent<AudioSource>();
+            dontDestroy.AddComponent<ButtonAudio>();
         }
 
-        GameObject[] allButtons = GameObject.FindGameObjectsWithTag("Button");
-        foreach (GameObject button in allButtons)
+        Button[] allButtons = canvas.GetComponentsInChildren<Button>(true);
+        foreach (Button button in allButtons)
         {
-            button.GetComponent<Button>().onClick.AddListener(delegate { logger.GetComponent<ButtonAudio>().PlayClickSound(); });
+            button.GetComponent<Button>().onClick.AddListener(delegate { dontDestroy.GetComponent<ButtonAudio>().PlayClickSound(); });
         }
+
+        if (PlayerPrefs.GetInt(DataBaseManager.Prefs.firstTimePlayed) == 0)
+        {
+            PlayerPrefs.SetInt(DataBaseManager.Prefs.firstTimePlayed, 1);
+            PlayerPrefs.SetFloat(DataBaseManager.Prefs.soundVolume, 1);
+        }
+
+        float value = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
+        dontDestroy.GetComponent<AudioSource>().volume = value;
+        soundVolumeSlider.value = value;
     }
 
     // Start is called before the first frame update
@@ -56,16 +72,6 @@ public class MainMenuManager : MonoBehaviour
         {
             accountMenu.SetActive(true);
         }
-
-        if (PlayerPrefs.GetInt(DataBaseManager.Prefs.firstTimePlayed) == 0)
-        {
-            PlayerPrefs.SetInt(DataBaseManager.Prefs.firstTimePlayed, 1);
-            PlayerPrefs.SetFloat(DataBaseManager.Prefs.soundVolume, 1);
-        }
-
-        float value = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
-        canvas.GetComponent<AudioSource>().volume = value;
-        soundVolumeSlider.value = value;
 
         if (loadStarChart)
         {

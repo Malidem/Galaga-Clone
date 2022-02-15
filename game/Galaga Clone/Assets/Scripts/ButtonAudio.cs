@@ -9,7 +9,7 @@ public class ButtonAudio : MonoBehaviour
 
     void OnEnable()
     {
-        audioSource = GetComponents<AudioSource>()[1];
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void PlayClickSound()

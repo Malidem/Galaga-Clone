@@ -24,6 +24,15 @@ public class SavesManager : MonoBehaviour
     private System.Random random = new System.Random();
     private Transform[] levels;
 
+    void OnEnable()
+    {
+        Button[] allButtons = GetComponentsInChildren<Button>(true);
+        foreach (Button button in allButtons)
+        {
+            button.GetComponent<Button>().onClick.AddListener(delegate { MainMenuManager.dontDestroy.GetComponent<ButtonAudio>().PlayClickSound(); });
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +42,6 @@ public class SavesManager : MonoBehaviour
         Rect rect = scroller.GetComponent<RectTransform>().rect;
         scroller.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
         scroller.GetComponent<BoxCollider2D>().size = new Vector2(rect.width / scroller.transform.lossyScale.x, rect.height / scroller.transform.lossyScale.y);
-        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
     }
 
     void Update()
