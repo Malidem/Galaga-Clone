@@ -53,15 +53,7 @@ public abstract class BaseShip : MonoBehaviour
 
             if (currentHealth > 0)
             {
-                if (CompareTag("Player"))
-                {
-                    StartCoroutine(PlayerFlashRed());
-                }
-                else
-                {
-                    StartCoroutine(FlashRed());
-                    canTakeDamage = true;
-                }
+                StartCoroutine(FlashShip());
             }
             else
             {
@@ -75,19 +67,24 @@ public abstract class BaseShip : MonoBehaviour
 
     protected virtual void OnDeath() { }
 
+    private IEnumerator FlashShip()
+    {
+        if (CompareTag("Player"))
+        {
+            yield return StartCoroutine(FlashRed());
+        }
+        else
+        {
+            StartCoroutine(FlashRed());
+        }
+        canTakeDamage = true;
+    }
+
     protected IEnumerator FlashRed()
     {
         ChangeShipColor(Color.red);
         yield return new WaitForSeconds(0.2F);
         ChangeShipColor(Color.white);
-    }
-
-    private IEnumerator PlayerFlashRed()
-    {
-        ChangeShipColor(Color.red);
-        yield return new WaitForSeconds(0.2F);
-        ChangeShipColor(Color.white);
-        canTakeDamage = true;
     }
 
     protected void ChangeShipColor(Color color)
