@@ -331,16 +331,17 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        Transform[] menu = gameOverMenu.GetComponentsInChildren<Transform>();
+        Transform[] menu = gameOverMenu.GetComponentsInChildren<Transform>(true);
         gameOver = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameOverMenu.SetActive(true);
-        menu[2].GetComponent<Text>().text = "Earned credits: " + string.Format("{0:n0}", money);
         
         if (playerWon)
         {
             print("Level completed!");
+            menu[2].gameObject.SetActive(true);
+            menu[2].GetComponent<Text>().text = "Earned credits: " + string.Format("{0:n0}", money);
             menu[1].GetComponent<Text>().text = "Level Completed!";
             menu[3].GetChild(0).GetComponent<Text>().text = "Next Level";
             DataBaseManager.money += money;
