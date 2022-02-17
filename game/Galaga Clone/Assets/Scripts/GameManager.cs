@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Overheat());
         Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, backgroundsFolder.transform);
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
-        audioSource = MainMenuManager.dontDestroy.GetComponent<AudioSource>();
+        audioSource = canvas.GetComponent<AudioSource>();
         ReadLevelProperties();
     }
 
