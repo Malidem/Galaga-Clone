@@ -217,25 +217,13 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        foreach (EnemySpawnProperties item in spawnList)
+        foreach (EnemySpawnProperties spawnProps in spawnList)
         {
-            if (item.color.Equals(pixelColor))
+/*            if (spawnProps.color.Equals(pixelColor))
             {
-                if (item.isBoss == false)
+                if (spawnProps.isBoss == true)
                 {
-                    for (int i = 0; i < enemySpawnPoints.Count; i++)
-                    {
-                        EnemySpawnPoint spawnPoint = enemySpawnPoints[i].gameObject.GetComponent<EnemySpawnPoint>();
-                        if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
-                        {
-                            GameObject enemy = Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemyFolder.transform);
-                            enemyCount.Add(enemy);
-                        }
-                    } 
-                }
-                else
-                {
-                    GameObject bossEnemy = Instantiate(item.enemyType, bossSpawnPoint.transform.position, Quaternion.identity, enemyFolder.transform);
+                    GameObject bossEnemy = Instantiate(spawnProps.enemyType, bossSpawnPoint.transform.position, Quaternion.identity, enemyFolder.transform);
                     BaseEnemy bossProps = bossEnemy.GetComponent<BaseEnemy>();
                     bossProps.canFireGuns = false;
                     bossProps.canFireTurrets = false;
@@ -243,6 +231,44 @@ public class GameManager : MonoBehaviour
                     bossProps.canShieldsTakeDamage = false;
                 }
             }
+            else*/ if (spawnProps.color.b.Equals(pixelColor.b) && spawnProps.color.g.Equals(pixelColor.g))
+            {
+                for (int i = 0; i < enemySpawnPoints.Count; i++)
+                {
+                    EnemySpawnPoint spawnPoint = enemySpawnPoints[i].gameObject.GetComponent<EnemySpawnPoint>();
+                    if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
+                    {
+                        print(pixelColor.r);
+                        GameObject enemy = Instantiate(spawnProps.enemyType, spawnPoint.gameObject.transform.position, Quaternion.Euler(0, 0, pixelColor.r * 10), enemyFolder.transform);
+                        enemyCount.Add(enemy);
+                    }
+                }
+            }
+
+            //if (spawnProps.color.Equals(pixelColor))
+            //{
+            //    if (spawnProps.isBoss == false)
+            //    {
+            //        for (int i = 0; i < enemySpawnPoints.Count; i++)
+            //        {
+            //            EnemySpawnPoint spawnPoint = enemySpawnPoints[i].gameObject.GetComponent<EnemySpawnPoint>();
+            //            if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
+            //            {
+            //                GameObject enemy = Instantiate(spawnProps.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemyFolder.transform);
+            //                enemyCount.Add(enemy);
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        GameObject bossEnemy = Instantiate(spawnProps.enemyType, bossSpawnPoint.transform.position, Quaternion.identity, enemyFolder.transform);
+            //        BaseEnemy bossProps = bossEnemy.GetComponent<BaseEnemy>();
+            //        bossProps.canFireGuns = false;
+            //        bossProps.canFireTurrets = false;
+            //        bossProps.canTakeDamage = false;
+            //        bossProps.canShieldsTakeDamage = false;
+            //    }
+            //}
         }
     }
 

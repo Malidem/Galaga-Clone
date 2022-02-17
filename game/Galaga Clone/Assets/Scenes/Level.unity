@@ -1626,7 +1626,7 @@ MonoBehaviour:
     isBoss: 0
   - enemyType: {fileID: 2500958488499531473, guid: 356dc77586b5ab84394dba30c84b372a,
       type: 3}
-    color: {r: 1, g: 1, b: 0, a: 1}
+    color: {r: 1, g: 0, b: 1, a: 1}
     isBoss: 1
   - enemyType: {fileID: 2500958488499531473, guid: 3620a2f33c46ba14e905e48656dd8aed,
       type: 3}
