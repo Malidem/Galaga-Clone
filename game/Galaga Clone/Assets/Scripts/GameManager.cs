@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        print("Loading level " + DataBaseManager.levelsUnlocked);
         backgroundRect = (RectTransform)backgroundsFolder.transform;
         enemySpawnPoints = new List<Transform>(enemyFolder.transform.GetChild(0).GetComponentsInChildren<Transform>());
         enemySpawnPoints.Remove(enemyFolder.transform.GetChild(0));
@@ -179,9 +180,9 @@ public class GameManager : MonoBehaviour
         {
             for (int chunkX = 0; chunkX < xNumberOfChunks; chunkX++)
             {
-                if (gameOver == false)
+                if (gameOver == false && wave <= (waveCount - 1))   // waveCount - 1 because waveCount dosn't count 0 as 1
                 {
-                    wave++;
+                    yield return new WaitForSeconds(waveIntervals[wave]);
                     print("Starting wave " + wave);
                     for (int y = 0; y < yPixelsPerChunk; y++)
                     {
@@ -192,7 +193,7 @@ public class GameManager : MonoBehaviour
                             PixelToEnemy(levelMap, pixelX, pixelY, x, y);
                         }
                     }
-                    yield return new WaitForSeconds(waveIntervals[wave - 1]);
+                    wave++;
                 }
                 else
                 {
@@ -223,7 +224,7 @@ public class GameManager : MonoBehaviour
                         if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
                         {
                             GameObject enemy = Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemyFolder.transform);
-                            if (wave == waveCount)
+                            if (wave >= waveCount)
                             {
                                 enemyCount.Add(enemy);
                             }
@@ -396,7 +397,7 @@ public class GameManager : MonoBehaviour
                         playerWon = true;
                         EndGame();
                     }
-                } 
+                }
             }
             else
             {
