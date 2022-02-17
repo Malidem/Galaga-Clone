@@ -17,15 +17,6 @@ public class EnemyManager : BaseEnemy
         {
             StartCoroutine(FireGunBullets());
         }
-        //float backgroundCenter = backgroundRect.rect.height / 2;
-        //if (transform.position.y > (backgroundCenter + 201))
-        //{
-        //    transform.rotation = Quaternion.Euler(0, 0, 25);
-        //}
-        //else if (transform.position.y < (backgroundCenter + -201))
-        //{
-        //    transform.rotation = Quaternion.Euler(0, 0, -25);
-        //}
     }
 
     protected override void Update()
