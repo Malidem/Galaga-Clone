@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     private List<GameObject> enemyCount = new List<GameObject>();
     private bool canPlayOverheatSound = true;
     private bool playerWon;
+    private bool isFinalLevel;
     private readonly string levelPath = Application.streamingAssetsPath + "/Levels/level_" + DataBaseManager.levelsUnlocked;
 
     void OnEnable()
@@ -194,6 +195,10 @@ public class GameManager : MonoBehaviour
                         }
                     }
                     wave++;
+                    if (wave > (waveCount - 1))
+                    {
+                        isFinalLevel = true;
+                    }
                 }
                 else
                 {
@@ -224,10 +229,7 @@ public class GameManager : MonoBehaviour
                         if (spawnPoint.pixelX == chunkX && spawnPoint.pixelY == chunkY)
                         {
                             GameObject enemy = Instantiate(item.enemyType, spawnPoint.gameObject.transform.position, Quaternion.identity, enemyFolder.transform);
-                            if (wave >= waveCount)
-                            {
-                                enemyCount.Add(enemy);
-                            }
+                            enemyCount.Add(enemy);
                         }
                     } 
                 }
@@ -389,14 +391,11 @@ public class GameManager : MonoBehaviour
         {
             if (!enemy.CompareTag("BossEnemy"))
             {
-                if (wave == waveCount)
+                enemyCount.Remove(enemy);
+                if (isFinalLevel && enemyCount.Count <= 0)
                 {
-                    enemyCount.Remove(enemy);
-                    if (enemyCount.Count <= 0)
-                    {
-                        playerWon = true;
-                        EndGame();
-                    }
+                    playerWon = true;
+                    EndGame();
                 }
             }
             else
