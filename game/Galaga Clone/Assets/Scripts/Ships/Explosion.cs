@@ -21,8 +21,7 @@ public class Explosion : MonoBehaviour
 
     public IEnumerator Die()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
+        audioSource = GetComponentInParent<BaseShip>().gameManager.audioSource;
         audioSource.PlayOneShot(explosion);
         yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length);
         if (gameObject != null)

@@ -10,7 +10,7 @@ public abstract class BaseShip : MonoBehaviour
 
     protected int currentHealth;
     protected float explosionSize = 1;
-    protected GameManager gameManager;
+    public GameManager gameManager;
     protected AudioSource audioSource;
     protected RectTransform backgroundRect;
     protected GameObject bulletFolder;
@@ -21,8 +21,7 @@ public abstract class BaseShip : MonoBehaviour
         gameManager = Resources.FindObjectsOfTypeAll<GameManager>()[0];
         backgroundRect = gameManager.backgroundRect;
         bulletFolder = gameManager.bulletFolder;
-        audioSource = GetComponent<AudioSource>();
-        audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
+        audioSource = gameManager.audioSource;
         currentHealth = health;
 
         if (health < 1)
