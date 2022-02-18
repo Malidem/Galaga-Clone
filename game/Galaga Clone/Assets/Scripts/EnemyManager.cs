@@ -24,12 +24,12 @@ public class EnemyManager : BaseEnemy
         base.Update();
         transform.Translate(Vector2.left * Time.deltaTime * speed);
 
-        if (transform.position.x > (backgroundRect.rect.width + 100))
+        if (transform.position.x > (backgroundRect.rect.width + 200))
         {
             Die();
         }
 
-        if (transform.position.y > (backgroundRect.rect.height + 55))
+        if (transform.position.y > (backgroundRect.rect.height + 200))
         {
             Die();
         }
@@ -39,7 +39,7 @@ public class EnemyManager : BaseEnemy
             Die();
         }
 
-        if (transform.position.y < -55)
+        if (transform.position.y < -200)
         {
             Die();
         }

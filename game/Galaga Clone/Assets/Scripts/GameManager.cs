@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject explosion;
     public GameObject dialogueBackground;
     public GameObject bossSpawnPoint;
+    public GameObject enemySpawnPointsFolder;
     public Image overheatBar;
     public Text dialogueText;
     public Texture2D cursor;
@@ -78,8 +79,6 @@ public class GameManager : MonoBehaviour
     {
         print("Loading level " + DataBaseManager.levelsUnlocked);
         backgroundRect = (RectTransform)backgroundsFolder.transform;
-        enemySpawnPoints = new List<Transform>(enemyFolder.transform.GetChild(0).GetComponentsInChildren<Transform>());
-        enemySpawnPoints.Remove(enemyFolder.transform.GetChild(0));
         Time.timeScale = 1;
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
@@ -172,8 +171,8 @@ public class GameManager : MonoBehaviour
         Texture2D levelMap = new Texture2D(2, 2);
         levelMap.LoadImage(rawImage);
 
-        int yPixelsPerChunk = 7;
-        int xPixelsPerChunk = 6;
+        int yPixelsPerChunk = 13;
+        int xPixelsPerChunk = 10;
         int xNumberOfChunks = levelMap.width / xPixelsPerChunk;
         int yNumberOfChunks = levelMap.height / yPixelsPerChunk;
 
@@ -185,6 +184,9 @@ public class GameManager : MonoBehaviour
                 {
                     yield return new WaitForSeconds(waveIntervals[wave]);
                     print("Starting wave " + wave);
+                    Transform g = Instantiate(enemySpawnPointsFolder, enemyFolder.transform).transform;
+                    enemySpawnPoints = new List<Transform>(g.GetComponentsInChildren<Transform>());
+                    enemySpawnPoints.Remove(g);
                     for (int y = 0; y < yPixelsPerChunk; y++)
                     {
                         for (int x = 0; x < xPixelsPerChunk; x++)
@@ -194,6 +196,8 @@ public class GameManager : MonoBehaviour
                             PixelToEnemy(levelMap, pixelX, pixelY, x, y);
                         }
                     }
+                    enemySpawnPoints.Clear();
+                    Destroy(g.gameObject);
                     wave++;
                     if (wave > (waveCount - 1))
                     {
