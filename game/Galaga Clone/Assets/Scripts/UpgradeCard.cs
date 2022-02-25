@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeCard : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class UpgradeCard : MonoBehaviour
     public GameObject upgradeParent;
     [HideInInspector]
     public GameObject[] upgradeSlots;
+    [HideInInspector]
+    public GameObject tooltip;
 
     // Update is called once per frame
     void Update()
@@ -46,6 +49,7 @@ public class UpgradeCard : MonoBehaviour
             RemoveFromUpgrades();
         }
 
+        OnMouseHoverExit();
         startParent = transform.parent.gameObject;
         startPos = transform.position;
         isDragging = true;
@@ -78,6 +82,7 @@ public class UpgradeCard : MonoBehaviour
         {
             MoveCardToStart(gameObject.transform);
         }
+        OnMouseHoverEnter();
         savesManager.UpdateActiveUpgrades();
     }
 
@@ -137,7 +142,7 @@ public class UpgradeCard : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isOverSlot = true;
-        if (collision.gameObject.name == "UpgradeScroller")
+        if (collision.gameObject.name == "ScrollBackground")
         {
             slot = upgradeParent;
         }
@@ -151,5 +156,22 @@ public class UpgradeCard : MonoBehaviour
     {
         isOverSlot = false;
         slot = null;
+    }
+
+    public void OnMouseHoverEnter()
+    {
+        if (isDragging == false)
+        {
+            GameObject tooltipInstance = Instantiate(tooltip, new Vector2(transform.position.x, transform.position.y + 75), Quaternion.identity, transform);
+            tooltipInstance.transform.GetChild(0).GetComponent<Text>().text = title;
+        }
+    }
+
+    public void OnMouseHoverExit()
+    {
+        if (transform.childCount > 0)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+        }
     }
 }

@@ -10,6 +10,7 @@ public class SavesManager : MonoBehaviour
     public GameObject dragObject;
     public GameObject scroller;
     public GameObject levelsFolder;
+    public GameObject upgradeTooltip;
     public Sprite completedLevel;
     public Sprite unlockedLevel;
     public Text moneyText;
@@ -110,6 +111,7 @@ public class SavesManager : MonoBehaviour
                         card.upgradeParent = upgradesParent;
                         card.dragObject = dragObject;
                         card.upgradeSlots = upgradeSlots;
+                        card.tooltip = upgradeTooltip;
                         card.AddToUpgrades();
                         buyableUpgrades.Remove(upgrades[i2]);
                     }
@@ -165,21 +167,20 @@ public class SavesManager : MonoBehaviour
 
     public void SortUpgradeCards()
     {
-        Transform[] children = upgradesParent.transform.GetComponentsInChildren<Transform>();
-        List<Transform> list = children.ToList();
-        list.Remove(upgradesParent.transform);
+        UpgradeCard[] children = upgradesParent.transform.GetComponentsInChildren<UpgradeCard>();
+        List<UpgradeCard> list = children.ToList();
         children = list.ToArray();
 
-        Transform[] level1 = children.Where(o => o.gameObject.GetComponent<UpgradeCard>().level == "1").OrderBy(o => o.gameObject.GetComponent<UpgradeCard>().type).ToArray();
-        Transform[] level2 = children.Where(o => o.gameObject.GetComponent<UpgradeCard>().level == "2").OrderBy(o => o.gameObject.GetComponent<UpgradeCard>().type).ToArray();
-        Transform[] level3 = children.Where(o => o.gameObject.GetComponent<UpgradeCard>().level == "3").OrderBy(o => o.gameObject.GetComponent<UpgradeCard>().type).ToArray();
+        UpgradeCard[] level1 = children.Where(o => o.GetComponent<UpgradeCard>().level == "1").OrderBy(o => o.GetComponent<UpgradeCard>().type).ToArray();
+        UpgradeCard[] level2 = children.Where(o => o.GetComponent<UpgradeCard>().level == "2").OrderBy(o => o.GetComponent<UpgradeCard>().type).ToArray();
+        UpgradeCard[] level3 = children.Where(o => o.GetComponent<UpgradeCard>().level == "3").OrderBy(o => o.GetComponent<UpgradeCard>().type).ToArray();
         
         children = level1.Concat(level2).ToArray();
         children = children.Concat(level3).ToArray();
 
         for (int i = 0; i < children.Length; i++)
         {
-            children[i].SetSiblingIndex(i);
+            children[i].transform.SetSiblingIndex(i);
         }
     }
 
