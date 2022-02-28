@@ -33,6 +33,7 @@ public class MainMenuUI : MonoBehaviour
     private Text errorButtonText;
     private Text errorTitle;
     private Text errorDescription;
+    private bool isPasswordShown;
 
     void Start()
     {
@@ -118,6 +119,7 @@ public class MainMenuUI : MonoBehaviour
             mainMenu.GetComponentsInChildren<Text>()[4].text = "Email: " + DataBaseManager.email;
             PlayerPrefs.SetString("email", DataBaseManager.email);
             PlayerPrefs.SetString("password", password);
+            isPasswordShown = false;
             UpdateSavesMenu(www.text);
         }
         else if (www.text[0] == '5')
@@ -375,5 +377,21 @@ public class MainMenuUI : MonoBehaviour
         charCountText.text = "0/" + feedbackInputField.characterLimit;
         feedbackErrorText.SetActive(false);
         submitFeedbackButton.GetComponent<Button>().interactable = true;
+    }
+
+    public void HideShowButton()
+    {
+        if (isPasswordShown)
+        {
+            isPasswordShown = false;
+            passwordInputField.contentType = InputField.ContentType.Password;
+        }
+        else
+        {
+            isPasswordShown = true;
+            passwordInputField.contentType = InputField.ContentType.Custom;
+            passwordInputField.inputType = InputField.InputType.Standard;
+        }
+        passwordInputField.ForceLabelUpdate();
     }
 }
