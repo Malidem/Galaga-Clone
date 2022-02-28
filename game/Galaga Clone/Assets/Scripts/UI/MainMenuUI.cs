@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Security;
@@ -56,7 +57,10 @@ public class MainMenuUI : MonoBehaviour
 
     public void CallSignUp()
     {
-        IsValidEmail(SignUp());
+        if (IsValidEmail() && IsValidPassword())
+        {
+            StartCoroutine(SignUp());
+        }
     }
 
     private IEnumerator SignUp()
@@ -88,7 +92,10 @@ public class MainMenuUI : MonoBehaviour
 
     public void CallLogin()
     {
-        IsValidEmail(Login(emailInputField.text, passwordInputField.text));
+        if (IsValidEmail() && IsValidPassword())
+        {
+            StartCoroutine(Login(emailInputField.text, passwordInputField.text));
+        }
     }
 
     public IEnumerator Login(string email, string password)
@@ -160,15 +167,16 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
-    public void IsValidEmail(IEnumerator result)
+    public bool IsValidEmail()
     {
         string str = emailInputField.text.ToLower();
-        if (!emailInputField.text.Contains("@"))
+        if (!str.Contains("@"))
         {
             errorMenu.SetActive(true);
             errorTitle.text = "Invalid email";
             errorDescription.text = "Email address needs an '@'";
             errorButtonText.text = "Ok";
+            return false;
         }
         else if (str.Substring(0, str.IndexOf("@")).Length < 1)
         {
@@ -176,6 +184,7 @@ public class MainMenuUI : MonoBehaviour
             errorTitle.text = "Invalid email";
             errorDescription.text = "The '@' must have a prefix";
             errorButtonText.text = "Ok";
+            return false;
         }
         else if (str.Substring(str.IndexOf("@")).Length < 2)
         {
@@ -183,10 +192,28 @@ public class MainMenuUI : MonoBehaviour
             errorTitle.text = "Invalid email";
             errorDescription.text = "Email address needs a domain";
             errorButtonText.text = "Ok";
+            return false;
         }
         else
         {
-            StartCoroutine(result);
+            return true;
+        }
+    }
+
+    private bool IsValidPassword()
+    {
+        string str = passwordInputField.text;
+        if (str.Any(char.IsWhiteSpace))
+        {
+            errorMenu.SetActive(true);
+            errorTitle.text = "Invalid password";
+            errorDescription.text = "Password cannot have any spaces";
+            errorButtonText.text = "Ok";
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
