@@ -20,6 +20,7 @@ public class MainMenuUI : MonoBehaviour
     public GameObject savesMenu;
     public GameObject feedbackErrorText;
     public GameObject submitFeedbackButton;
+    public GameObject shortPasswordText;
     public List<GameObject> createSaveTexts = new List<GameObject>();
     public List<GameObject> gameStatTexts = new List<GameObject>();
     public List<GameObject> deleteSaveButtons = new List<GameObject>();
@@ -221,9 +222,21 @@ public class MainMenuUI : MonoBehaviour
 
     public void VerifyFields()
     {
-        bool validStrings = emailInputField.text.Length >= 8 && passwordInputField.text.Length >= 8;
+        bool validStrings = emailInputField.text.Length > 0 && passwordInputField.text.Length >= 8;
         SignUpButton.interactable = validStrings;
         loginButton.interactable = validStrings;
+    }
+
+    public void OnPasswordEdit()
+    {
+        if (passwordInputField.text.Length < 8)
+        {
+            shortPasswordText.SetActive(true);
+        }
+        else
+        {
+            shortPasswordText.SetActive(false);
+        }
     }
 
     public void LogOut()
