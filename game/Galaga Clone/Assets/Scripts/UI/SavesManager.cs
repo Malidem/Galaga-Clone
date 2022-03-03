@@ -84,12 +84,14 @@ public class SavesManager : MonoBehaviour
         {
             levels[i + 1].GetComponent<Image>().sprite = unlockedLevel;
             levels[i + 1].GetComponent<LevelHover>().isUnlocked = true;
+            levels[i + 1].GetComponent<Button>().interactable = true;
         }
 
         for (int i = 0; i < DataBaseManager.levelsCompleted; i++)
         {
             levels[i + 1].GetComponent<Image>().sprite = completedLevel;
             levels[i + 1].GetComponent<LevelHover>().isUnlocked = false;
+            levels[i + 1].GetComponent<Button>().interactable = false;
         }
     }
 
