@@ -83,16 +83,19 @@ public abstract class BaseEnemy : BaseShip
         while (gameManager.gameOver == false && canFireTurrets)
         {
             yield return new WaitForSeconds(0.6F);
-            int chance = UnityEngine.Random.Range(0, 101);
-            if (chance <= 25)
+            if (IsOutOfBounds() == false)
             {
-                for (int i = 0; i < turretsProps.Count; i++)
+                int chance = UnityEngine.Random.Range(0, 101);
+                if (chance <= 25)
                 {
-                    if (!turrets[i].name.Contains("Shield"))
+                    for (int i = 0; i < turretsProps.Count; i++)
                     {
-                        GameObject turret = turrets[i];
-                        Instantiate(turretsProps[i].ammo, turret.transform.position, turret.transform.rotation, turretBulletFolder.transform);
-                        audioSource.PlayOneShot(turretsProps[i].fireSound);
+                        if (!turrets[i].name.Contains("Shield"))
+                        {
+                            GameObject turret = turrets[i];
+                            Instantiate(turretsProps[i].ammo, turret.transform.position, turret.transform.rotation, turretBulletFolder.transform);
+                            audioSource.PlayOneShot(turretsProps[i].fireSound);
+                        }
                     }
                 }
             }

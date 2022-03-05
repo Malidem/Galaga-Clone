@@ -50,11 +50,14 @@ public class EnemyManager : BaseEnemy
         while (gameManager.gameOver == false && canFireGuns)
         {
             yield return new WaitForSeconds(0.5F);
-            int chance = Random.Range(0, 101);
-            if (chance <= 25)
+            if (IsOutOfBounds() == false)
             {
-                Instantiate(bullets, transform.position, transform.rotation, bulletFolder.transform);
-                audioSource.PlayOneShot(gunFireSound);
+                int chance = Random.Range(0, 101);
+                if (chance <= 25)
+                {
+                    Instantiate(bullets, transform.position, transform.rotation, bulletFolder.transform);
+                    audioSource.PlayOneShot(gunFireSound);
+                } 
             }
         }
     }
