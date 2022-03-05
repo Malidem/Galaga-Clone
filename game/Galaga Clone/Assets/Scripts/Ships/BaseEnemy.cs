@@ -14,6 +14,7 @@ public abstract class BaseEnemy : BaseShip
     protected int shieldTurretHealth = 2;
     protected float shieldRespawnInterval = 3;
     protected float shieldTurretSize = 1;
+    protected float turretRotationSpeed = 100;
 
     private int currentShieldTurretHealth;
     private bool hasTurrets;
@@ -72,7 +73,7 @@ public abstract class BaseEnemy : BaseShip
                 GameObject turret = turrets[i];
                 float angle = Mathf.Atan2(player.transform.position.y - turret.transform.position.y, player.transform.position.x - turret.transform.position.x) * Mathf.Rad2Deg;
                 Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                turret.transform.rotation = Quaternion.RotateTowards(turret.transform.rotation, targetRotation, 100 * Time.deltaTime);
+                turret.transform.rotation = Quaternion.RotateTowards(turret.transform.rotation, targetRotation, turretRotationSpeed * Time.deltaTime);
             }
         }
     }
@@ -129,6 +130,31 @@ public abstract class BaseEnemy : BaseShip
     protected override void OnDeath()
     {
         gameManager.AddMoney(moneyAwarded);
+    }
+
+    protected bool IsOutOfBounds()
+    {
+        Rect rect = GetComponent<RectTransform>().rect;
+        if ((transform.position.x + (rect.width / 2)) > backgroundRect.rect.width)
+        {
+            return true;
+        }
+        else if ((transform.position.y + (rect.height / 2)) > backgroundRect.rect.height)
+        {
+            return true;
+        }
+        else if ((transform.position.x - (rect.width / 2)) < 0)
+        {
+            return true;
+        }
+        else if ((transform.position.y - (rect.height / 2))  < 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     [Serializable]
