@@ -39,13 +39,8 @@ public class OrdagaBoss : BaseBoss
             GameObject point1 = teleportPointsList[i].GetChild(0).gameObject;
             GameObject point2 = teleportPointsList[i].GetChild(1).gameObject;
 
-            float point1Angle = Mathf.Atan2(point2.transform.position.y - point1.transform.position.y, point2.transform.position.x - point1.transform.position.x) * Mathf.Rad2Deg;
-            Quaternion point1TargetRotation = Quaternion.AngleAxis(point1Angle, Vector3.forward);
-            point1.transform.rotation = Quaternion.RotateTowards(point1.transform.rotation, point1TargetRotation, 100 * Time.deltaTime);
-
-            float point2Angle = Mathf.Atan2(point1.transform.position.y - point2.transform.position.y, point1.transform.position.x - point2.transform.position.x) * Mathf.Rad2Deg;
-            Quaternion point2TargetRotation = Quaternion.AngleAxis(point2Angle, Vector3.forward);
-            point2.transform.rotation = Quaternion.RotateTowards(point2.transform.rotation, point2TargetRotation, 100 * Time.deltaTime);
+            RotateObjectToObject(point1, point2, 100);
+            RotateObjectToObject(point2, point1, 100);
         }
 
         if (isInPosition)

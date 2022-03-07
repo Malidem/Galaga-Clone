@@ -70,10 +70,7 @@ public abstract class BaseEnemy : BaseShip
         {
             for (int i = 0; i < turrets.Count; i++)
             {
-                GameObject turret = turrets[i];
-                float angle = Mathf.Atan2(player.transform.position.y - turret.transform.position.y, player.transform.position.x - turret.transform.position.x) * Mathf.Rad2Deg;
-                Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                turret.transform.rotation = Quaternion.RotateTowards(turret.transform.rotation, targetRotation, turretRotationSpeed * Time.deltaTime);
+                RotateObjectToObject(turrets[i], player, turretRotationSpeed);
             }
         }
     }

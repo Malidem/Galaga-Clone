@@ -32,9 +32,7 @@ public class Ordaga4Manager : BaseEnemy
 
         if (gameManager.gameOver == false)
         {
-            float angle = Mathf.Atan2(player.transform.position.y - gameObject.transform.position.y, player.transform.position.x - gameObject.transform.position.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, targetRotation, 10 * Time.deltaTime);
+            RotateObjectToObject(gameObject, player, 10);
         }
     }
 

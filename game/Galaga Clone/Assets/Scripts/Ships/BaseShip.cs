@@ -98,4 +98,18 @@ public abstract class BaseShip : MonoBehaviour
             }
         }
     }
+
+    
+    /// <summary>
+    /// Incrimentaly rotates 'rotatable' towards the 'target' at the given 'speed'. Must be continisly updated.
+    /// </summary>
+    /// <param name="rotatable"></param>
+    /// <param name="target"></param>
+    /// <param name="speed"></param>
+    protected void RotateObjectToObject(GameObject rotatable, GameObject target, float speed)
+    {
+        float angle = Mathf.Atan2(target.transform.position.y - rotatable.transform.position.y, target.transform.position.x - rotatable.transform.position.x) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        rotatable.transform.rotation = Quaternion.RotateTowards(rotatable.transform.rotation, targetRotation, speed * Time.deltaTime);
+    }
 }
