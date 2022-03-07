@@ -135,19 +135,19 @@ public abstract class BaseEnemy : BaseShip
     protected bool IsOutOfBounds()
     {
         Rect rect = GetComponent<RectTransform>().rect;
-        if ((transform.position.x + (rect.width / 2)) > backgroundRect.rect.width)
+        if ((transform.position.x - (rect.width / 2)) > backgroundRect.rect.width)
         {
             return true;
         }
-        else if ((transform.position.y + (rect.height / 2)) > backgroundRect.rect.height)
+        else if ((transform.position.y - (rect.height / 2)) > backgroundRect.rect.height)
         {
             return true;
         }
-        else if ((transform.position.x - (rect.width / 2)) < 0)
+        else if ((transform.position.x + (rect.width / 2)) < 0)
         {
             return true;
         }
-        else if ((transform.position.y - (rect.height / 2))  < 0)
+        else if ((transform.position.y + (rect.height / 2))  < 0)
         {
             return true;
         }
