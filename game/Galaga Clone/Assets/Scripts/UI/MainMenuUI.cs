@@ -249,7 +249,7 @@ public class MainMenuUI : MonoBehaviour
     public void LoadSaveButton(int save)
     {
         mainMenu.SetActive(false);
-        Instantiate(gameMenu, canvas.transform);
+        SceneManager.LoadScene("LoadedSave", LoadSceneMode.Single);
         PlayerPrefs.SetInt(DataBaseManager.Prefs.lastUsedSave, save);
         DataBaseManager.currentSave = save;
     }

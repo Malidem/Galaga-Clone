@@ -26,7 +26,7 @@ public class UI : MonoBehaviour
 
     void Start()
     {
-        if (SceneManager.GetActiveScene().name != "MainMenu")
+        if (SceneManager.GetActiveScene().name == "Level")
         {
             gameManager = eventSystem.GetComponent<GameManager>();
         }
@@ -62,20 +62,7 @@ public class UI : MonoBehaviour
     private IEnumerator ExitGameMenu()
     {
         yield return StartCoroutine(DataBaseManager.SaveDataToDatabase());
-        GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
-        foreach (GameObject go in objects)
-        {
-            if (go.name.Equals("MainMenu"))
-            {
-                go.SetActive(true);
-            }
-            if (go.name.Equals("SavesMenu"))
-            {
-                go.SetActive(false);
-            }
-        }
-        yield return StartCoroutine(Resources.FindObjectsOfTypeAll<Canvas>()[0].GetComponent<MainMenuUI>().GetSavesStatusData());
-        Destroy(gameObject.transform.parent.parent.gameObject);
+        LoadScene("MainMenu");
     }
 
     public void turnOnLayer(GameObject layer)
@@ -102,8 +89,7 @@ public class UI : MonoBehaviour
 
     public void StarChartButton()
     {
-        LoadScene("MainMenu");
-        MainMenuManager.loadStarChart = true;
+        LoadScene("LoadedSave");
     }
 
     public void SoundVolumeSlider()

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour
 {
     public static bool isStartingUp = true;
-    public static bool loadStarChart;
     public static GameObject dontDestroy;
 
     public bool loggingEnabled;
@@ -71,12 +70,6 @@ public class MainMenuManager : MonoBehaviour
         else
         {
             accountMenu.SetActive(true);
-        }
-
-        if (loadStarChart)
-        {
-            mainMenuUI.LoadSaveButton(DataBaseManager.currentSave);
-            loadStarChart = false;
         }
     }
 }
