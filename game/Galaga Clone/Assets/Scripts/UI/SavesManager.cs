@@ -48,11 +48,6 @@ public class SavesManager : MonoBehaviour
         scroller.GetComponent<BoxCollider2D>().size = new Vector2(rect.width / scroller.transform.lossyScale.x, rect.height / scroller.transform.lossyScale.y);
     }
 
-    void Update()
-    {
-        moneyText.text = "Money: " + string.Format("{0:n0}", DataBaseManager.money);
-    }
-
     public IEnumerator getSaveData()
     {
         WWWForm form = new WWWForm();
@@ -71,6 +66,7 @@ public class SavesManager : MonoBehaviour
             DataBaseManager.upgradesUnlocked = data[4].Split(',');
             DataBaseManager.upgradesActive = data[5].Split(',');
             DataBaseManager.shopItems = data[6].Split(',');
+            UpdateMoney();
             LoadLevels();
             CreateUpgrades();
             LoadShop();
@@ -79,6 +75,11 @@ public class SavesManager : MonoBehaviour
         {
             print("Failed to get saved data. Error code: " + www.text);
         }
+    }
+
+    public void UpdateMoney()
+    {
+        moneyText.text = "Money: " + string.Format("{0:n0}", DataBaseManager.money);
     }
 
     private void LoadLevels()
