@@ -24,6 +24,9 @@ public class SavesManager : MonoBehaviour
 
     private System.Random random = new System.Random();
     private Transform[] levels;
+    private readonly int commonUpgradePrice = 2000;
+    private readonly int rareUpgradePrice = 5000;
+    private readonly int legendaryUpgradePrice = 10000;
 
     void OnEnable()
     {
@@ -217,17 +220,17 @@ public class SavesManager : MonoBehaviour
             if (num >= 80)
             {
                 upgradeList = legendaryUpgrades;
-                price = 10000;
+                price = legendaryUpgradePrice;
             }
             else if (num < 80 && num >= 50)
             {
                 upgradeList = rareUpgrades;
-                price = 5000;
+                price = rareUpgradePrice;
             }
             else
             {
                 upgradeList = commonUpgrades;
-                price = 2000;
+                price = commonUpgradePrice;
             }
 
             try
@@ -268,15 +271,15 @@ public class SavesManager : MonoBehaviour
                     {
                         if (upgradeLevel == "3")
                         {
-                            CreateCardInSlot(buyableUpgrades[i2], 10000, i);
+                            CreateCardInSlot(buyableUpgrades[i2], legendaryUpgradePrice, i);
                         }
                         else if (upgradeLevel == "2")
                         {
-                            CreateCardInSlot(buyableUpgrades[i2], 5000, i);
+                            CreateCardInSlot(buyableUpgrades[i2], rareUpgradePrice, i);
                         }
                         else
                         {
-                            CreateCardInSlot(buyableUpgrades[i2], 2000, i);
+                            CreateCardInSlot(buyableUpgrades[i2], commonUpgradePrice, i);
                         }
                     }
                 }
