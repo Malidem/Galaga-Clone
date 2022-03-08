@@ -173,12 +173,10 @@ public class SavesManager : MonoBehaviour
     public void SortUpgradeCards()
     {
         UpgradeCard[] children = upgradesParent.transform.GetComponentsInChildren<UpgradeCard>();
-        List<UpgradeCard> list = children.ToList();
-        children = list.ToArray();
 
-        UpgradeCard[] level1 = children.Where(o => o.GetComponent<UpgradeCard>().level == "1").OrderBy(o => o.GetComponent<UpgradeCard>().type).ToArray();
-        UpgradeCard[] level2 = children.Where(o => o.GetComponent<UpgradeCard>().level == "2").OrderBy(o => o.GetComponent<UpgradeCard>().type).ToArray();
-        UpgradeCard[] level3 = children.Where(o => o.GetComponent<UpgradeCard>().level == "3").OrderBy(o => o.GetComponent<UpgradeCard>().type).ToArray();
+        UpgradeCard[] level1 = children.Where(o => o.level == "1").OrderBy(o => o.type).ToArray();
+        UpgradeCard[] level2 = children.Where(o => o.level == "2").OrderBy(o => o.type).ToArray();
+        UpgradeCard[] level3 = children.Where(o => o.level == "3").OrderBy(o => o.type).ToArray();
         
         children = level1.Concat(level2).ToArray();
         children = children.Concat(level3).ToArray();
