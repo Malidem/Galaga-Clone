@@ -59,6 +59,7 @@ public class ShopButton : MonoBehaviour
         card.transform.SetParent(savesManager.upgradesParent.transform, false);
         cardProps.AddToUpgrades();
         Constants.money -= price;
+        savesManager.UpdateMoney();
         if (string.Join(",", Constants.upgradesUnlocked) == "none")
         {
             unlockedCards.Clear();
