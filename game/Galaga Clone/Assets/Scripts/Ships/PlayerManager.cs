@@ -221,9 +221,9 @@ public class PlayerManager : BaseShip
 
     private void UpgradePlayer()
     {
-        for (int i = 0; i < DataBaseManager.upgradesActive.Length; i++)
+        for (int i = 0; i < Constants.upgradesActive.Length; i++)
         {
-            string[] upgrade = DataBaseManager.upgradesActive[i].Split('|');
+            string[] upgrade = Constants.upgradesActive[i].Split('|');
             if (upgrade[0] != "none")
             {
                 int parsed = int.Parse(upgrade[1]);

@@ -64,20 +64,20 @@ public class GameManager : MonoBehaviour
     private bool canPlayOverheatSound = true;
     private bool playerWon;
     private bool isFinalLevel;
-    private readonly string levelPath = Application.streamingAssetsPath + "/Levels/level_" + DataBaseManager.levelsUnlocked;
+    private readonly string levelPath = Application.streamingAssetsPath + "/Levels/level_" + Constants.levelsUnlocked;
 
     void OnEnable()
     {
         Button[] allButtons = canvas.GetComponentsInChildren<Button>(true);
         foreach (Button button in allButtons)
         {
-            button.GetComponent<Button>().onClick.AddListener(delegate { MenusManager.dontDestroy.GetComponent<ButtonAudio>().PlayClickSound(); });
+            button.GetComponent<Button>().onClick.AddListener(delegate { Constants.dontDestroy.GetComponent<ButtonAudio>().PlayClickSound(); });
         }
     }
 
     void Start()
     {
-        print("Loading level " + DataBaseManager.levelsUnlocked);
+        print("Loading level " + Constants.levelsUnlocked);
         backgroundRect = (RectTransform)backgroundsFolder.transform;
         Time.timeScale = 1;
         HUDElements = HUD.GetComponentsInChildren<Transform>();
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, backgroundsFolder.transform);
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         audioSource = canvas.GetComponent<AudioSource>();
-        audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
+        audioSource.volume = PlayerPrefs.GetFloat(Constants.Prefs.soundVolume);
         ReadLevelProperties();
     }
 
@@ -350,12 +350,12 @@ public class GameManager : MonoBehaviour
             menu[2].GetComponent<Text>().text = "Earned credits: " + string.Format("{0:n0}", money);
             menu[1].GetComponent<Text>().text = "Level Completed!";
             menu[3].GetChild(0).GetComponent<Text>().text = "Next Level";
-            DataBaseManager.money += money;
-            DataBaseManager.levelsUnlocked++;
-            DataBaseManager.levelsCompleted++;
+            Constants.money += money;
+            Constants.levelsUnlocked++;
+            Constants.levelsCompleted++;
             string[] shopItems = { "none", "none", "none" };
-            DataBaseManager.shopItems = shopItems;
-            StartCoroutine(DataBaseManager.SaveDataToDatabase());
+            Constants.shopItems = shopItems;
+            StartCoroutine(Constants.SaveDataToDatabase());
         }
         else
         {

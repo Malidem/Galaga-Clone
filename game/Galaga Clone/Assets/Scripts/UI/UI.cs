@@ -61,7 +61,7 @@ public class UI : MonoBehaviour
 
     private IEnumerator ExitGameMenu()
     {
-        yield return StartCoroutine(DataBaseManager.SaveDataToDatabase());
+        yield return StartCoroutine(Constants.SaveDataToDatabase());
         LoadScene("Menus");
     }
 
@@ -77,7 +77,7 @@ public class UI : MonoBehaviour
 
     private IEnumerator StartloadLevel(string level)
     {
-        yield return StartCoroutine(DataBaseManager.SaveDataToDatabase());
+        yield return StartCoroutine(Constants.SaveDataToDatabase());
         LoadScene(level);
     }
 

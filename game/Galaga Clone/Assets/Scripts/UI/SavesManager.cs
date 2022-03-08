@@ -30,7 +30,7 @@ public class SavesManager : MonoBehaviour
         Button[] allButtons = GetComponentsInChildren<Button>(true);
         foreach (Button button in allButtons)
         {
-            button.GetComponent<Button>().onClick.AddListener(delegate { MenusManager.dontDestroy.GetComponent<ButtonAudio>().PlayClickSound(); });
+            button.GetComponent<Button>().onClick.AddListener(delegate { Constants.dontDestroy.GetComponent<ButtonAudio>().PlayClickSound(); });
         }
     }
 
@@ -47,27 +47,27 @@ public class SavesManager : MonoBehaviour
 
     void Update()
     {
-        moneyText.text = "Money: " + string.Format("{0:n0}", DataBaseManager.money);
+        moneyText.text = "Money: " + string.Format("{0:n0}", Constants.money);
     }
 
     public IEnumerator getSaveData()
     {
         WWWForm form = new WWWForm();
-        form.AddField("email", DataBaseManager.email);
-        form.AddField("currentSave", DataBaseManager.currentSave);
-        WWW www = new WWW(DataBaseManager.URL + "fetch-saved-data.php", form);
+        form.AddField("email", Constants.email);
+        form.AddField("currentSave", Constants.currentSave);
+        WWW www = new WWW(Constants.URL + "fetch-saved-data.php", form);
 
         yield return www;
 
         if (www.text[0] == '0')
         {
             string[] data = www.text.Split('\t');
-            DataBaseManager.money = int.Parse(data[1]);
-            DataBaseManager.levelsUnlocked = int.Parse(data[2]);
-            DataBaseManager.levelsCompleted = int.Parse(data[3]);
-            DataBaseManager.upgradesUnlocked = data[4].Split(',');
-            DataBaseManager.upgradesActive = data[5].Split(',');
-            DataBaseManager.shopItems = data[6].Split(',');
+            Constants.money = int.Parse(data[1]);
+            Constants.levelsUnlocked = int.Parse(data[2]);
+            Constants.levelsCompleted = int.Parse(data[3]);
+            Constants.upgradesUnlocked = data[4].Split(',');
+            Constants.upgradesActive = data[5].Split(',');
+            Constants.shopItems = data[6].Split(',');
             LoadLevels();
             CreateUpgrades();
             LoadShop();
@@ -80,14 +80,14 @@ public class SavesManager : MonoBehaviour
 
     private void LoadLevels()
     {
-        for (int i = 0; i < DataBaseManager.levelsUnlocked; i++)
+        for (int i = 0; i < Constants.levelsUnlocked; i++)
         {
             levels[i + 1].GetComponent<Image>().sprite = unlockedLevel;
             levels[i + 1].GetComponent<LevelHover>().isUnlocked = true;
             levels[i + 1].GetComponent<Button>().interactable = true;
         }
 
-        for (int i = 0; i < DataBaseManager.levelsCompleted; i++)
+        for (int i = 0; i < Constants.levelsCompleted; i++)
         {
             levels[i + 1].GetComponent<Image>().sprite = completedLevel;
             levels[i + 1].GetComponent<LevelHover>().isUnlocked = false;
@@ -97,11 +97,11 @@ public class SavesManager : MonoBehaviour
 
     private void CreateUpgrades()
     {
-        for (int i = 0; i < DataBaseManager.upgradesUnlocked.Length; i++)
+        for (int i = 0; i < Constants.upgradesUnlocked.Length; i++)
         {
-            if (DataBaseManager.upgradesUnlocked[i] != "none")
+            if (Constants.upgradesUnlocked[i] != "none")
             {
-                string[] upgrade = DataBaseManager.upgradesUnlocked[i].Split('|');
+                string[] upgrade = Constants.upgradesUnlocked[i].Split('|');
                 for (int i2 = 0; i2 < upgrades.Count; i2++)
                 {
                     string upgradeType = upgrades[i2].GetComponent<UpgradeCard>().type;
@@ -121,13 +121,13 @@ public class SavesManager : MonoBehaviour
             }
         }
 
-        if (!isEmpty(DataBaseManager.upgradesActive[0]) || !isEmpty(DataBaseManager.upgradesActive[1]) || !isEmpty(DataBaseManager.upgradesActive[2]))
+        if (!isEmpty(Constants.upgradesActive[0]) || !isEmpty(Constants.upgradesActive[1]) || !isEmpty(Constants.upgradesActive[2]))
         {
-            for (int i = 0; i < DataBaseManager.upgradesActive.Length; i++)
+            for (int i = 0; i < Constants.upgradesActive.Length; i++)
             {
-                if (DataBaseManager.upgradesActive[i] != "none")
+                if (Constants.upgradesActive[i] != "none")
                 {
-                    string[] upgrade = DataBaseManager.upgradesActive[i].Split('|');
+                    string[] upgrade = Constants.upgradesActive[i].Split('|');
                     for (int i2 = 0; i2 < upgradesParent.transform.childCount; i2++)
                     {
                         string upgradeType = upgradesParent.transform.GetChild(i2).gameObject.GetComponent<UpgradeCard>().type;
@@ -164,7 +164,7 @@ public class SavesManager : MonoBehaviour
                 activeUpgrades.Add("none");
             }
         }
-        DataBaseManager.upgradesActive = activeUpgrades.ToArray();
+        Constants.upgradesActive = activeUpgrades.ToArray();
     }
 
     public void SortUpgradeCards()
@@ -191,7 +191,7 @@ public class SavesManager : MonoBehaviour
         commonUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().level == "1").ToList();
         rareUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().level == "2").ToList();
         legendaryUpgrades = buyableUpgrades.Where(x => x.GetComponent<UpgradeCard>().level == "3").ToList();
-        if (isEmpty(DataBaseManager.shopItems[0]) && isEmpty(DataBaseManager.shopItems[1]) && isEmpty(DataBaseManager.shopItems[2]))
+        if (isEmpty(Constants.shopItems[0]) && isEmpty(Constants.shopItems[1]) && isEmpty(Constants.shopItems[2]))
         {
             RefreshShop();
         }
@@ -255,12 +255,12 @@ public class SavesManager : MonoBehaviour
 
     private void LoadShopState()
     {
-        for (int i = 0; i < DataBaseManager.shopItems.Length; i++)
+        for (int i = 0; i < Constants.shopItems.Length; i++)
         {
-            string[] upgrade = DataBaseManager.shopItems[i].Split('|');
+            string[] upgrade = Constants.shopItems[i].Split('|');
             for (int i2 = 0; i2 < buyableUpgrades.Count; i2++)
             {
-                if (DataBaseManager.shopItems[i] != "none")
+                if (Constants.shopItems[i] != "none")
                 {
                     string upgradeType = buyableUpgrades[i2].GetComponent<UpgradeCard>().type;
                     string upgradeLevel = buyableUpgrades[i2].GetComponent<UpgradeCard>().level;
@@ -320,6 +320,6 @@ public class SavesManager : MonoBehaviour
                 shopItems.Add(cardProps.type + "|" + cardProps.level);
             }
         }
-        DataBaseManager.shopItems = shopItems.ToArray();
+        Constants.shopItems = shopItems.ToArray();
     }
 }

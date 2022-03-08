@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class MenusManager : MonoBehaviour
 {
-    public static bool isStartingUp = true;
-    public static GameObject dontDestroy;
-
     public bool loggingEnabled;
     public GameObject canvas;
     public GameObject accountMenu;
@@ -20,39 +17,39 @@ public class MenusManager : MonoBehaviour
 
     void OnEnable()
     {
-        if (isStartingUp)
+        if (Constants.isStartingUp)
         {
-            isStartingUp = false;
-            dontDestroy = new GameObject
+            Constants.isStartingUp = false;
+            Constants.dontDestroy = new GameObject
             {
                 name = "DontDestroy"
             };
 
-            DontDestroyOnLoad(dontDestroy);
+            DontDestroyOnLoad(Constants.dontDestroy);
 
             if (loggingEnabled)
             {
-                dontDestroy.AddComponent<Logger>();
+                Constants.dontDestroy.AddComponent<Logger>();
             }
 
-            dontDestroy.AddComponent<AudioSource>();
-            dontDestroy.AddComponent<ButtonAudio>();
+            Constants.dontDestroy.AddComponent<AudioSource>();
+            Constants.dontDestroy.AddComponent<ButtonAudio>();
         }
 
         Button[] allButtons = canvas.GetComponentsInChildren<Button>(true);
         foreach (Button button in allButtons)
         {
-            button.GetComponent<Button>().onClick.AddListener(delegate { dontDestroy.GetComponent<ButtonAudio>().PlayClickSound(); });
+            button.GetComponent<Button>().onClick.AddListener(delegate { Constants.dontDestroy.GetComponent<ButtonAudio>().PlayClickSound(); });
         }
 
-        if (PlayerPrefs.GetInt(DataBaseManager.Prefs.firstTimePlayed) == 0)
+        if (PlayerPrefs.GetInt(Constants.Prefs.firstTimePlayed) == 0)
         {
-            PlayerPrefs.SetInt(DataBaseManager.Prefs.firstTimePlayed, 1);
-            PlayerPrefs.SetFloat(DataBaseManager.Prefs.soundVolume, 1);
+            PlayerPrefs.SetInt(Constants.Prefs.firstTimePlayed, 1);
+            PlayerPrefs.SetFloat(Constants.Prefs.soundVolume, 1);
         }
 
-        float value = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
-        dontDestroy.GetComponent<AudioSource>().volume = value;
+        float value = PlayerPrefs.GetFloat(Constants.Prefs.soundVolume);
+        Constants.dontDestroy.GetComponent<AudioSource>().volume = value;
         soundVolumeSlider.value = value;
     }
 

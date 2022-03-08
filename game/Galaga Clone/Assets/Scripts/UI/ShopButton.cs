@@ -35,7 +35,7 @@ public class ShopButton : MonoBehaviour
         confirmMenu.GetChild(3).GetComponent<Text>().text = cardProps.title;
         confirmMenu.GetChild(4).GetComponent<Text>().text = cardProps.discription;
         confirmButton.onClick.RemoveAllListeners();
-        if (DataBaseManager.money >= price)
+        if (Constants.money >= price)
         {
             confirmButtonText.color = new Color(0.1960784F, 0.1960784F, 0.1960784F);
             confirmButton.onClick.AddListener(delegate { ConfirmPurchaseButton(); });
@@ -49,8 +49,8 @@ public class ShopButton : MonoBehaviour
 
     public void ConfirmPurchaseButton()
     {
-        List<string> unlockedCards = new List<string>(DataBaseManager.upgradesUnlocked);
-        List<string> shopItems = new List<string>(DataBaseManager.shopItems);
+        List<string> unlockedCards = new List<string>(Constants.upgradesUnlocked);
+        List<string> shopItems = new List<string>(Constants.shopItems);
         string asString = cardProps.type + "|" + cardProps.level;
         int index = shopItems.IndexOf(asString);
 
@@ -58,15 +58,15 @@ public class ShopButton : MonoBehaviour
         transform.GetChild(1).gameObject.SetActive(false);
         card.transform.SetParent(savesManager.upgradesParent.transform, false);
         cardProps.AddToUpgrades();
-        DataBaseManager.money -= price;
-        if (string.Join(",", DataBaseManager.upgradesUnlocked) == "none")
+        Constants.money -= price;
+        if (string.Join(",", Constants.upgradesUnlocked) == "none")
         {
             unlockedCards.Clear();
         }
         unlockedCards.Add(asString);
-        DataBaseManager.upgradesUnlocked = unlockedCards.ToArray();
+        Constants.upgradesUnlocked = unlockedCards.ToArray();
         shopItems[index] = "none";
-        DataBaseManager.shopItems = shopItems.ToArray();
+        Constants.shopItems = shopItems.ToArray();
         hasCard = false;
         confirmMenu.gameObject.SetActive(false);
     }

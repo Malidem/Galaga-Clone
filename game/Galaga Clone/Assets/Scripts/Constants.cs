@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataBaseManager
+public class Constants
 {
+    // Game Functionality
     public static readonly string URL = "http://polemos.atspace.cc/php/";
+    public static bool isStartingUp = true;
+    public static GameObject dontDestroy;
+
+    // User Account
     public static string email;
     public static string password;
     public static int currentSave;

@@ -44,7 +44,7 @@ public class MenusUI : MonoBehaviour
 
     public void PlayGameButton()
     {
-        int lastUsedSave = PlayerPrefs.GetInt(DataBaseManager.Prefs.lastUsedSave);
+        int lastUsedSave = PlayerPrefs.GetInt(Constants.Prefs.lastUsedSave);
         if (lastUsedSave == 1 || lastUsedSave == 2 || lastUsedSave == 3 || lastUsedSave == 4)
         {
             LoadSaveButton(lastUsedSave);
@@ -64,8 +64,8 @@ public class MenusUI : MonoBehaviour
 
     public void SoundVolumeSlider(float value)
     {
-        PlayerPrefs.SetFloat(DataBaseManager.Prefs.soundVolume, value);
-        MenusManager.dontDestroy.GetComponent<AudioSource>().volume = value;
+        PlayerPrefs.SetFloat(Constants.Prefs.soundVolume, value);
+        Constants.dontDestroy.GetComponent<AudioSource>().volume = value;
     }
 
     public void CallSignUp()
@@ -81,7 +81,7 @@ public class MenusUI : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("email", emailInputField.text.ToLower());
         form.AddField("password", passwordInputField.text);
-        WWW www = new WWW(DataBaseManager.URL + "sign-up.php", form);
+        WWW www = new WWW(Constants.URL + "sign-up.php", form);
 
         yield return www;
 
@@ -117,19 +117,19 @@ public class MenusUI : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("email", email);
         form.AddField("password", password);
-        WWW www = new WWW(DataBaseManager.URL + "login.php", form);
+        WWW www = new WWW(Constants.URL + "login.php", form);
 
         yield return www;
 
         if (www.text[0] == '0')
         {
             print("User logged in as: " + email);
-            DataBaseManager.email = email;
-            DataBaseManager.password = password;
+            Constants.email = email;
+            Constants.password = password;
             accountMenu.SetActive(false);
             mainMenu.SetActive(true);
-            mainMenu.GetComponentsInChildren<Text>()[5].text = "Email: " + DataBaseManager.email;
-            PlayerPrefs.SetString("email", DataBaseManager.email);
+            mainMenu.GetComponentsInChildren<Text>()[5].text = "Email: " + Constants.email;
+            PlayerPrefs.SetString("email", Constants.email);
             PlayerPrefs.SetString("password", password);
             isPasswordShown = false;
             UpdateSavesMenu(www.text);
@@ -260,8 +260,8 @@ public class MenusUI : MonoBehaviour
     public void LoadSaveButton(int save)
     {
         SceneManager.LoadScene("LoadedSave", LoadSceneMode.Single);
-        PlayerPrefs.SetInt(DataBaseManager.Prefs.lastUsedSave, save);
-        DataBaseManager.currentSave = save;
+        PlayerPrefs.SetInt(Constants.Prefs.lastUsedSave, save);
+        Constants.currentSave = save;
     }
 
     public void ErrorButton()
@@ -286,7 +286,7 @@ public class MenusUI : MonoBehaviour
 
     private IEnumerator ConfirmDeletion(string save)
     {
-        yield return StartCoroutine(DataBaseManager.DeleteSaveFromDatabase(save));
+        yield return StartCoroutine(Constants.DeleteSaveFromDatabase(save));
         yield return StartCoroutine(GetSavesStatusData());
         confirmDeletionMenu.gameObject.SetActive(false);
     }
@@ -294,9 +294,9 @@ public class MenusUI : MonoBehaviour
     public IEnumerator GetSavesStatusData()
     {
         WWWForm form = new WWWForm();
-        form.AddField("email", DataBaseManager.email);
-        form.AddField("password", DataBaseManager.password);
-        WWW www = new WWW(DataBaseManager.URL + "login.php", form);
+        form.AddField("email", Constants.email);
+        form.AddField("password", Constants.password);
+        WWW www = new WWW(Constants.URL + "login.php", form);
 
         yield return www;
 
@@ -351,7 +351,7 @@ public class MenusUI : MonoBehaviour
 
         email.From = new MailAddress("teampolemos@gmail.com", "Polemos");
         email.To.Add("teampolemos@gmail.com");
-        email.Subject = "Polemos Feedback" + " | " + DataBaseManager.email;
+        email.Subject = "Polemos Feedback" + " | " + Constants.email;
         email.Body = feedbackInputField.text;
 
         client.SendCompleted += OnAsyncComplete;
