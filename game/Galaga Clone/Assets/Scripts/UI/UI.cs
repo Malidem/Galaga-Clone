@@ -62,18 +62,12 @@ public class UI : MonoBehaviour
     private IEnumerator ExitGameMenu()
     {
         yield return StartCoroutine(DataBaseManager.SaveDataToDatabase());
-        LoadScene("MainMenu");
+        LoadScene("Menus");
     }
 
     public void turnOnLayer(GameObject layer)
     {
         layer.SetActive(true);
-    }
-
-    public void ExitGame()
-    {
-        print("Exiting Game");
-        Application.Quit();
     }
 
     public void LoadLevel(string level)
@@ -90,13 +84,6 @@ public class UI : MonoBehaviour
     public void StarChartButton()
     {
         LoadScene("LoadedSave");
-    }
-
-    public void SoundVolumeSlider()
-    {
-        float value = GetComponent<Slider>().value;
-        PlayerPrefs.SetFloat(DataBaseManager.Prefs.soundVolume, value);
-        MainMenuManager.dontDestroy.GetComponent<AudioSource>().volume = value;
     }
     
     public void CancelButton()

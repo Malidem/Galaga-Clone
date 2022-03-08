@@ -326,7 +326,6 @@ GameObject:
   - component: {fileID: 66448898}
   - component: {fileID: 66448897}
   - component: {fileID: 66448896}
-  - component: {fileID: 66448895}
   - component: {fileID: 66448899}
   m_Layer: 5
   m_Name: SavesButton
@@ -355,32 +354,6 @@ RectTransform:
   m_AnchoredPosition: {x: -173, y: 143.5}
   m_SizeDelta: {x: 55, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &66448895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66448893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 102171647}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &66448896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,16 +397,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 66448895}
-        m_MethodName: SwitchUILayer
-        m_Mode: 2
+      - m_Target: {fileID: 1432578613}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 229266445}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 229266445}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &66448897
 MonoBehaviour:
@@ -886,16 +870,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 142956155}
-        m_MethodName: turnOnLayer
-        m_Mode: 2
+      - m_Target: {fileID: 960255417}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 960255417}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &142956153
 MonoBehaviour:
@@ -1458,6 +1442,13 @@ MonoBehaviour:
   feedbackErrorText: {fileID: 1895089434}
   submitFeedbackButton: {fileID: 588396485}
   shortPasswordText: {fileID: 51903970}
+  emailInputField: {fileID: 1516551617}
+  passwordInputField: {fileID: 1202486524}
+  feedbackInputField: {fileID: 372880307}
+  loginButton: {fileID: 210711833}
+  SignUpButton: {fileID: 1487896969}
+  confirmDeletionMenu: {fileID: 663335354}
+  charCountText: {fileID: 2016635866}
   createSaveTexts:
   - {fileID: 1338680298}
   - {fileID: 350272200}
@@ -1473,13 +1464,6 @@ MonoBehaviour:
   - {fileID: 292836455}
   - {fileID: 1987268689}
   - {fileID: 246709836}
-  emailInputField: {fileID: 1516551617}
-  passwordInputField: {fileID: 1202486524}
-  feedbackInputField: {fileID: 372880307}
-  loginButton: {fileID: 210711833}
-  SignUpButton: {fileID: 1487896969}
-  confirmDeletionMenu: {fileID: 663335354}
-  charCountText: {fileID: 2016635866}
 --- !u!1 &246709836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,7 +1606,6 @@ GameObject:
   - component: {fileID: 271457379}
   - component: {fileID: 271457378}
   - component: {fileID: 271457377}
-  - component: {fileID: 271457376}
   - component: {fileID: 271457382}
   m_Layer: 5
   m_Name: ExitButton
@@ -1651,32 +1634,6 @@ RectTransform:
   m_AnchoredPosition: {x: 27, y: 143.5}
   m_SizeDelta: {x: 40, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &271457376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271457374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 102171647}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &271457377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,7 +1677,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 271457376}
+      - m_Target: {fileID: 244984876}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -2856,7 +2813,6 @@ GameObject:
   - component: {fileID: 588396489}
   - component: {fileID: 588396488}
   - component: {fileID: 588396487}
-  - component: {fileID: 588396490}
   m_Layer: 5
   m_Name: SubmitFeedbackButton
   m_TagString: Button
@@ -2975,32 +2931,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588396485}
   m_CullTransparentMesh: 0
---- !u!114 &588396490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 588396485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &595276501
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,7 +3021,6 @@ GameObject:
   - component: {fileID: 595327324}
   - component: {fileID: 595327323}
   - component: {fileID: 595327322}
-  - component: {fileID: 595327321}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Button
@@ -3118,32 +3047,6 @@ RectTransform:
   m_AnchoredPosition: {x: 59, y: -35}
   m_SizeDelta: {x: 40, y: 29}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &595327321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595327319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 102171647}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &595327322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3187,16 +3090,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 595327321}
-        m_MethodName: SwitchUILayer
-        m_Mode: 2
+      - m_Target: {fileID: 229266445}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 1432578613}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1432578613}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &595327323
 MonoBehaviour:
@@ -3998,7 +3912,6 @@ GameObject:
   - component: {fileID: 771761647}
   - component: {fileID: 771761646}
   - component: {fileID: 771761645}
-  - component: {fileID: 771761648}
   m_Layer: 5
   m_Name: NoButton
   m_TagString: Button
@@ -4069,9 +3982,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 771761648}
-        m_MethodName: CancelButton
-        m_Mode: 1
+      - m_Target: {fileID: 663335353}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4117,32 +4030,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771761643}
   m_CullTransparentMesh: 0
---- !u!114 &771761648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771761643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &780893693
 GameObject:
   m_ObjectHideFlags: 0
@@ -6644,8 +6531,8 @@ RectTransform:
   - {fileID: 66448894}
   - {fileID: 1627612548}
   - {fileID: 271457375}
-  - {fileID: 1735799183}
   - {fileID: 1916262366}
+  - {fileID: 1735799183}
   m_Father: {fileID: 244984875}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7149,7 +7036,6 @@ GameObject:
   - component: {fileID: 1627612552}
   - component: {fileID: 1627612551}
   - component: {fileID: 1627612550}
-  - component: {fileID: 1627612549}
   - component: {fileID: 1627612553}
   m_Layer: 5
   m_Name: SettingsButton
@@ -7179,32 +7065,6 @@ RectTransform:
   m_AnchoredPosition: {x: -63, y: 143.5}
   m_SizeDelta: {x: 65, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1627612549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627612547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 102171647}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &1627612550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7248,16 +7108,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1627612549}
-        m_MethodName: SwitchUILayer
-        m_Mode: 2
+      - m_Target: {fileID: 1432578613}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 754838446}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 754838446}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1627612551
 MonoBehaviour:
@@ -7402,7 +7273,6 @@ GameObject:
   - component: {fileID: 1693646821}
   - component: {fileID: 1693646820}
   - component: {fileID: 1693646819}
-  - component: {fileID: 1693646818}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Button
@@ -7429,32 +7299,6 @@ RectTransform:
   m_AnchoredPosition: {x: 59, y: -35}
   m_SizeDelta: {x: 40, y: 29}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1693646818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693646816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &1693646819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7498,16 +7342,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1693646818}
-        m_MethodName: SwitchUILayer
-        m_Mode: 2
+      - m_Target: {fileID: 754838446}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 1432578613}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1432578613}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1693646820
 MonoBehaviour:
@@ -7658,7 +7513,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1432578614}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7872,7 +7727,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1782927829}
   - component: {fileID: 1782927830}
-  - component: {fileID: 1782927831}
   m_Layer: 5
   m_Name: SoundVolumeSlider
   m_TagString: Untagged
@@ -7952,9 +7806,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1782927831}
+      - m_Target: {fileID: 244984876}
         m_MethodName: SoundVolumeSlider
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7963,32 +7817,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1782927831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782927828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 244984871}
 --- !u!1 &1809893963
 GameObject:
   m_ObjectHideFlags: 0
@@ -8587,7 +8415,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1432578614}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9169,7 +8997,6 @@ GameObject:
   - component: {fileID: 2037699697}
   - component: {fileID: 2037699696}
   - component: {fileID: 2037699695}
-  - component: {fileID: 2037699694}
   m_Layer: 5
   m_Name: CancelButton
   m_TagString: Button
@@ -9197,32 +9024,6 @@ RectTransform:
   m_AnchoredPosition: {x: 130, y: 81}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2037699694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037699692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &2037699695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9266,8 +9067,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2037699694}
-        m_MethodName: CancelButton
+      - m_Target: {fileID: 244984876}
+        m_MethodName: ResetFeedbackMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9277,9 +9078,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 244984876}
-        m_MethodName: ResetFeedbackMenu
-        m_Mode: 1
+      - m_Target: {fileID: 960255417}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

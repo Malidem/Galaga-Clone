@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenuManager : MonoBehaviour
+public class MenusManager : MonoBehaviour
 {
     public static bool isStartingUp = true;
     public static GameObject dontDestroy;
@@ -16,7 +16,7 @@ public class MainMenuManager : MonoBehaviour
     public Slider soundVolumeSlider;
     public Texture2D cursor;
 
-    private MainMenuUI mainMenuUI;
+    private MenusUI mainMenuUI;
 
     void OnEnable()
     {
@@ -59,7 +59,7 @@ public class MainMenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainMenuUI = canvas.GetComponent<MainMenuUI>();
+        mainMenuUI = canvas.GetComponent<MenusUI>();
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, backgroundsFolder.transform);
 

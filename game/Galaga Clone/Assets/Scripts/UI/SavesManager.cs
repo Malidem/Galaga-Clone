@@ -30,7 +30,7 @@ public class SavesManager : MonoBehaviour
         Button[] allButtons = GetComponentsInChildren<Button>(true);
         foreach (Button button in allButtons)
         {
-            button.GetComponent<Button>().onClick.AddListener(delegate { MainMenuManager.dontDestroy.GetComponent<ButtonAudio>().PlayClickSound(); });
+            button.GetComponent<Button>().onClick.AddListener(delegate { MenusManager.dontDestroy.GetComponent<ButtonAudio>().PlayClickSound(); });
         }
     }
 

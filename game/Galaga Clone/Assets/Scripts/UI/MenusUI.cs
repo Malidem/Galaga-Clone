@@ -10,20 +10,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MainMenuUI : MonoBehaviour
+public class MenusUI : MonoBehaviour
 {
     public GameObject canvas;
     public GameObject mainMenu;
-    public GameObject gameMenu;
     public GameObject accountMenu;
     public GameObject errorMenu;
     public GameObject savesMenu;
     public GameObject feedbackErrorText;
     public GameObject submitFeedbackButton;
     public GameObject shortPasswordText;
-    public List<GameObject> createSaveTexts = new List<GameObject>();
-    public List<GameObject> gameStatTexts = new List<GameObject>();
-    public List<GameObject> deleteSaveButtons = new List<GameObject>();
     public InputField emailInputField;
     public InputField passwordInputField;
     public InputField feedbackInputField;
@@ -31,6 +27,9 @@ public class MainMenuUI : MonoBehaviour
     public Button SignUpButton;
     public Transform confirmDeletionMenu;
     public Text charCountText;
+    public List<GameObject> createSaveTexts = new List<GameObject>();
+    public List<GameObject> gameStatTexts = new List<GameObject>();
+    public List<GameObject> deleteSaveButtons = new List<GameObject>();
     private Text errorButtonText;
     private Text errorTitle;
     private Text errorDescription;
@@ -55,6 +54,18 @@ public class MainMenuUI : MonoBehaviour
             mainMenu.SetActive(false);
             savesMenu.SetActive(true);
         }
+    }
+
+    public void ExitGame()
+    {
+        print("Exiting Game");
+        Application.Quit();
+    }
+
+    public void SoundVolumeSlider(float value)
+    {
+        PlayerPrefs.SetFloat(DataBaseManager.Prefs.soundVolume, value);
+        MenusManager.dontDestroy.GetComponent<AudioSource>().volume = value;
     }
 
     public void CallSignUp()
@@ -117,7 +128,7 @@ public class MainMenuUI : MonoBehaviour
             DataBaseManager.password = password;
             accountMenu.SetActive(false);
             mainMenu.SetActive(true);
-            mainMenu.GetComponentsInChildren<Text>()[4].text = "Email: " + DataBaseManager.email;
+            mainMenu.GetComponentsInChildren<Text>()[5].text = "Email: " + DataBaseManager.email;
             PlayerPrefs.SetString("email", DataBaseManager.email);
             PlayerPrefs.SetString("password", password);
             isPasswordShown = false;
@@ -243,12 +254,11 @@ public class MainMenuUI : MonoBehaviour
     {
         PlayerPrefs.SetString("email", "");
         PlayerPrefs.SetString("password", "");
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("Menus", LoadSceneMode.Single);
     }
 
     public void LoadSaveButton(int save)
     {
-        mainMenu.SetActive(false);
         SceneManager.LoadScene("LoadedSave", LoadSceneMode.Single);
         PlayerPrefs.SetInt(DataBaseManager.Prefs.lastUsedSave, save);
         DataBaseManager.currentSave = save;
@@ -351,8 +361,7 @@ public class MainMenuUI : MonoBehaviour
 
     private void OnAsyncComplete(object sender, AsyncCompletedEventArgs completedEventArgs)
     {
-        UI uI = submitFeedbackButton.GetComponent<UI>();
-        uI.CancelButton();
+        submitFeedbackButton.transform.parent.gameObject.SetActive(false);
 
         if (completedEventArgs.Error != null)
         {

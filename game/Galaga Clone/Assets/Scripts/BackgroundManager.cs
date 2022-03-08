@@ -12,7 +12,7 @@ public class BackgroundManager : MonoBehaviour
     private GameObject canvas;
     private GameObject backgroundsFolder;
     private GameManager gameManager;
-    private MainMenuManager mainMenuManager;
+    private MenusManager mainMenuManager;
     private bool canSpawn = true;
     private bool isOnMainMenu;
 
@@ -27,7 +27,7 @@ public class BackgroundManager : MonoBehaviour
         }
         else
         {
-            mainMenuManager = Resources.FindObjectsOfTypeAll<MainMenuManager>()[0];
+            mainMenuManager = Resources.FindObjectsOfTypeAll<MenusManager>()[0];
             canvas = mainMenuManager.canvas;
             backgroundsFolder = mainMenuManager.backgroundsFolder;
             isOnMainMenu = true;
