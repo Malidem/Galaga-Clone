@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     private bool canPlayOverheatSound = true;
     private bool playerWon;
     private bool isFinalLevel;
+    private Texture2D levelMap;
     private readonly string levelPath = Application.streamingAssetsPath + "/Levels/level_" + DataBaseManager.levelsUnlocked;
 
     void OnEnable()
@@ -87,6 +88,9 @@ public class GameManager : MonoBehaviour
         audioSource = canvas.GetComponent<AudioSource>();
         audioSource.volume = PlayerPrefs.GetFloat(DataBaseManager.Prefs.soundVolume);
         ReadLevelProperties();
+        var rawImage = File.ReadAllBytes(levelPath + ".png");
+        levelMap = new Texture2D(2, 2);
+        levelMap.LoadImage(rawImage);
     }
 
     private void ReadLevelProperties()
@@ -168,10 +172,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator UpdateWaves()
     {
-        var rawImage = File.ReadAllBytes(levelPath + ".png");
-        Texture2D levelMap = new Texture2D(2, 2);
-        levelMap.LoadImage(rawImage);
-
         int yPixelsPerChunk = 13;
         int xPixelsPerChunk = 10;
         int xNumberOfChunks = levelMap.width / xPixelsPerChunk;
