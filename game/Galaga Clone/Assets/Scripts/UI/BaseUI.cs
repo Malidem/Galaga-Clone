@@ -7,11 +7,13 @@ public class BaseUI : MonoBehaviour
 {
     public void LoadScene(GameScenes scene)
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene((int)scene, LoadSceneMode.Single);
     }
 
     public void LoadScene(string sceneName)
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 

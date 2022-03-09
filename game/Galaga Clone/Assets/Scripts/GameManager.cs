@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour
     {
         print("Loading level " + Constants.levelsUnlocked);
         backgroundRect = (RectTransform)backgroundsFolder.transform;
-        Time.timeScale = 1;
         HUDElements = HUD.GetComponentsInChildren<Transform>();
         StartCoroutine(Overheat());
         Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, backgroundsFolder.transform);
