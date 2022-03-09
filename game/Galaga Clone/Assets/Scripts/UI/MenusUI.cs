@@ -258,7 +258,7 @@ public class MenusUI : BaseUI
 
     public void LoadSaveButton(int save)
     {
-        LoadScene(GameScenes.LoadedSave);
+        LoadScene(GameScenes.SaveMenus);
         PlayerPrefs.SetInt(Constants.Prefs.lastUsedSave, save);
         Constants.currentSave = save;
     }

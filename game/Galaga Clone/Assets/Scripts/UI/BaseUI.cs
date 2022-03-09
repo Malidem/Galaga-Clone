@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,6 +19,6 @@ public class BaseUI : MonoBehaviour
     {
         Menus = 0,
         Level = 1,
-        LoadedSave = 2,
+        SaveMenus = 2,
     }
 }
