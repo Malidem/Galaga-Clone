@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject dialogueBackground;
     public GameObject bossSpawnPoint;
     public GameObject enemySpawnPointsFolder;
+    public GameObject startMenu;
     public Image overheatBar;
     public Text dialogueText;
     public Texture2D cursor;
@@ -81,6 +82,7 @@ public class GameManager : MonoBehaviour
         print("Loading level " + Constants.levelsUnlocked);
         backgroundRect = (RectTransform)backgroundsFolder.transform;
         HUDElements = HUD.GetComponentsInChildren<Transform>();
+        startMenu.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "Level " + Constants.levelsUnlocked;
         StartCoroutine(Overheat());
         Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, backgroundsFolder.transform);
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
@@ -341,14 +343,15 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameOverMenu.SetActive(true);
+        HUDElements[2].gameObject.SetActive(false);
         
         if (playerWon)
         {
             print("Level completed!");
-            menu[2].gameObject.SetActive(true);
-            menu[2].GetComponent<Text>().text = "Earned credits: " + string.Format("{0:n0}", money);
-            menu[1].GetComponent<Text>().text = "Level Completed!";
-            menu[3].GetChild(0).GetComponent<Text>().text = "Next Level";
+            menu[3].gameObject.SetActive(true);
+            menu[3].GetComponent<Text>().text = "Credits earned: " + string.Format("{0:n0}", money);
+            menu[2].GetComponent<Text>().text = "Level Completed!";
+            menu[4].GetChild(0).GetComponent<Text>().text = "Next Level";
             Constants.money += money;
             Constants.levelsUnlocked++;
             Constants.levelsCompleted++;
