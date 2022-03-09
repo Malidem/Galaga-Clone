@@ -17,10 +17,10 @@ public class SavesManager : MonoBehaviour
     public GameObject[] upgradeSlots;
     public GameObject[] shopSlots;
     public List<GameObject> upgrades = new List<GameObject>();
-    public List<GameObject> buyableUpgrades = new List<GameObject>();
-    public List<GameObject> commonUpgrades = new List<GameObject>();
-    public List<GameObject> rareUpgrades = new List<GameObject>();
-    public List<GameObject> legendaryUpgrades = new List<GameObject>();
+    private List<GameObject> buyableUpgrades = new List<GameObject>();
+    private List<GameObject> commonUpgrades = new List<GameObject>();
+    private List<GameObject> rareUpgrades = new List<GameObject>();
+    private List<GameObject> legendaryUpgrades = new List<GameObject>();
 
     private System.Random random = new System.Random();
     private Transform[] levels;

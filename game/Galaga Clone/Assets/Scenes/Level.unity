@@ -392,7 +392,6 @@ GameObject:
   - component: {fileID: 272711299}
   - component: {fileID: 272711298}
   - component: {fileID: 272711297}
-  - component: {fileID: 272711296}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Button
@@ -420,32 +419,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &272711296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 272711294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 652294123}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &272711297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,7 +462,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 272711296}
+      - m_Target: {fileID: 693231162}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -776,7 +749,6 @@ GameObject:
   - component: {fileID: 332193142}
   - component: {fileID: 332193141}
   - component: {fileID: 332193140}
-  - component: {fileID: 332193139}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Button
@@ -804,32 +776,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &332193139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332193137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 652294123}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &332193140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,7 +819,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 332193139}
+      - m_Target: {fileID: 693231162}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -1065,7 +1011,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Credits earned: 100'
+  m_Text: 'Credits earned: 0'
 --- !u!222 &435321070
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1696,6 +1642,7 @@ GameObject:
   - component: {fileID: 693231158}
   - component: {fileID: 693231157}
   - component: {fileID: 693231161}
+  - component: {fileID: 693231162}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1887,6 +1834,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &693231162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693231156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 652294127}
 --- !u!1 &731656132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,7 +2018,6 @@ GameObject:
   - component: {fileID: 827965556}
   - component: {fileID: 827965555}
   - component: {fileID: 827965554}
-  - component: {fileID: 827965553}
   m_Layer: 5
   m_Name: StarChartButton
   m_TagString: Button
@@ -2086,32 +2045,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &827965553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 827965551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 652294123}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &827965554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2155,15 +2088,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 827965553}
-        m_MethodName: StarChartButton
-        m_Mode: 1
+      - m_Target: {fileID: 693231162}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenu
+          m_StringArgument: LoadedSave
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &827965555
@@ -2382,7 +2315,6 @@ GameObject:
   - component: {fileID: 949352804}
   - component: {fileID: 949352803}
   - component: {fileID: 949352802}
-  - component: {fileID: 949352801}
   m_Layer: 5
   m_Name: StarChartButton
   m_TagString: Button
@@ -2410,32 +2342,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &949352801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 949352799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 652294123}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &949352802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2479,15 +2385,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 949352801}
-        m_MethodName: StarChartButton
-        m_Mode: 1
+      - m_Target: {fileID: 693231162}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenu
+          m_StringArgument: LoadedSave
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &949352803
@@ -3926,7 +3832,6 @@ GameObject:
   - component: {fileID: 1733718061}
   - component: {fileID: 1733718060}
   - component: {fileID: 1733718059}
-  - component: {fileID: 1733718062}
   m_Layer: 5
   m_Name: StarChartButton
   m_TagString: Button
@@ -3997,15 +3902,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1733718062}
-        m_MethodName: StarChartButton
-        m_Mode: 1
+      - m_Target: {fileID: 693231162}
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenu
+          m_StringArgument: LoadedSave
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1733718060
@@ -4045,32 +3950,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733718057}
   m_CullTransparentMesh: 0
---- !u!114 &1733718062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733718057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 652294123}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &1858279395
 GameObject:
   m_ObjectHideFlags: 0
@@ -4347,7 +4226,6 @@ GameObject:
   - component: {fileID: 2097057021}
   - component: {fileID: 2097057020}
   - component: {fileID: 2097057019}
-  - component: {fileID: 2097057018}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Button
@@ -4375,32 +4253,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2097057018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097057016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 652294123}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &2097057019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4444,9 +4296,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2097057018}
+      - m_Target: {fileID: 693231162}
         m_MethodName: StartButton
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1863544957}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

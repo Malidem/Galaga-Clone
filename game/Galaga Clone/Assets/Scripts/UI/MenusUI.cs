@@ -8,9 +8,8 @@ using System.ComponentModel;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class MenusUI : MonoBehaviour
+public class MenusUI : BaseUI
 {
     public GameObject canvas;
     public GameObject mainMenu;
@@ -254,12 +253,12 @@ public class MenusUI : MonoBehaviour
     {
         PlayerPrefs.SetString("email", "");
         PlayerPrefs.SetString("password", "");
-        SceneManager.LoadScene("Menus", LoadSceneMode.Single);
+        LoadScene(GameScenes.Menus);
     }
 
     public void LoadSaveButton(int save)
     {
-        SceneManager.LoadScene("LoadedSave", LoadSceneMode.Single);
+        LoadScene(GameScenes.LoadedSave);
         PlayerPrefs.SetInt(Constants.Prefs.lastUsedSave, save);
         Constants.currentSave = save;
     }

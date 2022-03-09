@@ -282,8 +282,8 @@ GameObject:
   - component: {fileID: 1750743148}
   - component: {fileID: 1750743147}
   - component: {fileID: 1750743146}
-  - component: {fileID: 1750743151}
   - component: {fileID: 1750743150}
+  - component: {fileID: 1750743151}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -362,9 +362,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 4261474036266084640}
   - {fileID: 170227876153499177}
   - {fileID: 1878527819357633888}
-  - {fileID: 4261474036266084640}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -419,10 +419,6 @@ MonoBehaviour:
   - {fileID: 6736748262221929120, guid: bf024c4f67b373d46aac869ec016d3eb, type: 3}
   - {fileID: 6736748262221929120, guid: 77db35732ad026f4898bac2a37f4f04d, type: 3}
   - {fileID: 6736748262221929120, guid: 8cdfa35e196a7dd48a5bf026134abc72, type: 3}
-  buyableUpgrades: []
-  commonUpgrades: []
-  rareUpgrades: []
-  legendaryUpgrades: []
 --- !u!114 &1750743151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,23 +428,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1750743145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
+  m_Script: {fileID: 11500000, guid: aed79d696080e334c9e097df3432a376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &8761400636631183
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +608,6 @@ RectTransform:
   m_Children:
   - {fileID: 8543098574798458202}
   - {fileID: 259279594771572786}
-  - {fileID: 8397347630428364170}
   - {fileID: 4831637047151096704}
   - {fileID: 6967386579361753053}
   - {fileID: 1667268949133190518}
@@ -634,7 +615,7 @@ RectTransform:
   - {fileID: 4752792716541540662}
   - {fileID: 6239540360297779078}
   m_Father: {fileID: 1750743149}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -724,14 +705,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!222 &231603570068989281
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7875990172369670098}
-  m_CullTransparentMesh: 0
 --- !u!222 &253700886748708489
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -773,7 +746,7 @@ RectTransform:
   - {fileID: 4655686154659918258}
   - {fileID: 4399606106392410120}
   m_Father: {fileID: 170227876153499177}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -800,7 +773,6 @@ GameObject:
   - component: {fileID: 56370194384125293}
   - component: {fileID: 194840952462026939}
   - component: {fileID: 6726310579086599348}
-  - component: {fileID: 4652342700812888879}
   m_Layer: 0
   m_Name: ShopButton
   m_TagString: Button
@@ -842,32 +814,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2753782893622172968}
   m_CullTransparentMesh: 0
---- !u!114 &426496096161878582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7081495078929156946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!224 &432829143229086832
 RectTransform:
   m_ObjectHideFlags: 0
@@ -945,8 +891,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3097457390891907946}
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -999,9 +945,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3827663447905220866}
-        m_MethodName: CancelButton
-        m_Mode: 1
+      - m_Target: {fileID: 599527966350085545}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1059,7 +1005,6 @@ GameObject:
   - component: {fileID: 452223354531067953}
   - component: {fileID: 1980285824023440230}
   - component: {fileID: 8424825240419118789}
-  - component: {fileID: 7317806633807364002}
   m_Layer: 0
   m_Name: Level4Icon
   m_TagString: Button
@@ -1144,32 +1089,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &836469322188905307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284652875752269611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!222 &868337759156986392
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1457,7 +1376,6 @@ GameObject:
   - component: {fileID: 8033290559098896100}
   - component: {fileID: 6569927633804599127}
   - component: {fileID: 5486301413868072285}
-  - component: {fileID: 836469322188905307}
   m_Layer: 0
   m_Name: Level3Icon
   m_TagString: Button
@@ -1558,7 +1476,6 @@ GameObject:
   - component: {fileID: 253700886748708489}
   - component: {fileID: 159256252215636117}
   - component: {fileID: 6656750711436057793}
-  - component: {fileID: 2735405312443670306}
   m_Layer: 5
   m_Name: ExitSaveButton
   m_TagString: Button
@@ -1733,7 +1650,7 @@ RectTransform:
   - {fileID: 4100144329649069190}
   - {fileID: 1143306801931083983}
   m_Father: {fileID: 170227876153499177}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1864,7 +1781,7 @@ RectTransform:
   - {fileID: 5767105329692085785}
   - {fileID: 4943844360281808427}
   m_Father: {fileID: 1750743149}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2153,8 +2070,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5608253636902967492}
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2204,7 +2121,6 @@ GameObject:
   - component: {fileID: 5643961925601105866}
   - component: {fileID: 210720185372250271}
   - component: {fileID: 8165050564282736815}
-  - component: {fileID: 9143164202880778111}
   m_Layer: 0
   m_Name: Level8Icon
   m_TagString: Button
@@ -2224,7 +2140,6 @@ GameObject:
   - component: {fileID: 4582269451388512806}
   - component: {fileID: 3959946759135501848}
   - component: {fileID: 506022856376295861}
-  - component: {fileID: 3827663447905220866}
   m_Layer: 5
   m_Name: CancelButton
   m_TagString: Button
@@ -2460,7 +2375,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 170227876153499177}
-  - component: {fileID: 4469977401740146327}
   m_Layer: 5
   m_Name: ShipMenu
   m_TagString: Untagged
@@ -2517,7 +2431,6 @@ GameObject:
   - component: {fileID: 1940775406904838439}
   - component: {fileID: 4213195250009830444}
   - component: {fileID: 4925591150266445474}
-  - component: {fileID: 6630979990069193889}
   m_Layer: 0
   m_Name: Level5Icon
   m_TagString: Button
@@ -2596,8 +2509,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6383451443771979218}
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2623,7 +2536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -77.99997, y: -11.490021}
+  m_AnchoredPosition: {x: -77.99997, y: -11.5}
   m_SizeDelta: {x: 48.5, y: 29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &2649337345488389864
@@ -2773,32 +2686,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2735405312443670306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396529801902973533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &2747468315041166528
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,7 +2699,6 @@ GameObject:
   - component: {fileID: 11692893339175696}
   - component: {fileID: 5132048319703768293}
   - component: {fileID: 497588120663094263}
-  - component: {fileID: 3097457390891907946}
   m_Layer: 0
   m_Name: Level10Icon
   m_TagString: Button
@@ -3027,7 +2913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68163df1512f4d64d95b97cd245165d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savesManager: {fileID: 0}
+  savesManager: {fileID: 1750743150}
   price: 0
   hasCard: 0
 --- !u!224 &3020078587127943863
@@ -3087,32 +2973,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8923812950104818157}
   m_CullTransparentMesh: 0
---- !u!114 &3097457390891907946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2747468315041166528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!224 &3103496364696353905
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3353,7 +3213,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Credits: 100'
+  m_Text: 'Credits: 0'
 --- !u!224 &3566297375243255873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3402,32 +3262,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3606205302583774661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7602032326873520058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &3606812577328797151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3533,35 +3367,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3756389833744038103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7875990172369670098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 081e8b54fe570ad489f179bf9a68fa55, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3813672599057707377
 GameObject:
   m_ObjectHideFlags: 0
@@ -3600,32 +3405,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &3827663447905220866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2240120318783609373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!222 &3850804330493711114
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3759,32 +3538,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3975935768499459536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4933941436957793906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &3989180902048295236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4001,7 +3754,7 @@ RectTransform:
   - {fileID: 2551494634728076849}
   - {fileID: 7625081644639703408}
   m_Father: {fileID: 1750743149}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4051,16 +3804,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4327964571449136156}
-        m_MethodName: SwitchUILayer
-        m_Mode: 2
+      - m_Target: {fileID: 2437851240404158057}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 8591276254605028189}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8591276254605028189}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!224 &4303639810905817899
 RectTransform:
@@ -4102,20 +3866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!222 &4349536053813191821
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4236,33 +3987,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9065487063052542756}
   m_CullTransparentMesh: 0
---- !u!114 &4469977401740146327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2437851240404158057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aed79d696080e334c9e097df3432a376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradesParent: {fileID: 3137021746340785689}
-  upgradeSlot1: {fileID: 2374218711027163062}
-  upgradeSlot2: {fileID: 8111511654227362708}
-  upgradeSlot3: {fileID: 8441561375818987283}
-  dragObject: {fileID: 137947767165048654}
-  scroller: {fileID: 4557742991750500534}
-  UpgradeCards:
-  - {fileID: 5367276411398462751, guid: c1d7889e7b2e62a4280bccd4a9ba8ad2, type: 3}
-  - {fileID: 6736748262221929120, guid: aa007703bedbfc44195842b8b0bd1f99, type: 3}
-  - {fileID: 2000485344310413129, guid: c436455a98dd3c347953acc02d01f92b, type: 3}
-  - {fileID: 5417938574286289014, guid: 6cfdc2e22ce57614f8081a34a13d836d, type: 3}
-  - {fileID: 3255560460430225461, guid: 5fb1956ed3b12264885524f50912928e, type: 3}
-  - {fileID: 4443932028139120752, guid: 547ffdd8820f9904aaae551b766635d2, type: 3}
-  - {fileID: 8055929177837107245, guid: 8b6ebb1370505fe47b2136d076ffff7b, type: 3}
-  - {fileID: 8157426050473843092, guid: cdff16dcbb01ead4eb25b14b5a25d439, type: 3}
 --- !u!61 &4493600952284584577
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4456,35 +4180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68163df1512f4d64d95b97cd245165d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savesManager: {fileID: 0}
+  savesManager: {fileID: 1750743150}
   price: 0
   hasCard: 0
---- !u!114 &4623834823151076150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7725024451328926096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!222 &4639810629005719549
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4493,32 +4191,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599527966350085545}
   m_CullTransparentMesh: 0
---- !u!114 &4652342700812888879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304597267781294371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!224 &4655686154659918258
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4640,7 +4312,7 @@ RectTransform:
   - {fileID: 2412588503433325435}
   - {fileID: 5950153180467130409}
   m_Father: {fileID: 170227876153499177}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -4709,16 +4381,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7399779113695169299}
-        m_MethodName: SwitchUILayer
-        m_Mode: 2
+      - m_Target: {fileID: 3490346863722141569}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 8591276254605028189}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8591276254605028189}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!224 &4831637047151096704
 RectTransform:
@@ -4732,7 +4415,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 170227876153499177}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -4872,8 +4555,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6630979990069193889}
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4895,7 +4578,6 @@ GameObject:
   - component: {fileID: 9200019244884611193}
   - component: {fileID: 5671789546199395791}
   - component: {fileID: 7116324175979743145}
-  - component: {fileID: 3975935768499459536}
   m_Layer: 0
   m_Name: ShipButton
   m_TagString: Button
@@ -4950,7 +4632,6 @@ GameObject:
   - component: {fileID: 5286751525880087765}
   - component: {fileID: 2662441496818847466}
   - component: {fileID: 2199871076701656397}
-  - component: {fileID: 5608253636902967492}
   m_Layer: 0
   m_Name: Level7Icon
   m_TagString: Button
@@ -5406,8 +5087,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 836469322188905307}
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5470,32 +5151,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6404728525565098883}
   m_CullTransparentMesh: 0
---- !u!114 &5608253636902967492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5040788236276301867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &5643961925601105866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6019,8 +5674,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3606205302583774661}
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6138,7 +5793,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 170227876153499177}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6222,32 +5877,6 @@ MonoBehaviour:
   m_Text: Due to our victories over the Rakar, the Ordaga Collective has begun to
     move into the Rakar's abandoned territories, believing they are safe. Dissuade
     them of this notion.
---- !u!114 &6383451443771979218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8143561496413965109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &6404728525565098883
 GameObject:
   m_ObjectHideFlags: 0
@@ -6337,7 +5966,6 @@ GameObject:
   - component: {fileID: 2972357905050888652}
   - component: {fileID: 5252057665799540597}
   - component: {fileID: 4831606271020218331}
-  - component: {fileID: 7399779113695169299}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Button
@@ -6422,32 +6050,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2259937296560691315}
   m_CullTransparentMesh: 0
---- !u!114 &6630979990069193889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2508712505479257484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!222 &6633361708869718554
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6517,15 +6119,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2735405312443670306}
-        m_MethodName: StartExitGameMenu
-        m_Mode: 1
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Menus
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!224 &6665322634108502900
@@ -6612,16 +6214,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4652342700812888879}
-        m_MethodName: SwitchUILayer
-        m_Mode: 2
+      - m_Target: {fileID: 8591276254605028189}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 3490346863722141569}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3490346863722141569}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &6767768276353214472
 MonoBehaviour:
@@ -6786,7 +6399,7 @@ RectTransform:
   - {fileID: 58107407684707992}
   - {fileID: 8205332172455133243}
   m_Father: {fileID: 170227876153499177}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6892,7 +6505,6 @@ GameObject:
   - component: {fileID: 9125185870357523834}
   - component: {fileID: 3051102018252528765}
   - component: {fileID: 7209622124814678123}
-  - component: {fileID: 426496096161878582}
   m_Layer: 0
   m_Name: Level9Icon
   m_TagString: Button
@@ -6962,16 +6574,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3975935768499459536}
-        m_MethodName: SwitchUILayer
-        m_Mode: 2
+      - m_Target: {fileID: 8591276254605028189}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 2437851240404158057}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2437851240404158057}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!222 &7121731286746272488
 CanvasRenderer:
@@ -7155,8 +6778,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 426496096161878582}
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7184,32 +6807,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7317806633807364002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641554445066308479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &7324270617081013225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7341,32 +6938,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7399779113695169299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6477028551735845937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &7420735091198859233
 GameObject:
   m_ObjectHideFlags: 0
@@ -7572,7 +7143,6 @@ GameObject:
   - component: {fileID: 8770959205655007589}
   - component: {fileID: 4547064862465178735}
   - component: {fileID: 6126551265903465188}
-  - component: {fileID: 3606205302583774661}
   m_Layer: 0
   m_Name: Level1Icon
   m_TagString: Button
@@ -7633,7 +7203,6 @@ GameObject:
   - component: {fileID: 8515380608070530508}
   - component: {fileID: 1073131602262628153}
   - component: {fileID: 8274625014611079265}
-  - component: {fileID: 8570344007854133681}
   m_Layer: 0
   m_Name: Level6Icon
   m_TagString: Button
@@ -7662,7 +7231,6 @@ GameObject:
   - component: {fileID: 140833973003735378}
   - component: {fileID: 2803892036567727267}
   - component: {fileID: 9187617267021235560}
-  - component: {fileID: 4623834823151076150}
   m_Layer: 0
   m_Name: Level2Icon
   m_TagString: Button
@@ -7682,7 +7250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68163df1512f4d64d95b97cd245165d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savesManager: {fileID: 0}
+  savesManager: {fileID: 1750743150}
   price: 0
   hasCard: 0
 --- !u!224 &7769124766076487393
@@ -7733,24 +7301,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &7875990172369670098
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8397347630428364170}
-  - component: {fileID: 231603570068989281}
-  - component: {fileID: 3756389833744038103}
-  m_Layer: 5
-  m_Name: Ship
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!224 &7951382175727505879
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7896,7 +7446,6 @@ GameObject:
   - component: {fileID: 6181299676726230972}
   - component: {fileID: 6082091251928676791}
   - component: {fileID: 2611926385231909539}
-  - component: {fileID: 6383451443771979218}
   m_Layer: 0
   m_Name: Level11Icon
   m_TagString: Button
@@ -7966,8 +7515,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9143164202880778111}
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8065,8 +7614,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8570344007854133681}
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8146,25 +7695,6 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &8397347630428364170
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7875990172369670098}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 170227876153499177}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 138}
-  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8399524587457878108
 MonoBehaviour:
@@ -8257,8 +7787,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7317806633807364002}
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8408,32 +7938,6 @@ RectTransform:
   m_AnchoredPosition: {x: 73.6, y: -166.6}
   m_SizeDelta: {x: 17.92627, y: 19.050568}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8570344007854133681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7635165561743888132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &8571546333120150671
 GameObject:
   m_ObjectHideFlags: 0
@@ -8989,32 +8493,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visable: {fileID: 6655985287002709608}
   isUnlocked: 0
---- !u!114 &9143164202880778111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2233177486116042942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!114 &9187617267021235560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9058,8 +8536,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4623834823151076150}
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 1750743151}
+        m_MethodName: CallSwitchSceneAndSave
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
