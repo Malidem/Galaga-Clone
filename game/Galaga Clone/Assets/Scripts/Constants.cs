@@ -7,6 +7,7 @@ public class Constants
     // Game Functionality
     public static readonly string URL = "http://polemos.atspace.cc/php/";
     public static bool isStartingUp = true;
+    public static bool isLoggedIn;
     public static GameObject dontDestroy;
 
     // User Account

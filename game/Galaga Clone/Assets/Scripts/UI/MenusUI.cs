@@ -130,6 +130,7 @@ public class MenusUI : BaseUI
             mainMenu.GetComponentsInChildren<Text>()[5].text = "Email: " + Constants.email;
             PlayerPrefs.SetString("email", Constants.email);
             PlayerPrefs.SetString("password", password);
+            Constants.isLoggedIn = true;
             isPasswordShown = false;
             UpdateSavesMenu(www.text);
         }

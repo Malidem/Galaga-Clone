@@ -60,13 +60,21 @@ public class MenusManager : MonoBehaviour
         Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         Instantiate(backgroundPrefab, backgroundsFolder.transform.position, transform.rotation, backgroundsFolder.transform);
 
-        if (PlayerPrefs.GetString("email") != "")
+        if (Constants.isLoggedIn == false)
         {
-            StartCoroutine(mainMenuUI.Login(PlayerPrefs.GetString("email"), PlayerPrefs.GetString("password")));
+            if (PlayerPrefs.GetString("email") != "")
+            {
+                StartCoroutine(mainMenuUI.Login(PlayerPrefs.GetString("email"), PlayerPrefs.GetString("password")));
+            }
+            else
+            {
+                accountMenu.SetActive(true);
+            }
         }
         else
         {
-            accountMenu.SetActive(true);
+            accountMenu.SetActive(false);
+            mainMenuUI.mainMenu.SetActive(true);
         }
     }
 }
