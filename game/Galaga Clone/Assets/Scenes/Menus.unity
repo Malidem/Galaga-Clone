@@ -635,6 +635,7 @@ MonoBehaviour:
   backgroundsFolder: {fileID: 1554614706}
   soundVolumeSlider: {fileID: 1782927830}
   cursor: {fileID: 2800000, guid: 7c1bec6661b34db4eaa609639337a52f, type: 3}
+  currentAccountText: {fileID: 1735799184}
 --- !u!1 &119106867
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,20 +931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c51be45c15b86488ed21ae139ac362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  shopButton: {fileID: 0}
-  shopMenu: {fileID: 0}
-  shipButton: {fileID: 0}
-  shipMenu: {fileID: 0}
-  galaxyButton: {fileID: 0}
-  galaxyMenu: {fileID: 0}
-  volumeButton: {fileID: 0}
-  volumeMenu: {fileID: 0}
-  videoButton: {fileID: 0}
-  videoMenu: {fileID: 0}
-  controlesButton: {fileID: 0}
-  controlesMenu: {fileID: 0}
-  canvas: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!1 &166738782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,8 +1422,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 244984871}
   mainMenu: {fileID: 1432578613}
-  gameMenu: {fileID: 3426409569550803512, guid: a997c2cf013cd2f4b871bd1bb4775793,
-    type: 3}
   accountMenu: {fileID: 166738782}
   errorMenu: {fileID: 875151935}
   savesMenu: {fileID: 229266445}
@@ -1449,6 +1435,7 @@ MonoBehaviour:
   SignUpButton: {fileID: 1487896969}
   confirmDeletionMenu: {fileID: 663335354}
   charCountText: {fileID: 2016635866}
+  menusManager: {fileID: 102171651}
   createSaveTexts:
   - {fileID: 1338680298}
   - {fileID: 350272200}
@@ -7495,7 +7482,7 @@ GameObject:
   - component: {fileID: 1735799185}
   - component: {fileID: 1735799184}
   m_Layer: 5
-  m_Name: CurrentAccount
+  m_Name: CurrentAccountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

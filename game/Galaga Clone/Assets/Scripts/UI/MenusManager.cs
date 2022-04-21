@@ -12,6 +12,7 @@ public class MenusManager : MonoBehaviour
     public GameObject backgroundsFolder;
     public Slider soundVolumeSlider;
     public Texture2D cursor;
+    public Text currentAccountText;
 
     private MenusUI mainMenuUI;
 
@@ -75,6 +76,13 @@ public class MenusManager : MonoBehaviour
         {
             accountMenu.SetActive(false);
             mainMenuUI.mainMenu.SetActive(true);
+            SetEmail(Constants.email);
         }
+    }
+
+    public void SetEmail(string email)
+    {
+        Constants.email = email;
+        currentAccountText.text = email;
     }
 }

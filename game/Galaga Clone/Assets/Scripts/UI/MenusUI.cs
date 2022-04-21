@@ -26,6 +26,7 @@ public class MenusUI : BaseUI
     public Button SignUpButton;
     public Transform confirmDeletionMenu;
     public Text charCountText;
+    public MenusManager menusManager;
     public List<GameObject> createSaveTexts = new List<GameObject>();
     public List<GameObject> gameStatTexts = new List<GameObject>();
     public List<GameObject> deleteSaveButtons = new List<GameObject>();
@@ -127,7 +128,7 @@ public class MenusUI : BaseUI
             Constants.password = password;
             accountMenu.SetActive(false);
             mainMenu.SetActive(true);
-            mainMenu.GetComponentsInChildren<Text>()[5].text = "Email: " + Constants.email;
+            menusManager.SetEmail(email);
             PlayerPrefs.SetString("email", Constants.email);
             PlayerPrefs.SetString("password", password);
             Constants.isLoggedIn = true;
