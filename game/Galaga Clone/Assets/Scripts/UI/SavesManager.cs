@@ -297,6 +297,7 @@ public class SavesManager : MonoBehaviour
         instanceProps.upgradeParent = upgradesParent;
         instanceProps.dragObject = dragObject;
         instanceProps.upgradeSlots = upgradeSlots;
+        instanceProps.tooltip = upgradeTooltip;
         instanceProps.transform.SetSiblingIndex(2);
         shopButton.hasCard = true;
         shopButton.price = price;
