@@ -77,6 +77,7 @@ public class MenusManager : MonoBehaviour
             accountMenu.SetActive(false);
             mainMenuUI.mainMenu.SetActive(true);
             SetEmail(Constants.email);
+            StartCoroutine(mainMenuUI.GetSavesStatusData());
         }
     }
 
