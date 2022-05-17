@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UI.Extensions;
 
 public class SavesManager : MonoBehaviour
 {
     public GameObject upgradesParent;
     public GameObject dragObject;
     public GameObject scroller;
-    public GameObject levelsFolder;
     public GameObject upgradeTooltip;
+    public GameObject levelsFolder;
+    public UILineRenderer levelLines;
     public Sprite completedLevel;
     public Sprite unlockedLevel;
     public Text moneyText;
@@ -84,6 +86,17 @@ public class SavesManager : MonoBehaviour
 
     private void LoadLevels()
     {
+        List<Vector2> lines = new List<Vector2>();
+        for (int i = 0; i < levels.Length; i++)
+        {
+            if (i != 0)
+            {
+                lines.Add(new Vector2(levels[i].position.x, levels[i].position.y));
+            }
+        }
+
+        levelLines.Points = lines.ToArray();
+
         for (int i = 0; i < Constants.levelsUnlocked; i++)
         {
             levels[i + 1].GetComponent<Image>().sprite = unlockedLevel;
