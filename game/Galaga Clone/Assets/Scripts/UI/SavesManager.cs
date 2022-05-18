@@ -91,7 +91,7 @@ public class SavesManager : MonoBehaviour
         {
             if (i != 0)
             {
-                lines.Add(new Vector2(levels[i].position.x, levels[i].position.y));
+                lines.Add(levels[i].position);
             }
         }
 

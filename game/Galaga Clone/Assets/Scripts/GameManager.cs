@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     private List<GameObject> enemyCount = new List<GameObject>();
     private bool canPlayOverheatSound = true;
     private bool playerWon;
-    private bool isFinalLevel;
+    private bool isFinalWave;
     private Texture2D levelMap;
     private readonly string levelPath = Application.streamingAssetsPath + "/Levels/level_" + Constants.levelsUnlocked;
 
@@ -203,7 +203,7 @@ public class GameManager : MonoBehaviour
                     wave++;
                     if (wave > (waveCount - 1))
                     {
-                        isFinalLevel = true;
+                        isFinalWave = true;
                     }
                 }
                 else
@@ -397,7 +397,7 @@ public class GameManager : MonoBehaviour
             if (!enemy.CompareTag("BossEnemy"))
             {
                 enemyCount.Remove(enemy);
-                if (isFinalLevel && enemyCount.Count <= 0)
+                if (isFinalWave && enemyCount.Count <= 0)
                 {
                     playerWon = true;
                     EndGame();
