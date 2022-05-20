@@ -1200,7 +1200,7 @@ MonoBehaviour:
   overheatBar: {fileID: 684949600}
   dialogueText: {fileID: 687915281}
   cursor: {fileID: 2800000, guid: 7c1bec6661b34db4eaa609639337a52f, type: 3}
-  overheatSound: {fileID: 0}
+  overheatSound: {fileID: 8300000, guid: c0c3325f9d7cd1c478bdb5caa659cae9, type: 3}
   bossHealthBar: {fileID: 943081818}
   overheatImagesL0:
   - {fileID: -7687609987494465623, guid: 6d9adfe9817873843baafd5507ccf7e2, type: 3}
